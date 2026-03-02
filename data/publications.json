@@ -1,0 +1,318 @@
+{
+  "fetched": "2026-02-26",
+  "source": "PubMed via NCBI E-utilities",
+  "query_terms": [
+    "\"Roizen J\" AND \"vitamin D\"",
+    "\"Roizen JD\"[Author]",
+    "\"Roizen Jeffrey\"[Author]"
+  ],
+  "count": 34,
+  "publications": [
+    {
+      "title": "Letter to the editor regarding Duan et\u00a0al, \"CYP4A22 loss-of-function causes a new type of vitamin D-dependent rickets (VDDR1C)\"",
+      "authors": "Levine MA, Li D, Roizen J, Weber D",
+      "journal": "Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research",
+      "year": 2025,
+      "pmid": "39714216",
+      "doi": "10.1093/jbmr/zjae203",
+      "abstract_preview": ""
+    },
+    {
+      "title": "High dose dietary vitamin D allocates surplus calories to muscle and growth instead of fat via modulation of myostatin and leptin signaling",
+      "authors": "Roizen J, Long C, Casella A, Nguyen M, Danahy L, Seiler C, Lei M, Mark J",
+      "journal": "Research square",
+      "year": 2024,
+      "pmid": "38766160",
+      "doi": "10.21203/rs.3.rs-4202165/v1",
+      "abstract_preview": "Obesity occurs because the body stores surplus calories as fat rather than as muscle. Fat secretes a hormone, leptin, that modulates energy balance at the brain. Changes in fat mass are mirrored by ch..."
+    },
+    {
+      "title": "Dietary vitamin D is a novel modulator of tumor engraftment through regulation of GC protein abundance",
+      "authors": "Danahy L, Long C, Hofmann TJ, Tara Z, Mark J, Roizen JD",
+      "journal": "Research square",
+      "year": 2024,
+      "pmid": "38410461",
+      "doi": "10.21203/rs.3.rs-3911213/v1",
+      "abstract_preview": "The vitamin D binding protein, the GC protein, is a multifunctional protein that binds circulating vitamin D and also increases macrophage killing of tumor cells. Injecting exogenous GC protein concur..."
+    },
+    {
+      "title": "A Pilot Randomized Clinical Trial of Intranasal Oxytocin to Promote Weight Loss in Individuals With Hypothalamic Obesity",
+      "authors": "McCormack SE, Wang Z, Wade KL, Dedio A, Cilenti N, Crowley J, Plessow F, Bamba V, Roizen JD, Jiang Y, Stylli J, Ramakrishnan A, Platt ML, Shekdar K, Fisher MJ, Vetter VL, Hocking M, Xiao R, Lawson EA",
+      "journal": "Journal of the Endocrine Society",
+      "year": 2023,
+      "pmid": "37153702",
+      "doi": "10.1210/jendso/bvad037",
+      "abstract_preview": "CONTEXT: Hypothalamic obesity is a rare, treatment-resistant form of obesity. In preliminary studies, the hypothalamic hormone oxytocin (OXT) has shown promise as a potential weight loss therapy. OBJE..."
+    },
+    {
+      "title": "Improved genetic risk scoring algorithm for type 1 diabetes prediction",
+      "authors": "Qu HQ, Qu J, Glessner J, Liu Y, Mentch F, Chang X, March M, Li J, Roizen JD, Connolly JJ, Sleiman P, Hakonarson H",
+      "journal": "Pediatric diabetes",
+      "year": 2022,
+      "pmid": "34997821",
+      "doi": "10.1111/pedi.13310",
+      "abstract_preview": "BACKGROUND: Precise risk prediction of type 1 diabetes (T1D) facilitates early intervention and identification of risk factors prior to irreversible beta-islet cell destruction, and can significantly ..."
+    },
+    {
+      "title": "Insights into non-autoimmune type 1 diabetes with 13 novel loci in low polygenic risk score patients",
+      "authors": "Qu J, Qu HQ, Bradfield JP, Glessner JT, Chang X, Tian L, March M, Connolly JJ, Roizen JD, Sleiman PMA, Hakonarson H",
+      "journal": "Scientific reports",
+      "year": 2021,
+      "pmid": "34362956",
+      "doi": "10.1038/s41598-021-94994-9",
+      "abstract_preview": "With polygenic risk score (PRS) for autoimmune type 1 diabetes (T1D), this study identified T1D cases with low T1D PRS and searched for susceptibility loci in these cases. Our hypothesis is that genet..."
+    },
+    {
+      "title": "Genetic architecture of type 1 diabetes with low genetic risk score informed by 41 unreported loci",
+      "authors": "Qu HQ, Qu J, Bradfield J, Marchand L, Glessner J, Chang X, March M, Li J, Connolly JJ, Roizen JD, Sleiman P, Polychronakos C, Hakonarson H",
+      "journal": "Communications biology",
+      "year": 2021,
+      "pmid": "34302048",
+      "doi": "10.1038/s42003-021-02368-8",
+      "abstract_preview": "Type 1 diabetes (T1D) patients with low genetic risk scores (GRS) may be non-autoimmune or autoimmune mediated by other genetic loci. The T1D-GRS2 provides us an opportunity to look into the genetic a..."
+    },
+    {
+      "title": "Combined application of genetic and polygenic risk scores for type 1 diabetes risk prediction",
+      "authors": "Qu HQ, Qu J, Bradfield J, Glessner J, Chang X, March M, Mentch FD, Roizen JD, Connolly JJ, Sleiman P, Hakonarson H",
+      "journal": "Diabetes, obesity & metabolism",
+      "year": 2021,
+      "pmid": "33950547",
+      "doi": "10.1111/dom.14419",
+      "abstract_preview": ""
+    },
+    {
+      "title": "Growth in Children with a Fontan Circulation",
+      "authors": "Mancilla EE, Zielonka B, Roizen JD, Dodds KM, Rand EB, Heimall JR, Chen F, Wu C, Goldberg DJ, Rychik J",
+      "journal": "The Journal of pediatrics",
+      "year": 2021,
+      "pmid": "33887332",
+      "doi": "10.1016/j.jpeds.2021.04.019",
+      "abstract_preview": "OBJECTIVE: To evaluate growth in a population of patients with Fontan circulation. STUDY DESIGN: We performed a cross-sectional evaluation of patients followed in our multidisciplinary Fontan clinic f..."
+    },
+    {
+      "title": "Association of DLL1 with type 1 diabetes in patients characterized by low polygenic risk score",
+      "authors": "Qu J, Qu HQ, Bradfield JP, Glessner JT, Chang X, Tian L, March ME, Roizen JD, Sleiman PM, Hakonarson H",
+      "journal": "Metabolism: clinical and experimental",
+      "year": 2020,
+      "pmid": "33157082",
+      "doi": "10.1016/j.metabol.2020.154418",
+      "abstract_preview": "Type 1 diabetes (T1D) is a heterogeneous disease. This study identified T1D cases with low polygenic risk score (PRS) to better represent T1D cases with less prominent autoimmune response (T1bD), and ..."
+    },
+    {
+      "title": "Differential Frequency of CYP2R1 Variants Across Populations Reveals Pathway Selection for Vitamin D Homeostasis",
+      "authors": "Casella A, Long C, Zhou J, Lai M, O'Lear L, Caplan I, Levine MA, Roizen JD",
+      "journal": "The Journal of clinical endocrinology and metabolism",
+      "year": 2020,
+      "pmid": "32115644",
+      "doi": "10.1210/clinem/dgaa056",
+      "abstract_preview": "CONTEXT: Normal vitamin D homeostasis is necessary to ensure optimal mineral metabolism. Dietary insufficiency of vitamin D and the lack of sunlight each have well understood roles in vitamin D defici..."
+    },
+    {
+      "title": "Vitamin D Therapy and the Era of Precision Medicine",
+      "authors": "Roizen JD, Levine MA",
+      "journal": "The Journal of clinical endocrinology and metabolism",
+      "year": 2020,
+      "pmid": "31665328",
+      "doi": "10.1210/clinem/dgz120",
+      "abstract_preview": ""
+    },
+    {
+      "title": "Early pregnancy loss in 15-hydroxyprostaglandin dehydrogenase knockout (15-HPGD-/-) mice due to requirement for embryo 15-HPGD activity",
+      "authors": "Roizen JD, Asada M, Tong M, Tai HH, Muglia LJ",
+      "journal": "Scientific reports",
+      "year": 2019,
+      "pmid": "31772225",
+      "doi": "10.1038/s41598-019-54064-7",
+      "abstract_preview": "Prostaglandins (PGs) have critical signaling functions in a variety of processes including the establishment and maintenance of pregnancy, and the initiation of labor. Most PGs are non-enzymatically d..."
+    },
+    {
+      "title": "Response to: Obesity and Vitamin D Metabolism Modifications",
+      "authors": "Roizen JD, Levine MA",
+      "journal": "Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research",
+      "year": 2019,
+      "pmid": "31141223",
+      "doi": "10.1002/jbmr.3743",
+      "abstract_preview": ""
+    },
+    {
+      "title": "Obesity Decreases Hepatic 25-Hydroxylase Activity Causing Low Serum 25-Hydroxyvitamin D",
+      "authors": "Roizen JD, Long C, Casella A, O'Lear L, Caplan I, Lai M, Sasson I, Singh R, Makowski AJ, Simmons R, Levine MA",
+      "journal": "Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research",
+      "year": 2019,
+      "pmid": "30790351",
+      "doi": "10.1002/jbmr.3686",
+      "abstract_preview": "Normal vitamin D homeostasis is critical for optimal health; nevertheless, vitamin D deficiency is a worldwide public health problem. Vitamin D insufficiency is most commonly due to inadequate cutaneo..."
+    },
+    {
+      "title": "CLEC16A regulates splenocyte and NK cell function in part through MEK signaling",
+      "authors": "Pandey R, Bakay M, Hain HS, Strenkowski B, Elsaqa BZB, Roizen JD, Kushner JA, Orange JS, Hakonarson H",
+      "journal": "PloS one",
+      "year": 2018,
+      "pmid": "30226884",
+      "doi": "10.1371/journal.pone.0203952",
+      "abstract_preview": "CLEC16A is implicated in multiple autoimmune diseases. We generated Clec16a inducible knockout (KO) mice to examine the functional link between CLEC16A auto-inflammation and autoimmunity. Clec16a KO m..."
+    },
+    {
+      "title": "Decreased Serum 25-Hydroxyvitamin D in Aging Male Mice Is Associated With Reduced Hepatic Cyp2r1 Abundance",
+      "authors": "Roizen JD, Casella A, Lai M, Long C, Tara Z, Caplan I, O'Lear L, Levine MA",
+      "journal": "Endocrinology",
+      "year": 2018,
+      "pmid": "29955863",
+      "doi": "10.1210/en.2017-03028",
+      "abstract_preview": "The prevalence of vitamin D deficiency, as determined by circulating levels of 25-hydroxycalciferol [25(OH)D], is greater in older individuals compared with the young. To examine the hypothesis that a..."
+    },
+    {
+      "title": "CYP3A4 mutation causes vitamin D-dependent rickets type 3",
+      "authors": "Roizen JD, Li D, O'Lear L, Javaid MK, Shaw NJ, Ebeling PR, Nguyen HH, Rodda CP, Thummel KE, Thacher TD, Hakonarson H, Levine MA",
+      "journal": "The Journal of clinical investigation",
+      "year": 2018,
+      "pmid": "29461981",
+      "doi": "10.1172/JCI98680",
+      "abstract_preview": "Genetic forms of vitamin D-dependent rickets (VDDRs) are due to mutations impairing activation of vitamin D or decreasing vitamin D receptor responsiveness. Here we describe two unrelated patients wit..."
+    },
+    {
+      "title": "Transethnic Evaluation Identifies Low-Frequency Loci Associated With 25-Hydroxyvitamin D Concentrations",
+      "authors": "Hong J, Hatchell KE, Bradfield JP, Bjonnes A, Chesi A, Lai CQ, Langefeld CD, Lu L, Lu Y, Lutsey PL, Musani SK, Nalls MA, Robinson-Cohen C, Roizen JD, Saxena R, Tucker KL, Ziegler JT, Arking DE, Bis JC, Boerwinkle E, Bottinger EP, Bowden DW, Gilsanz V, Houston DK, Kalkwarf HJ, Kelly A, Lappe JM, Liu Y, Michos ED, Oberfield SE, Palmer ND, Rotter JI, Sapkota B, Shepherd JA, Wilson JG, Basu S, de Boer IH, Divers J, Freedman BI, Grant SFA, Hakanarson H, Harris TB, Kestenbaum BR, Kritchevsky SB, Loos RJF, Norris JM, Norwood AF, Ordovas JM, Pankow JS, Psaty BM, Sanghera DK, Wagenknecht LE, Zemel BS, Meigs J, Dupuis J, Florez JC, Wang T, Liu CT, Engelman CD, Billings LK",
+      "journal": "The Journal of clinical endocrinology and metabolism",
+      "year": 2018,
+      "pmid": "29325163",
+      "doi": "10.1210/jc.2017-01802",
+      "abstract_preview": "CONTEXT: Vitamin D inadequacy is common in the adult population of the United States. Although the genetic determinants underlying vitamin D inadequacy have been studied in people of European ancestry..."
+    },
+    {
+      "title": "Ablation of Oxytocin Neurons Causes a Deficit in Cold Stress Response",
+      "authors": "Xi D, Long C, Lai M, Casella A, O'Lear L, Kublaoui B, Roizen JD",
+      "journal": "Journal of the Endocrine Society",
+      "year": 2017,
+      "pmid": "29264556",
+      "doi": "10.1210/js.2017-00136",
+      "abstract_preview": "The paraventricular nucleus (PVN) is a critical locus of energy balance control. Three sets of neurons in the PVN are involved in regulating energy balance: oxytocin-expressing neurons (OXT-neurons), ..."
+    },
+    {
+      "title": "Mendelian randomization analysis demonstrates that low vitamin D is unlikely causative for pediatric asthma",
+      "authors": "Hysinger EB, Roizen JD, Mentch FD, Vazquez L, Connolly JJ, Bradfield JP, Almoguera B, Sleiman PM, Allen JL, Levine MA, Hakonarson H",
+      "journal": "The Journal of allergy and clinical immunology",
+      "year": 2016,
+      "pmid": "27554823",
+      "doi": "10.1016/j.jaci.2016.06.056",
+      "abstract_preview": ""
+    },
+    {
+      "title": "Resting Energy Expenditure Is Decreased in Pseudohypoparathyroidism Type 1A",
+      "authors": "Roizen JD, Danzig J, Groleau V, McCormack S, Casella A, Harrington J, Sochett E, Tershakovec A, Zemel BS, Stallings VA, Levine MA",
+      "journal": "The Journal of clinical endocrinology and metabolism",
+      "year": 2015,
+      "pmid": "26709970",
+      "doi": "10.1210/jc.2015-3895",
+      "abstract_preview": "CONTEXT: Pseudohypoparathyroidism type 1A (PHP1A) is caused by loss-of-function mutations on the maternally inherited GNAS allele and is associated with early-onset obesity, neurocognitive defects, an..."
+    },
+    {
+      "title": "Progress in understanding type 1 diabetes through its genetic overlap with other autoimmune diseases",
+      "authors": "Roizen JD, Bradfield JP, Hakonarson H",
+      "journal": "Current diabetes reports",
+      "year": 2015,
+      "pmid": "26454449",
+      "doi": "10.1007/s11892-015-0668-4",
+      "abstract_preview": "Type 1 diabetes mellitus (T1DM) is the most common autoimmune disease in pediatrics with a prevalence of roughly 1 in 500 children in the USA. Genome-wide association studies have identified more than..."
+    },
+    {
+      "title": "CYP2R1 Mutations Impair Generation of 25-hydroxyvitamin D and Cause an Atypical Form of Vitamin D Deficiency",
+      "authors": "Thacher TD, Fischer PR, Singh RJ, Roizen J, Levine MA",
+      "journal": "The Journal of clinical endocrinology and metabolism",
+      "year": 2015,
+      "pmid": "25942481",
+      "doi": "10.1210/jc.2015-1746",
+      "abstract_preview": "CONTEXT: Production of the active vitamin D hormone 1,25-dihydroxyvitamin D requires hepatic 25-hydroxylation of vitamin D. The CYP2R1 gene encodes the principal vitamin D 25-hydroxylase in humans. OB..."
+    },
+    {
+      "title": "A meta-analysis comparing the biochemistry of primary hyperparathyroidism in youths to the biochemistry of primary hyperparathyroidism in adults",
+      "authors": "Roizen J, Levine MA",
+      "journal": "The Journal of clinical endocrinology and metabolism",
+      "year": 2014,
+      "pmid": "25181388",
+      "doi": "10.1210/jc.2014-2268",
+      "abstract_preview": "CONTEXT: The distinctive presentation of primary hyperparathyroidism (PHPT) in adults and youths suggest that PHPT is a fundamentally different disease in these two groups. OBJECTIVE: To understand th..."
+    },
+    {
+      "title": "Vitamin D and your patients: don't accept wimpy",
+      "authors": "Roizen MF, Roizen JD",
+      "journal": "Anesthesia and analgesia",
+      "year": 2014,
+      "pmid": "25136994",
+      "doi": "10.1213/ANE.0000000000000285",
+      "abstract_preview": ""
+    },
+    {
+      "title": "Determination of reference intervals for serum total calcium in the vitamin D-replete pediatric population",
+      "authors": "Roizen JD, Shah V, Levine MA, Carlow DC",
+      "journal": "The Journal of clinical endocrinology and metabolism",
+      "year": 2013,
+      "pmid": "24217904",
+      "doi": "10.1210/jc.2013-3105",
+      "abstract_preview": "CONTEXT: Widespread vitamin D insufficiency raises concerns regarding the reliability of reference intervals for serum calcium. OBJECTIVE: We sought to determine the reference intervals for serum tota..."
+    },
+    {
+      "title": "Primary hyperparathyroidism in children and adolescents",
+      "authors": "Roizen J, Levine MA",
+      "journal": "Journal of the Chinese Medical Association : JCMA",
+      "year": 2012,
+      "pmid": "22989537",
+      "doi": "10.1016/j.jcma.2012.06.012",
+      "abstract_preview": "Primary hyperparathyroidism (PHPT) is a common endocrine disorder in adults in whom the typical presentation is incidentally discovered as asymptomatic hypercalcemia. PHPT is much less common in child..."
+    },
+    {
+      "title": "Recent research on inhaled corticosteroids and growth",
+      "authors": "Roizen J, Alter C, Bamba V",
+      "journal": "Current opinion in endocrinology, diabetes, and obesity",
+      "year": 2012,
+      "pmid": "22157405",
+      "doi": "10.1097/MED.0b013e32834edab5",
+      "abstract_preview": "PURPOSE OF REVIEW: Description of recent studies evaluating growth and inhaled corticosteroids. RECENT FINDINGS: Corticosteroids are the gold standard of asthma maintenance treatment, but effects on g..."
+    },
+    {
+      "title": "Oxytocin in the circadian timing of birth",
+      "authors": "Roizen J, Luedke CE, Herzog ED, Muglia LJ",
+      "journal": "PloS one",
+      "year": 2007,
+      "pmid": "17895964",
+      "doi": "10.1371/journal.pone.0000922",
+      "abstract_preview": "BACKGROUND: The molecular components determining the timing for birth remain an incompletely characterized aspect of reproduction, with important conceptual and therapeutic ramifications for managemen..."
+    },
+    {
+      "title": "Preterm birth without progesterone withdrawal in 15-hydroxyprostaglandin dehydrogenase hypomorphic mice",
+      "authors": "Roizen JD, Asada M, Tong M, Tai HH, Muglia LJ",
+      "journal": "Molecular endocrinology (Baltimore, Md.)",
+      "year": 2007,
+      "pmid": "17872381",
+      "doi": "10.1210/me.2007-0178",
+      "abstract_preview": "Parturition is a complex mammalian physiological process whose fundamental determinants have remained elusive. The increasing incidence of human preterm birth, a leading cause of infant mortality, hig..."
+    },
+    {
+      "title": "Modulation of recombinant small-conductance Ca(2+)-activated K(+) channels by the muscle relaxant chlorzoxazone and structurally related compounds",
+      "authors": "Cao Y, Dreixler JC, Roizen JD, Roberts MT, Houamed KM",
+      "journal": "The Journal of pharmacology and experimental therapeutics",
+      "year": 2001,
+      "pmid": "11181893",
+      "doi": "",
+      "abstract_preview": "Using the patch clamp technique we investigated the effects of the centrally acting muscle relaxant chlorzoxazone and three structurally related compounds, 1-ethyl-2-benzimidazolinone (1-EBIO), zoxazo..."
+    },
+    {
+      "title": "Block of rat brain recombinant SK channels by tricyclic antidepressants and related compounds",
+      "authors": "Dreixler JC, Bian J, Cao Y, Roberts MT, Roizen JD, Houamed KM",
+      "journal": "European journal of pharmacology",
+      "year": 2000,
+      "pmid": "10915830",
+      "doi": "10.1016/s0014-2999(00)00401-5",
+      "abstract_preview": "SK channels are small conductance, Ca(2+)-activated K(+) channels that underlie neuronal slow afterhyperpolarization and mediate spike frequency adaptation. Using the patch clamp technique, we tested ..."
+    },
+    {
+      "title": "Patch-clamp analysis of anesthetic interactions with recombinant SK2 subtype neuronal calcium-activated potassium channels",
+      "authors": "Dreixler JC, Jenkins A, Cao YJ, Roizen JD, Houamed KM",
+      "journal": "Anesthesia and analgesia",
+      "year": 2000,
+      "pmid": "10702465",
+      "doi": "10.1097/00000539-200003000-00040",
+      "abstract_preview": "UNLABELLED: Small conductance calcium-activated potassium channels (SK) mediate spike frequency adaptation and underlie the slow afterhyperpolarization in central neurons. We tested the actions of sev..."
+    }
+  ]
+}

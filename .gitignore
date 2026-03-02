@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Environment
+.env
+.env.local
+
+# Claude
+.claude/
+.playwright-mcp/
+
+# Node (if any future build tools)
+node_modules/
+
+# Python
+__pycache__/
+*.pyc

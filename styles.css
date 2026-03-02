@@ -1,0 +1,532 @@
+/* === Reset & Base === */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --penn-blue: #011F5B;
+    --penn-red: #990000;
+    --chop-blue: #005587;
+    --white: #FFFFFF;
+    --light-gray: #F5F6F8;
+    --medium-gray: #E0E2E6;
+    --dark-gray: #333333;
+    --text: #2C2C2C;
+    --accent: #011F5B;
+    --accent-light: #1A3A7A;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--white);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* === Navbar === */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--penn-blue);
+    color: var(--white);
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo-img {
+    height: 44px;
+    width: auto;
+    transition: opacity 0.2s;
+}
+
+.nav-logo:hover {
+    text-decoration: none;
+}
+
+.nav-logo:hover .nav-logo-img {
+    opacity: 0.85;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* === Hero === */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--penn-blue) 0%, var(--accent-light) 50%, var(--chop-blue) 100%);
+    color: var(--white);
+    padding: 120px 24px 80px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 12px;
+    opacity: 0.95;
+}
+
+.hero-affiliations {
+    font-size: 1.05rem;
+    opacity: 0.8;
+    margin-bottom: 32px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 32px;
+    background: var(--white);
+    color: var(--penn-blue);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+/* === Sections === */
+.section {
+    padding: 80px 0;
+}
+
+.section-alt {
+    background: var(--light-gray);
+}
+
+.section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--penn-blue);
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.section-intro {
+    max-width: 750px;
+    margin: 0 auto 40px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.text-link {
+    color: var(--accent-light);
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.text-link:hover {
+    border-bottom-color: var(--accent-light);
+    text-decoration: none;
+}
+
+/* === Research Grid === */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.research-card {
+    background: var(--white);
+    border: 1px solid var(--medium-gray);
+    border-radius: 8px;
+    padding: 32px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.research-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.research-card h3 {
+    font-size: 1.2rem;
+    color: var(--penn-blue);
+    margin-bottom: 12px;
+}
+
+.research-card p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* === Team Grid === */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    justify-items: center;
+}
+
+.team-card {
+    background: var(--white);
+    border: 1px solid var(--medium-gray);
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+    max-width: 340px;
+    width: 100%;
+    transition: box-shadow 0.2s;
+}
+
+.team-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.team-photo-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--penn-blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 16px;
+}
+
+.team-card h3 {
+    font-size: 1.2rem;
+    color: var(--penn-blue);
+    margin-bottom: 4px;
+}
+
+.team-role {
+    font-weight: 600;
+    color: var(--chop-blue);
+    margin-bottom: 8px;
+}
+
+.team-affiliation {
+    font-size: 0.9rem;
+    color: #777;
+    line-height: 1.5;
+}
+
+.team-card-empty {
+    border-style: dashed;
+    border-color: #CCC;
+}
+
+.team-card-empty .team-photo-placeholder {
+    background: var(--medium-gray);
+    color: #999;
+}
+
+/* === Publications === */
+.publication-list {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.publication-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.publication-item:last-child {
+    border-bottom: none;
+}
+
+.pub-placeholder {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    padding: 40px 0;
+}
+
+/* === Alumni === */
+.alumni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.alumni-card {
+    background: var(--white);
+    border: 1px solid var(--medium-gray);
+    border-radius: 8px;
+    padding: 24px;
+    transition: box-shadow 0.2s;
+}
+
+.alumni-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.alumni-card h3 {
+    font-size: 1.05rem;
+    color: var(--penn-blue);
+    margin-bottom: 4px;
+}
+
+.alumni-card .alumni-years {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 8px;
+}
+
+.alumni-card .alumni-current {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* === Merch Store === */
+.merch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.merch-card {
+    background: var(--white);
+    border: 1px solid var(--medium-gray);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+
+.merch-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.merch-image-placeholder {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, var(--light-gray), var(--medium-gray));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #AAA;
+    font-size: 1rem;
+}
+
+.merch-card h3 {
+    font-size: 1rem;
+    color: var(--penn-blue);
+    padding: 16px;
+    text-align: center;
+}
+
+.merch-contact {
+    text-align: center;
+    margin-top: 32px;
+    color: #777;
+    font-style: italic;
+}
+
+/* === Donate === */
+.donate-section {
+    background: linear-gradient(135deg, var(--penn-blue) 0%, var(--chop-blue) 100%);
+    color: var(--white);
+}
+
+.donate-section h2 {
+    color: var(--white);
+}
+
+.donate-content {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.donate-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+.btn-donate {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--white);
+    color: var(--penn-blue);
+    font-weight: 700;
+    font-size: 1.15rem;
+    border-radius: 6px;
+    margin: 12px 0 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-donate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+}
+
+.donate-note {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* === Contact === */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.contact-card {
+    background: var(--white);
+    border: 1px solid var(--medium-gray);
+    border-radius: 8px;
+    padding: 32px;
+}
+
+.contact-card h3 {
+    font-size: 1.1rem;
+    color: var(--penn-blue);
+    margin-bottom: 12px;
+}
+
+.contact-card p {
+    color: #555;
+    line-height: 1.7;
+}
+
+.contact-note {
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* === Footer === */
+.footer {
+    background: var(--penn-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 24px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* === Mobile === */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--penn-blue);
+        padding: 16px 24px;
+        gap: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .research-grid,
+    .merch-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+}

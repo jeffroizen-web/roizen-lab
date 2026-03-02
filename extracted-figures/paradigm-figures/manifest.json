@@ -1,0 +1,249 @@
+{
+  "source_file": "coplies_of_all_figures.pptx",
+  "source_path": "/Users/roizenj/Documents/Personal/RoizenWebsite/science pics/coplies_of_all_figures.pptx",
+  "total_slides": 19,
+  "total_images_extracted": 24,
+  "small_images_skipped": 0,
+  "images": [
+    {
+      "filename": "slide09_img1.png",
+      "slide_number": 9,
+      "image_index_on_slide": 1,
+      "width": 301,
+      "height": 356,
+      "original_content_type": "image/tiff",
+      "slide_title": "What are the changes that occur in atrophy and hypertrophy?",
+      "slide_text": "High fat diet"
+    },
+    {
+      "filename": "slide09_img2.png",
+      "slide_number": 9,
+      "image_index_on_slide": 2,
+      "width": 1344,
+      "height": 1024,
+      "original_content_type": "image/tiff",
+      "slide_title": "What are the changes that occur in atrophy and hypertrophy?",
+      "slide_text": "High fat diet"
+    },
+    {
+      "filename": "slide09_img3.png",
+      "slide_number": 9,
+      "image_index_on_slide": 3,
+      "width": 1344,
+      "height": 1024,
+      "original_content_type": "image/tiff",
+      "slide_title": "What are the changes that occur in atrophy and hypertrophy?",
+      "slide_text": "High fat diet"
+    },
+    {
+      "filename": "slide10_img1.png",
+      "slide_number": 10,
+      "image_index_on_slide": 1,
+      "width": 301,
+      "height": 356,
+      "original_content_type": "image/tiff",
+      "slide_title": "Which of these changes are causative?",
+      "slide_text": "Choose genes or pathways to manipulate\n\nManipulate in cell culture\nshRNA screen - \nCRISPR screen -"
+    },
+    {
+      "filename": "slide10_img2.png",
+      "slide_number": 10,
+      "image_index_on_slide": 2,
+      "width": 180,
+      "height": 71,
+      "original_content_type": "image/tiff",
+      "slide_title": "Which of these changes are causative?",
+      "slide_text": "Choose genes or pathways to manipulate\n\nManipulate in cell culture\nshRNA screen - \nCRISPR screen -"
+    },
+    {
+      "filename": "slide10_img3.png",
+      "slide_number": 10,
+      "image_index_on_slide": 3,
+      "width": 180,
+      "height": 71,
+      "original_content_type": "image/tiff",
+      "slide_title": "Which of these changes are causative?",
+      "slide_text": "Choose genes or pathways to manipulate\n\nManipulate in cell culture\nshRNA screen - \nCRISPR screen -"
+    },
+    {
+      "filename": "slide11_img1.png",
+      "slide_number": 11,
+      "image_index_on_slide": 1,
+      "width": 2000,
+      "height": 1044,
+      "original_content_type": "image/tiff",
+      "slide_title": "Can we manipulate these same pathways in mice?",
+      "slide_text": "Use AAV to deliver shRNA or transgene to muscle\n\nMeasure output"
+    },
+    {
+      "filename": "slide11_img2.png",
+      "slide_number": 11,
+      "image_index_on_slide": 2,
+      "width": 301,
+      "height": 356,
+      "original_content_type": "image/tiff",
+      "slide_title": "Can we manipulate these same pathways in mice?",
+      "slide_text": "Use AAV to deliver shRNA or transgene to muscle\n\nMeasure output"
+    },
+    {
+      "filename": "slide11_img3.png",
+      "slide_number": 11,
+      "image_index_on_slide": 3,
+      "width": 180,
+      "height": 71,
+      "original_content_type": "image/tiff",
+      "slide_title": "Can we manipulate these same pathways in mice?",
+      "slide_text": "Use AAV to deliver shRNA or transgene to muscle\n\nMeasure output"
+    },
+    {
+      "filename": "slide11_img4.png",
+      "slide_number": 11,
+      "image_index_on_slide": 4,
+      "width": 180,
+      "height": 71,
+      "original_content_type": "image/tiff",
+      "slide_title": "Can we manipulate these same pathways in mice?",
+      "slide_text": "Use AAV to deliver shRNA or transgene to muscle\n\nMeasure output"
+    },
+    {
+      "filename": "slide13_img1.wmf",
+      "slide_number": 13,
+      "image_index_on_slide": 1,
+      "width": 547,
+      "height": 560,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide14_img1.wmf",
+      "slide_number": 14,
+      "image_index_on_slide": 1,
+      "width": 180,
+      "height": 94,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide14_img2.wmf",
+      "slide_number": 14,
+      "image_index_on_slide": 2,
+      "width": 180,
+      "height": 170,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide14_img3.wmf",
+      "slide_number": 14,
+      "image_index_on_slide": 3,
+      "width": 174,
+      "height": 176,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide15_img1.wmf",
+      "slide_number": 15,
+      "image_index_on_slide": 1,
+      "width": 475,
+      "height": 320,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide15_img2.png",
+      "slide_number": 15,
+      "image_index_on_slide": 2,
+      "width": 600,
+      "height": 371,
+      "original_content_type": "image/tiff",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide16_img1.png",
+      "slide_number": 16,
+      "image_index_on_slide": 1,
+      "width": 613,
+      "height": 554,
+      "original_content_type": "image/tiff",
+      "slide_title": "",
+      "slide_text": "A"
+    },
+    {
+      "filename": "slide16_img2.png",
+      "slide_number": 16,
+      "image_index_on_slide": 2,
+      "width": 659,
+      "height": 555,
+      "original_content_type": "image/tiff",
+      "slide_title": "",
+      "slide_text": "A"
+    },
+    {
+      "filename": "slide17_img1.png",
+      "slide_number": 17,
+      "image_index_on_slide": 1,
+      "width": 1360,
+      "height": 1024,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide17_img2.png",
+      "slide_number": 17,
+      "image_index_on_slide": 2,
+      "width": 1360,
+      "height": 1024,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide17_img3.png",
+      "slide_number": 17,
+      "image_index_on_slide": 3,
+      "width": 1360,
+      "height": 1024,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide18_img1.png",
+      "slide_number": 18,
+      "image_index_on_slide": 1,
+      "width": 1344,
+      "height": 1024,
+      "original_content_type": "image/tiff",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide18_img2.png",
+      "slide_number": 18,
+      "image_index_on_slide": 2,
+      "width": 1344,
+      "height": 1024,
+      "original_content_type": "image/tiff",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide18_img3.png",
+      "slide_number": 18,
+      "image_index_on_slide": 3,
+      "width": 1344,
+      "height": 1024,
+      "original_content_type": "image/tiff",
+      "slide_title": "",
+      "slide_text": ""
+    }
+  ]
+}

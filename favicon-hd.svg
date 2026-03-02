@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Slight skew for racing feel -->
+  <g transform="skewX(-5) translate(5,0)">
+    <!-- Letter H -->
+    <rect x="2" y="3" width="12" height="58" rx="1.5" fill="black"/>
+    <rect x="20" y="3" width="12" height="58" rx="1.5" fill="black"/>
+    <rect x="2" y="24" width="30" height="16" rx="1.5" fill="black"/>
+    
+    <!-- Letter D -->
+    <rect x="35" y="3" width="12" height="58" rx="1.5" fill="black"/>
+    <path d="M42,3 L50,3 C63,3 63,61 50,61 L42,61 L42,47 L48,47 C53,47 53,17 48,17 L42,17 Z" fill="black"/>
+  </g>
+</svg>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roizen Lab | Version B: Trust Blue & White</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #1B4F72;
+            --primary-light: #2874A6;
+            --accent: #E67E22;
+            --accent-light: #F39C12;
+            --white: #FFFFFF;
+            --off-white: #F8F9FA;
+            --light-gray: #ECF0F1;
+            --text: #2C3E50;
+            --text-light: #5D6D7E;
+            --text-muted: #95A5A6;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        h1, h2, h3 { font-family: 'PT Serif', Georgia, serif; }
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        .navbar {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: var(--white);
+            border-bottom: 1px solid var(--light-gray);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .nav-container {
+            max-width: 1100px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; height: 72px;
+        }
+        .nav-logo img { height: 44px; }
+        .nav-links { display: flex; list-style: none; gap: 28px; }
+        .nav-links a { color: var(--text); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+        .nav-links a:hover { color: var(--primary); text-decoration: none; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh; display: flex; align-items: center;
+            background: var(--white); padding: 120px 24px 80px; position: relative;
+        }
+        .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+        .hero-tagline {
+            font-family: 'Lato', sans-serif; font-size: 0.85rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 3px; color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .hero h1 { font-size: 3.6rem; font-weight: 700; line-height: 1.15; color: var(--primary); margin-bottom: 28px; max-width: 800px; }
+        .hero-subtitle { font-size: 1.2rem; font-weight: 300; line-height: 1.8; color: var(--text-light); margin-bottom: 16px; max-width: 650px; }
+        .hero-affiliations { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 40px; }
+        .btn {
+            display: inline-block; padding: 14px 36px; background: var(--primary); color: var(--white);
+            font-weight: 700; font-size: 0.9rem; border-radius: 50px; letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+        .btn:hover { background: var(--primary-light); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(27,79,114,0.3); text-decoration: none; }
+        .hero-photo-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+            margin-top: 60px;
+        }
+        .hero-photo-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; }
+
+        /* Sections */
+        .section { padding: 100px 0; }
+        .section-alt { background: var(--off-white); }
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-header h2 { font-size: 2.4rem; color: var(--primary); margin-bottom: 16px; }
+        .section-header p { max-width: 600px; margin: 0 auto; font-size: 1.05rem; color: var(--text-light); }
+        .section-label {
+            font-family: 'Lato', sans-serif; font-size: 0.8rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 12px;
+        }
+
+        /* Big Questions */
+        .questions-list { max-width: 800px; margin: 0 auto; }
+        .question-item {
+            display: grid; grid-template-columns: 48px 1fr; gap: 24px;
+            padding: 36px 0; border-bottom: 1px solid var(--light-gray); align-items: start;
+        }
+        .question-item:last-child { border-bottom: none; }
+        .question-number {
+            font-family: 'PT Serif', serif; font-size: 1.8rem; font-weight: 700;
+            color: var(--accent); line-height: 1;
+        }
+        .question-item h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 10px; line-height: 1.4; }
+        .question-item p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; }
+
+        /* Publications */
+        .pub-list { max-width: 800px; margin: 0 auto; }
+        .pub-item { padding: 24px 0; border-bottom: 1px solid var(--light-gray); }
+        .pub-item:last-child { border-bottom: none; }
+        .pub-year { font-family: 'Lato', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 6px; }
+        .pub-title { font-family: 'PT Serif', serif; font-size: 1rem; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
+        .pub-meta { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Team */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; justify-items: center; }
+        .team-card { text-align: center; max-width: 300px; }
+        .team-photo {
+            width: 180px; height: 180px; border-radius: 12px; object-fit: cover;
+            margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .team-photo-placeholder {
+            width: 180px; height: 180px; border-radius: 12px; margin: 0 auto 20px;
+            background: var(--light-gray); color: var(--text-muted); display: flex;
+            align-items: center; justify-content: center; font-size: 2rem; font-weight: 700;
+            border: 2px dashed var(--text-muted);
+        }
+        .team-card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 4px; }
+        .team-role { font-weight: 700; color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Donate */
+        .donate-section { background: var(--primary); color: var(--white); text-align: center; }
+        .donate-section h2 { color: var(--white); }
+        .donate-section .section-label { color: var(--accent-light); }
+        .donate-section p { color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 24px; font-size: 1.05rem; }
+        .btn-donate { background: var(--accent); color: var(--white); padding: 16px 48px; font-size: 1.05rem; }
+        .btn-donate:hover { background: var(--accent-light); }
+
+        /* Footer */
+        .footer { background: var(--text); color: rgba(255,255,255,0.7); text-align: center; padding: 32px; font-size: 0.85rem; }
+        .footer a { color: var(--accent-light); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--white); padding: 16px 24px; gap: 16px; border-bottom: 1px solid var(--light-gray); }
+            .nav-links.active { display: flex; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero-photo-grid { grid-template-columns: 1fr; }
+            .hero-photo-grid img { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo"><img src="logo-color-final.png" alt="Roizen Lab"></a>
+            <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#questions">Questions</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#publications">Papers</a></li>
+                <li><a href="#donate">Support</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-inner">
+            <p class="hero-tagline">Roizen Lab &middot; UPenn &middot; CHOP</p>
+            <h1>Vitamin D does far more than build bones.</h1>
+            <p class="hero-subtitle">We study the non-calcium benefits of vitamin D &mdash; uncovering how it reshapes metabolism, modulates immunity, influences cancer, and redefines how we think about a simple vitamin.</p>
+            <p class="hero-affiliations">University of Pennsylvania &middot; Children's Hospital of Philadelphia</p>
+            <a href="#questions" class="btn">What We're Asking</a>
+            <div class="hero-photo-grid">
+                <img src="benchwork.jpg" alt="Benchwork">
+                <img src="research.jpg" alt="Research">
+                <img src="talkingWide.jpg" alt="Discussion">
+            </div>
+        </div>
+    </section>
+
+    <section id="questions" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Research</p>
+                <h2>Big Questions</h2>
+                <p>The questions driving our work at the intersection of vitamin D biology, metabolism, and human health.</p>
+            </div>
+            <div class="questions-list">
+                <div class="question-item">
+                    <span class="question-number">01</span>
+                    <div>
+                        <h3>How does vitamin D redirect calories from fat to muscle?</h3>
+                        <p>We discovered that high-dose vitamin D reallocates surplus calories to muscle and linear growth instead of fat, through modulation of myostatin and leptin signaling.</p>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <span class="question-number">02</span>
+                    <div>
+                        <h3>Why do obese individuals have lower vitamin D levels?</h3>
+                        <p>Our work revealed that obesity decreases hepatic 25-hydroxylase activity, providing a mechanistic explanation for this well-documented clinical association.</p>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <span class="question-number">03</span>
+                    <div>
+                        <h3>Can vitamin D modulate tumor biology?</h3>
+                        <p>We are investigating how dietary vitamin D influences tumor engraftment through regulation of vitamin D binding protein (GC protein) abundance.</p>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <span class="question-number">04</span>
+                    <div>
+                        <h3>How do genetics shape individual vitamin D needs?</h3>
+                        <p>Through transethnic genomic studies, we've identified population-specific variants that influence vitamin D metabolism, pointing toward precision medicine approaches.</p>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <span class="question-number">05</span>
+                    <div>
+                        <h3>Does vitamin D status during development shape lifelong health?</h3>
+                        <p>We study how vitamin D levels in children affect growth, immune development, and susceptibility to autoimmune conditions like type 1 diabetes.</p>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <span class="question-number">06</span>
+                    <div>
+                        <h3>What is the right dose of vitamin D &mdash; and for whom?</h3>
+                        <p>We're working to move beyond one-size-fits-all supplementation toward individualized therapy based on genetics and metabolic context.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">People</p>
+                <h2>Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="pubphoto.jpeg" alt="Dr. Jeffrey Roizen" class="team-photo">
+                    <h3>Jeffrey D. Roizen, MD, PhD</h3>
+                    <p class="team-role">Principal Investigator</p>
+                    <p style="font-size:0.85rem; color:var(--text-light); margin-top:8px;">University of Pennsylvania<br>Children's Hospital of Philadelphia</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo-placeholder">+</div>
+                    <h3>Join Our Team</h3>
+                    <p class="team-role">Open Positions</p>
+                    <p style="font-size:0.85rem; color:var(--text-light); margin-top:8px;">We welcome postdocs, graduate students, and research assistants.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Publications</p>
+                <h2>Selected Papers</h2>
+                <p><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD">View all 27 publications on PubMed</a></p>
+            </div>
+            <div class="pub-list">
+                <div class="pub-item">
+                    <p class="pub-year">2024</p>
+                    <p class="pub-title">High dose dietary vitamin D allocates surplus calories to muscle and growth instead of fat via modulation of myostatin and leptin signaling</p>
+                    <p class="pub-meta">Roizen JD, Long C, Casella A, et al. &middot; Research Square</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2024</p>
+                    <p class="pub-title">Dietary vitamin D is a novel modulator of tumor engraftment through regulation of GC protein abundance</p>
+                    <p class="pub-meta">Research Square</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2023</p>
+                    <p class="pub-title">A Pilot Randomized Clinical Trial of Intranasal Oxytocin to Promote Weight Loss in Individuals With Hypothalamic Obesity</p>
+                    <p class="pub-meta">J Endocr Soc</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2020</p>
+                    <p class="pub-title">Vitamin D Therapy and the Era of Precision Medicine</p>
+                    <p class="pub-meta">J Clin Endocrinol Metab</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2019</p>
+                    <p class="pub-title">Obesity Decreases Hepatic 25-Hydroxylase Activity Causing Low Serum 25-Hydroxyvitamin D</p>
+                    <p class="pub-meta">Roizen JD, Long C, Casella A, Levine MA &middot; J Bone Miner Res</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2018</p>
+                    <p class="pub-title">CYP3A4 mutation causes vitamin D-dependent rickets type 3</p>
+                    <p class="pub-meta">Roizen JD, Li D, O'Lear L, Levine MA, et al. &middot; J Clin Invest</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2018</p>
+                    <p class="pub-title">Transethnic Evaluation Identifies Low-Frequency Loci Associated With 25-Hydroxyvitamin D Concentrations</p>
+                    <p class="pub-meta">J Clin Endocrinol Metab</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate" class="section donate-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Give</p>
+                <h2>Support Our Research</h2>
+            </div>
+            <p>Your contribution advances our understanding of vitamin D's potential to improve human health.</p>
+            <p>All donations are tax-deductible and processed through the Children's Hospital of Philadelphia Foundation.</p>
+            <a href="#" class="btn btn-donate">Donate Through CHOP</a>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Connect</p>
+                <h2>Contact</h2>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:40px; max-width:800px; margin:0 auto;">
+                <div>
+                    <h3 style="font-size:1rem; color:var(--primary); margin-bottom:12px;">Location</h3>
+                    <p style="color:var(--text-light);">University of Pennsylvania<br>Perelman School of Medicine<br>Philadelphia, PA</p>
+                </div>
+                <div>
+                    <h3 style="font-size:1rem; color:var(--primary); margin-bottom:12px;">Prospective Members</h3>
+                    <p style="color:var(--text-light);">Send a CV and brief statement of interest to Dr. Roizen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Roizen Lab &middot; <a href="https://hypothesisdriven.org">hypothesisdriven.org</a></p>
+        <p>University of Pennsylvania &middot; Children's Hospital of Philadelphia</p>
+    </footer>
+
+    <script>
+        document.querySelector('.nav-toggle').addEventListener('click', () => { document.querySelector('.nav-links').classList.toggle('active'); });
+        document.querySelectorAll('.nav-links a').forEach(l => l.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('active')));
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) { e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }));
+    </script>
+</body>
+</html>

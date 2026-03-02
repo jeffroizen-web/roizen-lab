@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roizen Lab | Admin Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0F0F1A; color: #E0E0E0; }
+
+        .dashboard-header {
+            padding: 24px 32px; border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .dashboard-header h1 { font-size: 1.3rem; font-weight: 600; color: #FFF; }
+        .dashboard-header span { font-size: 0.8rem; color: #C8963E; font-weight: 500; }
+
+        .stats-bar {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+            padding: 24px 32px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px; padding: 20px; text-align: center;
+        }
+        .stat-number { font-size: 2rem; font-weight: 700; color: #C8963E; }
+        .stat-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+
+        .map-section { padding: 0 32px 24px; }
+        .map-title {
+            font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 2px; color: #888; margin-bottom: 12px;
+        }
+        #visitor-map {
+            width: 100%; height: 480px; border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .visitor-log { padding: 24px 32px; }
+        .visitor-log h2 {
+            font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 2px; color: #888; margin-bottom: 16px;
+        }
+        .log-table { width: 100%; border-collapse: collapse; }
+        .log-table th {
+            text-align: left; font-size: 0.72rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1.5px; color: #666;
+            padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .log-table td {
+            padding: 12px 16px; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .log-table tr:hover td { background: rgba(255,255,255,0.02); }
+        .location-dot {
+            display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+            background: #C8963E; margin-right: 8px; vertical-align: middle;
+        }
+        .time-ago { color: #666; font-size: 0.82rem; }
+        .no-data { text-align: center; padding: 40px; color: #555; font-style: italic; }
+
+        .controls {
+            padding: 16px 32px; display: flex; gap: 12px; align-items: center;
+        }
+        .controls button {
+            padding: 8px 20px; border-radius: 6px; font-size: 0.82rem; font-weight: 600;
+            cursor: pointer; border: none; transition: all 0.2s;
+        }
+        .btn-export { background: #C8963E; color: #FFF; }
+        .btn-export:hover { background: #D4AA5C; }
+        .btn-clear { background: rgba(255,255,255,0.06); color: #AAA; border: 1px solid rgba(255,255,255,0.1) !important; }
+        .btn-clear:hover { background: rgba(255,60,60,0.15); color: #F88; }
+        .controls .note { font-size: 0.75rem; color: #555; margin-left: auto; }
+
+        @media (max-width: 768px) {
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            #visitor-map { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1>Roizen Lab &mdash; Visitor Dashboard</h1>
+        <span>hypothesisdriven.org</span>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-number" id="totalVisitors">--</div>
+            <div class="stat-label">Total Visitors</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="uniqueCountries">--</div>
+            <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="uniqueCities">--</div>
+            <div class="stat-label">Cities</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="todayVisitors">--</div>
+            <div class="stat-label">Today</div>
+        </div>
+    </div>
+
+    <div class="map-section">
+        <div class="map-title">Visitor Heatmap</div>
+        <div id="visitor-map"></div>
+    </div>
+
+    <div class="controls">
+        <button class="btn-export" onclick="exportCSV()">Export CSV</button>
+        <button class="btn-clear" onclick="clearData()">Clear Data</button>
+        <span class="note">Data stored in browser localStorage. See comments in source for cloud storage setup.</span>
+    </div>
+
+    <div class="visitor-log">
+        <h2>Recent Visitors</h2>
+        <table class="log-table">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Country</th>
+                    <th>IP Address</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="logBody">
+                <tr><td colspan="4" class="no-data">Loading visitor data...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <script>
+        // ============================================================
+        // DATA STORAGE
+        // ============================================================
+        // Currently uses localStorage (per-browser, good for demo).
+        //
+        // FOR PRODUCTION, use one of these for real multi-visitor tracking:
+        //
+        // Option 1: GoatCounter (FREE, easiest)
+        //   - Sign up at https://goatcounter.com
+        //   - Dashboard shows visitor locations automatically
+        //   - No custom code needed
+        //
+        // Option 2: Firebase Firestore (FREE tier, custom dashboard)
+        //   - Create project at https://console.firebase.google.com
+        //   - Add Firebase SDK to your main site
+        //   - Store visitor data in a "visitors" collection
+        //   - This admin page reads from Firestore instead of localStorage
+        //   - Free tier: 1GB storage, 50K reads/day, 20K writes/day
+        //
+        // Option 3: Squarespace built-in analytics
+        //   - Already includes geography heat map
+        //   - Settings > Analytics > Geography
+        // ============================================================
+
+        var STORAGE_KEY = 'roizenlab-visitor-log';
+
+        function getVisitors() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            } catch(e) { return []; }
+        }
+
+        function saveVisitors(visitors) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(visitors));
+        }
+
+        // Initialize map
+        var map = L.map('visitor-map', {
+            center: [30, 0],
+            zoom: 2,
+            zoomControl: true,
+            scrollWheelZoom: true
+        });
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            maxZoom: 18
+        }).addTo(map);
+
+        // Render dashboard
+        function renderDashboard() {
+            var visitors = getVisitors();
+            var today = new Date().toDateString();
+            var todayCount = visitors.filter(function(v) { return new Date(v.timestamp).toDateString() === today; }).length;
+            var countries = new Set(visitors.map(function(v) { return v.country; }));
+            var cities = new Set(visitors.map(function(v) { return v.city + ', ' + v.country; }));
+
+            document.getElementById('totalVisitors').textContent = visitors.length.toLocaleString();
+            document.getElementById('uniqueCountries').textContent = countries.size;
+            document.getElementById('uniqueCities').textContent = cities.size;
+            document.getElementById('todayVisitors').textContent = todayCount;
+
+            // Heatmap
+            var heatData = visitors
+                .filter(function(v) { return v.lat && v.lng; })
+                .map(function(v) { return [v.lat, v.lng, 0.7]; });
+
+            if (heatData.length > 0) {
+                L.heatLayer(heatData, {
+                    radius: 20,
+                    blur: 25,
+                    maxZoom: 10,
+                    gradient: { 0.2: '#2D2D44', 0.4: '#C8963E', 0.6: '#D4AA5C', 0.8: '#F5EBD7', 1.0: '#FFFFFF' }
+                }).addTo(map);
+
+                // Also add circle markers
+                visitors.forEach(function(v) {
+                    if (v.lat && v.lng) {
+                        L.circleMarker([v.lat, v.lng], {
+                            radius: 5, fillColor: '#C8963E', color: '#C8963E',
+                            weight: 1, opacity: 0.8, fillOpacity: 0.5
+                        }).addTo(map).bindPopup(
+                            '<strong>' + v.city + ', ' + v.country + '</strong><br>' +
+                            '<small>' + new Date(v.timestamp).toLocaleString() + '</small>'
+                        );
+                    }
+                });
+            }
+
+            // Log table
+            var logBody = document.getElementById('logBody');
+            if (visitors.length === 0) {
+                logBody.innerHTML = '<tr><td colspan="4" class="no-data">No visitor data yet. Visit the main site to generate a log entry.</td></tr>';
+                return;
+            }
+
+            var sorted = visitors.slice().sort(function(a, b) { return new Date(b.timestamp) - new Date(a.timestamp); });
+            logBody.innerHTML = sorted.map(function(v) {
+                var timeAgo = getTimeAgo(new Date(v.timestamp));
+                return '<tr>' +
+                    '<td><span class="location-dot"></span>' + (v.city || 'Unknown') + ', ' + (v.region || '') + '</td>' +
+                    '<td>' + (v.country || 'Unknown') + '</td>' +
+                    '<td style="color:#666; font-family:monospace; font-size:0.82rem;">' + (v.ip || '--') + '</td>' +
+                    '<td class="time-ago">' + timeAgo + '</td>' +
+                    '</tr>';
+            }).join('');
+        }
+
+        function getTimeAgo(date) {
+            var seconds = Math.floor((new Date() - date) / 1000);
+            if (seconds < 60) return 'just now';
+            if (seconds < 3600) return Math.floor(seconds / 60) + 'm ago';
+            if (seconds < 86400) return Math.floor(seconds / 3600) + 'h ago';
+            return Math.floor(seconds / 86400) + 'd ago';
+        }
+
+        function exportCSV() {
+            var visitors = getVisitors();
+            if (visitors.length === 0) { alert('No data to export.'); return; }
+            var csv = 'Timestamp,City,Region,Country,IP,Latitude,Longitude\n';
+            visitors.forEach(function(v) {
+                csv += '"' + v.timestamp + '","' + (v.city||'') + '","' + (v.region||'') + '","' +
+                       (v.country||'') + '","' + (v.ip||'') + '",' + (v.lat||'') + ',' + (v.lng||'') + '\n';
+            });
+            var blob = new Blob([csv], { type: 'text/csv' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'roizen-lab-visitors-' + new Date().toISOString().slice(0,10) + '.csv';
+            a.click();
+        }
+
+        function clearData() {
+            if (confirm('Clear all visitor data? This cannot be undone.')) {
+                localStorage.removeItem(STORAGE_KEY);
+                location.reload();
+            }
+        }
+
+        renderDashboard();
+    </script>
+</body>
+</html>

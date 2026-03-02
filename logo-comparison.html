@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Logo Comparison — Roizen Lab</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f3;
+    color: #1A1A2E;
+    padding: 40px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    padding: 24px 32px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .logo-label {
+    font-weight: 600;
+    font-size: 18px;
+    min-width: 80px;
+    color: #1A1A2E;
+  }
+
+  .logo-label span {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  .logo-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-container img {
+    height: 65px;
+    width: auto;
+  }
+
+  .default-badge {
+    background: #C8963E;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: 16px;
+    white-space: nowrap;
+  }
+
+  /* Dark background version */
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin: 40px 0 16px;
+    color: #1A1A2E;
+  }
+
+  .dark-row {
+    background: #1A1A2E;
+    padding: 24px 32px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .dark-row .logo-label {
+    color: #FAFAF8;
+  }
+
+  .dark-row .logo-label span {
+    color: #999;
+  }
+
+  .dark-row .logo-container img {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Nav simulation */
+  .nav-sim {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 16px 32px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .nav-sim img {
+    height: 50px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<h1>Logo Comparison</h1>
+<p class="subtitle">All 6 logos at nav-bar scale (65px height). Warm-slate theme context.</p>
+
+<div class="logo-row">
+  <div class="logo-label">Logo 1 <span>352px wide</span></div>
+  <div class="logo-container">
+    <img src="jeff-logo-1.svg" alt="Logo 1">
+  </div>
+</div>
+
+<div class="logo-row">
+  <div class="logo-label">Logo 2 <span>355px wide</span></div>
+  <div class="logo-container">
+    <img src="jeff-logo-2.svg" alt="Logo 2">
+  </div>
+</div>
+
+<div class="logo-row">
+  <div class="logo-label">Logo 3 <span>348px wide</span></div>
+  <div class="logo-container">
+    <img src="jeff-logo-3.svg" alt="Logo 3">
+  </div>
+</div>
+
+<div class="logo-row">
+  <div class="logo-label">Logo 4 <span>305px wide</span></div>
+  <div class="logo-container">
+    <img src="jeff-logo-4.svg" alt="Logo 4">
+    <span class="default-badge">RECOMMENDED</span>
+  </div>
+</div>
+
+<div class="logo-row">
+  <div class="logo-label">Logo 5 <span>276px wide</span></div>
+  <div class="logo-container">
+    <img src="jeff-logo-5.svg" alt="Logo 5">
+  </div>
+</div>
+
+<div class="logo-row">
+  <div class="logo-label">Logo 6 <span>199px wide</span></div>
+  <div class="logo-container">
+    <img src="jeff-logo-6.svg" alt="Logo 6">
+  </div>
+</div>
+
+<div class="section-label">On dark background (inverted)</div>
+
+<div class="dark-row">
+  <div class="logo-label">Logo 1 <span>widest</span></div>
+  <div class="logo-container"><img src="jeff-logo-1.svg" alt="Logo 1"></div>
+</div>
+
+<div class="dark-row">
+  <div class="logo-label">Logo 4 <span>default</span></div>
+  <div class="logo-container"><img src="jeff-logo-4.svg" alt="Logo 4"></div>
+</div>
+
+<div class="dark-row">
+  <div class="logo-label">Logo 6 <span>compact</span></div>
+  <div class="logo-container"><img src="jeff-logo-6.svg" alt="Logo 6"></div>
+</div>
+
+<div class="section-label">Simulated nav bar context</div>
+
+<div class="nav-sim">
+  <img src="jeff-logo-1.svg" alt="Logo 1">
+  <div class="nav-links"><span>Research</span><span>Team</span><span>Publications</span><span>Join Us</span><span>Contact</span></div>
+</div>
+
+<div class="nav-sim">
+  <img src="jeff-logo-4.svg" alt="Logo 4">
+  <div class="nav-links"><span>Research</span><span>Team</span><span>Publications</span><span>Join Us</span><span>Contact</span></div>
+</div>
+
+<div class="nav-sim">
+  <img src="jeff-logo-6.svg" alt="Logo 6">
+  <div class="nav-links"><span>Research</span><span>Team</span><span>Publications</span><span>Join Us</span><span>Contact</span></div>
+</div>
+
+</body>
+</html>

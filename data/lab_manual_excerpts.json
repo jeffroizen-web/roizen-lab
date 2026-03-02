@@ -1,0 +1,596 @@
+{
+  "source": "HD Lab Manual v032220_5",
+  "source_path": "/Users/roizenj/Documents/Admin/Mentoring/mentoring resources/HD lab/short_HD lab manual_v_032220_5.docx",
+  "extracted": "2026-02-26",
+  "notes": "Extracted all website-usable passages from the Hypothesis Driven lab manual. Categories: philosophy, mentorship, science_approach, values, quotable. Each entry includes suggested website section placement.",
+  "sections": [
+    {
+      "category": "quotable",
+      "heading": "Cover — Opening Statement",
+      "text": "We will move the boundaries of human knowledge back a few millimeters.",
+      "website_use": "Hero, Philosophy, or site-wide tagline. This is the single most memorable line in the manual — distills the lab's ambition with characteristic humility."
+    },
+    {
+      "category": "quotable",
+      "heading": "Cover — Vera Rubin Epigraph",
+      "text": "\"Science is competitive, aggressive, demanding. It is also imaginative, inspiring, uplifting.\" — Vera Rubin (discoverer of dark matter)",
+      "website_use": "Hero, Join Us, or Philosophy. Already used as Option C for Join Us card. Sets the emotional tone of the lab."
+    },
+    {
+      "category": "quotable",
+      "heading": "Cover — Fun and Play",
+      "text": "We are going to have a lot of fun; we will work hard and it will feel like play.",
+      "website_use": "Join Us, Lab Culture. Signals that the lab values enjoyment alongside rigor."
+    },
+    {
+      "category": "quotable",
+      "heading": "Cover — Founder Identity",
+      "text": "We are a small group and it is early in our existence — YOU are a founder! You have the opportunity to make a big impact with your efforts on our team!",
+      "website_use": "Join Us. Creates sense of ownership and agency for prospective trainees."
+    },
+    {
+      "category": "values",
+      "heading": "Five Core Values — Safety",
+      "text": "Your safety is the highest imperative. Never sacrifice safety for productivity or expedience. If you are uncomfortable doing something or being somewhere, trust your instinct and stay safe.",
+      "website_use": "Philosophy or Values section. Shows that safety comes before science."
+    },
+    {
+      "category": "values",
+      "heading": "Five Core Values — Honesty",
+      "text": "The next most important imperative is that you always behave with integrity and honesty. I need to trust your data, and can only do so if I trust you. Trust is one of a special binary category of fragile things; if trust is broken once then everything you have ever done becomes suspect.",
+      "website_use": "Philosophy. The 'binary category of fragile things' framing is powerful and distinctive."
+    },
+    {
+      "category": "values",
+      "heading": "Five Core Values — Honesty (Extended)",
+      "text": "If it is not, if you believe there are shortcuts, if you think you are smarter than the data please find another mentor/lab.",
+      "website_use": "Philosophy or Join Us. Bold, direct statement of scientific values — signals high standards."
+    },
+    {
+      "category": "values",
+      "heading": "Five Core Values — Record Keeping",
+      "text": "If you don't write it down it didn't happen. Period.",
+      "website_use": "Philosophy. Punchy one-liner that captures the lab's commitment to rigor."
+    },
+    {
+      "category": "values",
+      "heading": "Five Core Values — Respect",
+      "text": "Please care for your labmates and their work with respect and generosity and please care for the common equipment (and all reagents) as a founder and owner and as if you will always be the next person using it after you use it.",
+      "website_use": "Philosophy, Lab Culture. The 'founder and owner' framing ties back to the opening."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Team",
+      "text": "We are a team and success for any one of us is success for the group. It is a cliche but it is true for us: the strength of the pack is the wolf and the strength of the wolf is the pack.",
+      "website_use": "Philosophy, Team section intro. Team identity statement."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Internal Critique / External Promotion",
+      "text": "We critique internally but promote externally. In lab meeting we are respectful but brutally honest. This means if you have a constructive critique to offer you critique an action or an approach but not an individual. Outside of lab we promote each other.",
+      "website_use": "Philosophy. Shows intellectual honesty paired with loyalty — a mature lab culture."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Value of Every Person",
+      "text": "Each of your brains has much to offer and we will make much more progress as a team if we pool/compare/sum our thoughts rather than letting any one of us or few of us dominate our lab meeting discussions.",
+      "website_use": "Philosophy, Join Us. Shows collaborative, non-hierarchical intellectual culture."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Recruiting Confidence",
+      "text": "None of you is in my lab by accident and while I am mistake prone in some areas (see the cuts on my fingers from my time cooking — there is more cut than finger there) I am confident that I have not yet erred in recruiting.",
+      "website_use": "Join Us or Team. Warm, self-deprecating, but deeply affirming. Shows Jeff's voice perfectly."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Fun and Creativity",
+      "text": "Lab is fun. It is one of the few places where you get to combine creativity with hard work on a daily basis.",
+      "website_use": "Philosophy, Join Us. Simple but effective framing of lab life."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Stephanie Kwolek Quote",
+      "text": "\"All sorts of things can happen when you're open to new ideas and playing around with things.\" — Stephanie Kwolek (inventor of kevlar)",
+      "website_use": "Philosophy or Big Questions. Connects play and discovery."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Barbara McClintock Quote",
+      "text": "\"I was just so interested in what I was doing I could hardly wait to get up in the morning and get at it. One of my friends, a geneticist, said I was a child, because only children can't wait to get up in the morning to get at what they want to do.\" — Barbara McClintock (Nobel Prize winner for genetic work with Arabidopsis)",
+      "website_use": "Philosophy. Captures the childlike curiosity that drives good science."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Grindy Part and Inspirational Part",
+      "text": "Learning to do science has a grindy part but also an inspirational part that the grindy part serves (labeling tubes is for me the most grindy thing, but there are many grindy things; if you don't label the tubes then you won't know which is the sample that will illuminate something that no one else on earth yet knows).",
+      "website_use": "Philosophy. Honest about the tedium, redeems it with the thrill of discovery."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Addiction to Data",
+      "text": "I personally am addicted to data and to the feeling of knowing something that no one else yet knows.",
+      "website_use": "Philosophy, About PI. Reveals Jeff's core motivation. Very quotable."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Mary Leakey Quote",
+      "text": "\"Basically, I have been compelled by curiosity.\" — Mary Leakey",
+      "website_use": "Philosophy. Concise statement of scientific motivation."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Gerti Cori Quote",
+      "text": "\"For a research worker the unforgotten moments of his life are those rare ones which come after years of plodding work, when the veil over nature's secret seems suddenly to lift & when what was dark & chaotic appears in a clear & beautiful light & pattern.\" — Gerti Cori",
+      "website_use": "Philosophy, Hero background. Beautiful description of the scientific moment of clarity."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Define Your Own Success",
+      "text": "Define and determine your own success. I have things that I want for myself. But for you I cannot decide. Society has set many standards (income, stuff, titles etc). At the end of the day your satisfaction with the work you have done and how well you have performed is the feeling that matters. I urge you to define what 'success' means for you (e.g. you get to choose what you aim for).",
+      "website_use": "Join Us, Philosophy. Shows Jeff respects trainee autonomy and doesn't impose a single career path."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Aligning Goals",
+      "text": "If you are a post-doc interested in leaving lab science, or a research associate wanting to go to medical school — telling me that is the best way to get me to help you reach that goal. I want you to be happy and I will try to align the lab's goals with your goals so that your time here is the most productive for you.",
+      "website_use": "Join Us. Extremely attractive to prospective trainees. Shows flexibility and genuine care about career development."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Abundance Not Scarcity",
+      "text": "Please do not approach lab projects as a zero sum game (e.g. as a competitor to your colleagues). Please do not 'look in your neighbor's vault' for any reason but to make sure they have enough to eat. The best scientists approach science from the perspective of abundance rather than scarcity.",
+      "website_use": "Philosophy. 'Look in your neighbor's vault only to make sure they have enough to eat' is exceptional — deeply quotable."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — More Science Than Hands",
+      "text": "There is more science to be done than can be done and your colleagues are your teammates. Once you understand that, you will be happier and more productive.",
+      "website_use": "Philosophy, Join Us. Reframes competition as abundance."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — John Wooden Quote",
+      "text": "\"Never mistake activity for achievement.\" — John Wooden",
+      "website_use": "Philosophy. Sharp one-liner about productivity vs. busyness."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Productivity vs. Busyness",
+      "text": "I do not care how much time you spend in lab being busy, I only care how productive you are. Do not confuse being busy or being at lab with being productive.",
+      "website_use": "Philosophy. Signals a results-oriented, not performative, culture."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — The Craftsperson",
+      "text": "I strongly recommend you be a craftsperson; a craftsperson does the following: takes pride in the quality of their work, makes efforts to improve each day, figures out how to learn from failures. The corollary to this is that they design their experiments to provide maximal information in the case/possibility of failure or an unexpected outcome.",
+      "website_use": "Philosophy (primary placement). Core identity statement for the lab. The craftsperson ethos is central to the site's voice."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Craftsperson Details",
+      "text": "A craftsperson knows that details are important and pays attention to them. A craftsperson measures twice and cuts once. For our complicated experiments planning the experiment well and anticipating problems is the difference between the success and failure of a specific experiment and line of inquiry.",
+      "website_use": "Philosophy. Extends the craftsperson metaphor with practical meaning."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Living Cell / Dead Cell",
+      "text": "The only difference between a living cell and a dead cell is organization. — Jeff Roizen",
+      "website_use": "Philosophy, Hero. Original Jeff quote. Bridges biology and lab culture."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Farmer Not Fireperson",
+      "text": "I strongly recommend you be a farmer rather than a fireperson/emergency doctor. That is, a farmer plans and does a bit of work on several things each day.",
+      "website_use": "Philosophy (primary placement). Second core metaphor. Pairs with craftsperson."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Farmer Extended Metaphor",
+      "text": "Some things grow quickly (chickens to eggs to chickens, or for us cell culture experiments), but other things grow slowly (the soil is tilled in the winter, corn is planted in the spring, watered and fertilized during the summer and harvested in the fall; a KO mouse is made over 6 months to a year, bred up over 6 months and characterized over another 6 months to a year).",
+      "website_use": "Philosophy. The biological-agricultural parallel is rich and specific to the lab's work."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Farmer Productivity",
+      "text": "To be productive as a farmer requires planning and persistent application of effort. But, a productive farmer a) always has a little work to do (is never bored), b) also never has too little time to play and c) is much more productive than a fireperson (e.g. has eggs, chickens, corn, wheat, beans and vegetables to eat — or for us, has a mouse phenotype, a physiology and a cellular mechanism to explain the physiology and phenotype).",
+      "website_use": "Philosophy. The parenthetical translating farm products to scientific outputs is excellent."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Fireperson Contrast",
+      "text": "Firepeople work hard in short bursts that do not require any planning. They (their time and their work product) are expensive and they are generally less productive than farmers. They are always tired because rather than work regularly they do shift work that is draining. Sometimes they are bored and other times they have no time or energy for fun. They miss novel findings because they did not design their experiments carefully and do not always have their expected result well defined.",
+      "website_use": "Philosophy. The negative example makes the farmer metaphor vivid by contrast."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Vera Rubin on Preconceptions",
+      "text": "\"Science progresses best when observations force us to alter our preconceptions.\" — Vera Rubin",
+      "website_use": "Philosophy, Big Questions. Connects to the 'Yes, and...' improv framework already drafted."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Observations and Preconceptions",
+      "text": "Because a farmer prepares well the farmer is aware of what they expect to be the result of any experiment (and has the appropriate controls so that any deviation from this expected result is caught). An observation can only alter your preconceptions if a) you have well defined preconceptions and b) you are really careful in how you observe (e.g. you design your experiments well, you perform them carefully and reproducibly and you record faithfully).",
+      "website_use": "Philosophy, Science Approach. Deep insight about why careful work matters — you can only be surprised if you knew what to expect."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Marie Curie Quote",
+      "text": "\"We must have perseverance and above all confidence in ourselves. We must believe that we are gifted for something and that this thing must be attained.\" — Marie Curie",
+      "website_use": "Philosophy, Join Us. Inspirational, aligns with lab's emphasis on persistence."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Hard Work Beats Talent",
+      "text": "There are no geniuses in this field; there is only a single chair of theoretical biology in the world (it was Charles Darwin's and in my opinion should be empty until someone comes up with a theory that explains as much as his does). There may be people who are more clever by a little bit or have better hands by a little bit, but, over any period of time longer than a month talent is indistinguishable here from hard work (and over periods longer than 6 months hard work wins easily).",
+      "website_use": "Philosophy, Join Us. Powerfully egalitarian. Tells prospective trainees: you don't need to be a genius, you need to work hard."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Execution Over Ideas",
+      "text": "In biomedical science the gap between the mediocre and the great is not conception (coming up with an idea) it is execution. Ideas are cheap... the greatness is in the doing.",
+      "website_use": "Philosophy. Punchy. 'Ideas are cheap... the greatness is in the doing' could be a standalone quote."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Vera Rubin on Data",
+      "text": "\"No observational problem will not be solved by more data.\" — Vera Rubin",
+      "website_use": "Philosophy, Science Approach. Matches the data-driven ethos."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Grace Hopper Quote",
+      "text": "\"A ship in port is safe, but that's not what ships are built for.\" — Grace Hopper (inventor of first compiler for computer programming)",
+      "website_use": "Join Us, Philosophy. About taking risks, not playing it safe."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Rita Levi-Montalcini Quote",
+      "text": "\"Above all, don't fear difficult moments. The best comes from them.\" — Rita Levi-Montalcini (Nobel Prize-winning neurobiologist who co-discovered nerve growth factor)",
+      "website_use": "Philosophy, Join Us. Encouragement through difficulty."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Failing Carefully",
+      "text": "We will fail a lot — but it is the way that we fail that is important — we will fail carefully with the right controls so that upon our failure we can build the success of new knowledge.",
+      "website_use": "Philosophy (primary). One of the most distinctive statements in the manual. 'Fail carefully' is the lab's signature approach to failure."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Emerson on Moving On",
+      "text": "\"Finish each day and be done with it. You have done what you could. Some blunders and absurdities no doubt crept in; forget them as soon as you can. Tomorrow is a new day; begin it well and serenely and with too high a spirit to be encumbered with your old nonsense.\" — Ralph Waldo Emerson",
+      "website_use": "Philosophy. Captures the resilience needed in science."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Seth Godin on Persistence",
+      "text": "\"Most people with a big idea, great talent and/or something to say don't get lucky at first. Or second. Or even third. It's so easy to conclude that if you're not lucky, you're not good. So persistence becomes an essential element of good, because without persistence, you never get a chance to get lucky.\" — Seth Godin",
+      "website_use": "Philosophy. Pairs persistence with opportunity."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Mentor Role",
+      "text": "My job as a mentor/coach/guide is four fold: To help you avoid making mistakes that I (or others) have already made. To help you persist in trying, sometimes after several frustrating failures. To shorten the cycle time between you trying again (either when the experiment fails or in moving to the next experiment when the experiment works swimmingly). To help you in your progress to become a better scientist (meaning to help socialize you to the norms of science which include elements of the scientific approach such as ethics, experimental design and performance and publication).",
+      "website_use": "Philosophy, Join Us. Clear statement of Jeff's mentoring approach. Shows intentionality about training."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Success and Failure",
+      "text": "\"Success is not final; failure is not fatal; it is the courage to continue that counts.\"",
+      "website_use": "Philosophy. Classic persistence quote."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Shockley Model Skills",
+      "text": "Being successful (publishing papers) requires addressing several obstacles, and thus requires the following (distinct) skills: ability to think of a good problem, ability to work on it, ability to recognize a worthwhile result, ability to make a decision as to when to stop and write up the results, ability to write adequately, ability to profit constructively from criticism, determination to submit the paper to a journal, persistence in making changes (if necessary as a result of journal action).",
+      "website_use": "Philosophy, Mentorship. Breaks down scientific success into learnable components — demystifying for trainees."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Multiplicative Improvement",
+      "text": "These are thought to have a multiplicative effect such that if you are 50% better than I am at all of them you will publish 25X more in a specific period of time. This model is reassuring in that it can explain variation without anyone having to be 10X smarter or working 10X harder. If you work to improve your performance in areas that are less strong than other areas you can dramatically improve your performance.",
+      "website_use": "Philosophy. The quantitative argument for self-improvement is compelling and unusual for a lab manual."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Reflecting on Weaknesses",
+      "text": "The most important quality then is the ability to reflect on one's strengths and weaknesses and improve themselves in all of these categories. If you can get help reflecting on weaknesses and strengths then you may only need grit/persistence.",
+      "website_use": "Philosophy, Join Us. Growth mindset. Shows the lab values self-awareness."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Michael Jordan Anecdote",
+      "text": "My Dad once gave anesthesia to an assistant coach of the Bulls from the 1990s. The coach said that at any one time 20% of the guys in the league had Michael Jordan's talent but he had only seen two others with anything near his drive and grit (Isiah Thomas and Larry Bird). Michael Jordan practiced harder than anyone else and was usually the first into the gym for practice and the last guy out and he was always working on something. His game didn't have an absolute weakness (its worst aspect was never any worse than 2nd on the team), but he would always find the least strong part of his game and try to improve that.",
+      "website_use": "Philosophy. Personal family anecdote that makes the 'continuous improvement' message vivid and memorable."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Criticize the Output Not the Person",
+      "text": "When you are helping someone identify less strong areas, remember to criticize the output/behavior not the person. For instance, people would say of my writing 'this sentence could be clearer' rather than 'you write like crap — I mean look at this sentence.'",
+      "website_use": "Philosophy, Lab Culture. Shows the lab's approach to constructive feedback."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Autonomy",
+      "text": "I will do my best to treat each of you as a graduate student: that is to encourage autonomy and self-directed experiments.",
+      "website_use": "Join Us, Mentorship. Signals independence and ownership for trainees."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Think Hard",
+      "text": "Think hard. Too many people propose an experiment and then just plug at it without thinking while doing it if there might be a better way, what the results mean, etc. Your hypotheses and approach should continually evolve.",
+      "website_use": "Philosophy. Active intellectual engagement, not just bench work."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Submarine Projects",
+      "text": "Have a 'submarine' project — a project (in addition to your main dissertation project) that you spend a small amount of time on just because you're curious about whether you can get it to work. I know a number of students whose entire dissertations arose from 'submarine' work.",
+      "website_use": "Philosophy, Join Us. Shows the lab encourages curiosity-driven side projects."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Read the Literature",
+      "text": "A few months at the bench in lab can save you a few hours in the library/on the internet/reading primary literature.",
+      "website_use": "Philosophy. Wry, memorable inversion — reading saves bench time, not the reverse."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Borges Quote",
+      "text": "\"Uno no es lo que es por lo que escribe, sino por lo que ha leido.\" — Jorge Luis Borges (You are not what you write — you are what you have read.)",
+      "website_use": "Philosophy. Elegant, multilingual, shows intellectual breadth."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Experimental Design — Start with the End",
+      "text": "Start with the end in mind. (For mice — if there is no phenotype then no one will care about the signaling disruption.)",
+      "website_use": "Science Approach, Philosophy. Clinical orientation baked into experimental design."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Experimental Design — Diagram the Flow",
+      "text": "Diagram the flow of the experiment. I mean this literally, make a presentable figure for the steps you imagine you will take to perform the experiment.",
+      "website_use": "Science Approach. Shows the lab values visual thinking and planning."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Experimental Design — Stand on Shoulders",
+      "text": "Don't do the first experiment unguided. Stand on the shoulders of those who came before you — often one of your controls will be the same as a previous paper's experimental attempts (e.g. their result becomes your control).",
+      "website_use": "Science Approach. Connects to scientific tradition and community."
+    },
+    {
+      "category": "quotable",
+      "heading": "Experimental Design — Alexander Graham Bell Quote",
+      "text": "\"Before everything else, preparation is the key to success.\" — Alexander Graham Bell",
+      "website_use": "Philosophy, Science Approach."
+    },
+    {
+      "category": "quotable",
+      "heading": "Experimental Design — Aristotle on Excellence",
+      "text": "\"We are what we repeatedly do. Excellence, then, is not an act, but a habit.\" — Aristotle",
+      "website_use": "Philosophy. Connects to the craftsperson ethos."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Presence",
+      "text": "I promise to be totally present when we meet for our scheduled meetings. I will do my best to not check email, send texts etc and to focus totally on you/your work/your projects.",
+      "website_use": "Join Us, Mentorship. Concrete, specific commitment to trainees."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Support Goals",
+      "text": "I promise to support you in your progress toward your goals.",
+      "website_use": "Join Us, Mentorship."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Defend Ideas",
+      "text": "If you have an interesting idea for an experiment (or experiments) and you can defend it sufficiently we will do it.",
+      "website_use": "Join Us. Shows intellectual openness — ideas from any lab member can become projects."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Hold Feet to Fire",
+      "text": "I promise to hold your feet to the fire if you are not defending your ideas appropriately.",
+      "website_use": "Join Us, Philosophy. Shows the balance: supportive but rigorous."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Open Door",
+      "text": "Promise to have an open door.",
+      "website_use": "Join Us. Simple, meaningful."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Training Opportunities",
+      "text": "I will, when feasible, invite you to participate in writing grants and reviewing manuscripts as part of your training. I will provide you opportunities, when appropriate, to show responsibility, mentoring, teaching, and leadership qualities.",
+      "website_use": "Join Us, Mentorship. Shows intentional training beyond bench work."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Career Path",
+      "text": "I will advise you as best I can on how to proceed on your career path, whatever it is.",
+      "website_use": "Join Us. The 'whatever it is' signals no judgement about non-academic paths."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Network",
+      "text": "I will introduce you to others in the field and help you make contacts that will be useful throughout your career.",
+      "website_use": "Join Us, Alumni. Shows investment in long-term career development."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Respect",
+      "text": "I will treat you with respect and dignity.",
+      "website_use": "Join Us. Foundational."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Commitments to You — Paper Turnaround",
+      "text": "I promise to return your paper drafts within a week and usually within two days.",
+      "website_use": "Join Us. Concrete, measurable commitment — trainees love hearing this."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Expectations — IDP",
+      "text": "I expect you to initiate, schedule, etc. an annual one-on-one discussion between us about your individual development plan (IDP). In addition to discussing this IDP, this will be a forum where we can communicate about your impressions of your strengths and weaknesses (opportunities for improvement!) as a research scientist, and my strengths and weaknesses as a mentor (your turn to provide careful constructive criticism to me).",
+      "website_use": "Join Us, Mentorship. Shows bidirectional feedback — Jeff solicits criticism of his own mentoring."
+    },
+    {
+      "category": "mentorship",
+      "heading": "My Expectations — Contribute to Culture",
+      "text": "Contribute to the lab as a whole by helping foster a welcoming lab environment with high intellectual excitement.",
+      "website_use": "Join Us. 'Welcoming' + 'high intellectual excitement' is the balance the lab aims for."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Team and Abundance",
+      "text": "As good as Michael Jordan was (and I personally think he was the greatest team athlete of all time), it was his team that won rings. A united team can beat any foe.",
+      "website_use": "Philosophy, Team. Concluding team message."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Meetings — Purpose",
+      "text": "Lab meetings are a chance for the lab to tackle each other's problems together. Each week you are expected to bring a result or issue to the group. The issue or result does not need to be finished — it can be an experiment that didn't work.",
+      "website_use": "Philosophy, Lab Culture. Shows the lab normalizes failure and values collective problem-solving."
+    },
+    {
+      "category": "values",
+      "heading": "Lab Meetings — Full Participation",
+      "text": "Full participation in lab meetings by all members, no matter how junior or senior is mandatory. If you don't understand what someone in the lab is saying, ASK! It is expected that everyone will have different strengths and weaknesses, but at the very least everyone should be able to describe the basic aims and approaches of all the projects in the lab.",
+      "website_use": "Philosophy. Egalitarian — every voice matters, no question is too basic."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Feeling Overwhelmed — Acknowledgement",
+      "text": "Sometimes you may feel overwhelmed. I occasionally feel overwhelmed. This feeling can be paralyzing. And sometimes makes me imagine that I want to quit.",
+      "website_use": "Philosophy, Join Us. Jeff's vulnerability here is powerful. Shows he's human and understands the trainee experience."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Feeling Overwhelmed — Strategy",
+      "text": "In general the way I try to get past the paralysis of feeling overwhelmed is one of two ways. I pick an easy and relatively quick task and I complete it. OR First, I make a cup of tea or coffee and then I sit down in a quiet place (or I listen to Kind of Blue) and I make a list of what are the first six things that pop into my head that I need to get done.",
+      "website_use": "Philosophy. Personal, specific, and practical. The Kind of Blue detail is characteristically Jeff."
+    },
+    {
+      "category": "quotable",
+      "heading": "Feeling Overwhelmed — Pyramids",
+      "text": "The Pyramids (more than 300 feet high and resistant to many attempts to destroy them), the Great Wall of China (more than 10,000 miles long) and the Hudson Dam were all built by hand (with essentially no electricity, no mechanized cranes and a fairly rudimentary knowledge of geometry and calculus). If you divide any task into small enough steps you can do it — I promise you.",
+      "website_use": "Philosophy. Captures the 'bite by bite' approach with vivid historical examples."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Martin Luther King Jr. Quote",
+      "text": "\"Our lives begin to end the day we become silent about things that matter.\" — Martin Luther King Jr.",
+      "website_use": "Philosophy. Used in the communication section — speaks to the importance of speaking up."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Ben Franklin Quote",
+      "text": "\"By failing to prepare, you are preparing to fail.\" — Ben Franklin",
+      "website_use": "Philosophy. Connects to experimental design rigor."
+    },
+    {
+      "category": "quotable",
+      "heading": "Inspirational Quotes — Ceramics Teacher Parable",
+      "text": "The ceramics teacher announced on opening day that he was dividing the class into two groups. All those on the left side of the studio would be graded solely on the quantity of work they produced, all those on the right solely on its quality. Well, came grading time and a curious fact emerged: the works of highest quality were all produced by the group being graded for quantity. It seems that while the 'quantity' group was busily churning out piles of work — and learning from their mistakes — the 'quality' group had sat theorizing about perfection, and in the end had little more to show for their efforts than grandiose theories and a pile of dead clay.",
+      "website_use": "Philosophy. From 'Art and Fear' by Ted Bayless and Ted Orland. Powerful parable about learning by doing — directly connects to the craftsperson ethos."
+    },
+    {
+      "category": "quotable",
+      "heading": "Inspirational Quotes — Jessica Herrin on Passion",
+      "text": "\"The biggest thing is to have authentic passion. Creating something is very difficult. It requires perseverance, it takes a lot longer than you want it to, and it's a lot harder than you think. You need passion to levitate over the obstacles you will face. And what I tell everyone is, do not be afraid to wash windows. If you are a passionate, open-minded person, you will find that opportunity is all around you, and you have to be the one who sees it.\" — Jessica Herrin",
+      "website_use": "Philosophy, Join Us. 'Passion to levitate over the obstacles' is vivid."
+    },
+    {
+      "category": "quotable",
+      "heading": "Inspirational Quotes — Abraham Flexner on Curiosity",
+      "text": "\"Throughout the whole history of science most of the really great discoveries which had ultimately proved to be beneficial to mankind had been made by men and women who were driven not by the desire to be useful but merely the desire to satisfy their curiosity.\" — Abraham Flexner",
+      "website_use": "Philosophy, Big Questions. Curiosity-driven research justification."
+    },
+    {
+      "category": "values",
+      "heading": "Lab Philosophy — Thick Skin",
+      "text": "Keep a thick skin. We are taught to criticize more than compliment. Take criticisms of your projects/papers/proposals/etc. as help, not insults or personal attacks.",
+      "website_use": "Philosophy. Honest about the culture of science while reframing criticism as help."
+    },
+    {
+      "category": "values",
+      "heading": "Lab Philosophy — Be Nice",
+      "text": "Be nice. No one likes a jerk. Don't insult people — be kind but assertive. If you disagree with something, say so, but be judicious in your words.",
+      "website_use": "Philosophy. Simple and direct values statement."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Analyze While You Go",
+      "text": "Analyze your data while you go. You may have a surprising result that you won't know about until you do the analysis. This result may guide a change you make in the next step of the project. I made this mistake in grad school and then essentially had to go back and repeat the experiment to collect an additional tissue — let me help you avoid making my mistake again.",
+      "website_use": "Science Approach. Shows Jeff teaches from his own mistakes."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Hypotheses Should Evolve",
+      "text": "Your hypotheses and approach should continually evolve. As a grad student you may come up with a great idea in your 3rd year that should prompt you to drop the projects you proposed for other, more fruitful ones (assuming your advisor & committee agree).",
+      "website_use": "Science Approach. Flexibility, not rigidity, in scientific thinking."
+    },
+    {
+      "category": "values",
+      "heading": "Lab Philosophy — Communication and Progress",
+      "text": "If you're unsure about something, anything, ask someone (if they don't know they can help you find someone who does). Your progress should not stall for lack of asking. It's better for the whole lab.",
+      "website_use": "Philosophy, Lab Culture. Low ego, high collaboration."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Interesting Ideas Welcome",
+      "text": "If you have an interesting idea for an experiment (or experiments) and you can defend it sufficiently we will do it. I promise to hold your feet to the fire if you are not defending your ideas appropriately.",
+      "website_use": "Join Us. The two-part promise: openness to ideas AND demand for rigor."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Controls in Cell Papers",
+      "text": "When you read a Cell paper a figure often has 10 lanes and only one of them is experimental. The non-experimental lanes are negative or positive controls of one type or another. Sometimes the hardest (and most important) part of the experimental design is the control.",
+      "website_use": "Science Approach. Concrete example of what rigor looks like in practice."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Manual — Self-Aware Authorship",
+      "text": "It is too long — I know. I'm sorry. If I had more time I would have tightened it up. It will evolve and only the useful parts will survive (maybe plus a tailbone or an appendix here or there). Help us by letting me know what parts are terrible and also by letting me know what is missing.",
+      "website_use": "Not for direct site use, but captures Jeff's voice perfectly: self-deprecating, collaborative, evolutionary thinking. Could inform the overall site tone."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Manual — Protocol Metaphor",
+      "text": "Treat it as you would an experimental protocol — you don't start until you are sure you know what you are doing.",
+      "website_use": "Not for direct site use, but a great example of Jeff extending lab metaphors to all areas of life."
+    },
+    {
+      "category": "values",
+      "heading": "Lab Philosophy — Discuss with Labmates",
+      "text": "Discuss your research with your labmates (and other colleagues around the university, for that matter). We are all in this together and your peers are some of your best resources!",
+      "website_use": "Philosophy. Collaborative science culture."
+    },
+    {
+      "category": "quotable",
+      "heading": "Lab Philosophy — Alfred Montapert Quote",
+      "text": "\"Do not confuse motion with progress. A rocking horse keeps moving but does not make any progress.\" — Alfred Montapert",
+      "website_use": "Philosophy. Pairs with John Wooden quote about activity vs. achievement."
+    },
+    {
+      "category": "mentorship",
+      "heading": "Lab Philosophy — Back You Up",
+      "text": "If you have a conflict with a person working in a core facility I promise to back you to the fullest possible extent.",
+      "website_use": "Join Us. Shows Jeff will advocate for his trainees — protective mentorship."
+    },
+    {
+      "category": "science_approach",
+      "heading": "Lab Philosophy — Notebook as Scientific Record",
+      "text": "With the information contained within your notebooks it should be possible at any time in the future to reconstruct exactly what was done in any given experiment, a key to being able to (a) communicate the results, (b) replicate the results, (c) establish ownership of the intellectual property represented by the results, and (d) document the veracity of all reports.",
+      "website_use": "Science Approach, Values. Scientific integrity through documentation."
+    },
+    {
+      "category": "philosophy",
+      "heading": "Lab Philosophy — Organization and Distraction",
+      "text": "There is no single task I cannot do (and I suspect the same is true for you) — there are many easy tasks that distraction can prevent me from doing. When my desk (bench) is a mess, the mess functions as a distraction. Take 5 minutes to keep it tidy and you will see the wondrous things you can get done.",
+      "website_use": "Philosophy. 'Wondrous things you can get done' — optimistic, practical."
+    }
+  ]
+}

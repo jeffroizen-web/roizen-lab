@@ -1,0 +1,489 @@
+{
+  "source_file": "02 2026 JH all inverted v 2.pptx",
+  "source_path": "/Users/roizenj/Documents/presentations and posters/02 2026 JH all inverted v 2.pptx",
+  "total_slides": 87,
+  "total_images_extracted": 48,
+  "small_images_skipped": 0,
+  "images": [
+    {
+      "filename": "slide03_img1.png",
+      "slide_number": 3,
+      "image_index_on_slide": 1,
+      "width": 226,
+      "height": 378,
+      "original_content_type": "image/png",
+      "slide_title": "14 y/o F \u000bseen as 2nd opinion for \u000bshort stature\u000b\u000bMPH: 5\u20194\u201d\u000bcurrent height 4\u20198\u201d",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide04_img1.png",
+      "slide_number": 4,
+      "image_index_on_slide": 1,
+      "width": 226,
+      "height": 378,
+      "original_content_type": "image/png",
+      "slide_title": "Growth velocity \u000bat time of menses\u000bwas flat.",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide05_img1.wmf",
+      "slide_number": 5,
+      "image_index_on_slide": 1,
+      "width": 401,
+      "height": 502,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Growth velocity \u000bat time of menses\u000bwas flat.",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide09_img1.png",
+      "slide_number": 9,
+      "image_index_on_slide": 1,
+      "width": 4032,
+      "height": 3024,
+      "original_content_type": "image/jpeg",
+      "slide_title": "Acknowledgements",
+      "slide_text": "Roizen Lab Alumni\n\tIlana Caplan \uf0e0 NYU MD school\n\tAlex Casella \uf0e0 UMD MSTP -> JH Neuro resi\n\tCaela Long \uf0e0 UPenn Neuro PhD\n\tLauren O\u2019Lear \uf0e0 deciding\n\tAzra Din\uf0e0 Temple MPH\n\tShymir Bullock\uf0e0 Nursing @ Muhle"
+    },
+    {
+      "filename": "slide14_img1.png",
+      "slide_number": 14,
+      "image_index_on_slide": 1,
+      "width": 520,
+      "height": 523,
+      "original_content_type": "image/png",
+      "slide_title": "High dose \u000bvitamin D\u000band \u000bprogression to\u000bT2DM",
+      "slide_text": "Jorde R,\u00a0Sollid ST,\u00a0Svartberg J,\u00a0et al. Vitamin D 20,000 IU per week for five years does not prevent progression from prediabetes to diabetes. J Clin Endocrinol Metab. 2016;101:1647-55."
+    },
+    {
+      "filename": "slide20_img1.png",
+      "slide_number": 20,
+      "image_index_on_slide": 1,
+      "width": 493,
+      "height": 266,
+      "original_content_type": "image/png",
+      "slide_title": "Grip strength\u000bcorrelates\u000bwith \u000bmetabolic \u000bfunction \u000b(and risk)",
+      "slide_text": "Wander et al Diabetes\u00a0Res Clin Pract.\u00a02011 May;92(2):261-4. doi:\u00a010.1016/j.diabres.2011.01.007."
+    },
+    {
+      "filename": "slide21_img1.wmf",
+      "slide_number": 21,
+      "image_index_on_slide": 1,
+      "width": 949,
+      "height": 247,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide22_img1.png",
+      "slide_number": 22,
+      "image_index_on_slide": 1,
+      "width": 1975,
+      "height": 1220,
+      "original_content_type": "image/png",
+      "slide_title": "High dose\u000bVitamin D \u000bimproves \u000bgrip strength.",
+      "slide_text": "***"
+    },
+    {
+      "filename": "slide24_img1.png",
+      "slide_number": 24,
+      "image_index_on_slide": 1,
+      "width": 509,
+      "height": 314,
+      "original_content_type": "image/png",
+      "slide_title": "Vitamin D \u000bincreases \u000blean mass.",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide26_img1.png",
+      "slide_number": 26,
+      "image_index_on_slide": 1,
+      "width": 481,
+      "height": 248,
+      "original_content_type": "image/png",
+      "slide_title": "Measuring \u000bstrength\u000bin \u000bex vivo \u000bmuscle",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide27_img1.png",
+      "slide_number": 27,
+      "image_index_on_slide": 1,
+      "width": 495,
+      "height": 306,
+      "original_content_type": "image/png",
+      "slide_title": "Normalizing\u000bvitamin D\u000bincreases\u000bstrength/mass\u000b(twitch)",
+      "slide_text": "*"
+    },
+    {
+      "filename": "slide28_img1.png",
+      "slide_number": 28,
+      "image_index_on_slide": 1,
+      "width": 492,
+      "height": 305,
+      "original_content_type": "image/png",
+      "slide_title": "Supplementing\u000bvitamin D\u000bincreases\u000bstrength/mass\u000b(tetanus)",
+      "slide_text": "*"
+    },
+    {
+      "filename": "slide31_img1.wmf",
+      "slide_number": 31,
+      "image_index_on_slide": 1,
+      "width": 439,
+      "height": 290,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Raising vitamin D \u000bfrom \u000blow to normal -> \u000b\u2193 myostatin",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide32_img1.wmf",
+      "slide_number": 32,
+      "image_index_on_slide": 1,
+      "width": 410,
+      "height": 254,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Raising vitamin D \u000bfrom \u000blow to normal -> \u000b\u2193 myostatin",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide32_img2.wmf",
+      "slide_number": 32,
+      "image_index_on_slide": 2,
+      "width": 439,
+      "height": 290,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Raising vitamin D \u000bfrom \u000blow to normal -> \u000b\u2193 myostatin",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide33_img1.wmf",
+      "slide_number": 33,
+      "image_index_on_slide": 1,
+      "width": 410,
+      "height": 254,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Raising vitamin D \u000bfrom \u000bnormal to high-> \u000b\u2193 myostatin\u000bper lean mass",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide33_img2.wmf",
+      "slide_number": 33,
+      "image_index_on_slide": 2,
+      "width": 439,
+      "height": 290,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Raising vitamin D \u000bfrom \u000bnormal to high-> \u000b\u2193 myostatin\u000bper lean mass",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide36_img1.png",
+      "slide_number": 36,
+      "image_index_on_slide": 1,
+      "width": 511,
+      "height": 316,
+      "original_content_type": "image/png",
+      "slide_title": "High dose\u000bVitamin D \u000bdecreases\u000badiposity \u000bin lean mice.",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide38_img1.wmf",
+      "slide_number": 38,
+      "image_index_on_slide": 1,
+      "width": 268,
+      "height": 503,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Energy sensing\u000band \u000bcalorie allocation: \u000b\u000bHFD as paradigmatic",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide39_img1.png",
+      "slide_number": 39,
+      "image_index_on_slide": 1,
+      "width": 808,
+      "height": 930,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide41_img1.wmf",
+      "slide_number": 41,
+      "image_index_on_slide": 1,
+      "width": 702,
+      "height": 447,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "",
+      "slide_text": "Vitamin D \u000bdoes not\nalter \nbodyweight\u000bin lean mice."
+    },
+    {
+      "filename": "slide43_img1.png",
+      "slide_number": 43,
+      "image_index_on_slide": 1,
+      "width": 808,
+      "height": 930,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide45_img1.wmf",
+      "slide_number": 45,
+      "image_index_on_slide": 1,
+      "width": 268,
+      "height": 503,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Energy sensing\u000band \u000bcalorie allocation: \u000b\u000bHFD as paradigmatic",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide46_img1.png",
+      "slide_number": 46,
+      "image_index_on_slide": 1,
+      "width": 2129,
+      "height": 1316,
+      "original_content_type": "image/png",
+      "slide_title": "Raising vitamin D \u000bfrom \u000blow to normal -> \u000b\uf0ad leptin production\u000b\u000bbut\u2026.",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide47_img1.png",
+      "slide_number": 47,
+      "image_index_on_slide": 1,
+      "width": 2129,
+      "height": 1316,
+      "original_content_type": "image/png",
+      "slide_title": "Raising vitamin D \u000bfrom \u000blow to normal -> \u000b\uf0ad leptin production\u000b\u000bbut\u2026.",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide47_img2.png",
+      "slide_number": 47,
+      "image_index_on_slide": 2,
+      "width": 1979,
+      "height": 1220,
+      "original_content_type": "image/png",
+      "slide_title": "Raising vitamin D \u000bfrom \u000blow to normal -> \u000b\uf0ad leptin production\u000b\u000bbut\u2026.",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide48_img1.wmf",
+      "slide_number": 48,
+      "image_index_on_slide": 1,
+      "width": 570,
+      "height": 300,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Raising vitamin D \u000bfrom \u000blow to normal -> \u000b\uf0ad leptin production",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide49_img1.wmf",
+      "slide_number": 49,
+      "image_index_on_slide": 1,
+      "width": 570,
+      "height": 300,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Raising vitamin D \u000bfrom \u000bnormal to high -> \u000b\uf0ad leptin sensitivity",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide52_img1.png",
+      "slide_number": 52,
+      "image_index_on_slide": 1,
+      "width": 1187,
+      "height": 845,
+      "original_content_type": "image/png",
+      "slide_title": "High-dose vitamin D \u000bdoes not change \u000bbaseline\u000bintake per weight",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide52_img2.png",
+      "slide_number": 52,
+      "image_index_on_slide": 2,
+      "width": 1183,
+      "height": 845,
+      "original_content_type": "image/png",
+      "slide_title": "High-dose vitamin D \u000bdoes not change \u000bbaseline\u000bintake per weight",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide53_img1.png",
+      "slide_number": 53,
+      "image_index_on_slide": 1,
+      "width": 1304,
+      "height": 933,
+      "original_content_type": "image/png",
+      "slide_title": "High-dose vitamin D \u000b\uf0ad  baseline\u000benergy expenditure\u000bper FFM",
+      "slide_text": "*"
+    },
+    {
+      "filename": "slide53_img2.png",
+      "slide_number": 53,
+      "image_index_on_slide": 2,
+      "width": 1304,
+      "height": 845,
+      "original_content_type": "image/png",
+      "slide_title": "High-dose vitamin D \u000b\uf0ad  baseline\u000benergy expenditure\u000bper FFM",
+      "slide_text": "*"
+    },
+    {
+      "filename": "slide54_img1.png",
+      "slide_number": 54,
+      "image_index_on_slide": 1,
+      "width": 615,
+      "height": 716,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide58_img1.png",
+      "slide_number": 58,
+      "image_index_on_slide": 1,
+      "width": 513,
+      "height": 441,
+      "original_content_type": "image/png",
+      "slide_title": "High dose\u000bVitamin D \u000bincreases\u000bgrowth.\u000b(in mice)",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide63_img1.wmf",
+      "slide_number": 63,
+      "image_index_on_slide": 1,
+      "width": 642,
+      "height": 395,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "High dose\u000bVitamin D \u000bincreases\u000bgrowth.",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide66_img1.png",
+      "slide_number": 66,
+      "image_index_on_slide": 1,
+      "width": 173,
+      "height": 232,
+      "original_content_type": "image/png",
+      "slide_title": "High dose\u000bVitamin D \u000bincreases\u000bgrowth.\u000b(in fish)",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide66_img2.png",
+      "slide_number": 66,
+      "image_index_on_slide": 2,
+      "width": 150,
+      "height": 252,
+      "original_content_type": "image/png",
+      "slide_title": "High dose\u000bVitamin D \u000bincreases\u000bgrowth.\u000b(in fish)",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide72_img1.png",
+      "slide_number": 72,
+      "image_index_on_slide": 1,
+      "width": 1287,
+      "height": 929,
+      "original_content_type": "image/png",
+      "slide_title": "High dose\u000bVitamin D \u000bincreases\u000bex vivo muscle\u000box phos.",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide73_img1.png",
+      "slide_number": 73,
+      "image_index_on_slide": 1,
+      "width": 2775,
+      "height": 1104,
+      "original_content_type": "image/png",
+      "slide_title": "25D\u000bincreases\u000box phos\u000bin muscle cells\u000bbut 1,25 \u000bdoes not.",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide74_img1.png",
+      "slide_number": 74,
+      "image_index_on_slide": 1,
+      "width": 2716,
+      "height": 1687,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide75_img1.png",
+      "slide_number": 75,
+      "image_index_on_slide": 1,
+      "width": 1891,
+      "height": 1137,
+      "original_content_type": "image/png",
+      "slide_title": "25D\u000beffect on \u000box phos\u000bdoes not \u000brequire the\u000b1-hydroxylase",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide75_img2.png",
+      "slide_number": 75,
+      "image_index_on_slide": 2,
+      "width": 787,
+      "height": 554,
+      "original_content_type": "image/png",
+      "slide_title": "25D\u000beffect on \u000box phos\u000bdoes not \u000brequire the\u000b1-hydroxylase",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide76_img1.png",
+      "slide_number": 76,
+      "image_index_on_slide": 1,
+      "width": 459,
+      "height": 908,
+      "original_content_type": "image/jpeg",
+      "slide_title": "25D\u000beffect on \u000box phos\u000bdoes\u000brequire the\u000bVDR",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide77_img1.wmf",
+      "slide_number": 77,
+      "image_index_on_slide": 1,
+      "width": 949,
+      "height": 247,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "",
+      "slide_text": "1-hydroxylase  KO"
+    },
+    {
+      "filename": "slide78_img1.png",
+      "slide_number": 78,
+      "image_index_on_slide": 1,
+      "width": 1250,
+      "height": 983,
+      "original_content_type": "image/png",
+      "slide_title": "25D\u000beffect on \u000bstrength \u000bdoes not \u000brequire the\u000b1-hydroxylase",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide79_img1.png",
+      "slide_number": 79,
+      "image_index_on_slide": 1,
+      "width": 1325,
+      "height": 1687,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide80_img1.png",
+      "slide_number": 80,
+      "image_index_on_slide": 1,
+      "width": 1577,
+      "height": 1851,
+      "original_content_type": "image/jpeg",
+      "slide_title": "Vit D \u000bimproves \u000box phos \u000bin \u000bliver, heart, brain\u2026.",
+      "slide_text": "**"
+    },
+    {
+      "filename": "slide87_img1.png",
+      "slide_number": 87,
+      "image_index_on_slide": 1,
+      "width": 4032,
+      "height": 3024,
+      "original_content_type": "image/jpeg",
+      "slide_title": "Acknowledgements",
+      "slide_text": "Roizen Lab Alumni\n\tIlana Caplan \uf0e0 NYU MD school\n\tAlex Casella \uf0e0 UMD MSTP -> JH Neuro resi\n\tCaela Long \uf0e0 UPenn Neuro PhD\n\tLauren O\u2019Lear \uf0e0 deciding\n\tAzra Din\uf0e0 Temple MPH\n\tShymir Bullock\uf0e0 Nursing @ Muhle"
+    }
+  ]
+}

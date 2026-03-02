@@ -1,0 +1,89 @@
+{
+  "source_file": "cool science pictures.pptx",
+  "source_path": "/Users/roizenj/Documents/Personal/RoizenWebsite/science pics/cool science pictures.pptx",
+  "total_slides": 6,
+  "total_images_extracted": 8,
+  "small_images_skipped": 0,
+  "images": [
+    {
+      "filename": "slide01_img1.png",
+      "slide_number": 1,
+      "image_index_on_slide": 1,
+      "width": 1344,
+      "height": 1024,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": "c-fos"
+    },
+    {
+      "filename": "slide01_img2.png",
+      "slide_number": 1,
+      "image_index_on_slide": 2,
+      "width": 1344,
+      "height": 1024,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": "c-fos"
+    },
+    {
+      "filename": "slide02_img1.png",
+      "slide_number": 2,
+      "image_index_on_slide": 1,
+      "width": 1344,
+      "height": 1024,
+      "original_content_type": "image/tiff",
+      "slide_title": "",
+      "slide_text": "OT green and cfos red"
+    },
+    {
+      "filename": "slide03_img1.png",
+      "slide_number": 3,
+      "image_index_on_slide": 1,
+      "width": 232,
+      "height": 198,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide04_img1.png",
+      "slide_number": 4,
+      "image_index_on_slide": 1,
+      "width": 1093,
+      "height": 340,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide05_img1.png",
+      "slide_number": 5,
+      "image_index_on_slide": 1,
+      "width": 1440,
+      "height": 684,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide06_img1.png",
+      "slide_number": 6,
+      "image_index_on_slide": 1,
+      "width": 1400,
+      "height": 865,
+      "original_content_type": "image/tiff",
+      "slide_title": "",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide06_img2.png",
+      "slide_number": 6,
+      "image_index_on_slide": 2,
+      "width": 1382,
+      "height": 102,
+      "original_content_type": "image/png",
+      "slide_title": "",
+      "slide_text": ""
+    }
+  ]
+}
