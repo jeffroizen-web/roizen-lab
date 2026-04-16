@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roizen Lab — Purple &amp; Gold</title>
+    <link rel="icon" href="logos/favicons/favicon-hd-car.ico" sizes="any">
+    <link rel="icon" href="logos/favicons/favicon-hd-car.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>document.documentElement.setAttribute('data-theme', 'purple-gold');</script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* === Theme: Purple & Gold === */
+        [data-theme="purple-gold"] {
+            --primary: #3B1F6E;
+            --primary-light: #5A3D8A;
+            --accent: #C5A336;              /* decorative gold — borders, dividers, hover states only */
+            --accent-dark: #8A6B1A;         /* WCAG AA body-text gold, ~5.5:1 on white */
+            --accent-light: #D4B84E;
+            --accent-pale: #F0E6C8;
+            --nav-bg: #3B1F6E;
+            --nav-text: #FFFFFF;
+            --nav-hover: #C5A336;
+            --hero-overlay-start: rgba(59,31,110,0.82);
+            --hero-overlay-end: rgba(90,61,138,0.65);
+            --btn-bg: #C5A336;
+            --btn-text: #FFFFFF;
+            --btn-hover: #D4B84E;
+            --heading-font: 'Merriweather', Georgia, serif;
+            --body-font: 'Open Sans', -apple-system, sans-serif;
+            --white: #FFFFFF;
+            --off-white: #FAF9F7;
+            --warm-gray: #F0EDE8;
+            --text: #2C2C2C;
+            --text-light: #5A5A5A;
+            --text-muted: #666666;          /* WCAG AA, ~5.7:1 on white */
+            --card-border: 4px solid #C5A336;
+            --card-radius: 0 8px 8px 0;
+            --donate-bg: linear-gradient(135deg, #3B1F6E 0%, #5A3D8A 100%);
+            --footer-bg: #3B1F6E;
+        }
+
+        /* === Theme: Warm Slate === */
+        [data-theme="warm-slate"] {
+            --primary: #1A1A2E;
+            --primary-light: #2D2D44;
+            --accent: #C8963E;              /* decorative warm-gold — borders, dividers, hover only */
+            --accent-dark: #8C6B2B;         /* WCAG AA body-text warm-gold, ~5.7:1 on white */
+            --accent-light: #D4AA5C;
+            --accent-pale: #F5EBD7;
+            --nav-bg: rgba(255,255,255,0.95);
+            --nav-text: #1A1A2E;
+            --nav-hover: #C8963E;
+            --hero-overlay-start: rgba(26,26,46,0.85);
+            --hero-overlay-end: rgba(26,26,46,0.7);
+            --btn-bg: #1A1A2E;
+            --btn-text: #FFFFFF;
+            --btn-hover: #2D2D44;
+            --heading-font: 'Playfair Display', Georgia, serif;
+            --body-font: 'Inter', -apple-system, sans-serif;
+            --white: #FFFFFF;
+            --off-white: #FAFAF8;
+            --warm-gray: #F3F1ED;
+            --text: #1A1A2E;
+            --text-light: #4A4A5A;
+            --text-muted: #666666;          /* WCAG AA, ~5.7:1 on white */
+            --card-border: none;
+            --card-radius: 8px;
+            --donate-bg: #1A1A2E;
+            --footer-bg: #1A1A2E;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+        body { font-family: var(--body-font); color: var(--text); line-height: 1.7; background: var(--white); }
+        h1, h2 { font-family: var(--heading-font); }
+        h3 { font-family: var(--body-font); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-light); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* === Institution Bar (above nav, like Goldberg NeuroLab) === */
+        .institution-bar {
+            position: fixed; top: 0; width: 100%; z-index: 1001;
+            background: var(--primary);
+            padding: 0 24px; height: 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--accent);
+        }
+        .institution-bar a { display: flex; align-items: center; }
+        .institution-bar img {
+            height: 22px; width: auto;
+            filter: brightness(0) invert(1); opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+        .institution-bar img:hover { opacity: 1; }
+        .institution-bar .inst-left,
+        .institution-bar .inst-right {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .institution-bar .inst-divider {
+            width: 1px; height: 16px; background: rgba(255,255,255,0.25);
+        }
+
+        /* === Nav (below institution bar) === */
+        .navbar {
+            position: fixed; top: 40px; width: 100%; z-index: 1000;
+            background: #FFFFFF;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+        }
+        .nav-container {
+            max-width: 1100px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; height: 70px;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+        .nav-logo img { height: 55px; width: auto; }
+        .nav-links { display: flex; list-style: none; gap: 24px; }
+        .nav-links a {
+            color: var(--primary); font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 0.3px; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); text-decoration: none; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--primary); font-size: 1.5rem; cursor: pointer; }
+
+        /* === Hero === */
+        .hero {
+            min-height: 90vh; display: flex; align-items: center;
+            background: url('hero-microscopy-composite-2-vdr-c2c12.png') center/cover no-repeat;
+            padding: 170px 24px 80px; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, var(--hero-overlay-start), var(--hero-overlay-end));
+            z-index: 0;
+        }
+        .hero-inner {
+            max-width: 1100px; margin: 0 auto; width: 100%;
+            text-align: center; position: relative; z-index: 1;
+        }
+        .hero-badge {
+            display: inline-block; padding: 8px 20px;
+            background: rgba(255,255,255,0.15); color: var(--accent);
+            font-size: 0.78rem; font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; border-radius: 50px; margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 3.2rem; font-weight: 700; line-height: 1.2;
+            color: #FAFAF8; margin-bottom: 24px;
+        }
+        .hero h1 em { font-style: italic; color: var(--accent); }
+        .hero-subtitle {
+            font-size: 1.12rem; font-weight: 300; line-height: 1.8;
+            color: rgba(250,250,248,0.9); margin-bottom: 16px;
+            max-width: 680px; margin-left: auto; margin-right: auto;
+        }
+        .hero-subtitle .pop { color: var(--accent); font-weight: 600; }
+        .hero-affiliations { font-size: 0.9rem; color: rgba(250,250,248,0.65); margin-bottom: 36px; }
+        .btn {
+            display: inline-block; padding: 14px 36px; background: var(--btn-bg); color: var(--btn-text);
+            font-weight: 700; font-size: 0.9rem; border-radius: 4px; letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+        .btn:hover { background: var(--btn-hover); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); text-decoration: none; color: var(--btn-text); }
+
+        /* === Sections === */
+        .section { padding: 100px 0; }
+        .section-alt { background: var(--off-white); }
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-header h2 { font-size: 2.4rem; color: var(--primary); margin-bottom: 16px; }
+        .section-header p { max-width: 650px; margin: 0 auto; font-size: 1.05rem; color: var(--text-light); }
+        .eyebrow {
+            font-family: var(--body-font); font-size: 0.75rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 3px; color: var(--accent-dark); margin-bottom: 12px;
+        }
+        .gold-line { width: 60px; height: 3px; background: var(--accent); margin: 0 auto 20px; border-radius: 2px; }
+
+        /* === Big Questions === */
+        .questions-list { display: flex; flex-direction: column; gap: 64px; }
+        .question-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+        }
+        .question-row:nth-child(even) { direction: rtl; }
+        .question-row:nth-child(even) > * { direction: ltr; }
+        .question-text { }
+        .question-text h3 {
+            font-size: 1.35rem; font-weight: 700; color: var(--primary);
+            margin-bottom: 16px; line-height: 1.3;
+        }
+        .question-text p {
+            font-size: 1rem; color: var(--text-light); line-height: 1.8;
+        }
+        .question-text .paper-link {
+            display: inline-block; margin-top: 12px; font-size: 0.85rem;
+            font-weight: 700; color: var(--accent-dark); letter-spacing: 0.3px;
+            border-bottom: 1px solid var(--accent-dark);
+        }
+        .question-text .paper-link:hover { color: var(--primary); border-color: var(--primary); }
+        .question-text .paper-link:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+        .question-figure {
+            background: var(--warm-gray); border-radius: 12px;
+            min-height: 280px; display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); font-size: 0.9rem; font-style: italic;
+            border: 2px dashed rgba(0,0,0,0.08); overflow: hidden;
+        }
+        .question-figure img {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 12px;
+        }
+        /* === Lab Life Strip === */
+        .lab-strip { background: var(--primary); padding: 0; }
+        .lab-strip-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr 1fr;
+            gap: 2px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .lab-strip-item { margin: 0; position: relative; overflow: hidden; aspect-ratio: 3 / 2; }
+        .lab-strip-item-wide { aspect-ratio: 16 / 9; }
+        .lab-strip-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(15%) contrast(1.05);
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+        .lab-strip-item:hover img { filter: grayscale(0%) contrast(1); transform: scale(1.02); }
+        @media (max-width: 768px) {
+            .lab-strip-grid { grid-template-columns: 1fr 1fr; }
+            .lab-strip-item-wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+        }
+
+        .question-figure-placeholder {
+            background: repeating-linear-gradient(
+                45deg,
+                var(--warm-gray),
+                var(--warm-gray) 12px,
+                rgba(197, 163, 54, 0.08) 12px,
+                rgba(197, 163, 54, 0.08) 24px
+            );
+            border: 2px dashed var(--accent);
+        }
+        .figure-placeholder-text {
+            color: var(--primary); font-weight: 600; letter-spacing: 0.4px;
+            text-transform: uppercase; font-size: 0.78rem; font-style: normal;
+        }
+        @media (max-width: 768px) {
+            .question-row { grid-template-columns: 1fr; gap: 24px; }
+            .question-row:nth-child(even) { direction: ltr; }
+            .question-figure { min-height: 200px; }
+        }
+
+        /* === Publications === */
+        .pub-list { max-width: 800px; margin: 0 auto; }
+        .pub-item { padding: 22px 0; border-bottom: 1px solid var(--warm-gray); }
+        .pub-item:last-child { border-bottom: none; }
+        .pub-year { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-dark); margin-bottom: 6px; }
+        .pub-title { font-family: var(--heading-font); font-size: 1rem; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
+        .pub-meta { font-size: 0.83rem; color: var(--text-muted); }
+
+        /* === Team === */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; justify-items: center; }
+        .team-card { text-align: center; max-width: 300px; }
+        .team-photo {
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+            margin-bottom: 20px; box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+        }
+        [data-theme="purple-gold"] .team-photo { border: 4px solid var(--accent); }
+        [data-theme="warm-slate"] .team-photo { border-radius: 16px; }
+        .team-photo-placeholder {
+            width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 20px;
+            background: var(--warm-gray); color: var(--text-muted); display: flex;
+            align-items: center; justify-content: center; font-size: 2rem; font-weight: 300;
+            border: 2px dashed rgba(0,0,0,0.12);
+        }
+        [data-theme="warm-slate"] .team-photo-placeholder { border-radius: 16px; }
+        .team-card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 4px; }
+        .team-role { font-weight: 700; color: var(--accent-dark); font-size: 0.88rem; }
+
+        /* === News === */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; max-width: 900px; margin: 0 auto; }
+        .news-card {
+            background: var(--white); border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 8px; padding: 28px; transition: all 0.2s;
+        }
+        .news-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); transform: translateY(-2px); }
+        .news-date { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-dark); margin-bottom: 8px; }
+        .news-card h3 { font-size: 1.05rem; color: var(--primary); margin-bottom: 8px; line-height: 1.5; }
+        .news-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+
+        /* === Alumni === */
+        .alumni-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .alumni-card {
+            background: var(--white); border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 8px; padding: 24px; transition: box-shadow 0.2s;
+        }
+        .alumni-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .alumni-card h3 { font-size: 1.05rem; color: var(--primary); margin-bottom: 4px; }
+        .alumni-years { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
+        .alumni-current { font-size: 0.9rem; color: var(--text-light); }
+
+        /* === Gear === */
+        .merch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .merch-card {
+            background: var(--white); border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 8px; overflow: hidden; transition: all 0.2s; cursor: pointer;
+        }
+        .merch-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-3px); }
+        .merch-image-placeholder {
+            width: 100%; height: 200px;
+            background: linear-gradient(135deg, var(--warm-gray), var(--off-white));
+            display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.9rem;
+        }
+        .merch-card h3 { font-size: 0.95rem; color: var(--primary); padding: 16px; text-align: center; }
+
+        /* === Donate === */
+        .donate-section {
+            background: var(--donate-bg); color: var(--white); text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .donate-section::before {
+            content: ''; position: absolute; top: -40%; right: -15%; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(200,150,62,0.12), transparent 70%); border-radius: 50%;
+        }
+        .donate-section h2 { color: #FFFFFF; }
+        .donate-section .eyebrow { color: var(--accent-light); }
+        .donate-section p { color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 24px; font-size: 1.05rem; }
+        .btn-donate { background: var(--accent); color: #FFFFFF; padding: 16px 48px; font-size: 1.05rem; border-radius: 4px; }
+        .btn-donate:hover { background: var(--accent-light); color: #FFFFFF; }
+
+        /* === Contact form === */
+        .contact-grid {
+            display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px;
+            max-width: 980px; margin: 0 auto; align-items: start;
+        }
+        .contact-info .contact-block { margin-bottom: 28px; }
+        .contact-info .contact-block:last-child { margin-bottom: 0; }
+        .contact-info h3 {
+            font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.2px; color: var(--primary); margin-bottom: 8px;
+        }
+        .contact-info p { color: var(--text-light); font-size: 0.95rem; line-height: 1.7; }
+        .contact-info a { color: var(--accent-dark); font-weight: 600; border-bottom: 1px solid var(--accent-dark); }
+        .contact-info a:hover { color: var(--primary); border-color: var(--primary); }
+        .contact-info a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+        .contact-form {
+            background: var(--off-white); padding: 28px; border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            display: flex; flex-direction: column; gap: 16px;
+        }
+        .form-field { display: flex; flex-direction: column; }
+        .form-field label {
+            font-size: 0.82rem; font-weight: 700; color: var(--primary);
+            margin-bottom: 6px; letter-spacing: 0.3px;
+        }
+        .form-field input,
+        .form-field textarea {
+            font-family: inherit; font-size: 0.95rem; color: var(--text);
+            padding: 10px 12px; border: 1px solid #c9c4ba; border-radius: 6px;
+            background: var(--white); line-height: 1.5;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+        .form-field textarea { resize: vertical; min-height: 110px; }
+        .form-field input:focus,
+        .form-field textarea:focus {
+            outline: none; border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59,31,110,0.15);
+        }
+        /* Red invalid borders only appear AFTER the user tries to submit (JS toggles .was-submitted). */
+        .contact-form.was-submitted .form-field input:invalid,
+        .contact-form.was-submitted .form-field textarea:invalid { border-color: #b03a3a; }
+        .honeypot {
+            position: absolute; left: -9999px; width: 1px; height: 1px;
+            overflow: hidden;
+        }
+        .contact-submit {
+            align-self: flex-start; margin-top: 4px; min-width: 140px;
+            cursor: pointer; border: none;
+        }
+        .contact-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        .form-status {
+            font-size: 0.9rem; margin-top: 4px; min-height: 1.4em;
+            color: var(--text-light);
+        }
+        .form-status.success { color: #2a6b2a; font-weight: 600; }
+        .form-status.error { color: #b03a3a; font-weight: 600; }
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+            .contact-form { padding: 20px; }
+        }
+
+        /* === Footer === */
+        .footer {
+            background: var(--footer-bg); color: rgba(255,255,255,0.6);
+            text-align: center; padding: 36px 24px; font-size: 0.85rem;
+        }
+        .footer a { color: var(--accent-light); }
+
+        /* === Theme Indicator === */
+        .theme-indicator {
+            position: fixed; bottom: 16px; right: 16px; z-index: 9999;
+            background: var(--primary); color: var(--white); padding: 8px 14px;
+            border-radius: 50px; font-size: 0.72rem; font-family: var(--body-font);
+            opacity: 0.7; cursor: pointer; transition: opacity 0.2s;
+        }
+        .theme-indicator:hover { opacity: 1; }
+
+        /* === Tablet (<=768px) === */
+        @media (max-width: 768px) {
+            .institution-bar { height: 32px; padding: 0 12px; }
+            .institution-bar img { height: 16px; }
+            .institution-bar .inst-left,
+            .institution-bar .inst-right { gap: 8px; }
+            .institution-bar .inst-divider { height: 12px; }
+            .navbar { top: 32px; }
+            .nav-container { height: 60px; }
+            .nav-logo img { height: 45px; }
+            .nav-toggle { display: block; }
+            .nav-links {
+                display: none; flex-direction: column; position: absolute;
+                top: 60px; left: 0; right: 0; background: #FFFFFF;
+                padding: 16px 24px; gap: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+            .nav-links a { color: var(--primary); }
+            .nav-links.active { display: flex; }
+            html { scroll-padding-top: 100px; }
+            .hero { padding: 130px 24px 60px; min-height: 80vh; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-subtitle br { display: none; }
+            .hero-affiliations { font-size: 0.82rem; margin-bottom: 28px; }
+            .section { padding: 70px 0; }
+            .section-header h2 { font-size: 2rem; }
+            .questions-grid { grid-template-columns: 1fr; }
+            .news-grid { grid-template-columns: 1fr; }
+            .merch-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* === Phone (<=480px) === */
+        @media (max-width: 480px) {
+            .institution-bar { height: 28px; padding: 0 8px; }
+            .institution-bar img { height: 13px; }
+            .institution-bar .inst-left,
+            .institution-bar .inst-right { gap: 6px; }
+            .institution-bar .inst-divider { height: 10px; }
+            .navbar { top: 28px; }
+            .nav-container { height: 54px; padding: 0 16px; }
+            .nav-logo img { height: 38px; }
+            .nav-links { top: 54px; padding: 12px 16px; }
+            html { scroll-padding-top: 90px; }
+            .hero { padding: 110px 16px 48px; min-height: 75vh; }
+            .hero-badge { font-size: 0.7rem; padding: 6px 14px; letter-spacing: 1.5px; margin-bottom: 16px; }
+            .hero h1 { font-size: 1.75rem; margin-bottom: 16px; }
+            .hero-subtitle { font-size: 0.92rem; line-height: 1.7; }
+            .hero-affiliations { font-size: 0.78rem; margin-bottom: 24px; }
+            .btn { padding: 12px 28px; font-size: 0.85rem; }
+            .container { padding: 0 16px; }
+            .section { padding: 56px 0; }
+            .section-header { margin-bottom: 40px; }
+            .section-header h2 { font-size: 1.65rem; }
+            .section-header p { font-size: 0.95rem; }
+            .question-text h3 { font-size: 1.15rem; }
+            .question-text p { font-size: 0.92rem; }
+            .team-grid { gap: 28px; }
+            .team-photo, .team-photo-placeholder { width: 140px; height: 140px; }
+            .news-grid { grid-template-columns: 1fr; }
+            .alumni-grid { grid-template-columns: 1fr; }
+            .merch-grid { grid-template-columns: 1fr; gap: 16px; }
+            .donate-section .section-header h2 { font-size: 1.65rem; }
+            .donate-section p { font-size: 0.95rem; }
+            .btn-donate { padding: 14px 36px; font-size: 0.95rem; }
+        }
+
+        /* === Skip link (WCAG 2.4.1) === */
+        .skip-link {
+            position: absolute; top: -100px; left: 8px; z-index: 9999;
+            padding: 10px 18px; background: var(--primary); color: #fff;
+            font-weight: 700; text-decoration: none; border-radius: 0 0 6px 6px;
+            transform: translateY(-100%); transition: transform 0.15s ease-out;
+        }
+        .skip-link:focus {
+            top: 0; transform: translateY(0); outline: 3px solid var(--accent);
+        }
+
+        /* === Reduced motion (WCAG 2.3.3) === */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* === Very small phone (<=360px) === */
+        @media (max-width: 360px) {
+            .institution-bar { height: 24px; padding: 0 6px; }
+            .institution-bar img { height: 11px; }
+            .institution-bar .inst-divider { display: none; }
+            .navbar { top: 24px; }
+            .nav-container { height: 48px; padding: 0 12px; }
+            .nav-logo img { height: 32px; }
+            .nav-links { top: 48px; }
+            .hero { padding: 96px 12px 40px; }
+            .hero h1 { font-size: 1.5rem; }
+            .container { padding: 0 12px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Institution Bar (above nav, like Goldberg NeuroLab) -->
+    <div class="institution-bar">
+        <div class="inst-left">
+            <a href="https://www.chop.edu" target="_blank" rel="noopener">
+                <img src="chop-header.png" alt="CHOP">
+            </a>
+            <span class="inst-divider"></span>
+            <a href="https://www.research.chop.edu/people/jeffrey-d-roizen" target="_blank" rel="noopener">
+                <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjguMzIgNzYuMjEiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMDA1NTg3O30uY2xzLTJ7ZmlsbDojNDJiNGUzO30uY2xzLTN7ZmlsbDojMDA1NTg2O308L3N0eWxlPjwvZGVmcz48dGl0bGU+Q0hPUF9IT1JJWl9CTFVFX0hFQURFUjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjI4LjQ2LDQzLjY3YTEuODEsMS44MSwwLDAsMS0xLjg3LTEuN3YtLjU0YTEuODcsMS44NywwLDAsMSwzLjcyLDAsNC44Niw0Ljg2LDAsMCwxLDAsLjU0QTEuOCwxLjgsMCwwLDEsMjI4LjQ2LDQzLjY3Wm0xLjQ3LTIuMjdhMS40OCwxLjQ4LDAsMCwwLTMsMCwzLDMsMCwwLDAsMCwuNiwxLjQ4LDEuNDgsMCwwLDAsMywwQTMsMywwLDAsMCwyMjkuOTMsNDEuNFptLTEuNDUuNjFhLjEzLjEzLDAsMCwwLS4xNC0uMDdoLS4yOXYuNTlhLjE5LjE5LDAsMCwxLS4zOCwwVjQwLjkxYS4yMy4yMywwLDAsMSwuMjYtLjI0aC42NWEuNjYuNjYsMCwwLDEsLjc0LjYzLjU2LjU2LDAsMCwxLS40Ni41N2wuNDguNTVhLjE4LjE4LDAsMCwxLDAsLjEyYzAsLjEtLjA4LjE3LS4yMS4xN2EuMTkuMTksMCwwLDEtLjEzLS4wN1ptLjA1LS4zOWMuMjksMCwuMzktLjEzLjM5LS4zMXMtLjExLS4zMi0uMzctLjMyaC0uNXYuNjNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48L3N2Zz4=" alt="CHOP Research Institute">
+            </a>
+        </div>
+        <div class="inst-right">
+            <a href="https://www.med.upenn.edu/apps/faculty/index.php/g275/p8213493" target="_blank" rel="noopener" aria-label="Jeffrey Roizen faculty profile, Penn Medicine">
+                <img src="penn-med.png" alt="Penn Medicine">
+            </a>
+        </div>
+    </div>
+
+    <!-- Nav Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo"><img src="jeff-logo-2-theme-purple.svg" alt="Hypothesis Driven"></a>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
+            <ul class="nav-links" id="primary-nav" aria-label="Primary navigation">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#questions">Research</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#alumni">Alumni</a></li>
+                <li><a href="#merch">Gear</a></li>
+                <li><a href="#donate">Support</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-inner">
+            <span class="hero-badge">UPenn &middot; CHOP</span>
+            <h1>Redefining <em>Vitamin D</em></h1>
+            <p class="hero-subtitle">Vitamin D is one of the most<br>recommended therapies in medicine &mdash;<br>and one of the least understood.<br><span class="pop">We are changing that.</span></p>
+            <p class="hero-affiliations">University of Pennsylvania &middot; Children's Hospital of Philadelphia</p>
+            <a href="#questions" class="btn">Explore Our Questions</a>
+        </div>
+    </section>
+
+    <!-- Big Questions -->
+    <section id="questions" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Research</p>
+                <div class="gold-line"></div>
+                <h2>Big Questions</h2>
+                <p>Each project in our lab is driven by a fundamental unanswered question about vitamin D with clear clinical relevance.</p>
+            </div>
+            <div class="questions-list">
+                <!-- Q1 -->
+                <div class="question-row">
+                    <div class="question-text">
+                        <h3>Low Vitamin D: Cause or Effect?</h3>
+                        <p>Low vitamin D is associated with many diseases. Medicine assumed low vitamin D was causative. We used disease models and observational genetic studies to ask whether the opposite was true: does disease cause low vitamin D? In asthma, obesity, and aging, the answer was yes. Disease lowers vitamin D &mdash; not the other way around.</p>
+                    </div>
+                    <div class="question-figure"><img src="extracted-figures/from-archivist/reverse-causation-bmi-vitd.png" alt="Mendelian randomization scatter: SNP effect on BMI (x-axis) vs SNP effect on 25(OH) vitamin D (y-axis). All five MR methods (IVW, MR Egger, weighted median, simple mode, weighted mode) show a negative slope — higher BMI causally lowers vitamin D. Reverse causation test from the MR VitD Asthma project." loading="lazy" style="width:100%; border-radius:6px;"></div>
+                </div>
+                <!-- Q2 -->
+                <div class="question-row">
+                    <div class="question-text">
+                        <h3>How Does Disease Lower Vitamin D?</h3>
+                        <p>Sick patients almost always have low vitamin D. Why? We measured hepatic 25-hydroxylase activity across disease states. Obesity and aging directly suppress the liver enzyme that activates vitamin D. If biology varies by disease, does it also vary by person?</p>
+                    </div>
+                    <!-- FIGURE PENDING: Jeff to provide hepatic 25-hydroxylase activity figure for Q2. Prior placeholder file "q2-hepatic-enzyme.png" actually contains a leptin scatterplot, not enzyme activity. See docs/figure-audit.md. -->
+                    <div class="question-figure question-figure-placeholder"><span class="figure-placeholder-text">Figure pending</span></div>
+                </div>
+                <!-- Q3 -->
+                <div class="question-row">
+                    <div class="question-text">
+                        <h3>Same Dose, Different Results</h3>
+                        <p>Two patients take the same dose. One responds. One doesn't. Why? We studied coding SNPs in CYP2R1 &mdash; the gene for vitamin D's activating enzyme. Genetic variation shapes who benefits from supplementation and who doesn't. The person matters as much as the pill.</p>
+                    </div>
+                    <!-- FIGURE PENDING: Jeff to provide CYP2R1 SNP / individual variation figure for Q3. Prior placeholder file "q3-cyp2r1-variants.png" actually shows a conventional-vs-local-generation schematic, not variant data. See docs/figure-audit.md. -->
+                    <div class="question-figure question-figure-placeholder"><span class="figure-placeholder-text">Figure pending</span></div>
+                </div>
+                <!-- Q4 -->
+                <div class="question-row">
+                    <div class="question-text">
+                        <h3>Is the Dose the Drug?</h3>
+                        <p>Most trials give pharmacologic doses to people who aren't deficient. That's not the same biology as correcting a deficiency. High-dose vitamin D activates pathways that replacement doses don't touch. The dose isn't just a number &mdash; it changes what the molecule does.</p>
+                    </div>
+                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q4-dose-response.png" alt="Normalized oxygen flux (Complex I, Complex II, Max Resp) in muscle: 25(OH)D at 40 ng/mL dramatically increases flux while 1,25(OH)D at 40 pg/mL does not — evidence that the pharmacologic form, not the 'active' metabolite, is the drug" style="width:100%; border-radius:6px;"></div>
+                </div>
+                <!-- Q5 -->
+                <div class="question-row">
+                    <div class="question-text">
+                        <h3>How Does High-Dose D Prevent T2 Diabetes?</h3>
+                        <p>Large trials show high-dose vitamin D reduces diabetes risk in prediabetic patients. The effect is real. The mechanism is unknown. We're working to identify which metabolic pathways mediate the protective effect &mdash; and whether vitamin D redirects energy metabolism more broadly.</p>
+                    </div>
+                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q5-diabetes-prevention.png" alt="Kaplan-Meier cumulative incidence of type 2 diabetes over 5 years: vitamin D group vs placebo, showing reduced incidence with high-dose vitamin D" style="width:100%; border-radius:6px;"></div>
+                </div>
+                <!-- Q6 -->
+                <div class="question-row">
+                    <div class="question-text">
+                        <h3>What Determines Calorie Allocation?</h3>
+                        <p>Your body decides whether surplus calories become fat, muscle, or growth. What controls that decision? We built CYP2R1 knockout mice &mdash; animals that can't activate vitamin D. Without it, calories go to fat. With it, they go to muscle and linear growth. Vitamin D is a metabolic traffic cop.</p>
+                    </div>
+                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q1-causation.png" alt="Pathway diagram: high-dose vitamin D increases leptin production in fat and leptin sensitivity in the brain, redirecting calorie allocation from intake/storage toward energy expenditure" style="width:100%; border-radius:6px;"></div>
+                </div>
+                <!-- Q7 -->
+                <div class="question-row">
+                    <div class="question-text">
+                        <h3>The Missing Biomarker</h3>
+                        <p>PTH tells us when vitamin D is adequate for bones. Nothing tells us when it's adequate for metabolism. Every clinical trial in the field is limited by this gap. We're searching for a blood marker that tracks vitamin D's non-calcium effects. Finding one would change how we dose, monitor, and study vitamin D.</p>
+                    </div>
+                    <!-- FIGURE PENDING: Jeff to provide biomarker figure for Q7. Prior placeholder file "q7-biomarker.png" actually shows multi-cell OxPhos data (mechanism) — belongs to Q4 content, not a biomarker concept. See docs/figure-audit.md. -->
+                    <div class="question-figure question-figure-placeholder"><span class="figure-placeholder-text">Figure pending</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Life in the Lab (photo strip between Questions and Team) -->
+    <section id="lab-life" class="lab-strip">
+        <div class="lab-strip-grid">
+            <div class="lab-strip-item"><img src="photos/benchwork.jpg" alt="Lab bench work: sample handling in a biosafety cabinet"></div>
+            <div class="lab-strip-item"><img src="photos/pipette.jpg" alt="Dr. Roizen pipetting at the bench"></div>
+            <div class="lab-strip-item lab-strip-item-wide"><img src="photos/talkingWide.jpg" alt="Lab discussion over data at the bench"></div>
+            <div class="lab-strip-item"><img src="photos/dryIce.jpg" alt="Sample preparation on dry ice with face shield"></div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">People</p>
+                <div class="gold-line"></div>
+                <h2>Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="photos/roizen-portrait.jpg" alt="Dr. Jeffrey Roizen, Principal Investigator, Roizen Lab at UPenn and CHOP" loading="lazy" class="team-photo">
+                    <h3>Jeffrey D. Roizen, MD, PhD<br>Assistant Professor of Pediatrics</h3>
+                    <p class="team-role">Principal Investigator</p>
+                    <p style="font-size:0.85rem; color:var(--text-light); margin-top:10px;">University of Pennsylvania<br>Children's Hospital of Philadelphia</p>
+                </div>
+                <div class="team-card">
+                    <img src="photos/1760650722715.jpg" alt="Michael Nguyen, Research Associate in the Roizen Lab" loading="lazy" class="team-photo">
+                    <h3>Michael Nguyen</h3>
+                    <p class="team-role">Research Associate</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo-placeholder">+</div>
+                    <h3>Join Our Team</h3>
+                    <p style="font-size:0.85rem; color:var(--text-light); margin-top:10px;">We currently do not have hard funding for additional personnel, but are always looking to identify curious, enthusiastic, hard-working people who want to do careful, ambitious science — the kind that moves the boundaries of knowledge, even if only by a few millimeters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborators -->
+    <section id="collaborators" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Network</p>
+                <div class="gold-line"></div>
+                <h2>Collaborators</h2>
+                <p>We are fortunate to work with outstanding scientists whose expertise strengthens every project we pursue.</p>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:40px; max-width:900px; margin:0 auto;">
+                <div>
+                    <h3 style="font-size:1.05rem; font-weight:600; color:var(--primary); margin-bottom:4px; text-align:center;"><a href="https://www.research.chop.edu/people/hakon-hakonarson" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Hakon Hakonarson, MD, PhD</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px; text-align:center;">Director, Center for Applied Genomics &middot; CHOP</p>
+                    <ul style="list-style:none; padding:0; margin:12px 0 0; font-size:0.82rem; color:var(--text-light); line-height:1.8;">
+                        <li>CYP3A4 mutation causes vitamin D-dependent rickets type 3 &middot; <em>J Clin Invest</em> 2018</li>
+                        <li>Mendelian randomization: low vitamin D unlikely causative for pediatric asthma &middot; <em>J Allergy Clin Immunol</em> 2016</li>
+                        <li>Genetic architecture of type 1 diabetes with low genetic risk score &middot; <em>Commun Biol</em> 2021</li>
+                        <li>Improved genetic risk scoring algorithm for T1D prediction &middot; <em>Pediatr Diabetes</em> 2022</li>
+                        <li style="color:var(--accent-dark); font-style:italic; font-weight:600;">+ 5 more shared publications</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size:1.05rem; font-weight:600; color:var(--primary); margin-bottom:4px; text-align:center;"><a href="https://www.research.chop.edu/mccormack-laboratory" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Shana E. McCormack, MD, MTR</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px; text-align:center;">Scientific Director, Neuroendocrine Center &middot; CHOP</p>
+                    <ul style="list-style:none; padding:0; margin:12px 0 0; font-size:0.82rem; color:var(--text-light); line-height:1.8;">
+                        <li>Pilot RCT of intranasal oxytocin for hypothalamic obesity &middot; <em>J Endocr Soc</em> 2023</li>
+                        <li>Resting energy expenditure decreased in pseudohypoparathyroidism type 1A &middot; <em>JCEM</em> 2016</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Peers & Colleagues -->
+    <section id="peers" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Community</p>
+                <div class="gold-line"></div>
+                <h2>Peers &amp; Colleagues</h2>
+                <p>Scientists we admire and learn from — our intellectual community.</p>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:28px; max-width:900px; margin:0 auto;">
+                <div style="text-align:center;">
+                    <h3 style="font-size:1.05rem; font-weight:600; margin-bottom:4px;"><a href="https://www.research.chop.edu/mccormack-laboratory" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Shana E. McCormack, MD, MTR</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px;">Pediatric Endocrinology</p>
+                    <p style="color:var(--text-light); font-size:0.88rem;">CHOP / UPenn</p>
+                </div>
+                <div style="text-align:center;">
+                    <h3 style="font-size:1.05rem; font-weight:600; margin-bottom:4px;"><a href="https://labs.utdallas.edu/painstresslab/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Benedict J. Kolber, PhD</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px;">Pain &amp; Stress Neuroscience</p>
+                    <p style="color:var(--text-light); font-size:0.88rem;">UT Dallas</p>
+                </div>
+                <div style="text-align:center;">
+                    <h3 style="font-size:1.05rem; font-weight:600; margin-bottom:4px;"><a href="https://neurology.wustl.edu/people/nico-dosenbach-md-phd/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Nico U.F. Dosenbach, MD, PhD</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px;">Precision Neuroscience</p>
+                    <p style="color:var(--text-light); font-size:0.88rem;">Washington University in St. Louis</p>
+                </div>
+                <div style="text-align:center;">
+                    <h3 style="font-size:1.05rem; font-weight:600; margin-bottom:4px;"><a href="https://goldbergneurolab.com/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Ethan M. Goldberg, MD, PhD</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px;">Pediatric Neurology &amp; Epilepsy Genetics</p>
+                    <p style="color:var(--text-light); font-size:0.88rem;">CHOP / UPenn</p>
+                </div>
+                <div style="text-align:center;">
+                    <h3 style="font-size:1.05rem; font-weight:600; margin-bottom:4px;"><a href="https://www.romberglab.org/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Neil D. Romberg, MD</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px;">Immunology &amp; Immune Tolerance</p>
+                    <p style="color:var(--text-light); font-size:0.88rem;">CHOP / UPenn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentors / Scientific Lineage -->
+    <section id="mentors" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Lineage</p>
+                <div class="gold-line"></div>
+                <h2>Mentors</h2>
+                <p>We stand on the shoulders of extraordinary scientists who shaped how we think.</p>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:28px; max-width:850px; margin:0 auto;">
+                <div style="text-align:center;">
+                    <h3 style="font-size:1.05rem; font-weight:600; margin-bottom:4px;"><a href="https://www.bwfund.org/about/dr-louis-j-muglia-md-phd/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Louis J. Muglia, MD, PhD</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px;">President &amp; CEO, Burroughs Wellcome Fund</p>
+                    <p style="color:var(--text-light); font-size:0.88rem;">Previously Cincinnati Children's / University of Cincinnati</p>
+                </div>
+                <div style="text-align:center;">
+                    <h3 style="font-size:1.05rem; font-weight:600; margin-bottom:4px;"><a href="https://www.research.chop.edu/people/michael-a-levine" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Michael A. Levine, MD</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px;">Chief Emeritus, Endocrinology &amp; Diabetes</p>
+                    <p style="color:var(--text-light); font-size:0.88rem;">Children's Hospital of Philadelphia</p>
+                </div>
+                <div style="text-align:center;">
+                    <h3 style="font-size:1.05rem; font-weight:600; margin-bottom:4px;"><a href="https://www.research.chop.edu/people/hakon-hakonarson" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Hakon Hakonarson, MD, PhD</a></h3>
+                    <p style="color:var(--accent-dark); font-size:0.85rem; font-weight:600; margin-bottom:8px;">Director, Center for Applied Genomics</p>
+                    <p style="color:var(--text-light); font-size:0.88rem;">Children's Hospital of Philadelphia</p>
+                    <p style="color:var(--text-light); font-size:0.78rem; font-style:italic; margin-top:4px;">Postdoctoral mentor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Publications</p>
+                <div class="gold-line"></div>
+                <h2>Selected Papers</h2>
+                <p>Highlights from 27 publications. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD">Full list on PubMed</a></p>
+            </div>
+            <div class="pub-list">
+                <div class="pub-item">
+                    <p class="pub-year">2024</p>
+                    <p class="pub-title">High dose dietary vitamin D allocates surplus calories to muscle and growth instead of fat via modulation of myostatin and leptin signaling</p>
+                    <p class="pub-meta">Roizen JD, Long C, Casella A, et al. &middot; Research Square</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2024</p>
+                    <p class="pub-title">Dietary vitamin D is a novel modulator of tumor engraftment through regulation of GC protein abundance</p>
+                    <p class="pub-meta">Research Square</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2023</p>
+                    <p class="pub-title">A Pilot Randomized Clinical Trial of Intranasal Oxytocin to Promote Weight Loss in Individuals With Hypothalamic Obesity</p>
+                    <p class="pub-meta">J Endocr Soc</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2020</p>
+                    <p class="pub-title">Vitamin D Therapy and the Era of Precision Medicine</p>
+                    <p class="pub-meta">J Clin Endocrinol Metab</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2020</p>
+                    <p class="pub-title">Differential Frequency of CYP2R1 Variants Across Populations Reveals Pathway Selection for Vitamin D Homeostasis</p>
+                    <p class="pub-meta">J Clin Endocrinol Metab</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2019</p>
+                    <p class="pub-title">Obesity Decreases Hepatic 25-Hydroxylase Activity Causing Low Serum 25-Hydroxyvitamin D</p>
+                    <p class="pub-meta">Roizen JD, Long C, Casella A, Levine MA &middot; J Bone Miner Res</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2018</p>
+                    <p class="pub-title">CYP3A4 mutation causes vitamin D-dependent rickets type 3</p>
+                    <p class="pub-meta">Roizen JD, Li D, O'Lear L, Levine MA, et al. &middot; J Clin Invest</p>
+                </div>
+                <div class="pub-item">
+                    <p class="pub-year">2018</p>
+                    <p class="pub-title">Transethnic Evaluation Identifies Low-Frequency Loci Associated With 25-Hydroxyvitamin D Concentrations</p>
+                    <p class="pub-meta">J Clin Endocrinol Metab</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News -->
+    <section id="news" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">News</p>
+                <div class="gold-line"></div>
+                <h2>Lab News</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <p class="news-date">2024</p>
+                    <h3>New preprint: High-dose vitamin D reallocates surplus calories from fat to muscle</h3>
+                    <p>Our latest work shows that dietary vitamin D modulates myostatin and leptin signaling to redirect caloric surplus toward lean mass and linear growth.</p>
+                </div>
+                <div class="news-card">
+                    <p class="news-date">2024</p>
+                    <h3>New preprint: Vitamin D modulates tumor engraftment through GC protein</h3>
+                    <p>We show that dietary vitamin D regulates GC protein (vitamin D binding protein) abundance, with implications for tumor biology.</p>
+                </div>
+                <div class="news-card">
+                    <p class="news-date">2023</p>
+                    <h3>Alex Casella defends PhD and matches into Neurology at Johns Hopkins</h3>
+                    <p>Congratulations to Alex on completing her MD/PhD and beginning residency training at Hopkins.</p>
+                </div>
+                <div class="news-card">
+                    <p class="news-date">2020</p>
+                    <h3>"Vitamin D Therapy and the Era of Precision Medicine" published in JCEM</h3>
+                    <p>Our perspective on how genetic variation in vitamin D metabolism should reshape clinical practice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alumni -->
+    <section id="alumni" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Alumni</p>
+                <div class="gold-line"></div>
+                <h2>Alumni</h2>
+                <p>Former members of the Roizen Lab who have gone on to do great things.</p>
+            </div>
+            <div style="text-align:center; margin-bottom:48px;">
+                <img src="photos/lab-group-hires.jpg" alt="Roizen Lab group photo" loading="lazy" style="max-width:700px; width:100%; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.1);">
+            </div>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <h3>Alex Casella, MD, PhD</h3>
+                    <p class="alumni-current">Neurology Resident, Johns Hopkins University (2024&ndash;2027)</p>
+                    <p class="alumni-years">Roizen Lab &rarr; UMD MSTP (MD/PhD) &rarr; Internal Medicine Internship, Johns Hopkins Bayview &rarr; Neurology Residency, Johns Hopkins</p>
+                </div>
+                <div class="alumni-card">
+                    <h3>Caela Long, PhD</h3>
+                    <p class="alumni-current">Neuroscience PhD, University of Pennsylvania</p>
+                    <p class="alumni-years">Roizen Lab &rarr; UPenn Neuroscience PhD &rarr; Postdoc, Wofford Lab, UPenn</p>
+                </div>
+                <div class="alumni-card">
+                    <h3>Sara Pajouhanfar, MD</h3>
+                    <p class="alumni-current">Genetics, Northwell Health / Cohen Children's Medical Center</p>
+                    <p class="alumni-years">Roizen Lab &rarr; Pediatrics/Medical Genetics Residency, Washington University in St. Louis &rarr; Northwell Health</p>
+                </div>
+                <div class="alumni-card">
+                    <h3>Zahra Tara, MD</h3>
+                    <p class="alumni-current">Pediatrics/Genetics, SSM Health Cardinal Glennon / Saint Louis University</p>
+                    <p class="alumni-years">Roizen Lab &rarr; Pediatrics Residency, Cardinal Glennon / SLU</p>
+                </div>
+                <div class="alumni-card">
+                    <h3>Ilana Caplan</h3>
+                    <p class="alumni-current">NYU Grossman School of Medicine</p>
+                    <p class="alumni-years">Roizen Lab &rarr; NYU School of Medicine</p>
+                </div>
+                <div class="alumni-card">
+                    <h3>Azra Din, MPH</h3>
+                    <p class="alumni-current">Program Manager, Clinical Research, Penn Medicine</p>
+                    <p class="alumni-years">Roizen Lab &rarr; Temple University (BS Neuroscience, MPH Health Administration &amp; Policy) &rarr; Clinical Research Coordinator, UPenn &rarr; Program Manager, Penn Medicine</p>
+                </div>
+                <div class="alumni-card">
+                    <h3>Lauren O'Lear</h3>
+                    <p class="alumni-current"></p>
+                </div>
+                <div class="alumni-card">
+                    <h3>Shymir Bullock</h3>
+                    <p class="alumni-current">Nursing, Muhlenberg</p>
+                </div>
+                <div class="alumni-card">
+                    <h3>Allison Phillips</h3>
+                    <p class="alumni-current">AMERX Health Care</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gear -->
+    <section id="merch" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Gear</p>
+                <div class="gold-line"></div>
+                <h2>Lab Gear</h2>
+                <p>Rep the Roizen Lab! All proceeds support our research.</p>
+            </div>
+            <div class="merch-grid">
+                <div class="merch-card"><div class="merch-image-placeholder">Image</div><h3>Roizen Lab T-Shirt</h3></div>
+                <div class="merch-card"><div class="merch-image-placeholder">Image</div><h3>Roizen Lab Travel Mug</h3></div>
+                <div class="merch-card"><div class="merch-image-placeholder">Image</div><h3>Roizen Lab Water Bottle</h3></div>
+                <div class="merch-card"><div class="merch-image-placeholder">Image</div><h3>Roizen Lab Sticker Pack</h3></div>
+                <div class="merch-card"><div class="merch-image-placeholder">Image</div><h3>Roizen Lab Tote Bag</h3></div>
+                <div class="merch-card"><div class="merch-image-placeholder">Image</div><h3>Roizen Lab Hat</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate -->
+    <section id="donate" class="section donate-section">
+        <div class="container" style="position:relative; z-index:1;">
+            <div class="section-header">
+                <p class="eyebrow">Support</p>
+                <h2>Fuel This Research</h2>
+            </div>
+            <p>Your contribution advances our understanding of vitamin D's potential to improve human health &mdash; from metabolic disease to cancer biology.</p>
+            <p>All donations are tax-deductible and processed through the Children's Hospital of Philadelphia Foundation.</p>
+            <a href="#" class="btn btn-donate">Donate Through CHOP</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Contact</p>
+                <div class="gold-line"></div>
+                <h2>Get in Touch</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-block">
+                        <h3>Location</h3>
+                        <p>University of Pennsylvania<br>Perelman School of Medicine<br>Philadelphia, PA</p>
+                    </div>
+                    <div class="contact-block">
+                        <h3>Email</h3>
+                        <p><a href="mailto:jeffroizen@gmail.com">jeffroizen@gmail.com</a></p>
+                    </div>
+                    <div class="contact-block">
+                        <h3>Join the Lab</h3>
+                        <p>Curious about our work? Use the form or send a CV and a brief note about what you want to learn.</p>
+                    </div>
+                </div>
+                <!--
+                    Contact form — Layer 1 (2026-04-16)
+                    Submits via Formspree (set FORMSPREE_ID below once Jeff creates the free account at formspree.io with jeffroizen@gmail.com).
+                    Also fires a client-side POST to ntfy.sh/<topic> for real-time phone push — Jeff needs to subscribe the topic in the ntfy app.
+                    Telegram-to-Kleiber piece is Layer 2: requires a small Railway bridge endpoint. See docs/contact-form-status.md.
+                -->
+                <form id="contact-form"
+                      class="contact-form"
+                      action="https://formspree.io/f/FORMSPREE_ID_HERE"
+                      method="POST"
+                      novalidate
+                      data-ntfy-topic="roizen-lab-contact">
+                    <div class="form-field">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" name="name" autocomplete="name" required maxlength="150">
+                    </div>
+                    <div class="form-field">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" name="email" autocomplete="email" required maxlength="150">
+                    </div>
+                    <div class="form-field">
+                        <label for="contact-subject">Subject</label>
+                        <input type="text" id="contact-subject" name="subject" required maxlength="200">
+                    </div>
+                    <div class="form-field">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" required maxlength="2000"></textarea>
+                    </div>
+                    <!-- Formspree honeypot (anti-spam) -->
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="contact-website">Website (leave empty)</label>
+                        <input type="text" id="contact-website" name="_gotcha" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn contact-submit">Send</button>
+                    <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Roizen Lab &middot; <a href="https://hypothesisdriven.org">hypothesisdriven.org</a></p>
+        <p style="margin-top:4px;">University of Pennsylvania &middot; Children's Hospital of Philadelphia</p>
+    </footer>
+
+    <div class="theme-indicator" id="themeIndicator" title="Click to preview other theme"></div>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => {
+            const expanded = navLinks.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        });
+        navLinks.querySelectorAll('a').forEach(l =>
+            l.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            })
+        );
+        document.querySelectorAll('a[href^="#"]').forEach(a =>
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            })
+        );
+        var themes = ['warm-slate', 'purple-gold'];
+        var themeNames = { 'warm-slate': 'Warm Slate', 'purple-gold': 'Purple & Gold' };
+        var current = document.documentElement.getAttribute('data-theme');
+        var indicator = document.getElementById('themeIndicator');
+        indicator.textContent = themeNames[current];
+        indicator.addEventListener('click', function() {
+            var idx = themes.indexOf(current);
+            current = themes[(idx + 1) % themes.length];
+            document.documentElement.setAttribute('data-theme', current);
+            indicator.textContent = themeNames[current];
+        });
+
+        // === Contact form (Layer 1) ===
+        // Submits to Formspree for email and fires a parallel ntfy.sh POST for real-time phone push.
+        // Formspree endpoint: update the form action attribute after creating the free Formspree account.
+        // See docs/contact-form-status.md for Jeff's 2-minute unblock steps.
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            const status = document.getElementById('contact-status');
+            const submitBtn = contactForm.querySelector('.contact-submit');
+
+            const setStatus = (text, kind) => {
+                status.textContent = text;
+                status.classList.remove('success', 'error');
+                if (kind) status.classList.add(kind);
+            };
+
+            const postNtfy = async (topic, name, subject) => {
+                // Fire-and-forget. ntfy.sh accepts anonymous POST; body is the push text.
+                try {
+                    await fetch('https://ntfy.sh/' + encodeURIComponent(topic), {
+                        method: 'POST',
+                        headers: { 'Title': 'Roizen Lab contact', 'Priority': 'default', 'Tags': 'email,incoming_envelope' },
+                        body: 'From: ' + name + ' — ' + subject
+                    });
+                } catch (_) { /* non-critical — email still fires via Formspree */ }
+            };
+
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                contactForm.classList.add('was-submitted');
+
+                // HTML5 validation first
+                if (!contactForm.checkValidity()) {
+                    contactForm.reportValidity();
+                    return;
+                }
+
+                // Formspree endpoint must be configured before use
+                const action = contactForm.getAttribute('action') || '';
+                if (action.indexOf('FORMSPREE_ID_HERE') !== -1) {
+                    setStatus("Form is not configured yet — email Dr. Roizen at jeffroizen@gmail.com.", 'error');
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                setStatus('Sending…');
+
+                const name = contactForm.elements['name'].value.trim();
+                const subject = contactForm.elements['subject'].value.trim();
+                const topic = contactForm.dataset.ntfyTopic || '';
+
+                // Kick off ntfy in parallel — does not block email delivery
+                const ntfyPromise = topic ? postNtfy(topic, name, subject) : Promise.resolve();
+
+                try {
+                    const resp = await fetch(action, {
+                        method: 'POST',
+                        headers: { 'Accept': 'application/json' },
+                        body: new FormData(contactForm)
+                    });
+                    await ntfyPromise;
+                    if (resp.ok) {
+                        contactForm.reset();
+                        setStatus('Thanks — your message was sent. We reply within a week.', 'success');
+                    } else {
+                        const data = await resp.json().catch(() => ({}));
+                        const msg = (data && data.errors && data.errors[0] && data.errors[0].message) || 'Something went wrong.';
+                        setStatus(msg.replace(/\.?$/, '.') + ' Please email jeffroizen@gmail.com directly.', 'error');
+                    }
+                } catch (err) {
+                    setStatus('Network error — please email jeffroizen@gmail.com directly.', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
