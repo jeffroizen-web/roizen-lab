@@ -76,8 +76,8 @@
         body { font-family: var(--body-font); color: var(--text); line-height: 1.7; background: var(--white); }
         h1, h2 { font-family: var(--heading-font); }
         h3 { font-family: var(--body-font); }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { color: var(--accent-light); }
+        a { color: var(--accent-dark); text-decoration: none; }
+        a:hover { color: var(--primary); }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
         /* === Institution Bar (above nav, like Goldberg NeuroLab) === */
@@ -126,7 +126,7 @@
         /* === Hero === */
         .hero {
             min-height: 90vh; display: flex; align-items: center;
-            background: url('hero-microscopy-composite-2-vdr-c2c12.png') center/cover no-repeat;
+            background: url('hero-microscopy-composite-2-vdr-c2c12.jpg') center/cover no-repeat;
             padding: 170px 24px 80px; position: relative; overflow: hidden;
         }
         .hero::before {
@@ -250,11 +250,24 @@
 
         /* === Publications === */
         .pub-list { max-width: 800px; margin: 0 auto; }
+        .pub-arc { margin-bottom: 40px; }
+        .pub-arc:last-child { margin-bottom: 0; }
+        .pub-arc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); }
+        .pub-arc-number { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-dark); }
+        .pub-arc-title { font-family: var(--heading-font); font-size: 1.15rem; color: var(--primary); }
+        .pub-arc-questions { font-size: 0.78rem; color: var(--text-muted); margin-left: auto; white-space: nowrap; }
+        .pub-arc-questions a { color: var(--primary); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+        .pub-arc-questions a:hover { color: var(--accent-dark); }
         .pub-item { padding: 22px 0; border-bottom: 1px solid var(--warm-gray); }
         .pub-item:last-child { border-bottom: none; }
         .pub-year { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-dark); margin-bottom: 6px; }
         .pub-title { font-family: var(--heading-font); font-size: 1rem; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
         .pub-meta { font-size: 0.83rem; color: var(--text-muted); }
+        .pub-q-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; color: var(--primary); background: rgba(59,31,110,0.08); padding: 2px 8px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+        @media (max-width: 768px) {
+            .pub-arc-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .pub-arc-questions { margin-left: 0; }
+        }
 
         /* === Team === */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; justify-items: center; }
@@ -505,6 +518,73 @@
             .hero h1 { font-size: 1.5rem; }
             .container { padding: 0 12px; }
         }
+        /* === Print Stylesheet === */
+        @media print {
+            /* Hide non-essential elements */
+            .institution-bar, .navbar, .lab-strip, .donate-section,
+            .footer, .theme-toggle, .nav-toggle, .skip-link,
+            .contact-form, .form-status, #contact-form { display: none !important; }
+
+            /* Reset hero: no background image, no overlay, readable text */
+            .hero {
+                background: none !important; min-height: auto !important;
+                padding: 40px 0 20px !important; color: #000 !important;
+            }
+            .hero::before { display: none !important; }
+            .hero-inner { text-align: left !important; }
+            .hero h1, .hero-subtitle, .hero-affiliations, .hero-badge {
+                color: #000 !important; text-shadow: none !important;
+            }
+            .hero-badge {
+                background: #eee !important; color: #333 !important;
+                border: 1px solid #ccc !important;
+            }
+            .pop { color: var(--primary) !important; }
+
+            /* Force body text to black, backgrounds to white */
+            body, .section, .section-alt { background: #fff !important; color: #000 !important; }
+            .container { max-width: 100% !important; padding: 0 !important; }
+            section { padding: 20px 0 !important; }
+
+            /* Ensure email is visible on paper */
+            #contact { display: block !important; }
+            #contact .contact-info-grid { display: block !important; }
+            #contact a[href^="mailto"]::after {
+                content: " (" attr(href) ")"; font-size: 0.85em; color: #555;
+            }
+
+            /* Show all link URLs for paper */
+            a[href^="http"]::after {
+                content: " (" attr(href) ")"; font-size: 0.75em; color: #666;
+                word-break: break-all;
+            }
+            a[href^="#"]::after { content: none; }
+
+            /* Page breaks */
+            .question-row { page-break-inside: avoid; }
+            .pub-arc { page-break-inside: avoid; }
+            .team-card { page-break-inside: avoid; }
+            #questions { page-break-before: always; }
+            #publications { page-break-before: always; }
+            #team { page-break-before: always; }
+
+            /* Question grid: stack vertically for print */
+            .question-row { grid-template-columns: 1fr !important; gap: 16px !important; direction: ltr !important; }
+            .question-figure { max-width: 400px; }
+            .question-figure-placeholder { display: none; }
+
+            /* Clean up figure placeholders and decorative elements */
+            .gold-line { border-color: #ccc !important; }
+            .eyebrow { color: #555 !important; }
+
+            /* Pub arc headers print cleanly */
+            .pub-arc-header { border-bottom-color: #ccc !important; }
+            .pub-arc-number, .pub-arc-questions a { color: #555 !important; }
+            .pub-q-tag { background: #eee !important; color: #333 !important; border: 1px solid #ccc; }
+
+            /* Team photos: reasonable size */
+            .team-photo { max-width: 150px; }
+        }
     </style>
 </head>
 <body>
@@ -512,11 +592,11 @@
     <!-- Institution Bar (above nav, like Goldberg NeuroLab) -->
     <div class="institution-bar">
         <div class="inst-left">
-            <a href="https://www.chop.edu" target="_blank" rel="noopener">
+            <a href="https://www.chop.edu" target="_blank" rel="noopener" aria-label="Children's Hospital of Philadelphia">
                 <img src="chop-header.png" alt="CHOP">
             </a>
             <span class="inst-divider"></span>
-            <a href="https://www.research.chop.edu/people/jeffrey-d-roizen" target="_blank" rel="noopener">
+            <a href="https://www.research.chop.edu/people/jeffrey-d-roizen" target="_blank" rel="noopener" aria-label="Jeffrey Roizen, CHOP Research Institute">
                 <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjguMzIgNzYuMjEiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMDA1NTg3O30uY2xzLTJ7ZmlsbDojNDJiNGUzO30uY2xzLTN7ZmlsbDojMDA1NTg2O308L3N0eWxlPjwvZGVmcz48dGl0bGU+Q0hPUF9IT1JJWl9CTFVFX0hFQURFUjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjI4LjQ2LDQzLjY3YTEuODEsMS44MSwwLDAsMS0xLjg3LTEuN3YtLjU0YTEuODcsMS44NywwLDAsMSwzLjcyLDAsNC44Niw0Ljg2LDAsMCwxLDAsLjU0QTEuOCwxLjgsMCwwLDEsMjI4LjQ2LDQzLjY3Wm0xLjQ3LTIuMjdhMS40OCwxLjQ4LDAsMCwwLTMsMCwzLDMsMCwwLDAsMCwuNiwxLjQ4LDEuNDgsMCwwLDAsMywwQTMsMywwLDAsMCwyMjkuOTMsNDEuNFptLTEuNDUuNjFhLjEzLjEzLDAsMCwwLS4xNC0uMDdoLS4yOXYuNTlhLjE5LjE5LDAsMCwxLS4zOCwwVjQwLjkxYS4yMy4yMywwLDAsMSwuMjYtLjI0aC42NWEuNjYuNjYsMCwwLDEsLjc0LjYzLjU2LjU2LDAsMCwxLS40Ni41N2wuNDguNTVhLjE4LjE4LDAsMCwxLDAsLjEyYzAsLjEtLjA4LjE3LS4yMS4xN2EuMTkuMTksMCwwLDEtLjEzLS4wN1ptLjA1LS4zOWMuMjksMCwuMzktLjEzLjM5LS4zMXMtLjExLS4zMi0uMzctLjMyaC0uNXYuNjNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48L3N2Zz4=" alt="CHOP Research Institute">
             </a>
         </div>
@@ -530,7 +610,7 @@
     <!-- Nav Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo"><img src="jeff-logo-2-theme-purple.svg" alt="Hypothesis Driven"></a>
+            <a href="#home" class="nav-logo" aria-label="Hypothesis Driven — home"><img src="jeff-logo-2-theme-purple.svg" alt="Hypothesis Driven"></a>
             <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
             <ul class="nav-links" id="primary-nav" aria-label="Primary navigation">
                 <li><a href="#home">Home</a></li>
@@ -546,7 +626,7 @@
         </div>
     </nav>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
     <!-- Hero -->
     <section id="home" class="hero">
         <div class="hero-inner">
@@ -569,60 +649,67 @@
             </div>
             <div class="questions-list">
                 <!-- Q1 -->
-                <div class="question-row">
+                <div class="question-row" id="q1">
                     <div class="question-text">
                         <h3>Low Vitamin D: Cause or Effect?</h3>
                         <p>Low vitamin D is associated with many diseases. Medicine assumed low vitamin D was causative. We used disease models and observational genetic studies to ask whether the opposite was true: does disease cause low vitamin D? In asthma, obesity, and aging, the answer was yes. Disease lowers vitamin D &mdash; not the other way around.</p>
+                        <a href="#arc-phenotype" class="paper-link">See papers &rarr;</a>
                     </div>
                     <div class="question-figure"><img src="extracted-figures/from-archivist/reverse-causation-bmi-vitd.png" alt="Mendelian randomization scatter: SNP effect on BMI (x-axis) vs SNP effect on 25(OH) vitamin D (y-axis). All five MR methods (IVW, MR Egger, weighted median, simple mode, weighted mode) show a negative slope — higher BMI causally lowers vitamin D. Reverse causation test from the MR VitD Asthma project." loading="lazy" style="width:100%; border-radius:6px;"></div>
                 </div>
                 <!-- Q2 -->
-                <div class="question-row">
+                <div class="question-row" id="q2">
                     <div class="question-text">
                         <h3>How Does Disease Lower Vitamin D?</h3>
                         <p>Sick patients almost always have low vitamin D. Why? We measured hepatic 25-hydroxylase activity across disease states. Obesity and aging directly suppress the liver enzyme that activates vitamin D. If biology varies by disease, does it also vary by person?</p>
+                        <a href="#arc-phenotype" class="paper-link">See papers &rarr;</a>
                     </div>
                     <!-- FIGURE PENDING: Jeff to provide hepatic 25-hydroxylase activity figure for Q2. Prior placeholder file "q2-hepatic-enzyme.png" actually contains a leptin scatterplot, not enzyme activity. See docs/figure-audit.md. -->
                     <div class="question-figure question-figure-placeholder"><span class="figure-placeholder-text">Figure pending</span></div>
                 </div>
                 <!-- Q3 -->
-                <div class="question-row">
+                <div class="question-row" id="q3">
                     <div class="question-text">
                         <h3>Same Dose, Different Results</h3>
                         <p>Two patients take the same dose. One responds. One doesn't. Why? We studied coding SNPs in CYP2R1 &mdash; the gene for vitamin D's activating enzyme. Genetic variation shapes who benefits from supplementation and who doesn't. The person matters as much as the pill.</p>
+                        <a href="#arc-phenotype" class="paper-link">See papers &rarr;</a>
                     </div>
                     <!-- FIGURE PENDING: Jeff to provide CYP2R1 SNP / individual variation figure for Q3. Prior placeholder file "q3-cyp2r1-variants.png" actually shows a conventional-vs-local-generation schematic, not variant data. See docs/figure-audit.md. -->
                     <div class="question-figure question-figure-placeholder"><span class="figure-placeholder-text">Figure pending</span></div>
                 </div>
                 <!-- Q4 -->
-                <div class="question-row">
+                <div class="question-row" id="q4">
                     <div class="question-text">
                         <h3>Is the Dose the Drug?</h3>
                         <p>Most trials give pharmacologic doses to people who aren't deficient. That's not the same biology as correcting a deficiency. High-dose vitamin D activates pathways that replacement doses don't touch. The dose isn't just a number &mdash; it changes what the molecule does.</p>
+                        <a href="#arc-mechanism" class="paper-link">See papers &rarr;</a>
                     </div>
-                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q4-dose-response.png" alt="Normalized oxygen flux (Complex I, Complex II, Max Resp) in muscle: 25(OH)D at 40 ng/mL dramatically increases flux while 1,25(OH)D at 40 pg/mL does not — evidence that the pharmacologic form, not the 'active' metabolite, is the drug" style="width:100%; border-radius:6px;"></div>
+                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q4-dose-response.png" alt="Normalized oxygen flux (Complex I, Complex II, Max Resp) in muscle: 25(OH)D at 40 ng/mL dramatically increases flux while 1,25(OH)D at 40 pg/mL does not — evidence that the pharmacologic form, not the 'active' metabolite, is the drug" loading="lazy" style="width:100%; border-radius:6px;"></div>
                 </div>
                 <!-- Q5 -->
-                <div class="question-row">
+                <div class="question-row" id="q5">
                     <div class="question-text">
                         <h3>How Does High-Dose D Prevent T2 Diabetes?</h3>
                         <p>Large trials show high-dose vitamin D reduces diabetes risk in prediabetic patients. The effect is real. The mechanism is unknown. We're working to identify which metabolic pathways mediate the protective effect &mdash; and whether vitamin D redirects energy metabolism more broadly.</p>
+                        <a href="#arc-translation" class="paper-link">See papers &rarr;</a>
                     </div>
-                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q5-diabetes-prevention.png" alt="Kaplan-Meier cumulative incidence of type 2 diabetes over 5 years: vitamin D group vs placebo, showing reduced incidence with high-dose vitamin D" style="width:100%; border-radius:6px;"></div>
+                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q5-diabetes-prevention.png" alt="Kaplan-Meier cumulative incidence of type 2 diabetes over 5 years: vitamin D group vs placebo, showing reduced incidence with high-dose vitamin D" loading="lazy" style="width:100%; border-radius:6px;"></div>
                 </div>
                 <!-- Q6 -->
-                <div class="question-row">
+                <div class="question-row" id="q6">
                     <div class="question-text">
                         <h3>What Determines Calorie Allocation?</h3>
                         <p>Your body decides whether surplus calories become fat, muscle, or growth. What controls that decision? We built CYP2R1 knockout mice &mdash; animals that can't activate vitamin D. Without it, calories go to fat. With it, they go to muscle and linear growth. Vitamin D is a metabolic traffic cop.</p>
+                        <a href="#arc-mechanism" class="paper-link">See papers &rarr;</a>
                     </div>
-                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q1-causation.png" alt="Pathway diagram: high-dose vitamin D increases leptin production in fat and leptin sensitivity in the brain, redirecting calorie allocation from intake/storage toward energy expenditure" style="width:100%; border-radius:6px;"></div>
+                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q1-causation.png" alt="Pathway diagram: high-dose vitamin D increases leptin production in fat and leptin sensitivity in the brain, redirecting calorie allocation from intake/storage toward energy expenditure" loading="lazy" style="width:100%; border-radius:6px;"></div>
                 </div>
                 <!-- Q7 -->
-                <div class="question-row">
+                <div class="question-row" id="q7">
                     <div class="question-text">
                         <h3>The Missing Biomarker</h3>
                         <p>PTH tells us when vitamin D is adequate for bones. Nothing tells us when it's adequate for metabolism. Every clinical trial in the field is limited by this gap. We're searching for a blood marker that tracks vitamin D's non-calcium effects. Finding one would change how we dose, monitor, and study vitamin D.</p>
+                        <a href="#arc-translation" class="paper-link">See papers &rarr;</a>
                     </div>
                     <!-- FIGURE PENDING: Jeff to provide biomarker figure for Q7. Prior placeholder file "q7-biomarker.png" actually shows multi-cell OxPhos data (mechanism) — belongs to Q4 content, not a biomarker concept. See docs/figure-audit.md. -->
                     <div class="question-figure question-figure-placeholder"><span class="figure-placeholder-text">Figure pending</span></div>
@@ -634,10 +721,10 @@
     <!-- Life in the Lab (photo strip between Questions and Team) -->
     <section id="lab-life" class="lab-strip">
         <div class="lab-strip-grid">
-            <div class="lab-strip-item"><img src="photos/benchwork.jpg" alt="Lab bench work: sample handling in a biosafety cabinet"></div>
-            <div class="lab-strip-item"><img src="photos/pipette.jpg" alt="Dr. Roizen pipetting at the bench"></div>
-            <div class="lab-strip-item lab-strip-item-wide"><img src="photos/talkingWide.jpg" alt="Lab discussion over data at the bench"></div>
-            <div class="lab-strip-item"><img src="photos/dryIce.jpg" alt="Sample preparation on dry ice with face shield"></div>
+            <div class="lab-strip-item"><img src="photos/benchwork.jpg" alt="Lab bench work: sample handling in a biosafety cabinet" loading="lazy"></div>
+            <div class="lab-strip-item"><img src="photos/pipette.jpg" alt="Dr. Roizen pipetting at the bench" loading="lazy"></div>
+            <div class="lab-strip-item lab-strip-item-wide"><img src="photos/talkingWide.jpg" alt="Lab discussion over data at the bench" loading="lazy"></div>
+            <div class="lab-strip-item"><img src="photos/dryIce.jpg" alt="Sample preparation on dry ice with face shield" loading="lazy"></div>
         </div>
     </section>
 
@@ -655,6 +742,8 @@
                     <h3>Jeffrey D. Roizen, MD, PhD<br>Assistant Professor of Pediatrics</h3>
                     <p class="team-role">Principal Investigator</p>
                     <p style="font-size:0.85rem; color:var(--text-light); margin-top:10px;">University of Pennsylvania<br>Children's Hospital of Philadelphia</p>
+                    <!-- Funding signal: factual, verifiable. Jeff can edit grant ID or framing. -->
+                    <p style="font-size:0.78rem; color:var(--accent-dark); font-weight:600; margin-top:8px; letter-spacing:0.3px;">NIH-funded · Division of Endocrinology &amp; Diabetes · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD" style="color:var(--accent-dark); border-bottom:1px dotted var(--accent);">27 publications</a></p>
                 </div>
                 <div class="team-card">
                     <img src="photos/1760650722715.jpg" alt="Michael Nguyen, Research Associate in the Roizen Lab" loading="lazy" class="team-photo">
@@ -779,48 +868,72 @@
                 <p class="eyebrow">Publications</p>
                 <div class="gold-line"></div>
                 <h2>Selected Papers</h2>
-                <p>Highlights from 27 publications. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD">Full list on PubMed</a></p>
+                <p>Highlights from 27 publications, organized by research arc. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD">Full list on PubMed</a></p>
             </div>
             <div class="pub-list">
-                <div class="pub-item">
-                    <p class="pub-year">2024</p>
-                    <p class="pub-title">High dose dietary vitamin D allocates surplus calories to muscle and growth instead of fat via modulation of myostatin and leptin signaling</p>
-                    <p class="pub-meta">Roizen JD, Long C, Casella A, et al. &middot; Research Square</p>
+                <!-- Arc I: Phenotype — Q1, Q2, Q3 -->
+                <div class="pub-arc" id="arc-phenotype">
+                    <div class="pub-arc-header">
+                        <span class="pub-arc-number">Arc I</span>
+                        <span class="pub-arc-title">Phenotype: What's Happening?</span>
+                        <span class="pub-arc-questions"><a href="#q1">Q1</a> · <a href="#q2">Q2</a> · <a href="#q3">Q3</a></span>
+                    </div>
+                    <div class="pub-item">
+                        <p class="pub-year">2019</p>
+                        <p class="pub-title">Obesity Decreases Hepatic 25-Hydroxylase Activity Causing Low Serum 25-Hydroxyvitamin D <span class="pub-q-tag">Q1 Q2</span></p>
+                        <p class="pub-meta">Roizen JD, Long C, Casella A, Levine MA &middot; J Bone Miner Res</p>
+                    </div>
+                    <div class="pub-item">
+                        <p class="pub-year">2020</p>
+                        <p class="pub-title">Differential Frequency of CYP2R1 Variants Across Populations Reveals Pathway Selection for Vitamin D Homeostasis <span class="pub-q-tag">Q3</span></p>
+                        <p class="pub-meta">J Clin Endocrinol Metab</p>
+                    </div>
+                    <div class="pub-item">
+                        <p class="pub-year">2018</p>
+                        <p class="pub-title">CYP3A4 mutation causes vitamin D-dependent rickets type 3 <span class="pub-q-tag">Q3</span></p>
+                        <p class="pub-meta">Roizen JD, Li D, O'Lear L, Levine MA, et al. &middot; J Clin Invest</p>
+                    </div>
+                    <div class="pub-item">
+                        <p class="pub-year">2018</p>
+                        <p class="pub-title">Transethnic Evaluation Identifies Low-Frequency Loci Associated With 25-Hydroxyvitamin D Concentrations <span class="pub-q-tag">Q3</span></p>
+                        <p class="pub-meta">J Clin Endocrinol Metab</p>
+                    </div>
                 </div>
-                <div class="pub-item">
-                    <p class="pub-year">2024</p>
-                    <p class="pub-title">Dietary vitamin D is a novel modulator of tumor engraftment through regulation of GC protein abundance</p>
-                    <p class="pub-meta">Research Square</p>
+                <!-- Arc II: Mechanism — Q4, Q6 -->
+                <div class="pub-arc" id="arc-mechanism">
+                    <div class="pub-arc-header">
+                        <span class="pub-arc-number">Arc II</span>
+                        <span class="pub-arc-title">Mechanism: How Does It Work?</span>
+                        <span class="pub-arc-questions"><a href="#q4">Q4</a> · <a href="#q6">Q6</a></span>
+                    </div>
+                    <div class="pub-item">
+                        <p class="pub-year">2024</p>
+                        <p class="pub-title">High dose dietary vitamin D allocates surplus calories to muscle and growth instead of fat via modulation of myostatin and leptin signaling <span class="pub-q-tag">Q4 Q6</span></p>
+                        <p class="pub-meta">Roizen JD, Long C, Casella A, et al. &middot; Research Square</p>
+                    </div>
+                    <div class="pub-item">
+                        <p class="pub-year">2024</p>
+                        <p class="pub-title">Dietary vitamin D is a novel modulator of tumor engraftment through regulation of GC protein abundance <span class="pub-q-tag">Q4</span></p>
+                        <p class="pub-meta">Research Square</p>
+                    </div>
+                    <div class="pub-item">
+                        <p class="pub-year">2020</p>
+                        <p class="pub-title">Vitamin D Therapy and the Era of Precision Medicine <span class="pub-q-tag">Q4</span></p>
+                        <p class="pub-meta">J Clin Endocrinol Metab</p>
+                    </div>
                 </div>
-                <div class="pub-item">
-                    <p class="pub-year">2023</p>
-                    <p class="pub-title">A Pilot Randomized Clinical Trial of Intranasal Oxytocin to Promote Weight Loss in Individuals With Hypothalamic Obesity</p>
-                    <p class="pub-meta">J Endocr Soc</p>
-                </div>
-                <div class="pub-item">
-                    <p class="pub-year">2020</p>
-                    <p class="pub-title">Vitamin D Therapy and the Era of Precision Medicine</p>
-                    <p class="pub-meta">J Clin Endocrinol Metab</p>
-                </div>
-                <div class="pub-item">
-                    <p class="pub-year">2020</p>
-                    <p class="pub-title">Differential Frequency of CYP2R1 Variants Across Populations Reveals Pathway Selection for Vitamin D Homeostasis</p>
-                    <p class="pub-meta">J Clin Endocrinol Metab</p>
-                </div>
-                <div class="pub-item">
-                    <p class="pub-year">2019</p>
-                    <p class="pub-title">Obesity Decreases Hepatic 25-Hydroxylase Activity Causing Low Serum 25-Hydroxyvitamin D</p>
-                    <p class="pub-meta">Roizen JD, Long C, Casella A, Levine MA &middot; J Bone Miner Res</p>
-                </div>
-                <div class="pub-item">
-                    <p class="pub-year">2018</p>
-                    <p class="pub-title">CYP3A4 mutation causes vitamin D-dependent rickets type 3</p>
-                    <p class="pub-meta">Roizen JD, Li D, O'Lear L, Levine MA, et al. &middot; J Clin Invest</p>
-                </div>
-                <div class="pub-item">
-                    <p class="pub-year">2018</p>
-                    <p class="pub-title">Transethnic Evaluation Identifies Low-Frequency Loci Associated With 25-Hydroxyvitamin D Concentrations</p>
-                    <p class="pub-meta">J Clin Endocrinol Metab</p>
+                <!-- Arc III: Translation — Q5, Q7 -->
+                <div class="pub-arc" id="arc-translation">
+                    <div class="pub-arc-header">
+                        <span class="pub-arc-number">Arc III</span>
+                        <span class="pub-arc-title">Translation: What Do We Do About It?</span>
+                        <span class="pub-arc-questions"><a href="#q5">Q5</a> · <a href="#q7">Q7</a></span>
+                    </div>
+                    <div class="pub-item">
+                        <p class="pub-year">2023</p>
+                        <p class="pub-title">A Pilot Randomized Clinical Trial of Intranasal Oxytocin to Promote Weight Loss in Individuals With Hypothalamic Obesity <span class="pub-q-tag">Q5</span></p>
+                        <p class="pub-meta">J Endocr Soc</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1029,17 +1142,20 @@
             const expanded = navLinks.classList.toggle('active');
             navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         });
-        navLinks.querySelectorAll('a').forEach(l =>
-            l.addEventListener('click', () => {
+        navLinks.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
                 navLinks.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
-            })
-        );
+            }
+        });
         document.querySelectorAll('a[href^="#"]').forEach(a =>
             a.addEventListener('click', function(e) {
                 e.preventDefault();
                 const t = document.querySelector(this.getAttribute('href'));
-                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (t) {
+                    t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (t.hasAttribute('tabindex') || t.tabIndex >= 0) t.focus({ preventScroll: true });
+                }
             })
         );
         var themes = ['warm-slate', 'purple-gold'];
