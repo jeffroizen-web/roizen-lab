@@ -1,0 +1,63 @@
+{
+  "skills": [
+    {
+      "id": "ace_scout.extract_figures",
+      "name": "PowerPoint Figure Extractor",
+      "description": "Extracts images from PowerPoint presentations with slide context metadata and saves as PNGs with a manifest.",
+      "owner": "Ace Scout",
+      "category": "automation",
+      "tags": ["powerpoint", "figures", "extraction", "images", "academic", "pptx", "slides", "png", "export", "manifest", "presentation", "diagram"],
+      "version": "1.0.0",
+      "changelog": [{"version": "1.0.0", "date": "2026-03-09", "note": "Initial registration"}],
+      "invocation": {
+        "type": "cli",
+        "file": "scripts/extract_figures.py",
+        "function": "main",
+        "cli": "python3 scripts/extract_figures.py <pptx_path> [output_dir]",
+        "working_dir": "~/Desktop/Claude Apps/Roizen Lab"
+      },
+      "inputs": [
+        {"name": "pptx_path", "type": "str", "required": true, "description": "Path to .pptx file"},
+        {"name": "output_dir", "type": "str", "required": false, "description": "Output directory for extracted images"}
+      ],
+      "outputs": {"type": "str", "description": "Extracted PNGs with manifest.json per presentation"},
+      "dependencies": {
+        "python_packages": ["python-pptx", "Pillow"],
+        "data_files": [],
+        "external_apis": [],
+        "venv": ""
+      },
+      "permissions": {"network": false, "filesystem_write": true, "requires_credentials": false},
+      "status": "active",
+      "added": "2026-03-09"
+    },
+    {
+      "id": "ace_scout.remap_composites",
+      "name": "Microscopy Composite Remapper",
+      "description": "Remaps fluorescence microscopy composites from original dye colors to purple/gold theme palette using channel-based and ratio-based separation.",
+      "owner": "Ace Scout",
+      "category": "automation",
+      "tags": ["microscopy", "fluorescence", "image-processing", "theme", "academic", "recolor", "channel", "purple-gold", "composite", "dapi", "tint", "palette"],
+      "version": "1.0.0",
+      "changelog": [{"version": "1.0.0", "date": "2026-03-09", "note": "Initial registration"}],
+      "invocation": {
+        "type": "cli",
+        "file": "scripts/remap_composites.py",
+        "function": "main",
+        "cli": "python3 scripts/remap_composites.py",
+        "working_dir": "~/Desktop/Claude Apps/Roizen Lab"
+      },
+      "inputs": [],
+      "outputs": {"type": "str", "description": "Purple-gold tinted microscopy composite PNGs"},
+      "dependencies": {
+        "python_packages": ["numpy", "Pillow", "scipy"],
+        "data_files": ["hero-microscopy-composite-1-brain-pvn.png", "hero-microscopy-composite-2-vdr-c2c12.png", "hero-microscopy-composite-3-3t3l1-differentiation.png"],
+        "external_apis": [],
+        "venv": ""
+      },
+      "permissions": {"network": false, "filesystem_write": true, "requires_credentials": false},
+      "status": "active",
+      "added": "2026-03-09"
+    }
+  ]
+}

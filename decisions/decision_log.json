@@ -1,0 +1,23 @@
+{
+  "decisions": [
+    {
+      "id": "0707f96f",
+      "timestamp": "2026-04-20T23:44:26",
+      "project": "Ace Scout",
+      "decision": "Added PI funding signal line: 'NIH-funded \u00b7 Division of Endocrinology & Diabetes \u00b7 27 publications' under PI team card",
+      "rationale": "Tenure committee and grant reviewers need a productivity signal visible in <10 seconds. Used factual, verifiable info only (NIH funding is stated on the site, pub count matches existing '27 publications' text, division is public). Jeff can edit grant ID or framing \u2014 this is a strong default, not a final version.",
+      "context": null,
+      "autonomous": true,
+      "category": "content",
+      "reversible": true,
+      "confidence": "high",
+      "review_after_days": 14,
+      "review_due": "2026-05-04",
+      "expected_outcome": null,
+      "outcome": null,
+      "outcome_date": null,
+      "reviewed": false,
+      "tags": []
+    }
+  ]
+}

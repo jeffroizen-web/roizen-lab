@@ -1,0 +1,138 @@
+{
+  "source_file": "lilly 10172025 v2.pptx",
+  "total_slides": 9,
+  "total_images_extracted": 13,
+  "small_images_skipped": 0,
+  "images": [
+    {
+      "filename": "slide01_img1.png",
+      "slide_number": 1,
+      "image_index_on_slide": 1,
+      "width": 509,
+      "height": 507,
+      "original_content_type": "image/jpeg",
+      "slide_title": "Collaborative team",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide01_img2.png",
+      "slide_number": 1,
+      "image_index_on_slide": 2,
+      "width": 240,
+      "height": 320,
+      "original_content_type": "image/jpeg",
+      "slide_title": "Collaborative team",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide01_img3.png",
+      "slide_number": 1,
+      "image_index_on_slide": 3,
+      "width": 1097,
+      "height": 1463,
+      "original_content_type": "image/jpeg",
+      "slide_title": "Collaborative team",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide01_img4.png",
+      "slide_number": 1,
+      "image_index_on_slide": 4,
+      "width": 2048,
+      "height": 339,
+      "original_content_type": "image/jpeg",
+      "slide_title": "Collaborative team",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide02_img1.png",
+      "slide_number": 2,
+      "image_index_on_slide": 1,
+      "width": 821,
+      "height": 406,
+      "original_content_type": "image/png",
+      "slide_title": "Quietly Increasing Prevalence of T1DM",
+      "slide_text": "Hamman, RF et al. Estimates of the Burden of Diabetes in United States Youth in 2009. ADA Poster 1369P 2012."
+    },
+    {
+      "filename": "slide03_img1.png",
+      "slide_number": 3,
+      "image_index_on_slide": 1,
+      "width": 2983,
+      "height": 1886,
+      "original_content_type": "image/png",
+      "slide_title": "This increase in incidence is being driven by T1DM in those with low risk HLA alleles",
+      "slide_text": "Fourlanos S, Varney MD, Tait BD, Morahan G, Honeyman MC, Colman PG, et al. The Rising Incidence of Type 1 Diabetes Is Accounted for by Cases With Lower-Risk Human Leukocyte Antigen Genotypes. Diabetes"
+    },
+    {
+      "filename": "slide04_img1.png",
+      "slide_number": 4,
+      "image_index_on_slide": 1,
+      "width": 2089,
+      "height": 1887,
+      "original_content_type": "image/png",
+      "slide_title": "ROC of combined GRS and PRS is excellent",
+      "slide_text": "Qu HQ, Qu J, Bradfield J, Glessner J, Chang X, March M, Mentch FD, Roizen JD, Connolly JJ, Sleiman P, Hakonarson H. Combined application of genetic and polygenic risk scores for type 1 diabetes risk p"
+    },
+    {
+      "filename": "slide04_img2.png",
+      "slide_number": 4,
+      "image_index_on_slide": 2,
+      "width": 1972,
+      "height": 904,
+      "original_content_type": "image/png",
+      "slide_title": "ROC of combined GRS and PRS is excellent",
+      "slide_text": "Qu HQ, Qu J, Bradfield J, Glessner J, Chang X, March M, Mentch FD, Roizen JD, Connolly JJ, Sleiman P, Hakonarson H. Combined application of genetic and polygenic risk scores for type 1 diabetes risk p"
+    },
+    {
+      "filename": "slide05_img1.png",
+      "slide_number": 5,
+      "image_index_on_slide": 1,
+      "width": 1050,
+      "height": 483,
+      "original_content_type": "image/png",
+      "slide_title": "eMERGE",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide06_img1.png",
+      "slide_number": 6,
+      "image_index_on_slide": 1,
+      "width": 509,
+      "height": 507,
+      "original_content_type": "image/jpeg",
+      "slide_title": "eMERGE as a demonstration of principle",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide06_img2.png",
+      "slide_number": 6,
+      "image_index_on_slide": 2,
+      "width": 240,
+      "height": 320,
+      "original_content_type": "image/jpeg",
+      "slide_title": "eMERGE as a demonstration of principle",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide06_img3.png",
+      "slide_number": 6,
+      "image_index_on_slide": 3,
+      "width": 2048,
+      "height": 339,
+      "original_content_type": "image/jpeg",
+      "slide_title": "eMERGE as a demonstration of principle",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide08_img1.png",
+      "slide_number": 8,
+      "image_index_on_slide": 1,
+      "width": 1281,
+      "height": 733,
+      "original_content_type": "image/png",
+      "slide_title": "New T1D Staging -> Opportunity!",
+      "slide_text": ""
+    }
+  ]
+}

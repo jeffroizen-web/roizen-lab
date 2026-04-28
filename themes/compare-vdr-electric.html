@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Comparison: VDR Hero + Electric Purple Logo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; color: #fff; font-family: Inter, system-ui, sans-serif; }
+
+  h1 { text-align: center; padding: 30px 0 10px; font-size: 1.4rem; font-weight: 300; letter-spacing: 0.05em; }
+  .subtitle { text-align: center; color: #888; font-size: 0.85rem; margin-bottom: 30px; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; padding: 0 20px 40px; }
+
+  .card { border-radius: 12px; overflow: hidden; }
+  .card-label {
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .hero-section {
+    position: relative;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    overflow: hidden;
+  }
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('hero-microscopy-composite-2-vdr-c2c12.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .hero-content { position: relative; z-index: 2; }
+
+  .logo { width: 320px; margin-bottom: 24px; }
+
+  .hero-text {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 500px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  .accent-bar {
+    height: 4px;
+    width: 60px;
+    margin: 16px auto;
+  }
+
+  .body-preview {
+    padding: 30px;
+    min-height: 200px;
+  }
+  .body-preview h2 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+  .body-preview p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  /* --- Theme: Warm Slate --- */
+  .warm-slate .card-label { background: #1A1A2E; color: #C8963E; }
+  .warm-slate .hero-section::after { background: linear-gradient(135deg, rgba(26,26,46,0.82), rgba(26,26,46,0.65)); }
+  .warm-slate .hero-text { color: #FAFAF8; }
+  .warm-slate .accent-bar { background: #C8963E; }
+  .warm-slate .body-preview { background: #FAFAF8; color: #1A1A2E; }
+  .warm-slate .body-preview h2 { font-family: 'Playfair Display', Georgia, serif; color: #1A1A2E; }
+  .warm-slate .body-preview p { color: #333; }
+
+  /* --- Theme: Purple Gold --- */
+  .purple-gold .card-label { background: #3B1F6E; color: #C5A336; }
+  .purple-gold .hero-section::after { background: linear-gradient(135deg, rgba(59,31,110,0.82), rgba(59,31,110,0.6)); }
+  .purple-gold .hero-text { color: #F5F0E8; }
+  .purple-gold .accent-bar { background: #C5A336; }
+  .purple-gold .body-preview { background: #F5F0E8; color: #2A1650; }
+  .purple-gold .body-preview h2 { font-family: 'Merriweather', Georgia, serif; color: #3B1F6E; }
+  .purple-gold .body-preview p { color: #444; }
+
+  /* --- Theme: Trust Blue --- */
+  .trust-blue .card-label { background: #1B4F72; color: #E67E22; }
+  .trust-blue .hero-section::after { background: linear-gradient(135deg, rgba(27,79,114,0.82), rgba(27,79,114,0.6)); }
+  .trust-blue .hero-text { color: #F8F9FA; }
+  .trust-blue .accent-bar { background: #E67E22; }
+  .trust-blue .body-preview { background: #F8F9FA; color: #1B4F72; }
+  .trust-blue .body-preview h2 { font-family: 'PT Serif', Georgia, serif; color: #1B4F72; }
+  .trust-blue .body-preview p { color: #444; }
+
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Merriweather:wght@400;700&family=PT+Serif:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+</style>
+</head>
+<body>
+
+<h1>VDR C2C12 Hero + Electric Purple Logo</h1>
+<p class="subtitle">All three themes &mdash; same hero image, same logo color</p>
+
+<div class="grid">
+
+  <!-- Warm Slate -->
+  <div class="card warm-slate">
+    <div class="card-label">Warm Slate</div>
+    <div class="hero-section">
+      <div class="hero-content">
+        <img src="jeff-logo-2-dark-purple-electric.svg" class="logo" alt="Roizen Lab">
+        <div class="accent-bar"></div>
+        <p class="hero-text">Vitamin D is one of the most recommended therapies in medicine &mdash; and one of the least understood. We are changing that.</p>
+      </div>
+    </div>
+    <div class="body-preview">
+      <h2>Big Questions We Ask</h2>
+      <p>How does Vitamin D regulate energy balance, and is this how excess calories get diverted from fat to muscle? Why do obesity and low vitamin D so often co-exist?</p>
+    </div>
+  </div>
+
+  <!-- Purple Gold -->
+  <div class="card purple-gold">
+    <div class="card-label">Purple Gold</div>
+    <div class="hero-section">
+      <div class="hero-content">
+        <img src="jeff-logo-2-dark-purple-electric.svg" class="logo" alt="Roizen Lab">
+        <div class="accent-bar"></div>
+        <p class="hero-text">Vitamin D is one of the most recommended therapies in medicine &mdash; and one of the least understood. We are changing that.</p>
+      </div>
+    </div>
+    <div class="body-preview">
+      <h2>Big Questions We Ask</h2>
+      <p>How does Vitamin D regulate energy balance, and is this how excess calories get diverted from fat to muscle? Why do obesity and low vitamin D so often co-exist?</p>
+    </div>
+  </div>
+
+  <!-- Trust Blue -->
+  <div class="card trust-blue">
+    <div class="card-label">Trust Blue</div>
+    <div class="hero-section">
+      <div class="hero-content">
+        <img src="jeff-logo-2-dark-purple-electric.svg" class="logo" alt="Roizen Lab">
+        <div class="accent-bar"></div>
+        <p class="hero-text">Vitamin D is one of the most recommended therapies in medicine &mdash; and one of the least understood. We are changing that.</p>
+      </div>
+    </div>
+    <div class="body-preview">
+      <h2>Big Questions We Ask</h2>
+      <p>How does Vitamin D regulate energy balance, and is this how excess calories get diverted from fat to muscle? Why do obesity and low vitamin D so often co-exist?</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -109,7 +109,7 @@
             --footer-bg: #1A1A2E;
         }
 
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 
         body {
             font-family: var(--body-font);
@@ -127,7 +127,7 @@
 
         /* === Nav === */
         .navbar {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
+            position: fixed; top: 40px; width: 100%; z-index: 1000;
             background: var(--nav-bg);
             box-shadow: 0 1px 6px rgba(0,0,0,0.08);
         }
@@ -167,9 +167,23 @@
         /* === Hero === */
         .hero {
             min-height: 90vh; display: flex; align-items: center;
-            background: var(--hero-bg); padding: 140px 24px 80px;
+            background: var(--hero-bg); padding: 180px 24px 80px;
             position: relative; overflow: hidden;
         }
+        [data-theme="warm-slate"] .hero {
+            background: url('hero-microscopy-composite-2-vdr-c2c12.png') center/cover no-repeat;
+        }
+        [data-theme="warm-slate"] .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(26,26,46,0.85), rgba(26,26,46,0.7));
+            z-index: 0;
+        }
+        [data-theme="warm-slate"] .hero-inner { position: relative; z-index: 1; }
+        [data-theme="warm-slate"] .hero h1 { color: #FAFAF8; }
+        [data-theme="warm-slate"] .hero-subtitle { color: rgba(250,250,248,0.9); }
+        [data-theme="warm-slate"] .hero-affiliations { color: rgba(250,250,248,0.65); }
+        [data-theme="warm-slate"] .hero-badge { background: rgba(200,150,62,0.2); color: #C8963E; }
+        [data-theme="warm-slate"] .hero-photos { display: none; }
         [data-theme="purple-gold"] .hero::after {
             content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
             background: var(--white); clip-path: ellipse(55% 100% at 50% 100%);
@@ -289,6 +303,18 @@
         .team-card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 4px; }
         .team-role { font-weight: 600; color: var(--accent); font-size: 0.88rem; }
 
+        /* === News === */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; max-width: 900px; margin: 0 auto; }
+        .news-card {
+            background: var(--white); border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 8px; padding: 28px; transition: all 0.2s; position: relative;
+        }
+        .news-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); transform: translateY(-2px); }
+        .news-date { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 8px; }
+        .news-card h3 { font-size: 1.05rem; color: var(--primary); margin-bottom: 8px; line-height: 1.5; }
+        .news-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+        .news-card a { color: var(--accent); font-size: 0.85rem; font-weight: 600; }
+
         /* === Alumni === */
         .alumni-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
         .alumni-card {
@@ -300,7 +326,7 @@
         .alumni-years { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
         .alumni-current { font-size: 0.9rem; color: var(--text-light); }
 
-        /* === Merch === */
+        /* === Gear === */
         .merch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .merch-card {
             background: var(--white); border: 1px solid rgba(0,0,0,0.06);
@@ -368,20 +394,54 @@
             .photo-strip img { height: 200px; }
             .section { padding: 70px 0; }
         }
+        /* === Institutional Bar (above nav) === */
+        .institution-bar {
+            position: fixed; top: 0; width: 100%; z-index: 1001;
+            background: #FAFAF8;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            padding: 6px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            height: 40px;
+        }
+        .institution-bar img {
+            height: 24px;
+            width: auto;
+            opacity: 0.75;
+            transition: opacity 0.2s;
+        }
+        .institution-bar img:hover { opacity: 1; }
+        .institution-bar .divider {
+            width: 1px;
+            height: 20px;
+            background: rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
+    <!-- Institutional Affiliations Bar -->
+    <div class="institution-bar">
+        <img src="penn-med.png" alt="University of Pennsylvania">
+        <span class="divider"></span>
+        <img src="chop-header.png" alt="Children's Hospital of Philadelphia">
+        <span class="divider"></span>
+        <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjguMzIgNzYuMjEiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMDA1NTg3O30uY2xzLTJ7ZmlsbDojNDJiNGUzO30uY2xzLTN7ZmlsbDojMDA1NTg2O308L3N0eWxlPjwvZGVmcz48dGl0bGU+Q0hPUF9IT1JJWl9CTFVFX0hFQURFUjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjI4LjQ2LDQzLjY3YTEuODEsMS44MSwwLDAsMS0xLjg3LTEuN3YtLjU0YTEuODcsMS44NywwLDAsMSwzLjcyLDAsNC44Niw0Ljg2LDAsMCwxLDAsLjU0QTEuOCwxLjgsMCwwLDEsMjI4LjQ2LDQzLjY3Wm0xLjQ3LTIuMjdhMS40OCwxLjQ4LDAsMCwwLTMsMCwzLDMsMCwwLDAsMCwuNiwxLjQ4LDEuNDgsMCwwLDAsMywwQTMsMywwLDAsMCwyMjkuOTMsNDEuNFptLTEuNDUuNjFhLjEzLjEzLDAsMCwwLS4xNC0uMDdoLS4yOXYuNTlhLjE5LjE5LDAsMCwxLS4zOCwwVjQwLjkxYS4yMy4yMywwLDAsMSwuMjYtLjI0aC42NWEuNjYuNjYsMCwwLDEsLjc0LjYzLjU2LjU2LDAsMCwxLS40Ni41N2wuNDguNTVhLjE4LjE4LDAsMCwxLDAsLjEyYzAsLjEtLjA4LjE3LS4yMS4xN2EuMTkuMTksMCwwLDEtLjEzLS4wN1ptLjA1LS4zOWMuMjksMCwuMzktLjEzLjM5LS4zMXMtLjExLS4zMi0uMzctLjMyaC0uNXYuNjNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik03Nyw3Mi43NXYzLjFhMS4yMywxLjIzLDAsMCwxLTEuMTgsMS4yMywxLjI0LDEuMjQsMCwwLDEtMS4xOS0xLjIzVjY2LjNhMS40NywxLjQ3LDAsMCwxLDEuNTgtMS41NGgzLjU1YTQsNCwwLDAsMSw0LjIyLDQsMy40NiwzLjQ2LDAsMCwxLTIuMjUsMy41OGwyLjI0LDIuNjlhMS4yMywxLjIzLDAsMCwxLS4wNiwxLjY2LDEuMiwxLjIsMCwwLDEtMS43MSwwTDc5LjQxLDczLjNhMS4wOCwxLjA4LDAsMCwwLTEtLjU1Wm0yLjUxLTIuMTljMS41NSwwLDIuMDgtLjY3LDIuMDgtMS43M3MtLjY0LTEuNzUtMi0xLjc1SDc3djMuNDhaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik05NC4yOSw2NC43NmExLjEyLDEuMTIsMCwwLDEsMS4xNCwxLjEzQTEuMTcsMS4xNywwLDAsMSw5NC4yOSw2N0g4OS4yM3YyLjc0aDQuODVhMS4wNiwxLjA2LDAsMCwxLDEuMDgsMS4wNywxLjEyLDEuMTIsMCwwLDEtMS4wOCwxLjA5SDg5LjIzdjIuNzloNS4wOWExLjE4LDEuMTgsMCwwLDEsMS4xNSwxLjEzQTEuMTMsMS4xMywwLDAsMSw5NC4zMiw3N0g4OC41N2ExLjYzLDEuNjMsMCwwLDEtMS43MS0xLjcyVjY2LjQ2YTEuNjIsMS42MiwwLDAsMSwxLjcxLTEuN1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTEwMi4xNSw3MkM5OS4yOSw3MS4zOSw5OCw3MC4zNCw5OCw2OC4yNHMxLjg5LTMuNjUsNC40Mi0zLjY1YTYuMjMsNi4yMywwLDAsMSwzLjc4LDEsMS4xMywxLjEzLDAsMCwxLC40MS44OSwxLjE1LDEuMTUsMCwwLDEtMS4xMiwxLjE4LDIsMiwwLDAsMS0uODctLjI1LDUsNSwwLDAsMC0yLjE1LS40OGMtMS41LDAtMi4wOS42LTIuMDksMS4zM3MuNjksMS4xMSwyLjQ2LDEuNDRjMy4wNi41Nyw0LjQxLDEuNTQsNC40MSwzLjc2cy0xLjY5LDMuNzYtNC42NCwzLjc2QTYuODMsNi44MywwLDAsMSw5OC4zNCw3NmExLjQ2LDEuNDYsMCwwLDEtLjY0LTEuMDgsMS4xOSwxLjE5LDAsMCwxLDEuMi0xLjIxLDEuMzYsMS4zNiwwLDAsMSwuODguMzMsNC44OSw0Ljg5LDAsMCwwLDIuOTEuODdjMS4zMywwLDIuMTYtLjUxLDIuMTYtMS4zNlMxMDMuODgsNzIuMzMsMTAyLjE1LDcyWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTE3LjI0LDY0Ljc2YTEuMTIsMS4xMiwwLDAsMSwxLjE0LDEuMTNBMS4xOCwxLjE4LDAsMCwxLDExNy4yNCw2N2gtNS4wNnYyLjc0SDExN2ExLjA1LDEuMDUsMCwwLDEsMS4wNywxLjA3QTEuMTIsMS4xMiwwLDAsMSwxMTcsNzEuOTNoLTQuODV2Mi43OWg1LjA5YTEuMTcsMS4xNywwLDAsMSwxLjE0LDEuMTNBMS4xMywxLjEzLDAsMCwxLDExNy4yNyw3N2gtNS43NWExLjYzLDEuNjMsMCwwLDEtMS43Mi0xLjcyVjY2LjQ2YTEuNjMsMS42MywwLDAsMSwxLjcyLTEuN1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTEyOC4yNSw3My40OWgtNC44M2wtMSwyLjc5YTEuMTksMS4xOSwwLDAsMS0xLjU0LjY3LDEuMjMsMS4yMywwLDAsMS0uNjYtMS41NGwzLjI5LTkuMTRhMi40MSwyLjQxLDAsMCwxLDQuNTksMGwzLjI2LDkuMTRhMS4yMywxLjIzLDAsMCwxLS42NiwxLjUzLDEuMTgsMS4xOCwwLDAsMS0xLjU0LS42NlptLTQuMTItMi4xMWgzLjM5bC0xLjQtNC4xNGEuMzEuMzEsMCwwLDAtLjI4LS4yMy4zLjMsMCwwLDAtLjI5LjIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTM2LjA3LDcyLjc1djMuMWExLjIyLDEuMjIsMCwwLDEtMS4xNywxLjIzLDEuMjUsMS4yNSwwLDAsMS0xLjItMS4yM1Y2Ni4zYTEuNDcsMS40NywwLDAsMSwxLjU4LTEuNTRoMy41NWE0LDQsMCwwLDEsNC4yMyw0LDMuNDYsMy40NiwwLDAsMS0yLjI2LDMuNThMMTQzLDc1LjA3YTEuMjMsMS4yMywwLDAsMSwwLDEuNjYsMS4yMiwxLjIyLDAsMCwxLTEuNzIsMGwtMi43NS0zLjQzYTEuMSwxLjEsMCwwLDAtMS0uNTVabTIuNTItMi4xOWMxLjU0LDAsMi4wNy0uNjcsMi4wNy0xLjczcy0uNjQtMS43NS0yLTEuNzVoLTIuNnYzLjQ4WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTUzLjIyLDczLjM5YTEuMSwxLjEsMCwwLDEsMS0uNywxLjE4LDEuMTgsMCwwLDEsMS4xNiwxLjExLDEuNjIsMS42MiwwLDAsMS0uMTIuNjQsNC44NSw0Ljg1LDAsMCwxLTQuNTQsMi43Niw1LjE0LDUuMTQsMCwwLDEtNS4yLTQuOTIsMTguMTYsMTguMTYsMCwwLDEsMC0yLjc2LDUuMTQsNS4xNCwwLDAsMSw1LjItNC45Myw0Ljg0LDQuODQsMCwwLDEsNC41NCwyLjc1LDEuNjUsMS42NSwwLDAsMSwuMTIuNjQsMS4xNSwxLjE1LDAsMCwxLTIuMi40MiwyLjcyLDIuNzIsMCwwLDAtMi40Ni0xLjUzLDIuODYsMi44NiwwLDAsMC0yLjg0LDIuOTUsMTYuMywxNi4zLDAsMCwwLDAsMi4yMSwyLjc5LDIuNzksMCwwLDAsMi44NCwyLjg4QTIuNzIsMi43MiwwLDAsMCwxNTMuMjIsNzMuMzlaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0xNTguMDUsNjUuOWExLjIsMS4yLDAsMCwxLDEuMTktMS4yMSwxLjE4LDEuMTgsMCwwLDEsMS4xOCwxLjIxdjMuODNoNS40OVY2NS45YTEuMiwxLjIsMCwwLDEsMS4xOC0xLjIxLDEuMTksMS4xOSwwLDAsMSwxLjIsMS4yMXY5LjkzYTEuMiwxLjIsMCwwLDEtMS4yLDEuMjMsMS4yMywxLjIzLDAsMCwxLTEuMTgtMS4yM1Y3Mi4wNWgtNS40OXYzLjhhMS4xNiwxLjE2LDAsMCwxLTEuMTgsMS4yMSwxLjIyLDEuMjIsMCwwLDEtMS4xOS0xLjIxWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTc3LDY1LjlhMS4yMSwxLjIxLDAsMCwxLDEuMTktMS4yMSwxLjE4LDEuMTgsMCwwLDEsMS4xOCwxLjIxdjkuOTNhMS4xOSwxLjE5LDAsMCwxLTEuMTgsMS4yM0ExLjIyLDEuMjIsMCwwLDEsMTc3LDc1LjgzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTkwLjg3LDczLjczaDBjMC0xLjE0LS4wNS0xLjcxLS4wNS0yLjczVjY1LjlBMS4xOSwxLjE5LDAsMCwxLDE5Miw2NC42OWExLjE3LDEuMTcsMCwwLDEsMS4xNywxLjIxdjkuMzRhMS43MiwxLjcyLDAsMCwxLTEuNzEsMS44MkExLjkzLDEuOTMsMCwwLDEsMTg5Ljc2LDc2TDE4NSw2Ny44NGgwYzAsLjkyLDAsMiwwLDIuOTF2NS4xMWExLjE3LDEuMTcsMCwwLDEtMS4xNiwxLjIzLDEuMjMsMS4yMywwLDAsMS0xLjE5LTEuMjNWNjYuN2ExLjgzLDEuODMsMCwwLDEsMS44OC0yLDEuODcsMS44NywwLDAsMSwxLjcsMVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTIwMC4zNCw3MmMtMi44Ni0uNTktNC4xNi0xLjY0LTQuMTYtMy43NHMxLjg5LTMuNjUsNC40Mi0zLjY1YTYuMiw2LjIsMCwwLDEsMy43NywxLDEuMTMsMS4xMywwLDAsMSwuNDIuODksMS4xNSwxLjE1LDAsMCwxLTEuMTMsMS4xOCwxLjk0LDEuOTQsMCwwLDEtLjg2LS4yNSw1LDUsMCwwLDAtMi4xNS0uNDhjLTEuNTEsMC0yLjEuNi0yLjEsMS4zM3MuNywxLjExLDIuNDYsMS40NGMzLjA3LjU3LDQuNDIsMS41NCw0LjQyLDMuNzZzLTEuNywzLjc2LTQuNjQsMy43NkE2LjgxLDYuODEsMCwwLDEsMTk2LjUzLDc2YTEuNDYsMS40NiwwLDAsMS0uNjQtMS4wOCwxLjE4LDEuMTgsMCwwLDEsMS4xOS0xLjIxQTEuMzgsMS4zOCwwLDAsMSwxOTgsNzRhNC44OSw0Ljg5LDAsMCwwLDIuOTEuODdjMS4zMywwLDIuMTYtLjUxLDIuMTYtMS4zNlMyMDIuMDcsNzIuMzMsMjAwLjM0LDcyWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjEwLjQ1LDY3LjA4aC0yLjc3YTEuMTgsMS4xOCwwLDAsMS0xLjIxLTEuMTYsMS4xNiwxLjE2LDAsMCwxLDEuMjEtMS4xNmg3LjkyYTEuMTcsMS4xNywwLDAsMSwxLjIxLDEuMTYsMS4yLDEuMiwwLDAsMS0xLjIxLDEuMTZoLTIuNzh2OC43N2ExLjE3LDEuMTcsMCwwLDEtMS4xNiwxLjIxLDEuMjMsMS4yMywwLDAsMS0xLjIxLTEuMjFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yMTguODgsNjUuOWExLjIyLDEuMjIsMCwwLDEsMS4yLTEuMjEsMS4xOCwxLjE4LDAsMCwxLDEuMTgsMS4yMXY5LjkzYTEuMiwxLjIsMCwwLDEtMS4xOCwxLjIzLDEuMjIsMS4yMiwwLDAsMS0xLjItMS4yM1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTIyNy4zMiw2Ny4wOGgtMi43N2ExLjE5LDEuMTksMCwwLDEtMS4yMi0xLjE2LDEuMTcsMS4xNywwLDAsMSwxLjIyLTEuMTZoNy45MWExLjE2LDEuMTYsMCwwLDEsMS4yMSwxLjE2LDEuMiwxLjIsMCwwLDEtMS4yMSwxLjE2aC0yLjc3djguNzdhMS4xNywxLjE3LDAsMCwxLTEuMTYsMS4yMSwxLjIzLDEuMjMsMCwwLDEtMS4yMS0xLjIxWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjQ2LjA5LDcxLjc4YTUuMjMsNS4yMywwLDEsMS0xMC40NiwwVjY1LjlhMS4yMSwxLjIxLDAsMCwxLDEuMTktMS4yMUExLjE2LDEuMTYsMCwwLDEsMjM4LDY1Ljl2NmEyLjg3LDIuODcsMCwxLDAsNS43Miwwdi02YTEuMTksMS4xOSwwLDEsMSwyLjM3LDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNTIsNjcuMDhoLTIuNzdBMS4xOCwxLjE4LDAsMCwxLDI0OCw2NS45MmExLjE2LDEuMTYsMCwwLDEsMS4yMS0xLjE2aDcuOTJhMS4xNywxLjE3LDAsMCwxLDEuMjEsMS4xNiwxLjIsMS4yLDAsMCwxLTEuMjEsMS4xNmgtMi43OHY4Ljc3YTEuMTcsMS4xNywwLDAsMS0xLjE2LDEuMjFBMS4yMywxLjIzLDAsMCwxLDI1Miw3NS44NVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTI2Ny44Nyw2NC43NkExLjEyLDEuMTIsMCwwLDEsMjY5LDY1Ljg5LDEuMTgsMS4xOCwwLDAsMSwyNjcuODcsNjdoLTUuMDV2Mi43NGg0Ljg1YTEuMDUsMS4wNSwwLDAsMSwxLjA3LDEuMDcsMS4xMiwxLjEyLDAsMCwxLTEuMDcsMS4wOWgtNC44NXYyLjc5aDUuMDlhMS4xNywxLjE3LDAsMCwxLDEuMTQsMS4xM0ExLjEzLDEuMTMsMCwwLDEsMjY3LjkxLDc3aC01Ljc1YTEuNjMsMS42MywwLDAsMS0xLjcyLTEuNzJWNjYuNDZhMS42MywxLjYzLDAsMCwxLDEuNzItMS43WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHRleHQgeD0iLTAuNzMiIHk9Ii0wLjk4Ii8+PHRleHQgeD0iLTAuNzMiIHk9Ii0wLjk4Ii8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjkuNDgsNTAuMjVoNy4xOVYzNi4zNWE0NS4wOSw0NS4wOSwwLDAsMS03LjE5LDUuMzFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik01My41OCwxNFYyNi41YTIwLjI0LDIwLjI0LDAsMCwwLTguNjYtMS45NCwyMS4wNSwyMS4wNSwwLDAsMC04LjI1LDEuNzVWMTRIMjkuNDhWMzEuNTdsLS42My41MUExMy4yLDEzLjIsMCwxLDEsMjEuMTMsOC4xN2ExMywxMywwLDAsMSw3LjA2LDIuMDh2LThhMjAuNCwyMC40LDAsMSwwLC42NiwzOGMuMi0uMDguNDEtLjE4LjYzLS4yOWE0NS4wOSw0NS4wOSwwLDAsMCw3LjE5LTUuMzFsLjA5LS4wOEExMy4xNywxMy4xNywwLDAsMSw1My41OCwzNVY1MC4yNWg3LjE5VjE0WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTQuMTcsMjIuODVhMy4zMiwzLjMyLDAsMCwwLDAtLjg5YzAtLjY0LS4xMS0xLjI3LS4xNy0xLjkxYTYuNzksNi43OSwwLDAsMSwuNjQtNC41LDQuNzUsNC43NSwwLDAsMSwuNjktLjg1bC4wNSwwQTYuMjEsNi4yMSwwLDAsMSwxOS40OSwxM2E2LjY5LDYuNjksMCwwLDEsMi4xNC4yNywxMiwxMiwwLDAsMSwyLC43Niw1LjIyLDUuMjIsMCwwLDEsLjguNTIsMi42NywyLjY3LDAsMCwxLC42NC42NiwyLjMxLDIuMzEsMCwwLDEsLjMxLDIuMjEuOTMuOTMsMCwwLDEtLjEuMmwtLjA5LjE3YTMuNTgsMy41OCwwLDAsMCwwLS40YzAsLjEzLS4xNi4zNy0uMjkuNDJoMGExLjczLDEuNzMsMCwwLDEtLjEuMzcsMi43NCwyLjc0LDAsMCwwLS4zLjdsMCwuMTJjLjI5LDAsLjMyLS4xOC4zMi0uMDhzLS4yNC4yLS4zMy4yNEEyLjM2LDIuMzYsMCwwLDAsMjUsMjAuMjZhNC4yNyw0LjI3LDAsMCwxLC40OC40OGMuMjIuMzItLjM2LjYzLS40Ni43Ny4wOS4yMS4xNS4yNC4xOS4zNnMtLjM4LjI2LS4yOS40LjE0LjM0LDAsLjQ0Yy0uMzguMjctLjMyLjM1LS4yMS45MnMtLjIyLjgxLS42NS45LTEuNS0uMjYtMS44NSwwaDBjLS43OS42MS0xLjQyLDEuODkuNjQsNC44NS4xNi4yMy43NC45Mi4zNi45Mi0xLjU1LDAtNC4wOS0zLjMzLTcuNzItMS4xNi0uNDcuMjgsMS42LTIuNjUsMS45MS00LjE5YTIsMiwwLDAsMS0xLS40OC43LjcsMCwwLDAsLjMyLjQ0cy0uMTMsMC0uMTYsMGgtLjE3YTIsMiwwLDAsMS0xLjI0LS4zNCwxLjE4LDEuMTgsMCwwLDEtLjQxLS41NywyLjUzLDIuNTMsMCwwLDEtLjA4LS41Ny43LjcsMCwwLDEtLjI4LjM2Ljg4Ljg4LDAsMCwxLS42NC4xM0EyLjQ2LDIuNDYsMCwwLDAsMTQuMTcsMjIuODVaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik04My4zMSwyNS4yOGExLjM3LDEuMzcsMCwwLDEsMS4yOS0uODVBMS40NSwxLjQ1LDAsMCwxLDg2LDI1LjhhMS45MSwxLjkxLDAsMCwxLS4xNS43OUE2LDYsMCwwLDEsODAuMjcsMzBhNi4zNiw2LjM2LDAsMCwxLTYuNDQtNi4xLDIxLjU2LDIxLjU2LDAsMCwxLDAtMy40MSw2LjM3LDYuMzcsMCwwLDEsNi40NC02LjEyLDYsNiwwLDAsMSw1LjYyLDMuNDEsMiwyLDAsMCwxLC4xNS44LDEuNDIsMS40MiwwLDAsMS0yLjczLjUxLDMuMzYsMy4zNiwwLDAsMC0zLTEuODljLTIuMDksMC0zLjM3LDEuNTUtMy41MiwzLjY1YTE4LDE4LDAsMCwwLDAsMi43NWMuMTUsMi4xMiwxLjQzLDMuNTYsMy41MiwzLjU2QTMuMzYsMy4zNiwwLDAsMCw4My4zMSwyNS4yOFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTkxLjcxLDE5YTQuNDEsNC40MSwwLDAsMSwyLjctLjgzYzIuNzMsMCw0LjM0LDEuNjMsNC4zNCw0Ljd2NS41MWExLjQ0LDEuNDQsMCwxLDEtMi44OCwwVjIzYTEuODIsMS44MiwwLDAsMC0xLjkzLTIsMy4xNSwzLjE1LDAsMCwwLTIuMjMuOXY2LjU0YTEuNDQsMS40NCwwLDAsMS0xLjQyLDEuNDksMS40OSwxLjQ5LDAsMCwxLTEuNDYtMS40OVYxNS44MmExLjQzLDEuNDMsMCwwLDEsMS40NC0xLjQ4LDEuNDUsMS40NSwwLDAsMSwxLjQ0LDEuNDhaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xMDMuMjMsMTdhMS41NCwxLjU0LDAsMCwxLTEuNTItMS41NywxLjQ4LDEuNDgsMCwwLDEsMS41Mi0xLjUyLDEuNTIsMS41MiwwLDAsMSwxLjUzLDEuNTJBMS41NywxLjU3LDAsMCwxLDEwMy4yMywxN1ptMS40NCwyLjY2djguNzFhMS40NSwxLjQ1LDAsMCwxLTEuNDQsMS40OSwxLjQ4LDEuNDgsMCwwLDEtMS40My0xLjQ5VjE5LjY2YTEuNDIsMS40MiwwLDAsMSwxLjQzLTEuNDhBMS40NCwxLjQ0LDAsMCwxLDEwNC42NywxOS42NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTExMC43NSwxNS44NlYyOC4zN2ExLjQ0LDEuNDQsMCwwLDEtMS40NCwxLjQ5LDEuNDgsMS40OCwwLDAsMS0xLjQ0LTEuNDlWMTUuODZhMS40NSwxLjQ1LDAsMCwxLDEuNDQtMS41QTEuNDcsMS40NywwLDAsMSwxMTAuNzUsMTUuODZaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xMTguMjQsMTguMTJhNyw3LDAsMCwxLDIuNTMuNTNWMTUuODJhMS40NSwxLjQ1LDAsMCwxLDEuNDQtMS40OCwxLjQzLDEuNDMsMCwwLDEsMS40NCwxLjQ4VjI3LjU4YTEuMDUsMS4wNSwwLDAsMS0uNTIsMSw4LjI5LDguMjksMCwwLDEtNC41LDEuMzMsNC43NSw0Ljc1LDAsMCwxLTUuMDktNC40NiwyMSwyMSwwLDAsMSwwLTNBNC4zOSw0LjM5LDAsMCwxLDExOC4yNCwxOC4xMlptLjQ1LDkuMDVhMy45MSwzLjkxLDAsMCwwLDIuMDgtLjY2VjIxLjQ0YTQuODQsNC44NCwwLDAsMC0yLjI1LS41OCwxLjk0LDEuOTQsMCwwLDAtMi4xMSwyLjA0LDE4LjIsMTguMiwwLDAsMCwwLDIuMDlBMi4wNiwyLjA2LDAsMCwwLDExOC42OSwyNy4xN1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTEzMy41OSwxOS43N2ExLjM1LDEuMzUsMCwwLDEtMS4zNSwxLjM1Yy0uNSwwLTEtLjIxLTEuNjEtLjE5cy0xLjEyLjQtMS4xMiwxLjM5VjI4LjRhMS40MywxLjQzLDAsMCwxLTEuNDQsMS40NiwxLjQ1LDEuNDUsMCwwLDEtMS40NC0xLjQ2VjIxLjc5YzAtMi4yNCwxLjMxLTMuNjcsMy43OC0zLjY3YTguNDQsOC40NCwwLDAsMSwxLjg1LjE3QTEuNTMsMS41MywwLDAsMSwxMzMuNTksMTkuNzdaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xNDQuODYsMjMuNTdBMS4zMiwxLjMyLDAsMCwxLDE0My4zOCwyNWgtNS43MXYuMjFjMCwxLjM1LDEsMi4wOCwyLjQ2LDIuMDhhNi41MSw2LjUxLDAsMCwwLDIuMy0uNDdBMS4yOSwxLjI5LDAsMCwxLDE0NC4zMiwyOGExLjMzLDEuMzMsMCwwLDEtLjczLDEuMiw3LjU2LDcuNTYsMCwwLDEtMy41NC43NSw0Ljg0LDQuODQsMCwwLDEtNS4xNy00LjU1LDE5LjkyLDE5LjkyLDAsMCwxLDAtMi42OCw0LjgsNC44LDAsMCwxLDUuMDYtNC41Nyw0LjY3LDQuNjcsMCwwLDEsNC45Miw1Wm0tMy0uNTJjLjE1LDAsLjI0LS4wOC4yNC0uMjZhMiwyLDAsMCwwLTIuMTUtMi4xOCwyLjE0LDIuMTQsMCwwLDAtMi4yNywyLjQ0WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMTU3LjMxLDI4LjM3YTEuNDQsMS40NCwwLDAsMS0xLjQ0LDEuNDksMS40OCwxLjQ4LDAsMCwxLTEuNDQtMS40OVYyMi45NGExLjksMS45LDAsMCwwLTIuMDgtMiw0LjMsNC4zLDAsMCwwLTIuMS41MXY2LjkzYTEuNDQsMS40NCwwLDAsMS0xLjQ0LDEuNDksMS40OCwxLjQ4LDAsMCwxLTEuNDQtMS40OXYtOGExLjA5LDEuMDksMCwwLDEsLjUxLTEuMDUsOC4xOCw4LjE4LDAsMCwxLDQuNTUtMS4xOGMzLjIyLDAsNC44OCwxLjY5LDQuODgsNC43WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMTYyLjE0LDE2LjkzYTUuMDYsNS4wNiwwLDAsMS0uNjIsMi41OCwxLjU3LDEuNTcsMCwwLDEtMS4zNi44NiwxLjE4LDEuMTgsMCwwLDEtMS4yLTEuMTRjMC0uNjQuNTgtMSwuNTgtMi4xN1YxNS44MmExLjI2LDEuMjYsMCwwLDEsMS4yOS0xLjI3LDEuMjgsMS4yOCwwLDAsMSwxLjMxLDEuMjdaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xNzIsMjYuMTljMCwyLjQtMiwzLjczLTQuNDgsMy43M2E2LjIsNi4yLDAsMCwxLTQuMS0xLjI0LDEuMzQsMS4zNCwwLDAsMS0uMjYtMS43OSwxLjMyLDEuMzIsMCwwLDEsMS44Ny0uMjUsNC42Nyw0LjY3LDAsMCwwLDIuNTUuN2MxLjEyLDAsMS42My0uNCwxLjYzLTFzLS4zNC0uOC0xLjI0LTEtLjc2LS4xNS0xLjU5LS4zN2MtMS43Ni0uNDUtMy4xNC0xLjQzLTMuMTQtMy4yOCwwLTIuMzIsMS44Ny0zLjU4LDQuMzgtMy41OGE1Ljg4LDUuODgsMCwwLDEsMy41LDEsMS4zNCwxLjM0LDAsMCwxLC4xMywxLjkxLDEuNTIsMS41MiwwLDAsMS0xLjg3LjE3LDQuNjEsNC42MSwwLDAsMC0xLjg2LS40N2MtMS4wOCwwLTEuNTMuNDEtMS41My45MnMuMzIuNzYsMS4yOSwxbDEuNTIuMzRDMTcxLDIzLjQ0LDE3MiwyNC40OSwxNzIsMjYuMTlaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xNzkuODMsMTZhMS40OCwxLjQ4LDAsMCwxLDEuNDgtMS41LDEuNDYsMS40NiwwLDAsMSwxLjQ2LDEuNXY0Ljc1aDYuOFYxNmExLjQ4LDEuNDgsMCwwLDEsMS40Ni0xLjUsMS40NiwxLjQ2LDAsMCwxLDEuNDgsMS41djEyLjNBMS40NywxLjQ3LDAsMCwxLDE5MSwyOS44M2ExLjUxLDEuNTEsMCwwLDEtMS40Ni0xLjUyVjIzLjYzaC02Ljh2NC43YTEuNDUsMS40NSwwLDAsMS0xLjQ2LDEuNSwxLjQ5LDEuNDksMCwwLDEtMS40OC0xLjVaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0yMDAuNTgsMjkuOTJhNC44Niw0Ljg2LDAsMCwxLTUuMTUtNC4zNiwyNi4yLDI2LjIsMCwwLDEsMC0zLjA3LDUuMjEsNS4yMSwwLDAsMSwxMC4yOCwwLDIyLjE4LDIyLjE4LDAsMCwxLDAsMy4wNUE0LjgyLDQuODIsMCwwLDEsMjAwLjU4LDI5LjkyWm0yLjI4LTdhMi4xMiwyLjEyLDAsMCwwLTIuMjgtMi4wOCwyLjE2LDIuMTYsMCwwLDAtMi4yOSwyLjA4LDE1LjQzLDE1LjQzLDAsMCwwLDAsMi4xNSwyLjMsMi4zLDAsMCwwLDQuNTcsMEExOS4yNywxOS4yNywwLDAsMCwyMDIuODYsMjIuOTRaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0yMTYuOSwyNi4xOWMwLDIuNC0yLDMuNzMtNC40OSwzLjczYTYuMjIsNi4yMiwwLDAsMS00LjEtMS4yNCwxLjM2LDEuMzYsMCwwLDEtLjI2LTEuNzksMS4zMiwxLjMyLDAsMCwxLDEuODctLjI1LDQuNzMsNC43MywwLDAsMCwyLjU2LjdjMS4xMSwwLDEuNjMtLjQsMS42My0xcy0uMzUtLjgtMS4yNS0xLS43NS0uMTUtMS41OS0uMzdjLTEuNzYtLjQ1LTMuMTMtMS40My0zLjEzLTMuMjgsMC0yLjMyLDEuODctMy41OCw0LjM4LTMuNThhNS45LDUuOSwwLDAsMSwzLjUsMSwxLjM0LDEuMzQsMCwwLDEsLjEzLDEuOTEsMS41MiwxLjUyLDAsMCwxLTEuODcuMTcsNC42MSw0LjYxLDAsMCwwLTEuODctLjQ3Yy0xLjA3LDAtMS41Mi40MS0xLjUyLjkycy4zMi43NiwxLjI5LDFsMS41Mi4zNEMyMTUuODUsMjMuNDQsMjE2LjksMjQuNDksMjE2LjksMjYuMTlaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0yMjQuNTIsMjkuOTJhNS40LDUuNCwwLDAsMS0yLjQ1LS41NHYzLjJhMS40NCwxLjQ0LDAsMSwxLTIuODcsMFYyMC4yNGEuNzcuNzcsMCwwLDEsLjM2LS43Myw4LjU0LDguNTQsMCwwLDEsNC43LTEuMzksNC42OSw0LjY5LDAsMCwxLDUsNC40NiwyMC42MSwyMC42MSwwLDAsMSwwLDIuOTRBNC40NSw0LjQ1LDAsMCwxLDIyNC41MiwyOS45MlptLS4zMi05YTQuMjksNC4yOSwwLDAsMC0yLjEzLjY1djUuMDZhNC40Myw0LjQzLDAsMCwwLDIuMTcuNTgsMiwyLDAsMCwwLDIuMTktMi4wNiwxOCwxOCwwLDAsMCwwLTIuMDhBMi4wNiwyLjA2LDAsMCwwLDIyNC4yLDIwLjg4WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMjMzLjYyLDE3YTEuNTQsMS41NCwwLDAsMS0xLjUyLTEuNTcsMS40OCwxLjQ4LDAsMCwxLDEuNTItMS41MiwxLjUxLDEuNTEsMCwwLDEsMS41MiwxLjUyQTEuNTYsMS41NiwwLDAsMSwyMzMuNjIsMTdabTEuNDQsMi42NnY4LjcxYTEuNDUsMS40NSwwLDAsMS0xLjQ0LDEuNDksMS40OCwxLjQ4LDAsMCwxLTEuNDQtMS40OVYxOS42NmExLjQyLDEuNDIsMCwwLDEsMS40NC0xLjQ4QTEuNDUsMS40NSwwLDAsMSwyMzUuMDYsMTkuNjZaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0yNDIsMjkuOTJjLTIuNjYsMC0zLjg2LTEuODItMy44Ni00LjIzVjE3LjIxYTEuNDUsMS40NSwwLDAsMSwxLjQ0LTEuNSwxLjQ3LDEuNDcsMCwwLDEsMS40NCwxLjV2MS40NmgyLjY4YTEuMjcsMS4yNywwLDEsMSwwLDIuNTRIMjQxdjQuNDJjMCwxLC40NSwxLjU5LDEuMzksMS41OWE0LjkyLDQuOTIsMCwwLDAsMS4zMy0uMjQsMS4zMiwxLjMyLDAsMCwxLDEuNzgsMS4yMiwxLjM1LDEuMzUsMCwwLDEtLjksMS4yN0E2Ljg1LDYuODUsMCwwLDEsMjQyLDI5LjkyWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMjU2LjQ2LDI3LjczYTEsMSwwLDAsMS0uNTIsMSw4LjIsOC4yLDAsMCwxLTQuNTIsMS4xOGMtMy4xMiwwLTQuNTMtMS43NC00LjUzLTMuNzgsMC0xLjgyLDEuMjYtMy41LDQuNDItMy41YTksOSwwLDAsMSwyLjM4LjMzdi0uNThjMC0xLjEyLS41NC0xLjY4LTItMS42OGE3LjE1LDcuMTUsMCwwLDAtMi4wNi4zN2MtMS4yMi4zOC0yLS4yNC0yLTEuMTJhMS4zNSwxLjM1LDAsMCwxLC45NC0xLjMxLDksOSwwLDAsMSwzLjE2LS41M2MzLDAsNC43NCwxLjMzLDQuNzQsNC4zNVptLTIuNzctLjgxVjI1YTcuMTcsNy4xNywwLDAsMC0yLjE1LS4zNGMtMS4xNiwwLTEuODYuNTgtMS44NiwxLjRzLjc1LDEuNDMsMS45MywxLjQzQTMuNzIsMy43MiwwLDAsMCwyNTMuNjksMjYuOTJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0yNjIuMjgsMTUuODZWMjguMzdhMS40NCwxLjQ0LDAsMCwxLTEuNDQsMS40OSwxLjQ4LDEuNDgsMCwwLDEtMS40NC0xLjQ5VjE1Ljg2YTEuNDUsMS40NSwwLDAsMSwxLjQ0LTEuNUExLjQ3LDEuNDcsMCwwLDEsMjYyLjI4LDE1Ljg2WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNNzksNTEuMzlBNC44Niw0Ljg2LDAsMCwxLDczLjg1LDQ3YTIyLjQ3LDIyLjQ3LDAsMCwxLDAtMy4wNyw1LjIxLDUuMjEsMCwwLDEsMTAuMjgsMCwyNS44NiwyNS44NiwwLDAsMSwwLDNBNC44NCw0Ljg0LDAsMCwxLDc5LDUxLjM5Wm0yLjI3LTdBMi4xMiwyLjEyLDAsMCwwLDc5LDQyLjMzYTIuMTcsMi4xNywwLDAsMC0yLjMsMi4wOCwxOS4yNywxOS4yNywwLDAsMCwwLDIuMTVBMi4xNywyLjE3LDAsMCwwLDc5LDQ4LjY0YTIuMTMsMi4xMywwLDAsMCwyLjI3LTIuMDhBMTUuNDMsMTUuNDMsMCwwLDAsODEuMjcsNDQuNDFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik04Ny42NSwzOS41OGMwLTIuNiwxLjQ4LTQsMy44Mi00YTguODEsOC44MSwwLDAsMSwyLjE3LjI4LDEuMzYsMS4zNiwwLDAsMSwxLjExLDEuMzcsMS4yNSwxLjI1LDAsMCwxLTEuMzUsMS4yNWMtLjQ3LDAtMS0uMi0xLjY1LS4ycy0xLjIyLjQ4LTEuMjIsMS40di40NUg5M2ExLjI5LDEuMjksMCwwLDEsMS4zMSwxLjI5QTEuMjcsMS4yNywwLDAsMSw5Myw0Mi42N0g5MC41M1Y0OS44YTEuNDQsMS40NCwwLDAsMS0xLjQ0LDEuNTIsMS40NywxLjQ3LDAsMCwxLTEuNDQtMS41MlY0Mi42N2gtLjUyYTEuMjYsMS4yNiwwLDAsMS0xLjMzLTEuMjQsMS4yOCwxLjI4LDAsMCwxLDEuMzMtMS4yOWguNTJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xMDUuNiw0Ni4yOHYzLjVhMS41MiwxLjUyLDAsMCwxLTEuNDYsMS41MiwxLjU0LDEuNTQsMCwwLDEtMS40OS0xLjUyVjM4YTEuODMsMS44MywwLDAsMSwyLTEuOTFoNC4yN2E1LDUsMCwwLDEsNS4yNiw1LjExYzAsMy4yNC0yLjMsNS4xMS01LjQ1LDUuMTFabTMtMi44M2MxLjgsMCwyLjU4LS44NiwyLjU4LTIuMjZzLS44Mi0yLjI1LTIuNTEtMi4yNUgxMDUuNnY0LjUxWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMTE5LjI5LDQwLjQyYTQuNDMsNC40MywwLDAsMSwyLjctLjg0YzIuNzMsMCw0LjM0LDEuNjMsNC4zNCw0LjdWNDkuOGExLjQ0LDEuNDQsMCwxLDEtMi44OCwwVjQ0LjQzYTEuODIsMS44MiwwLDAsMC0xLjkzLTIsMy4xNiwzLjE2LDAsMCwwLTIuMjMuOTF2Ni41NGExLjQzLDEuNDMsMCwwLDEtMS40MiwxLjQ4LDEuNDgsMS40OCwwLDAsMS0xLjQ2LTEuNDhWMzcuMjlhMS40NCwxLjQ0LDAsMSwxLDIuODgsMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTEzMC44MiwzOC40N2ExLjU0LDEuNTQsMCwwLDEtMS41My0xLjU3LDEuNSwxLjUsMCwwLDEsMS41My0xLjUzLDEuNTIsMS41MiwwLDAsMSwxLjUyLDEuNTNBMS41NiwxLjU2LDAsMCwxLDEzMC44MiwzOC40N1ptMS40NCwyLjY2djguNzFhMS40NSwxLjQ1LDAsMCwxLTEuNDQsMS40OCwxLjQ4LDEuNDgsMCwwLDEtMS40NC0xLjQ4VjQxLjEzYTEuNDIsMS40MiwwLDAsMSwxLjQ0LTEuNDhBMS40NSwxLjQ1LDAsMCwxLDEzMi4yNiw0MS4xM1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTEzOC4zMywzNy4zM1Y0OS44NGExLjQzLDEuNDMsMCwwLDEtMS40NCwxLjQ4LDEuNDcsMS40NywwLDAsMS0xLjQzLTEuNDhWMzcuMzNhMS40NCwxLjQ0LDAsMSwxLDIuODcsMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTE1MC40OCw0OS4yYTEsMSwwLDAsMS0uNTIsMSw4LjI4LDguMjgsMCwwLDEtNC41MiwxLjE4Yy0zLjEyLDAtNC41My0xLjc0LTQuNTMtMy43OCwwLTEuODMsMS4yNi0zLjUsNC40Mi0zLjVhOS4zOCw5LjM4LDAsMCwxLDIuMzguMzJ2LS41OGMwLTEuMTEtLjU0LTEuNjctMi0xLjY3YTcuMTcsNy4xNywwLDAsMC0yLjA2LjM2Yy0xLjIyLjM5LTItLjIzLTItMS4xMWExLjM0LDEuMzQsMCwwLDEsLjk0LTEuMzEsOSw5LDAsMCwxLDMuMTYtLjU0YzMsMCw0Ljc0LDEuMzMsNC43NCw0LjM2Wm0tMi43Ny0uODJWNDYuNDVhNy4xNyw3LjE3LDAsMCwwLTIuMTUtLjM0Yy0xLjE1LDAtMS44Ni41OC0xLjg2LDEuMzlzLjc1LDEuNDQsMS45MywxLjQ0QTMuNjcsMy42NywwLDAsMCwxNDcuNzEsNDguMzhaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xNTcuOCwzOS41OGE3LDcsMCwwLDEsMi41My41NFYzNy4yOWExLjQ2LDEuNDYsMCwwLDEsMS40NC0xLjQ5LDEuNDQsMS40NCwwLDAsMSwxLjQ0LDEuNDlWNDkuMDVhMS4wNSwxLjA1LDAsMCwxLS41MiwxLDguMzQsOC4zNCwwLDAsMS00LjUsMS4zMyw0Ljc1LDQuNzUsMCwwLDEtNS4wOS00LjQ3LDI0LjM2LDI0LjM2LDAsMCwxLDAtM0E0LjQsNC40LDAsMCwxLDE1Ny44LDM5LjU4Wm0uNDUsOS4wNmEzLjkxLDMuOTEsMCwwLDAsMi4wOC0uNjdWNDIuOTFhNC43Miw0LjcyLDAsMCwwLTIuMjUtLjU4LDEuOTMsMS45MywwLDAsMC0yLjEsMi4wOCwxNC40MiwxNC40MiwwLDAsMCwwLDIuMDhBMi4wNiwyLjA2LDAsMCwwLDE1OC4yNSw0OC42NFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTE3Niw0NWExLjMyLDEuMzIsMCwwLDEtMS40OSwxLjQ0aC01Ljcxdi4yMmMwLDEuMzUsMSwyLjA4LDIuNDcsMi4wOGE2LjUxLDYuNTEsMCwwLDAsMi4zLS40NywxLjI5LDEuMjksMCwwLDEsMS44OSwxLjEzLDEuMzQsMS4zNCwwLDAsMS0uNzMsMS4yMSw3LjU5LDcuNTksMCwwLDEtMy41NC43NUE0Ljg2LDQuODYsMCwwLDEsMTY2LDQ2Ljg0YTI0LjA4LDI0LjA4LDAsMCwxLDAtMi42OSw0LjgyLDQuODIsMCwwLDEsNS4wNy00LjU3LDQuNjgsNC42OCwwLDAsMSw0LjkyLDVabS0zLS41MWEuMjMuMjMsMCwwLDAsLjI0LS4yNiwyLDIsMCwwLDAtMi4xNS0yLjE5LDIuMTYsMi4xNiwwLDAsMC0yLjI4LDIuNDVaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xODEuNDgsMzcuMzNWNDkuODRBMS40MywxLjQzLDAsMCwxLDE4MCw1MS4zMmExLjQ4LDEuNDgsMCwwLDEtMS40NC0xLjQ4VjM3LjMzYTEuNDUsMS40NSwwLDAsMSwxLjQ0LTEuNUExLjQ3LDEuNDcsMCwwLDEsMTgxLjQ4LDM3LjMzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMTg5Ljg1LDUxLjM5YTUuNTQsNS41NCwwLDAsMS0yLjQ1LS41NHYzLjJhMS40NCwxLjQ0LDAsMSwxLTIuODcsMFY0MS43MWEuNzYuNzYsMCwwLDEsLjM2LS43Myw4LjQ3LDguNDcsMCwwLDEsNC43LTEuNCw0LjcyLDQuNzIsMCwwLDEsNSw0LjQ3LDI0LDI0LDAsMCwxLDAsMi45NEE0LjQ2LDQuNDYsMCwwLDEsMTg5Ljg1LDUxLjM5Wm0tLjMyLTlhNC40LDQuNCwwLDAsMC0yLjEzLjY0djUuMDdhNC40Niw0LjQ2LDAsMCwwLDIuMTcuNTgsMiwyLDAsMCwwLDIuMTktMi4wNiwxOCwxOCwwLDAsMCwwLTIuMDhBMi4wNSwyLjA1LDAsMCwwLDE4OS41Myw0Mi4zNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjczIC0wLjk4KSIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTIwMC4yOCw0MC40MmE0LjQ0LDQuNDQsMCwwLDEsMi43MS0uODRjMi43MiwwLDQuMzMsMS42Myw0LjMzLDQuN1Y0OS44YTEuNDQsMS40NCwwLDEsMS0yLjg3LDBWNDQuNDNhMS44MywxLjgzLDAsMCwwLTEuOTQtMiwzLjE2LDMuMTYsMCwwLDAtMi4yMy45MXY2LjU0YTEuNDIsMS40MiwwLDAsMS0xLjQxLDEuNDgsMS40NywxLjQ3LDAsMCwxLTEuNDYtMS40OFYzNy4yOWExLjQ0LDEuNDQsMCwxLDEsMi44NywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMjExLjgxLDM4LjQ3YTEuNTQsMS41NCwwLDAsMS0xLjUyLTEuNTcsMS40OSwxLjQ5LDAsMCwxLDEuNTItMS41MywxLjUyLDEuNTIsMCwwLDEsMS41MiwxLjUzQTEuNTYsMS41NiwwLDAsMSwyMTEuODEsMzguNDdabTEuNDQsMi42NnY4LjcxYTEuNDQsMS40NCwwLDAsMS0xLjQ0LDEuNDgsMS40OCwxLjQ4LDAsMCwxLTEuNDQtMS40OFY0MS4xM2ExLjQyLDEuNDIsMCwwLDEsMS40NC0xLjQ4QTEuNDUsMS40NSwwLDAsMSwyMTMuMjUsNDEuMTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC43MyAtMC45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0yMjUuNDgsNDkuMmExLDEsMCwwLDEtLjUxLDEsOC4zMyw4LjMzLDAsMCwxLTQuNTMsMS4xOGMtMy4xMSwwLTQuNTMtMS43NC00LjUzLTMuNzgsMC0xLjgzLDEuMjctMy41LDQuNDItMy41YTkuMzIsOS4zMiwwLDAsMSwyLjM4LjMydi0uNThjMC0xLjExLS41My0xLjY3LTItMS42N2E3LjE4LDcuMTgsMCwwLDAtMi4wNy4zNmMtMS4yMi4zOS0yLS4yMy0yLTEuMTFhMS4zNCwxLjM0LDAsMCwxLC45NC0xLjMxLDksOSwwLDAsMSwzLjE2LS41NGMzLDAsNC43NCwxLjMzLDQuNzQsNC4zNlptLTIuNzctLjgyVjQ2LjQ1YTcuMTUsNy4xNSwwLDAsMC0yLjE0LS4zNGMtMS4xNiwwLTEuODcuNTgtMS44NywxLjM5cy43NSwxLjQ0LDEuOTMsMS40NEEzLjY3LDMuNjcsMCwwLDAsMjIyLjcxLDQ4LjM4WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNzMgLTAuOTgpIi8+PC9zdmc+" alt="CHOP Research Institute">
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo"><img src="jeff-logo-2.svg?v=1771693717" alt="Hypothesis Driven"></a>
+            <a href="#home" class="nav-logo"><img src="jeff-logo-2-dark-purple-electric.svg" alt="Hypothesis Driven"></a>
             <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#questions">Research</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#publications">Publications</a></li>
+                <li><a href="#news">News</a></li>
                 <li><a href="#alumni">Alumni</a></li>
-                <li><a href="#merch">Merch</a></li>
+                <li><a href="#merch">Gear</a></li>
                 <li><a href="#donate">Support</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -394,7 +454,7 @@
             <div>
                 <span class="hero-badge">UPenn &middot; CHOP</span>
                 <h1>Rethinking <em>Vitamin D</em></h1>
-                <p class="hero-subtitle">The Roizen Lab explores what vitamin D does beyond calcium &mdash; how it reshapes body composition, modulates cancer biology, and why the right dose depends on who you are.</p>
+                <p class="hero-subtitle">Vitamin D is one of the most<br>recommended therapies in medicine &mdash;<br>and one of the least understood.<br><span style="color: #D946EF; font-weight: 600;">We are changing that.</span></p>
                 <p class="hero-affiliations">University of Pennsylvania &middot; Children's Hospital of Philadelphia</p>
                 <a href="#questions" class="btn">Explore Our Questions</a>
             </div>
@@ -416,32 +476,36 @@
                 <p class="eyebrow">Research</p>
                 <div class="gold-line"></div>
                 <h2>Big Questions</h2>
-                <p>Each project in our lab is anchored by a question about vitamin D that challenges conventional thinking.</p>
+                <p>Each project in our lab is driven by a fundamental unanswered question about vitamin D with clear clinical relevance.</p>
             </div>
             <div class="questions-grid">
                 <div class="question-card">
-                    <h3>How does vitamin D redirect calories from fat to muscle?</h3>
-                    <p>We discovered that high-dose vitamin D reallocates surplus calories to muscle and linear growth instead of fat, through modulation of myostatin and leptin signaling.</p>
+                    <h3>When is low vitamin D a cause of disease vs. an effect of disease?</h3>
+                    <p>Our work on asthma, aging, and obesity reveals that low vitamin D can be both &mdash; and that untangling cause from consequence is essential to knowing when supplementation will actually help.</p>
                 </div>
                 <div class="question-card">
-                    <h3>Why do obese individuals have lower vitamin D levels?</h3>
-                    <p>Our work revealed that obesity decreases hepatic 25-hydroxylase activity, providing a mechanistic explanation for this well-documented clinical association.</p>
+                    <h3>What are the mechanisms whereby diseases lower vitamin D?</h3>
+                    <p>We discovered that obesity and aging decrease hepatic 25-hydroxylase activity, providing mechanistic explanations for why sick patients so often have low vitamin D levels.</p>
                 </div>
                 <div class="question-card">
-                    <h3>Can vitamin D modulate tumor biology?</h3>
-                    <p>We are investigating how dietary vitamin D influences tumor engraftment through regulation of vitamin D binding protein (GC protein) abundance.</p>
+                    <h3>What underlies the differences in how different individuals or groups respond to vitamin D supplementation?</h3>
+                    <p>Our work on CYP2R1 coding SNPs shows that genetic variation in vitamin D metabolism shapes who benefits from supplementation &mdash; and who doesn't.</p>
                 </div>
                 <div class="question-card">
-                    <h3>How do genetics shape individual vitamin D needs?</h3>
-                    <p>Through transethnic genomic studies, we've identified population-specific variants that influence vitamin D metabolism, pointing toward precision medicine.</p>
+                    <h3>Does high-dose vitamin D have different effects than normalizing vitamin D?</h3>
+                    <p>Most clinical trials give pharmacologic doses to people who aren't deficient. We study whether the biology of high-dose vitamin D is fundamentally different from simply correcting a deficiency.</p>
                 </div>
                 <div class="question-card">
-                    <h3>Does vitamin D status during development shape lifelong health?</h3>
-                    <p>We study how vitamin D levels in children affect growth, immune development, and susceptibility to autoimmune conditions like type 1 diabetes.</p>
+                    <h3>How does high-dose vitamin D prevent progression from prediabetes to diabetes?</h3>
+                    <p>Large trials show that high-dose vitamin D reduces diabetes risk in prediabetic patients. We are working to understand the mechanism &mdash; and whether it extends to other metabolic diseases.</p>
                 </div>
                 <div class="question-card">
-                    <h3>What is the right dose of vitamin D &mdash; and for whom?</h3>
-                    <p>We are working to move beyond one-size-fits-all supplementation toward individualized therapy based on genetics and metabolic context.</p>
+                    <h3>How are the set points for body composition determined?</h3>
+                    <p>We discovered that vitamin D reallocates surplus calories from fat to muscle and linear growth. Now we're asking: what controls the set point that decides where those calories go?</p>
+                </div>
+                <div class="question-card" style="grid-column: 1 / -1;">
+                    <h3>If PTH is the right marker for vitamin D&rsquo;s calcium effects, what is the marker for vitamin D&rsquo;s metabolic effects?</h3>
+                    <p>Parathyroid hormone tells us when vitamin D is adequate for bone health. But we have no equivalent biomarker for vitamin D's effects on metabolism, immunity, or muscle. Finding one would transform clinical practice.</p>
                 </div>
             </div>
         </div>
@@ -539,8 +603,41 @@
         </div>
     </section>
 
+    <!-- News -->
+    <section id="news" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">News</p>
+                <div class="gold-line"></div>
+                <h2>Lab News</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <p class="news-date">2024</p>
+                    <h3>New preprint: High-dose vitamin D reallocates surplus calories from fat to muscle</h3>
+                    <p>Our latest work shows that dietary vitamin D modulates myostatin and leptin signaling to redirect caloric surplus toward lean mass and linear growth.</p>
+                </div>
+                <div class="news-card">
+                    <p class="news-date">2024</p>
+                    <h3>New preprint: Vitamin D modulates tumor engraftment through GC protein</h3>
+                    <p>We show that dietary vitamin D regulates GC protein (vitamin D binding protein) abundance, with implications for tumor biology.</p>
+                </div>
+                <div class="news-card">
+                    <p class="news-date">2023</p>
+                    <h3>Alex Casella defends PhD and matches into Neurology at Johns Hopkins</h3>
+                    <p>Congratulations to Alex on completing his MD/PhD and beginning residency training at Hopkins.</p>
+                </div>
+                <div class="news-card">
+                    <p class="news-date">2020</p>
+                    <h3>"Vitamin D Therapy and the Era of Precision Medicine" published in JCEM</h3>
+                    <p>Our perspective on how genetic variation in vitamin D metabolism should reshape clinical practice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Alumni -->
-    <section id="alumni" class="section">
+    <section id="alumni" class="section section-alt">
         <div class="container">
             <div class="section-header">
                 <p class="eyebrow">Alumni</p>
@@ -598,13 +695,13 @@
         </div>
     </section>
 
-    <!-- Merch -->
+    <!-- Gear -->
     <section id="merch" class="section section-alt">
         <div class="container">
             <div class="section-header">
-                <p class="eyebrow">Merch</p>
+                <p class="eyebrow">Gear</p>
                 <div class="gold-line"></div>
-                <h2>Merch Store</h2>
+                <h2>Lab Gear</h2>
                 <p>Rep the Roizen Lab! All proceeds support our research.</p>
             </div>
             <div class="merch-grid">

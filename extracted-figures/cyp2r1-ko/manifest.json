@@ -1,0 +1,328 @@
+{
+  "source_file": "CYP2R1_conventional_conditonal_KOs.pptx",
+  "total_slides": 18,
+  "total_images_extracted": 32,
+  "small_images_skipped": 0,
+  "images": [
+    {
+      "filename": "slide01_img1.wmf",
+      "slide_number": 1,
+      "image_index_on_slide": 1,
+      "width": 775,
+      "height": 449,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO mice have significantly lower 25(OH)D2 as measure via an ex vivo activity assay",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide01_img2.wmf",
+      "slide_number": 1,
+      "image_index_on_slide": 2,
+      "width": 600,
+      "height": 378,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO mice have significantly lower 25(OH)D2 as measure via an ex vivo activity assay",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide02_img1.wmf",
+      "slide_number": 2,
+      "image_index_on_slide": 1,
+      "width": 627,
+      "height": 344,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Decreased fluorescence in the CYP2R1 LaczE2 hets correlates with decreased mRNA abundance",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide02_img2.png",
+      "slide_number": 2,
+      "image_index_on_slide": 2,
+      "width": 842,
+      "height": 482,
+      "original_content_type": "image/png",
+      "slide_title": "Decreased fluorescence in the CYP2R1 LaczE2 hets correlates with decreased mRNA abundance",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide03_img1.wmf",
+      "slide_number": 3,
+      "image_index_on_slide": 1,
+      "width": 532,
+      "height": 338,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO mice tend to have lower 25(OH)D concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide03_img2.wmf",
+      "slide_number": 3,
+      "image_index_on_slide": 2,
+      "width": 581,
+      "height": 341,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO mice tend to have lower 25(OH)D concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide04_img1.wmf",
+      "slide_number": 4,
+      "image_index_on_slide": 1,
+      "width": 684,
+      "height": 512,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO mice have significantly lower 25(OH)D concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide05_img1.wmf",
+      "slide_number": 5,
+      "image_index_on_slide": 1,
+      "width": 614,
+      "height": 540,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Albumin-cre KO mice tend to have lower 25(OH)D concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide05_img2.wmf",
+      "slide_number": 5,
+      "image_index_on_slide": 2,
+      "width": 486,
+      "height": 345,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Albumin-cre KO mice tend to have lower 25(OH)D concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide06_img1.wmf",
+      "slide_number": 6,
+      "image_index_on_slide": 1,
+      "width": 624,
+      "height": 505,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Liver specific KO mice have lower 25(OH)D concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide07_img1.wmf",
+      "slide_number": 7,
+      "image_index_on_slide": 1,
+      "width": 644,
+      "height": 517,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional and liver specific KO mice do not have different 25(OH)D concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide08_img1.wmf",
+      "slide_number": 8,
+      "image_index_on_slide": 1,
+      "width": 568,
+      "height": 339,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO and wild type mice do not have different calcium serum concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide08_img2.png",
+      "slide_number": 8,
+      "image_index_on_slide": 2,
+      "width": 54,
+      "height": 358,
+      "original_content_type": "image/png",
+      "slide_title": "Conventional KO and wild type mice do not have different calcium serum concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide08_img3.png",
+      "slide_number": 8,
+      "image_index_on_slide": 3,
+      "width": 54,
+      "height": 358,
+      "original_content_type": "image/png",
+      "slide_title": "Conventional KO and wild type mice do not have different calcium serum concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide08_img4.wmf",
+      "slide_number": 8,
+      "image_index_on_slide": 4,
+      "width": 575,
+      "height": 339,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO and wild type mice do not have different calcium serum concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide09_img1.wmf",
+      "slide_number": 9,
+      "image_index_on_slide": 1,
+      "width": 561,
+      "height": 313,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Liver KO and wild type mice do not have different calcium serum concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Liver KO"
+    },
+    {
+      "filename": "slide09_img2.wmf",
+      "slide_number": 9,
+      "image_index_on_slide": 2,
+      "width": 599,
+      "height": 314,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Liver KO and wild type mice do not have different calcium serum concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Liver KO"
+    },
+    {
+      "filename": "slide09_img3.png",
+      "slide_number": 9,
+      "image_index_on_slide": 3,
+      "width": 54,
+      "height": 358,
+      "original_content_type": "image/png",
+      "slide_title": "Liver KO and wild type mice do not have different calcium serum concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Liver KO"
+    },
+    {
+      "filename": "slide09_img4.png",
+      "slide_number": 9,
+      "image_index_on_slide": 4,
+      "width": 54,
+      "height": 358,
+      "original_content_type": "image/png",
+      "slide_title": "Liver KO and wild type mice do not have different calcium serum concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Liver KO"
+    },
+    {
+      "filename": "slide10_img1.wmf",
+      "slide_number": 10,
+      "image_index_on_slide": 1,
+      "width": 574,
+      "height": 331,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO and wild type mice do not have different phos concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide10_img2.wmf",
+      "slide_number": 10,
+      "image_index_on_slide": 2,
+      "width": 597,
+      "height": 320,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO and wild type mice do not have different phos concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide10_img3.png",
+      "slide_number": 10,
+      "image_index_on_slide": 3,
+      "width": 469,
+      "height": 401,
+      "original_content_type": "image/png",
+      "slide_title": "Conventional KO and wild type mice do not have different phos concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide10_img4.png",
+      "slide_number": 10,
+      "image_index_on_slide": 4,
+      "width": 469,
+      "height": 401,
+      "original_content_type": "image/png",
+      "slide_title": "Conventional KO and wild type mice do not have different phos concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide11_img1.wmf",
+      "slide_number": 11,
+      "image_index_on_slide": 1,
+      "width": 613,
+      "height": 338,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Liver KO and wild type mice do not have different phos concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Liver KO"
+    },
+    {
+      "filename": "slide11_img2.wmf",
+      "slide_number": 11,
+      "image_index_on_slide": 2,
+      "width": 625,
+      "height": 338,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Liver KO and wild type mice do not have different phos concentrations on a non-rescue, vitamin D deficient diet",
+      "slide_text": "Liver KO"
+    },
+    {
+      "filename": "slide12_img1.wmf",
+      "slide_number": 12,
+      "image_index_on_slide": 1,
+      "width": 706,
+      "height": 472,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Male conventional KO mice have significantly higher PTH serum concentrations on a 30 day non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide13_img1.wmf",
+      "slide_number": 13,
+      "image_index_on_slide": 1,
+      "width": 809,
+      "height": 469,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Albumin-cre KO mice have greater PTH serum concentrations on a 30 day non-rescue, vitamin D deficient diet",
+      "slide_text": "Liver KO"
+    },
+    {
+      "filename": "slide14_img1.wmf",
+      "slide_number": 14,
+      "image_index_on_slide": 1,
+      "width": 690,
+      "height": 443,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Str8i-cre KO and wild type male mice do not have significantly different PTH serum concentrations",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide15_img1.wmf",
+      "slide_number": 15,
+      "image_index_on_slide": 1,
+      "width": 735,
+      "height": 501,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO mice have significantly lower 1,25(OH)D2 concentrations on a 30 day non-rescue, vitamin D deficient diet",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide16_img1.wmf",
+      "slide_number": 16,
+      "image_index_on_slide": 1,
+      "width": 796,
+      "height": 479,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO mice have significantly less CYP2R1 mRNA compared to wild type mice",
+      "slide_text": "Conventional KO"
+    },
+    {
+      "filename": "slide17_img1.wmf",
+      "slide_number": 17,
+      "image_index_on_slide": 1,
+      "width": 752,
+      "height": 474,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Relative abundance of mRNAs in CYP2R1 LacZE2 mutant mice",
+      "slide_text": ""
+    },
+    {
+      "filename": "slide18_img1.wmf",
+      "slide_number": 18,
+      "image_index_on_slide": 1,
+      "width": 703,
+      "height": 468,
+      "original_content_type": "image/x-wmf",
+      "slide_title": "Conventional KO 25(OH)D serum concentration is dependent on housing condition",
+      "slide_text": ""
+    }
+  ]
+}
