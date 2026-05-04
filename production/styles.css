@@ -19,42 +19,41 @@
    The HTML structure does not change between themes. */
 
 :root {
-    /* -- Colors: Purple & Gold theme (Jeff's chosen theme) -- */
-    --color-primary:       #3B1F6E;
-    --color-primary-light:  #5A3D8A;
-    --color-primary-dark:   #2A1550;
-    --color-accent:        #C5A336;          /* decorative gold only — borders, hover, dividers */
-    --color-accent-dark:   #8A6B1A;          /* WCAG AA body-text gold (~5.5:1 on white) */
-    --color-accent-light:   #D4B84E;
-    --color-accent-pale:    #F0E6C8;
+    /* -- Colors -- */
+    --color-primary:       #1B4F72;
+    --color-primary-light:  #2874A6;
+    --color-primary-dark:   #143D5A;
+    --color-accent:        #E67E22;
+    --color-accent-light:   #F39C12;
+    --color-accent-pale:    #FEF0DB;
 
     --color-bg:            #FFFFFF;
-    --color-bg-alt:        #FAF9F7;
-    --color-bg-warm:       #F0EDE8;
-    --color-text:          #2C2C2C;
-    --color-text-light:    #5A5A5A;
-    --color-text-muted:    #666666;          /* WCAG AA (~5.7:1 on white) */
-    --color-border:        rgba(0, 0, 0, 0.06);
+    --color-bg-alt:        #F8F9FA;
+    --color-bg-warm:       #ECF0F1;
+    --color-text:          #2C3E50;
+    --color-text-light:    #5D6D7E;
+    --color-text-muted:    #95A5A6;
+    --color-border:        rgba(0, 0, 0, 0.08);
 
-    --color-nav-bg:        #3B1F6E;
-    --color-nav-text:      #FFFFFF;
-    --color-nav-hover:     #C5A336;
+    --color-nav-bg:        #FFFFFF;
+    --color-nav-text:      #2C3E50;
+    --color-nav-hover:     #1B4F72;
 
-    --color-hero-bg:       linear-gradient(135deg, #3B1F6E 0%, #5A3D8A 100%);
-    --color-hero-text:     #FFFFFF;
-    --color-hero-sub:      rgba(255, 255, 255, 0.9);
-    --color-hero-aff:      rgba(255, 255, 255, 0.7);
+    --color-hero-bg:       #FFFFFF;
+    --color-hero-text:     #1B4F72;
+    --color-hero-sub:      #5D6D7E;
+    --color-hero-aff:      #95A5A6;
 
-    --color-btn-bg:        #C5A336;
-    --color-btn-text:      #1A0E35;          /* dark purple on gold — better than white at small sizes */
-    --color-btn-hover:     #D4B84E;
+    --color-btn-bg:        #1B4F72;
+    --color-btn-text:      #FFFFFF;
+    --color-btn-hover:     #2874A6;
 
-    --color-donate-bg:     linear-gradient(135deg, #3B1F6E 0%, #5A3D8A 100%);
-    --color-footer-bg:     #3B1F6E;
+    --color-donate-bg:     #1B4F72;
+    --color-footer-bg:     #2C3E50;
 
-    /* -- Typography: Merriweather for headings, Open Sans for UI (Purple & Gold) -- */
-    --font-serif:          'Merriweather', Georgia, 'Times New Roman', serif;
-    --font-sans:           'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* -- Typography -- */
+    --font-serif:          'PT Serif', Georgia, 'Times New Roman', serif;
+    --font-sans:           'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
     /* -- Logo -- */
     --logo-max-height:     56px;
@@ -157,26 +156,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
+h1, h2 {
     font-family: var(--font-serif);
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+    line-height: 1.25;
 }
 
-h2 {
-    font-family: var(--font-serif);
-    font-weight: 700;
-    line-height: 1.3;
-}
-
-h3 {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    line-height: 1.45;
-}
-
-h4, h5, h6 {
+h3, h4, h5, h6 {
     font-family: var(--font-sans);
     font-weight: 600;
 }
@@ -298,7 +284,7 @@ img {
     font-family: var(--font-serif);
     font-weight: 700;
     font-size: 1.25rem;
-    color: var(--color-nav-text);
+    color: var(--color-text);
     letter-spacing: 0.02em;
 }
 
@@ -407,9 +393,8 @@ img {
 .hero-badge {
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--color-accent-pale);
     color: var(--color-accent);
-    border: 1px solid rgba(197, 163, 54, 0.5);
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 2.5px;
@@ -449,7 +434,7 @@ img {
     font-weight: 400;
     font-style: italic;
     line-height: 1.8;
-    color: var(--color-hero-sub);
+    color: var(--color-text-light);
     margin-bottom: 20px;
     max-width: 680px;
     margin-left: auto;
@@ -546,10 +531,9 @@ img {
 }
 
 .section-header h2 {
-    font-size: clamp(1.65rem, 3vw, 2.2rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
     color: var(--color-primary);
-    margin-bottom: 12px;
-    letter-spacing: -0.01em;
+    margin-bottom: 16px;
 }
 
 .section-header p {
@@ -566,7 +550,7 @@ img {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: var(--color-accent-dark, var(--color-accent));  /* WCAG AA: use dark gold on white */
+    color: var(--color-accent);
     margin-bottom: 12px;
 }
 
@@ -1520,11 +1504,10 @@ img {
         top: var(--nav-height);
         left: 0;
         right: 0;
-        background: var(--color-primary-dark);  /* darker purple for mobile dropdown */
+        background: var(--color-nav-bg);
         padding: 16px 24px 24px;
         gap: 16px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-        border-top: 1px solid rgba(197, 163, 54, 0.3);  /* subtle gold separator */
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
     .nav-links.active {
@@ -1615,62 +1598,18 @@ img {
     }
 }
 
-/* Small mobile — 480px and below */
+/* Small mobile */
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 1.8rem;
     }
 
     .section-header h2 {
-        font-size: 1.55rem;
+        font-size: 1.6rem;
     }
 
     .container {
         padding: 0 16px;
-    }
-}
-
-/* iPhone-sized — 390px and below (iPhone 14 Pro / SE range) */
-@media (max-width: 390px) {
-    .hero {
-        padding: calc(var(--nav-height) + 28px) 16px 48px;
-    }
-
-    .hero h1 {
-        font-size: 1.65rem;
-        margin-bottom: 16px;
-    }
-
-    .hero-statement {
-        font-size: 1rem;
-    }
-
-    .hero-badge {
-        font-size: 0.68rem;
-        padding: 6px 14px;
-        margin-bottom: 20px;
-    }
-
-    .hero-affiliations {
-        font-size: 0.82rem;
-        margin-bottom: 24px;
-    }
-
-    .section-header h2 {
-        font-size: 1.45rem;
-    }
-
-    .eyebrow {
-        font-size: 0.68rem;
-        letter-spacing: 2.5px;
-    }
-
-    .question-card {
-        padding: 24px 20px;
-    }
-
-    .pi-feature {
-        padding: 20px 16px;
     }
 }
 
