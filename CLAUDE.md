@@ -67,7 +67,7 @@
 - 2026-04-16 (via Kleiber): "Contact email is jeffroizen@gmail.com; text Jeff via ntfy AND send Kleiber a Telegram when someone emails through the site" → Layer 1 DONE (Formspree + ntfy); Layer 2 (Telegram to Kleiber) DEFERRED to Pilot Railway endpoint pending Jeff deploy approval.
 - 2026-04-16 (via Kleiber): "Reflect on platonic vision, tmux the answer, start 3 autonomous improvements" → reflection tmux'd; 3 improvements queued in Quick Status; paused by next instruction.
 - 2026-04-16 (via Kleiber): "/close + /compact at next natural stopping point, then resume" → DONE.
-- 2026-04-27 (via Kleiber): "Research Claude Design (claude.ai/design), identify remaining design work, prototype sections for Jeff review" → PENDING (interrupted by /close — resume next session).
+- 2026-05-14 (via Kleiber): "Pick up overnight, product-quality, no remote push without Jeff" → IN-PROGRESS.
 
 ---
 
@@ -88,6 +88,7 @@
 ---
 
 ## Session Log
+- 2026-05-14 (overnight, in progress): **Design review packet for Jeff.** Built `prototypes/design-review-2026-05-14.html` — single self-contained file with side-by-side prototypes for the 4 open creative calls: hero verb (A current Redefining / B Rethinking / C Understanding / D no-verb), Big Questions layout (rows vs Anthropic-style grid), Q reorder (current vs narrative-journalist), and 4 prose rewrites (Collaborators/Peers/Mentors/Donate). Anthropic Design system is auth-walled (claude.ai/design 403); used anthropic.com/research + claude.com/product/overview as design references. Jeff scans, picks, Ace Scout applies as one commit. Continuing with autonomous technical polish.
 - 2026-04-21 (overnight): **Contact form tests + PI card + image optimization + quality sweep.** (1) 11 Playwright integration tests for contact form (structure, honeypot, aria-live, not-configured guard, happy path, error path, network error, button re-enable, ntfy payload, mobile). All green. (2) PI funding signal added: "NIH-funded · Division of Endocrinology & Diabetes · 27 publications" with PubMed link. Strong default — Jeff can edit. (3) Image optimization: hero PNG→JPEG (1044K→304K), q4-dose-response resize (512K→200K), lab-group resize (636K→312K), Mike photo resize (236K→68K), SVG logo SVGO (452K→368K). Added `loading="lazy"` to 7 below-fold images. Total savings ~1.39MB. (4) Quality sweep: fixed base link color `var(--accent)`→`var(--accent-dark)` (WCAG fix), added `tabindex="-1"` to `<main>` for skip-link focus, added focus() after scrollIntoView in smooth-scroll handler, event delegation for nav links, aria-labels on CHOP/CHOP-RI links. Zero console errors, zero broken images/links. Tests: 11/11 green.
 - 2026-04-20: **Pub reorg + cross-links + print stylesheet.** Publications reorganized into 3 research arcs with bidirectional Q↔paper cross-links. Print stylesheet for tenure committee packets.
 - 2026-04-16 (overnight): **Contact form Layer 1 + autonomous polish.** Formspree + ntfy parallel dispatch. WCAG fixes. Q7 confirmed text-only.
