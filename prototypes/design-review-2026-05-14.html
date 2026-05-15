@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Review — 2026-05-14 — Ace Scout</title>
+<style>
+  :root {
+    --primary: #3B1F6E;
+    --accent: #C5A336;
+    --accent-dark: #8A6B1A;
+    --text: #1a1a1a;
+    --text-light: #555;
+    --text-muted: #666;
+    --bg: #fff;
+    --bg-alt: #faf8f3;
+    --border: #e5e0d5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--text);
+    background: var(--bg);
+    margin: 0;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .review-header {
+    background: var(--primary);
+    color: #fff;
+    padding: 40px 32px 32px;
+    border-bottom: 4px solid var(--accent);
+  }
+  .review-header h1 {
+    margin: 0 0 8px;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+  }
+  .review-header p {
+    margin: 0;
+    opacity: 0.85;
+    font-size: 0.95rem;
+  }
+  .toc {
+    background: var(--bg-alt);
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+  }
+  .toc strong { color: var(--primary); }
+  .toc a { color: var(--accent-dark); margin-right: 18px; text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  .container { max-width: 1280px; margin: 0 auto; padding: 48px 32px; }
+  .proto-section {
+    padding: 48px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .proto-section:nth-child(odd) { background: var(--bg-alt); }
+  .proto-header {
+    max-width: 1280px;
+    margin: 0 auto 24px;
+  }
+  .proto-eyebrow {
+    color: var(--accent-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+  }
+  .proto-header h2 {
+    color: var(--primary);
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+  }
+  .proto-header p { color: var(--text-light); margin: 0; max-width: 800px; }
+  .proto-decision {
+    background: #fff;
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 16px 0 0;
+    font-size: 0.92rem;
+    color: var(--text);
+    max-width: 800px;
+  }
+  .proto-decision strong { color: var(--primary); }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .grid-2, .grid-4 { grid-template-columns: 1fr; }
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+  }
+  .card-label {
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--primary);
+    color: #fff;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 3px;
+  }
+  .card-label.current { background: #888; }
+  .card-label.proposed { background: var(--primary); }
+
+  /* Mini-hero prototypes */
+  .mini-hero {
+    background: linear-gradient(135deg, rgba(59,31,110,0.94) 0%, rgba(59,31,110,0.75) 100%), #2a1450;
+    color: #fff;
+    padding: 36px 28px;
+    border-radius: 6px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .mini-hero .badge {
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .mini-hero h3 {
+    margin: 0 0 12px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  .mini-hero h3 em {
+    color: var(--accent);
+    font-style: italic;
+  }
+  .mini-hero .sub {
+    font-size: 0.92rem;
+    opacity: 0.92;
+    margin: 0 0 6px;
+    font-family: Georgia, serif;
+  }
+  .mini-hero .pop { color: var(--accent); font-weight: 600; }
+  .mini-hero .affil { font-size: 0.74rem; opacity: 0.7; margin: 8px 0 0; letter-spacing: 0.4px; }
+
+  /* Big Questions: grid alternative */
+  .q-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 700px) { .q-grid { grid-template-columns: 1fr; } }
+  .q-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    border-left: 3px solid var(--accent);
+  }
+  .q-card .q-tag {
+    color: var(--accent-dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  .q-card h4 {
+    color: var(--primary);
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  .q-card p { margin: 0; font-size: 0.88rem; color: var(--text); line-height: 1.5; }
+
+  /* Big Questions: current stacked row */
+  .q-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+  .q-row h4 { color: var(--primary); margin: 0 0 8px; }
+  .q-row .figure-placeholder {
+    background: #eee5d0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-dark);
+    font-size: 0.85rem;
+    font-style: italic;
+    min-height: 120px;
+  }
+
+  /* Reorder strip */
+  .reorder-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .reorder-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.92rem;
+  }
+  .reorder-item .num {
+    background: var(--primary);
+    color: var(--accent);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.82rem;
+    flex-shrink: 0;
+  }
+  .reorder-item .orig {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    margin-left: auto;
+    font-style: italic;
+  }
+  .reorder-item .title { color: var(--primary); font-weight: 600; }
+
+  /* Prose A/B */
+  .prose-pair {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .prose-pair .section-where {
+    color: var(--accent-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  .prose-pair .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 700px) { .prose-pair .row { grid-template-columns: 1fr; } }
+  .prose-pair .col {
+    border-left: 3px solid #ccc;
+    padding: 4px 14px;
+    font-size: 0.94rem;
+    color: var(--text);
+  }
+  .prose-pair .col.proposed { border-left-color: var(--accent); }
+  .prose-pair .col-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  .prose-pair .col.proposed .col-label { color: var(--primary); }
+
+  /* Decision footer */
+  .decision-footer {
+    background: var(--primary);
+    color: #fff;
+    padding: 32px;
+    text-align: center;
+  }
+  .decision-footer p { margin: 0; max-width: 800px; margin: 0 auto; opacity: 0.92; font-size: 0.95rem; }
+
+  .note { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-top: 12px; }
+  .checkbox-hint {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--accent);
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="review-header">
+  <h1>Design Review — Open Creative Decisions</h1>
+  <p>Ace Scout · 2026-05-14 · Side-by-side prototypes for the 4 open creative calls in <code>docs/jeff-review-2026-04-15.md</code>. Nothing here is deployed. Scan, pick, tell me.</p>
+</div>
+
+<nav class="toc">
+  <strong>Jump:</strong>
+  <a href="#proto-hero">1. Hero verb</a>
+  <a href="#proto-questions">2. Big Questions layout</a>
+  <a href="#proto-reorder">3. Q reorder</a>
+  <a href="#proto-prose">4. Prose rewrites</a>
+</nav>
+
+<!-- PROTOTYPE 1: HERO VERB -->
+<section class="proto-section" id="proto-hero">
+  <div class="proto-header">
+    <p class="proto-eyebrow">Prototype 1 of 4</p>
+    <h2>Hero heading verb</h2>
+    <p>Content critique flagged "Redefining" as marketing-y and noted the subtitle already says "we are changing that" — two verbs for the same idea. Four alternatives, all using the same subtitle and same visual treatment so you can isolate the verb.</p>
+    <div class="proto-decision"><strong>Decision needed:</strong> pick one of A/B/C/D, or confirm A (current) and we move on.</div>
+  </div>
+
+  <div class="grid-4">
+    <div class="card">
+      <span class="card-label current">A · current</span>
+      <div class="mini-hero">
+        <span class="badge">UPenn · CHOP</span>
+        <h3>Redefining <em>Vitamin D</em></h3>
+        <p class="sub">Vitamin D is one of the most recommended therapies in medicine &mdash; and one of the least understood. <span class="pop">We are changing that.</span></p>
+        <p class="affil">University of Pennsylvania · Children's Hospital of Philadelphia</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-label proposed">B</span>
+      <div class="mini-hero">
+        <span class="badge">UPenn · CHOP</span>
+        <h3>Rethinking <em>Vitamin D</em></h3>
+        <p class="sub">Vitamin D is one of the most recommended therapies in medicine &mdash; and one of the least understood. <span class="pop">We are changing that.</span></p>
+        <p class="affil">University of Pennsylvania · Children's Hospital of Philadelphia</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-label proposed">C</span>
+      <div class="mini-hero">
+        <span class="badge">UPenn · CHOP</span>
+        <h3>Understanding <em>Vitamin D</em></h3>
+        <p class="sub">Vitamin D is one of the most recommended therapies in medicine &mdash; and one of the least understood. <span class="pop">We are changing that.</span></p>
+        <p class="affil">University of Pennsylvania · Children's Hospital of Philadelphia</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-label proposed">D · no verb</span>
+      <div class="mini-hero">
+        <span class="badge">UPenn · CHOP</span>
+        <h3>The Roizen Lab</h3>
+        <p class="sub">Vitamin D is one of the most recommended therapies in medicine &mdash; and one of the least understood. <span class="pop">We are changing that.</span></p>
+        <p class="affil">University of Pennsylvania · Children's Hospital of Philadelphia</p>
+      </div>
+    </div>
+  </div>
+  <p class="note" style="max-width:1280px; margin: 20px auto 0;">Ace Scout's read: "Rethinking" (B) does the work of "Redefining" without the marketing aftertaste. "Understanding" (C) is the most honest but loses energy. D works if the subtitle does all the heavy lifting and feels most field-letter-friendly.</p>
+</section>
+
+<!-- PROTOTYPE 2: BIG QUESTIONS LAYOUT -->
+<section class="proto-section" id="proto-questions">
+  <div class="proto-header">
+    <p class="proto-eyebrow">Prototype 2 of 4</p>
+    <h2>Big Questions layout — stacked rows vs. card grid</h2>
+    <p>Anthropic's <code>anthropic.com/research</code> uses a 2-col card grid with category tags for their research topics; your current layout is full-width stacked rows with a figure on each. Tradeoff: rows = full paragraph reading; grid = journalist scan density. Both shown below using Q1-Q4 text.</p>
+    <div class="proto-decision"><strong>Decision needed:</strong> keep current rows (A), switch to grid (B), or hybrid (rows on desktop, grid on mobile — Ace Scout can wire this).</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-label current">A · current (stacked rows)</span>
+      <div class="q-row" style="margin-top:10px;">
+        <div>
+          <h4>Low Vitamin D: Cause or Effect?</h4>
+          <p style="font-size:0.85rem; margin:0;">Low vitamin D is associated with many diseases. Medicine assumed low vitamin D was causative. We asked whether the opposite was true: does disease cause low vitamin D? In asthma, obesity, and aging, the answer was yes.</p>
+        </div>
+        <div class="figure-placeholder">MR scatter figure</div>
+      </div>
+      <div class="q-row">
+        <div>
+          <h4>Is the Dose the Drug?</h4>
+          <p style="font-size:0.85rem; margin:0;">Most trials give pharmacologic doses to people who aren't deficient. That's not the same biology as correcting a deficiency. The dose isn't just a number &mdash; it changes what the molecule does.</p>
+        </div>
+        <div class="figure-placeholder">O2 flux figure</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-label proposed">B · grid (Anthropic-style)</span>
+      <div class="q-grid" style="margin-top:10px;">
+        <div class="q-card">
+          <p class="q-tag">Phenotype</p>
+          <h4>Low Vitamin D: Cause or Effect?</h4>
+          <p>Medicine assumed low vitamin D was causative. We asked whether disease causes low vitamin D. In asthma, obesity, and aging: yes.</p>
+        </div>
+        <div class="q-card">
+          <p class="q-tag">Phenotype</p>
+          <h4>How Does Disease Lower Vitamin D?</h4>
+          <p>Obesity and aging directly suppress the liver enzyme that activates vitamin D. If biology varies by disease, does it vary by person?</p>
+        </div>
+        <div class="q-card">
+          <p class="q-tag">Phenotype</p>
+          <h4>Same Dose, Different Results</h4>
+          <p>Two patients take the same dose. One responds. One doesn't. Genetic variation in CYP2R1 shapes who benefits.</p>
+        </div>
+        <div class="q-card">
+          <p class="q-tag">Mechanism</p>
+          <h4>Is the Dose the Drug?</h4>
+          <p>High-dose vitamin D activates pathways that replacement doses don't touch. The dose changes what the molecule does.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note" style="max-width:1280px; margin: 20px auto 0;">Ace Scout's read: stay with A (rows) for tenure committee — they read full paragraphs. Switch to B (grid) if the dominant audience is journalists / scrolling collaborators. Hybrid is doable but adds 2026-08 maintenance.</p>
+</section>
+
+<!-- PROTOTYPE 3: Q REORDER -->
+<section class="proto-section" id="proto-reorder">
+  <div class="proto-header">
+    <p class="proto-eyebrow">Prototype 3 of 4</p>
+    <h2>Big Questions reorder</h2>
+    <p>Content critique proposed <code>Q1 → Q5 → Q4 → Q2 → Q3 → Q6 → Q7</code>: leads with counterintuitive Q1, pivots to public-health Q5, then mechanism. Current order is logical-pedagogical; proposed is narrative-journalist.</p>
+    <div class="proto-decision"><strong>Decision needed:</strong> approve reorder, veto it, or propose your own ordering.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-label current">A · current order</span>
+      <div class="reorder-strip" style="margin-top:10px;">
+        <div class="reorder-item"><div class="num">1</div><span class="title">Low Vitamin D: Cause or Effect?</span></div>
+        <div class="reorder-item"><div class="num">2</div><span class="title">How Does Disease Lower Vitamin D?</span></div>
+        <div class="reorder-item"><div class="num">3</div><span class="title">Same Dose, Different Results</span></div>
+        <div class="reorder-item"><div class="num">4</div><span class="title">Is the Dose the Drug?</span></div>
+        <div class="reorder-item"><div class="num">5</div><span class="title">How Does High-Dose D Prevent T2 Diabetes?</span></div>
+        <div class="reorder-item"><div class="num">6</div><span class="title">What Determines Calorie Allocation?</span></div>
+        <div class="reorder-item"><div class="num">7</div><span class="title">The Missing Biomarker</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-label proposed">B · proposed (narrative-journalist)</span>
+      <div class="reorder-strip" style="margin-top:10px;">
+        <div class="reorder-item"><div class="num">1</div><span class="title">Low Vitamin D: Cause or Effect?</span><span class="orig">was Q1</span></div>
+        <div class="reorder-item"><div class="num">2</div><span class="title">How Does High-Dose D Prevent T2 Diabetes?</span><span class="orig">was Q5</span></div>
+        <div class="reorder-item"><div class="num">3</div><span class="title">Is the Dose the Drug?</span><span class="orig">was Q4</span></div>
+        <div class="reorder-item"><div class="num">4</div><span class="title">How Does Disease Lower Vitamin D?</span><span class="orig">was Q2</span></div>
+        <div class="reorder-item"><div class="num">5</div><span class="title">Same Dose, Different Results</span><span class="orig">was Q3</span></div>
+        <div class="reorder-item"><div class="num">6</div><span class="title">What Determines Calorie Allocation?</span><span class="orig">was Q6</span></div>
+        <div class="reorder-item"><div class="num">7</div><span class="title">The Missing Biomarker</span><span class="orig">was Q7</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="note" style="max-width:1280px; margin: 20px auto 0;">Ace Scout's read: B is better for journalists and grant program officers who skim and bounce; A is better for a committee reading top-to-bottom. If the tenure committee is the primary audience (which it is), keep A.</p>
+</section>
+
+<!-- PROTOTYPE 4: PROSE REWRITES -->
+<section class="proto-section" id="proto-prose">
+  <div class="proto-header">
+    <p class="proto-eyebrow">Prototype 4 of 4</p>
+    <h2>Prose rewrites (4 sentences)</h2>
+    <p>Content critique flagged four section intros as boilerplate / mismatched to your "direct and real" voice. Each is a one-line edit. Accept any subset.</p>
+    <div class="proto-decision"><strong>Decision needed:</strong> accept/reject each row individually. Ace Scout will apply approvals as a single edit.</div>
+  </div>
+
+  <div style="max-width:1280px; margin:0 auto;">
+    <div class="prose-pair">
+      <p class="section-where">Collaborators intro (line 589)</p>
+      <div class="row">
+        <div class="col"><p class="col-label">Current</p><p>We are fortunate to work with outstanding scientists whose expertise strengthens every project we pursue.</p></div>
+        <div class="col proposed"><p class="col-label">Proposed (Jeff-voice)</p><p>People who make our work better.</p></div>
+      </div>
+    </div>
+    <div class="prose-pair">
+      <p class="section-where">Peers intro (line 623)</p>
+      <div class="row">
+        <div class="col"><p class="col-label">Current</p><p>Scientists we admire and learn from &mdash; our intellectual community.</p></div>
+        <div class="col proposed"><p class="col-label">Proposed</p><p>Scientists we talk to.</p></div>
+      </div>
+    </div>
+    <div class="prose-pair">
+      <p class="section-where">Mentors intro (line 688)</p>
+      <div class="row">
+        <div class="col"><p class="col-label">Current</p><p>We stand on the shoulders of extraordinary scientists who shaped how we think.</p></div>
+        <div class="col proposed"><p class="col-label">Proposed</p><p>People who trained us.</p></div>
+      </div>
+    </div>
+    <div class="prose-pair">
+      <p class="section-where">Donate blurb (~line 861)</p>
+      <div class="row">
+        <div class="col"><p class="col-label">Current</p><p>Your contribution advances our understanding of vitamin D's potential to improve human health.</p></div>
+        <div class="col proposed"><p class="col-label">Proposed (Jeff-voice)</p><p>Your donation buys reagents, mice, and people-hours. That's it.</p></div>
+      </div>
+    </div>
+  </div>
+  <p class="note" style="max-width:1280px; margin: 20px auto 0;">Ace Scout's read: all four proposed rewrites match the lab-website rule ("Jeff's voice over Claude's rewrites — use his phrasing verbatim"). The donate blurb in particular reads as written-by-Jeff and is the strongest of the four.</p>
+</section>
+
+<div class="decision-footer">
+  <p>Reply with your picks (e.g. "Hero: B. Layout: A. Reorder: veto. Prose: all four.") and Ace Scout will apply them as one commit to <code>compare-purple-gold.html</code>. No remote push without your explicit go.</p>
+</div>
+
+</body>
+</html>
