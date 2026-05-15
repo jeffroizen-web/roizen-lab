@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Figure Candidates Gallery — Q2 / Q3 / Q7</title>
+<style>
+  :root { --primary:#3B1F6E; --accent:#C5A336; --accent-dark:#8A6B1A; --border:#e5e0d5; --bg-alt:#faf8f3; }
+  body { font-family: Georgia, serif; color:#1a1a1a; margin:0; line-height:1.5; }
+  header { background:var(--primary); color:#fff; padding:32px; border-bottom:4px solid var(--accent); }
+  header h1 { margin:0 0 6px; font-size:1.5rem; }
+  header p { margin:0; opacity:0.85; font-size:0.92rem; max-width:900px; }
+  .legend {
+    background:var(--bg-alt); padding:16px 32px; border-bottom:1px solid var(--border);
+    font-size:0.88rem; color:#444;
+  }
+  .legend strong { color:var(--primary); }
+  section { padding:32px; border-bottom:1px solid var(--border); }
+  section:nth-of-type(even) { background:var(--bg-alt); }
+  h2 { color:var(--primary); margin:0 0 6px; font-size:1.3rem; }
+  .q-text { color:#555; margin:0 0 24px; max-width:900px; font-size:0.92rem; font-style:italic; }
+  .grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap:18px;
+  }
+  .fig-card {
+    background:#fff; border:1px solid var(--border); border-radius:6px;
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .fig-card img {
+    width:100%; height:200px; object-fit:contain; background:#f5f0e5;
+    display:block;
+  }
+  .fig-card .meta {
+    padding:10px 12px; font-size:0.78rem; color:#555;
+    border-top:1px solid var(--border); word-break:break-all;
+  }
+  .fig-card .meta code { font-size:0.7rem; color:var(--accent-dark); }
+  .note { font-size:0.85rem; color:#666; font-style:italic; max-width:900px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Figure Candidates Gallery — Q2 / Q3 / Q7</h1>
+  <p>Ace Scout · 2026-05-14 · All PNGs from the unconverted slide-extraction subdirs that could plausibly fill the three figure-pending Big Questions. Click any image to open full size. Tell me which (if any) to wire in.</p>
+</header>
+
+<div class="legend">
+  <strong>Reminder of the Big Question text each figure would support:</strong>
+  Q2 = "Obesity and aging directly suppress the liver enzyme that activates vitamin D" (looking for hepatic 25-hydroxylase activity bar chart or stained liver section).
+  Q3 = "Genetic variation in CYP2R1 shapes who benefits from supplementation" (looking for variant-effect plot or genotype-stratified response).
+  Q7 = "No biomarker tracks vitamin D's non-calcium effects" (per Apr-16 audit: Jeff confirmed text-only; included here only for completeness).
+</div>
+
+<section>
+  <h2>Q2 — "How Does Disease Lower Vitamin D?"</h2>
+  <p class="q-text">Goal: a figure that shows reduced hepatic 25-hydroxylase activity in disease (obesity, aging). LacZ-staining slides are the most promising visual evidence of liver-cell-level CYP2R1 expression. Note: WMF files in this directory are not viewable here — 13 .wmf files exist and may contain the actual activity bar charts; if Jeff wants those rendered, Ace Scout can convert via ImageMagick or LibreOffice headless.</p>
+  <div class="grid">
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/cyp2r1-ko_slide02_img2.png" loading="lazy" alt=""><div class="meta"><code>cyp2r1-ko_slide02_img2.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide01_img1.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide01_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide01_img2.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide01_img2.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide01_img3.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide01_img3.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide02_img1.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide02_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide02_img2.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide02_img2.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide02_img3.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide02_img3.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide03_img1.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide03_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide04_img1.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide04_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide05_img1.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide05_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide06_img1.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide06_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide06_img2.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide06_img2.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q2-hepatic-enzyme/lacz-staining_slide06_img3.png" loading="lazy" alt=""><div class="meta"><code>lacz-staining_slide06_img3.png</code></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Q3 — "Same Dose, Different Results"</h2>
+  <p class="q-text">Goal: a figure tying CYP2R1 genetic variation to differential vitamin D response. These PNGs come from the CYP2R1-KO talk; the WMF files (12+) in the same directory may include the variant-effect plot. Re-extraction via WMF conversion is an option if none of these read as variant-effect.</p>
+  <div class="grid">
+    <div class="fig-card"><img src="../extracted-figures/Q3-cyp2r1-variants/cyp2r1-ko_slide08_img2.png" loading="lazy" alt=""><div class="meta"><code>cyp2r1-ko_slide08_img2.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q3-cyp2r1-variants/cyp2r1-ko_slide08_img3.png" loading="lazy" alt=""><div class="meta"><code>cyp2r1-ko_slide08_img3.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q3-cyp2r1-variants/cyp2r1-ko_slide09_img3.png" loading="lazy" alt=""><div class="meta"><code>cyp2r1-ko_slide09_img3.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q3-cyp2r1-variants/cyp2r1-ko_slide09_img4.png" loading="lazy" alt=""><div class="meta"><code>cyp2r1-ko_slide09_img4.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q3-cyp2r1-variants/cyp2r1-ko_slide10_img3.png" loading="lazy" alt=""><div class="meta"><code>cyp2r1-ko_slide10_img3.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q3-cyp2r1-variants/cyp2r1-ko_slide10_img4.png" loading="lazy" alt=""><div class="meta"><code>cyp2r1-ko_slide10_img4.png</code></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Q7 — "The Missing Biomarker"</h2>
+  <p class="q-text">Per 2026-04-16 audit: Jeff confirmed Q7 stays text-only ("the honest answer is we don't have one yet"). Showing the unconverted paradigm/science-pics PNGs here only for completeness — if any one of these actually depicts a biomarker concept, Ace Scout will reverse the text-only call.</p>
+  <div class="grid">
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/paradigm-figures_slide16_img1.png" loading="lazy" alt=""><div class="meta"><code>paradigm-figures_slide16_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/paradigm-figures_slide16_img2.png" loading="lazy" alt=""><div class="meta"><code>paradigm-figures_slide16_img2.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/paradigm-figures_slide17_img1.png" loading="lazy" alt=""><div class="meta"><code>paradigm-figures_slide17_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/paradigm-figures_slide17_img2.png" loading="lazy" alt=""><div class="meta"><code>paradigm-figures_slide17_img2.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/paradigm-figures_slide17_img3.png" loading="lazy" alt=""><div class="meta"><code>paradigm-figures_slide17_img3.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/paradigm-figures_slide18_img1.png" loading="lazy" alt=""><div class="meta"><code>paradigm-figures_slide18_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/paradigm-figures_slide18_img2.png" loading="lazy" alt=""><div class="meta"><code>paradigm-figures_slide18_img2.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/paradigm-figures_slide18_img3.png" loading="lazy" alt=""><div class="meta"><code>paradigm-figures_slide18_img3.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/science-pics_slide01_img1.png" loading="lazy" alt=""><div class="meta"><code>science-pics_slide01_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/science-pics_slide01_img2.png" loading="lazy" alt=""><div class="meta"><code>science-pics_slide01_img2.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/science-pics_slide02_img1.png" loading="lazy" alt=""><div class="meta"><code>science-pics_slide02_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/science-pics_slide05_img1.png" loading="lazy" alt=""><div class="meta"><code>science-pics_slide05_img1.png</code></div></div>
+    <div class="fig-card"><img src="../extracted-figures/Q7-biomarker/science-pics_slide06_img1.png" loading="lazy" alt=""><div class="meta"><code>science-pics_slide06_img1.png</code></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Next steps if nothing fits</h2>
+  <p class="note">If no Q2 or Q3 figure here works, the next-step options are: (a) convert the 25+ .wmf files in these subdirs (Ace Scout can do via <code>libreoffice --convert-to png</code> headless overnight); (b) re-extract from older PowerPoint decks not yet scanned; (c) generate a clean schematic with matplotlib that matches the Q text exactly. Tell Ace Scout which path.</p>
+</section>
+
+</body>
+</html>
