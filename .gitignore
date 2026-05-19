@@ -15,3 +15,11 @@ node_modules/
 # Python
 __pycache__/
 *.pyc
+
+# Cron + bus emit churn (signal lives in reports/, not in logs)
+docs/reports/cron.stdout.log
+docs/reports/cron.stderr.log
+decisions/bus_emit_log.jsonl
+
+# Playwright artifacts
+test-results/

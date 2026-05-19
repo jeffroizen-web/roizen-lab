@@ -1,0 +1,1 @@
+/Users/roizenj/Code/Claude Apps/Claude coding Asst/scripts/get-fitness-cred.sh

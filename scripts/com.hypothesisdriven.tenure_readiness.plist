@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  launchd job for the Roizen Lab tenure-readiness watcher.
+  Cadence: every 4 hours at minute 5 (00:05, 04:05, 08:05, 12:05, 16:05, 20:05).
+  Output: writes a dated report to docs/reports/tenure-readiness-YYYY-MM-DD.md.
+  Bus emits: site.audit.regression on regression, site.audit.heartbeat on every run
+             (both gated by CROSS_CM_BUS_TRIAL_ENABLED env var).
+
+  Installed by Jeff (one-time):
+    cp scripts/com.hypothesisdriven.tenure_readiness.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$UID ~/Library/LaunchAgents/com.hypothesisdriven.tenure_readiness.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.hypothesisdriven.tenure_readiness</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/roizenj/Code/Claude Apps/Roizen Lab/scripts/tenure_readiness_cron.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/roizenj/Code/Claude Apps/Roizen Lab</string>
+
+  <!-- Every 4 hours, at minute 5 — avoids the on-the-hour rush. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Hour</key><integer>0</integer><key>Minute</key><integer>5</integer></dict>
+    <dict><key>Hour</key><integer>4</integer><key>Minute</key><integer>5</integer></dict>
+    <dict><key>Hour</key><integer>8</integer><key>Minute</key><integer>5</integer></dict>
+    <dict><key>Hour</key><integer>12</integer><key>Minute</key><integer>5</integer></dict>
+    <dict><key>Hour</key><integer>16</integer><key>Minute</key><integer>5</integer></dict>
+    <dict><key>Hour</key><integer>20</integer><key>Minute</key><integer>5</integer></dict>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>/Users/roizenj/Code/Claude Apps/Roizen Lab/docs/reports/cron.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/roizenj/Code/Claude Apps/Roizen Lab/docs/reports/cron.stderr.log</string>
+
+  <!--
+    Env defaults. CROSS_CM_BUS_TRIAL_ENABLED ships as "0" so the first
+    cron cycle dry-runs (visible in decisions/bus_emit_log.jsonl). Once
+    Jeff confirms the dry-run shape is correct, flip the value to "1"
+    here and `launchctl bootout … && launchctl bootstrap …` to reload.
+    TRIAL_BUS_TOKEN is fetched by scripts/get-fitness-cred.sh at runtime.
+  -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>CROSS_CM_BUS_TRIAL_ENABLED</key>
+    <string>0</string>
+    <key>CROSS_CM_BUS_ENDPOINT</key>
+    <string>https://ulysses-production.up.railway.app/api/role-balance-trial/events</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+</dict>
+</plist>
