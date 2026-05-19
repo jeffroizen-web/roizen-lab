@@ -1,0 +1,717 @@
+{
+  "generated_at": "2026-05-19T16:40:34.977341Z",
+  "source": "pubmed_eutils_L1",
+  "records": [
+    {
+      "name": "Hakon Hakonarson, MD, PhD",
+      "pubmed_query": "Hakonarson H",
+      "recent_pmids": [
+        "42098110",
+        "42093631",
+        "42061409",
+        "41989189",
+        "41953516",
+        "41947537",
+        "41932550",
+        "41929607",
+        "41927769",
+        "41888767"
+      ],
+      "total_pubmed_count": 1028,
+      "recent_titles": [
+        "SCOTCH: isoform-level characterization of gene expression through long-read single-cell RNA sequencing.",
+        "Targeting glutamatergic pathways: genetic insights into comorbid neurodevelopmental disorders.",
+        "Navigating data sharing in research.",
+        "Emergence of a high-risk multidrug-resistant Acinetobacter baumannii clone ST697 in nosocomial settings.",
+        "Redefining the role of the thiol-based agent N-acetylcysteine in human health and disease and elucidating potential advantages of its amide derivative.",
+        "Convergent genetic pathways linking neuropsychiatric and ocular disorders in children.",
+        "Deep learning and statistical methods identify novel asthma risk variants in Europeans.",
+        "Vascular malformations of the head and neck and a molecularly guided precision therapy framework.",
+        "Integrative GWAS identifies novel loci and genetic links between psychiatric and metabolic factors in anorexia nervosa.",
+        "Circulating amino acids and Type 2 diabetes in a Latin American population-based cohort."
+      ],
+      "recent_venues": [
+        "Nature communications",
+        "Brain : a journal of neurology",
+        "American journal of human genetics",
+        "Microbiology spectrum",
+        "RSC medicinal chemistry",
+        "Journal of child psychology and psychiatry, and allied disciplines",
+        "The Journal of allergy and clinical immunology",
+        "Frontiers in neurology",
+        "Molecular psychiatry",
+        "Cardiovascular diabetology"
+      ],
+      "recent_years": [
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026
+      ],
+      "field_terms": [
+        "genetic",
+        "pathways",
+        "disorders",
+        "scotch",
+        "isoform-level",
+        "characterization",
+        "gene",
+        "expression"
+      ],
+      "confidence": 1.0,
+      "confidence_notes": [
+        "10 recent pubs (+0.40)",
+        "10/10 in last 3yr (+0.40)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:09.909314Z",
+      "error": null,
+      "url": "https://www.research.chop.edu/people/hakon-hakonarson",
+      "section": "collaborators"
+    },
+    {
+      "name": "Shana E. McCormack, MD, MTR",
+      "pubmed_query": "McCormack SE",
+      "recent_pmids": [
+        "42114110",
+        "42102161",
+        "42009009",
+        "41916575",
+        "41806102",
+        "41091818",
+        "40602377",
+        "40313282",
+        "40129031",
+        "39441134"
+      ],
+      "total_pubmed_count": 86,
+      "recent_titles": [
+        "\"Approach to the patient with acquired hypothalamic syndrome\".",
+        "Geometry of the proximal femur during growth and its contribution to childhood fractures in healthy children.",
+        "Safety and efficacy of individualised exercise and NAD(+) precursor supplementation in patients with Friedreich's ataxia in the USA: a single-centre, 2\u2008\u00d7\u20082 factorial, randomised controlled trial.",
+        "Neonatal Hypopituitarism.",
+        "Identification of intranasal oxytocin plasma proteome signatures.",
+        "The gSOS polygenic score is associated with bone density and fracture risk in childhood.",
+        "Management of Arginine Vasopressin Deficiency (Central Diabetes Insipidus) in Neonates and Infants.",
+        "The gSOS Polygenic Score is Associated with Bone Density and Fracture Risk in Childhood.",
+        "Race-neutral Pediatric Reference Ranges for Bone Mineral Density Predict Prospective Fractures in Childhood.",
+        "Calcitriol in Friedreich Ataxia."
+      ],
+      "recent_venues": [
+        "The Journal of clinical endocrinology and metabolism",
+        "Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research",
+        "The Lancet. Neurology",
+        "NeoReviews",
+        "Endocrine",
+        "Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research",
+        "Hormone research in paediatrics",
+        "medRxiv : the preprint server for health sciences",
+        "The Journal of clinical endocrinology and metabolism",
+        "Movement disorders : official journal of the Movement Disorder Society"
+      ],
+      "recent_years": [
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2025,
+        2025,
+        2025,
+        2025,
+        2024
+      ],
+      "field_terms": [
+        "childhood",
+        "bone",
+        "density",
+        "fractures",
+        "friedreich",
+        "ataxia",
+        "gsos",
+        "polygenic"
+      ],
+      "confidence": 1.0,
+      "confidence_notes": [
+        "10 recent pubs (+0.40)",
+        "10/10 in last 3yr (+0.40)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:12.433976Z",
+      "error": null,
+      "url": "https://www.research.chop.edu/mccormack-laboratory",
+      "section": "collaborators"
+    },
+    {
+      "name": "Shana E. McCormack, MD, MTR",
+      "pubmed_query": "McCormack SE",
+      "recent_pmids": [
+        "42114110",
+        "42102161",
+        "42009009",
+        "41916575",
+        "41806102",
+        "41091818",
+        "40602377",
+        "40313282",
+        "40129031",
+        "39441134"
+      ],
+      "total_pubmed_count": 86,
+      "recent_titles": [
+        "\"Approach to the patient with acquired hypothalamic syndrome\".",
+        "Geometry of the proximal femur during growth and its contribution to childhood fractures in healthy children.",
+        "Safety and efficacy of individualised exercise and NAD(+) precursor supplementation in patients with Friedreich's ataxia in the USA: a single-centre, 2\u2008\u00d7\u20082 factorial, randomised controlled trial.",
+        "Neonatal Hypopituitarism.",
+        "Identification of intranasal oxytocin plasma proteome signatures.",
+        "The gSOS polygenic score is associated with bone density and fracture risk in childhood.",
+        "Management of Arginine Vasopressin Deficiency (Central Diabetes Insipidus) in Neonates and Infants.",
+        "The gSOS Polygenic Score is Associated with Bone Density and Fracture Risk in Childhood.",
+        "Race-neutral Pediatric Reference Ranges for Bone Mineral Density Predict Prospective Fractures in Childhood.",
+        "Calcitriol in Friedreich Ataxia."
+      ],
+      "recent_venues": [
+        "The Journal of clinical endocrinology and metabolism",
+        "Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research",
+        "The Lancet. Neurology",
+        "NeoReviews",
+        "Endocrine",
+        "Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research",
+        "Hormone research in paediatrics",
+        "medRxiv : the preprint server for health sciences",
+        "The Journal of clinical endocrinology and metabolism",
+        "Movement disorders : official journal of the Movement Disorder Society"
+      ],
+      "recent_years": [
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2025,
+        2025,
+        2025,
+        2025,
+        2024
+      ],
+      "field_terms": [
+        "childhood",
+        "bone",
+        "density",
+        "fractures",
+        "friedreich",
+        "ataxia",
+        "gsos",
+        "polygenic"
+      ],
+      "confidence": 1.0,
+      "confidence_notes": [
+        "10 recent pubs (+0.40)",
+        "10/10 in last 3yr (+0.40)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:15.051860Z",
+      "error": null,
+      "url": "https://www.research.chop.edu/mccormack-laboratory",
+      "section": "peers"
+    },
+    {
+      "name": "Benedict J. Kolber, PhD",
+      "pubmed_query": "Kolber BJ",
+      "recent_pmids": [
+        "42094411",
+        "41993490",
+        "41956231",
+        "41711181",
+        "41577217",
+        "41519618",
+        "41196683",
+        "41118413",
+        "41020266",
+        "40708951"
+      ],
+      "total_pubmed_count": 64,
+      "recent_titles": [
+        "Predicting Pain Using a Data-Driven Agent-Based Model of the Bilateral Central Amygdala.",
+        "CGRP receptor-expressing neurons in the central amygdala contributes to injury-induced pain hypersensitivity.",
+        "Modulation of TNF-\u03b1, IL-1\u03b2 and myeloperoxidase contributes to the anti-inflammatory and analgesic effects of Paullinia pinnata Linn (Sapindaceae) extracts in complete Freund's adjuvant-induced mono-arthritis in rats.",
+        "The role of amygdala calcitonin gene-related peptide receptors on the development of persistent bladder pain in mice.",
+        "Amygdalar calcitonin gene-related peptide driven effects of cold sensitivity induced by peripheral neuropathy in mice.",
+        "Neuropeptides in control of left-right neural circuits.",
+        "Molecular and functional asymmetry in Cckar-expressing vagal sensory neurons.",
+        "When goodbye comes too soon: How to wrap up science projects quickly.",
+        "Adeno-associated viral vector resource for the RNA-targeting Cas13d: A comparison of high-fidelity variants, DjCas13d and hfCas13d.",
+        "Sex differences in the effects of calcitonin gene-related peptide signaling on migraine-like behavior in animal models: a narrative review."
+      ],
+      "recent_venues": [
+        "bioRxiv : the preprint server for biology",
+        "bioRxiv : the preprint server for biology",
+        "Journal of ethnopharmacology",
+        "Pain",
+        "The journal of pain",
+        "Trends in neurosciences",
+        "Cell reports",
+        "PLoS biology",
+        "Molecular therapy. Methods & clinical development",
+        "Frontiers in neurology"
+      ],
+      "recent_years": [
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2025,
+        2025,
+        2025,
+        2025
+      ],
+      "field_terms": [
+        "pain",
+        "amygdala",
+        "calcitonin",
+        "gene-related",
+        "peptide",
+        "central",
+        "neurons",
+        "contributes"
+      ],
+      "confidence": 1.0,
+      "confidence_notes": [
+        "10 recent pubs (+0.40)",
+        "10/10 in last 3yr (+0.40)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:17.665427Z",
+      "error": null,
+      "url": "https://labs.utdallas.edu/painstresslab/",
+      "section": "peers"
+    },
+    {
+      "name": "Nico U.F. Dosenbach, MD, PhD",
+      "pubmed_query": "Dosenbach NU",
+      "recent_pmids": [
+        "42079260",
+        "41787749",
+        "41648109",
+        "41639440",
+        "41448140",
+        "41427390",
+        "41061484",
+        "41022827",
+        "40911413",
+        "40800744"
+      ],
+      "total_pubmed_count": 107,
+      "recent_titles": [
+        "Parallel processing chains span cytoarchitectures to organize association cortex.",
+        "Beyond the Homunculus-SCAN-AMN as a Shared Action-Oriented Neural Substrate across Movement Disorders.",
+        "Brain organization of a memory champion.",
+        "Parkinson's disease as a somato-cognitive action network disorder.",
+        "Stimulant medications affect arousal and reward, not attention networks.",
+        "Patterns of brain-wide associations reflect socioeconomics.",
+        "Brain functional connectivity, but not neuroanatomy, captures the interrelationship between sex and gender in preadolescents.",
+        "Motion impact score for detecting spurious brain-behavior associations.",
+        "Q&A with Nico U.F. Dosenbach and Roselyne Chauvin.",
+        "Multi-echo acquisition and thermal denoising advances precision functional imaging."
+      ],
+      "recent_venues": [
+        "bioRxiv : the preprint server for biology",
+        "Movement disorders : official journal of the Movement Disorder Society",
+        "bioRxiv : the preprint server for biology",
+        "Nature",
+        "Cell",
+        "bioRxiv : the preprint server for biology",
+        "Developmental cognitive neuroscience",
+        "Nature communications",
+        "Cell reports",
+        "Imaging neuroscience (Cambridge, Mass.)"
+      ],
+      "recent_years": [
+        2026,
+        2026,
+        2026,
+        2026,
+        2025,
+        2025,
+        2025,
+        2025,
+        2025,
+        2025
+      ],
+      "field_terms": [
+        "brain",
+        "associations",
+        "functional",
+        "parallel",
+        "processing",
+        "chains",
+        "span",
+        "cytoarchitectures"
+      ],
+      "confidence": 1.0,
+      "confidence_notes": [
+        "10 recent pubs (+0.40)",
+        "10/10 in last 3yr (+0.40)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:20.291624Z",
+      "error": null,
+      "url": "https://neurology.wustl.edu/people/nico-dosenbach-md-phd/",
+      "section": "peers"
+    },
+    {
+      "name": "Ethan M. Goldberg, MD, PhD",
+      "pubmed_query": "Goldberg EM",
+      "recent_pmids": [
+        "42127220",
+        "41894896",
+        "41871938",
+        "41839810",
+        "41803048",
+        "41795712",
+        "41713518",
+        "41705663",
+        "41676684",
+        "41676634"
+      ],
+      "total_pubmed_count": 249,
+      "recent_titles": [
+        "In vivo adenine base editing ameliorates Dravet syndrome phenotypes in a mouse model.",
+        "Relationship of Ethanol, Cannabinoids, Benzodiazepines, and Opioids to Serious Injuries from Falls in Adults Aged 55 and Older.",
+        "Invasive lobular breast carcinoma with diffuse gastrointestinal metastases: a visual diagnostic pitfall.",
+        "ALERT-ED: Awareness and Linkage to Resources for At-Risk Emergency Department Patients: Interviews with Older Patients, Caregivers, and Nurses.",
+        "Characteristics of Emergency Department Visits Among Midlife and Older Adults Screening Positive for Alcohol Misuse.",
+        "Genetic testing for familial epilepsies: Diagnostic yield and genetic findings.",
+        "A management innovation of gastric perforation from percutaneous endoscopic gastrostomy tube placement.",
+        "Impaired excitability of fast-spiking neurons in a novel mouse model of KCNC1 epileptic encephalopathy.",
+        "Developmental dysregulation of chandelier cell excitability in a mouse model of Dravet Syndrome.",
+        "Use-dependent regulation of the axonal action potential in parvalbumin-expressing interneurons."
+      ],
+      "recent_venues": [
+        "Science translational medicine",
+        "The Journal of emergency medicine",
+        "The oncologist",
+        "Academic emergency medicine : official journal of the Society for Academic Emergency Medicine",
+        "Academic emergency medicine : official journal of the Society for Academic Emergency Medicine",
+        "Epilepsia",
+        "Gastrointestinal endoscopy",
+        "eLife",
+        "bioRxiv : the preprint server for biology",
+        "bioRxiv : the preprint server for biology"
+      ],
+      "recent_years": [
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026
+      ],
+      "field_terms": [
+        "mouse",
+        "older",
+        "dravet",
+        "syndrome",
+        "adults",
+        "diagnostic",
+        "emergency",
+        "department"
+      ],
+      "confidence": 1.0,
+      "confidence_notes": [
+        "10 recent pubs (+0.40)",
+        "10/10 in last 3yr (+0.40)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:22.923820Z",
+      "error": null,
+      "url": "https://goldbergneurolab.com/",
+      "section": "peers"
+    },
+    {
+      "name": "Neil D. Romberg, MD",
+      "pubmed_query": "Romberg ND",
+      "recent_pmids": [
+        "32730233",
+        "29477728",
+        "29074947"
+      ],
+      "total_pubmed_count": 3,
+      "recent_titles": [
+        "Multisystem inflammatory syndrome in children and COVID-19 are distinct presentations of SARS-CoV-2.",
+        "Prevalence and clinical challenges among adults with primary immunodeficiency and recombination-activating gene deficiency.",
+        "Corrigendum: Germline hypomorphic CARD11 mutations in severe atopic disease."
+      ],
+      "recent_venues": [
+        "The Journal of clinical investigation",
+        "The Journal of allergy and clinical immunology",
+        "Nature genetics"
+      ],
+      "recent_years": [
+        2020,
+        2018,
+        2017
+      ],
+      "field_terms": [
+        "multisystem",
+        "inflammatory",
+        "syndrome",
+        "children",
+        "covid-",
+        "distinct",
+        "presentations",
+        "sars-cov-"
+      ],
+      "confidence": 0.5,
+      "confidence_notes": [
+        "3 recent pubs (+0.30)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:25.014372Z",
+      "error": null,
+      "url": "https://www.romberglab.org/",
+      "section": "peers"
+    },
+    {
+      "name": "Louis J. Muglia, MD, PhD",
+      "pubmed_query": "Muglia LJ",
+      "recent_pmids": [
+        "42048164",
+        "40063566",
+        "39755178",
+        "39214992",
+        "39130533",
+        "38941464",
+        "38705643",
+        "38098843",
+        "37890672",
+        "37871108"
+      ],
+      "total_pubmed_count": 255,
+      "recent_titles": [
+        "Stabilizing and strengthening the U.S. physician-scientist faculty workforce in academic medicine: a proposed institutional framework.",
+        "Haplotype-based analysis distinguishes maternal-fetal genetic contribution to pregnancy-related outcomes.",
+        "Transplacental signals involved in the programming effects of prenatal psychosocial stress on neurodevelopment.",
+        "Genome-wide analyses of neonatal jaundice reveal a marked departure from adult bilirubin metabolism.",
+        "Complete Blood Count Values Over Time in Young Children During the Dengue Virus Epidemic in the Dominican Republic From 2018 to 2020.",
+        "A genome scale transcriptional regulatory model of the human placenta.",
+        "Recent Advances in Genomic Studies of Gestational Duration and Preterm Birth.",
+        "Review on new approach methods to gain insight into the feto-maternal interface physiology.",
+        "Association of maternal prenatal copper concentration with gestational duration and preterm birth: a multicountry meta-analysis.",
+        "Meta-analysis of genome-wide association studies of gestational duration and spontaneous preterm birth identifies new maternal risk loci."
+      ],
+      "recent_venues": [
+        "JCI insight",
+        "PLoS genetics",
+        "Neurotoxicology and teratology",
+        "Nature communications",
+        "BioMed research international",
+        "Science advances",
+        "Clinics in perinatology",
+        "Frontiers in medicine",
+        "The American journal of clinical nutrition",
+        "PLoS genetics"
+      ],
+      "recent_years": [
+        2026,
+        2025,
+        2025,
+        2024,
+        2024,
+        2024,
+        2024,
+        2023,
+        2024,
+        2023
+      ],
+      "field_terms": [
+        "gestational",
+        "duration",
+        "preterm",
+        "birth",
+        "prenatal",
+        "genome-wide",
+        "maternal",
+        "meta-analysis"
+      ],
+      "confidence": 1.0,
+      "confidence_notes": [
+        "10 recent pubs (+0.40)",
+        "10/10 in last 3yr (+0.40)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:27.603104Z",
+      "error": null,
+      "url": "https://www.bwfund.org/about/dr-louis-j-muglia-md-phd/",
+      "section": "mentors"
+    },
+    {
+      "name": "Michael A. Levine, MD",
+      "pubmed_query": "Levine MA",
+      "recent_pmids": [
+        "42139093",
+        "41910862",
+        "41908220",
+        "41842942",
+        "41362301",
+        "41292096",
+        "41152569",
+        "41055655",
+        "40824678",
+        "40698237"
+      ],
+      "total_pubmed_count": 548,
+      "recent_titles": [
+        "Palopegteriparatide Therapy for Hypoparathyroidism: Targeting the PTH Receptor Rouses the Sleeping Skeleton.",
+        "Agreement between intra-bladder and insufflation pressure readings during laparoscopic surgery.",
+        "Baduanjin exercise with or without traditional Chinese tuina therapy for nonspecific chronic neck pain: study protocol for a randomised controlled trial.",
+        "Inhibition of MAFB and PI3K/AKT Signaling for Hereditary FSGS with Multicentric Carpotarsal Osteolysis.",
+        "Liver-directed base editing of ABCC6 prevents ectopic calcification in a variant-humanized mouse model of pseudoxanthoma elasticum.",
+        "Understanding the Periodontitis-Diabetes Linkage: Mechanisms and Evidence.",
+        "Improved specificity and efficiency of in vivo adenine base editing therapies with hybrid guide RNAs.",
+        "Health-related quality of life in a cohort of 1070 patients with hypoparathyroidism.",
+        "Universal Pharmacare and Contraceptive Dispensations Among Youth.",
+        "Low-Dose Naltrexone for Managing Pain and Autonomic Symptoms in Patients With Dysautonomia."
+      ],
+      "recent_venues": [
+        "Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research",
+        "Journal of clinical monitoring and computing",
+        "Frontiers in sports and active living",
+        "Journal of the American Society of Nephrology : JASN",
+        "Molecular therapy. Nucleic acids",
+        "Journal of dental research",
+        "Nature biomedical engineering",
+        "European journal of endocrinology",
+        "JAMA pediatrics",
+        "Cureus"
+      ],
+      "recent_years": [
+        2026,
+        2026,
+        2026,
+        2026,
+        2025,
+        2026,
+        2025,
+        2025,
+        2025,
+        2025
+      ],
+      "field_terms": [
+        "therapy",
+        "hypoparathyroidism",
+        "pain",
+        "base",
+        "editing",
+        "palopegteriparatide",
+        "targeting",
+        "receptor"
+      ],
+      "confidence": 1.0,
+      "confidence_notes": [
+        "10 recent pubs (+0.40)",
+        "10/10 in last 3yr (+0.40)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:29.751032Z",
+      "error": null,
+      "url": "https://www.research.chop.edu/people/michael-a-levine",
+      "section": "mentors"
+    },
+    {
+      "name": "Hakon Hakonarson, MD, PhD",
+      "pubmed_query": "Hakonarson H",
+      "recent_pmids": [
+        "42098110",
+        "42093631",
+        "42061409",
+        "41989189",
+        "41953516",
+        "41947537",
+        "41932550",
+        "41929607",
+        "41927769",
+        "41888767"
+      ],
+      "total_pubmed_count": 1028,
+      "recent_titles": [
+        "SCOTCH: isoform-level characterization of gene expression through long-read single-cell RNA sequencing.",
+        "Targeting glutamatergic pathways: genetic insights into comorbid neurodevelopmental disorders.",
+        "Navigating data sharing in research.",
+        "Emergence of a high-risk multidrug-resistant Acinetobacter baumannii clone ST697 in nosocomial settings.",
+        "Redefining the role of the thiol-based agent N-acetylcysteine in human health and disease and elucidating potential advantages of its amide derivative.",
+        "Convergent genetic pathways linking neuropsychiatric and ocular disorders in children.",
+        "Deep learning and statistical methods identify novel asthma risk variants in Europeans.",
+        "Vascular malformations of the head and neck and a molecularly guided precision therapy framework.",
+        "Integrative GWAS identifies novel loci and genetic links between psychiatric and metabolic factors in anorexia nervosa.",
+        "Circulating amino acids and Type 2 diabetes in a Latin American population-based cohort."
+      ],
+      "recent_venues": [
+        "Nature communications",
+        "Brain : a journal of neurology",
+        "American journal of human genetics",
+        "Microbiology spectrum",
+        "RSC medicinal chemistry",
+        "Journal of child psychology and psychiatry, and allied disciplines",
+        "The Journal of allergy and clinical immunology",
+        "Frontiers in neurology",
+        "Molecular psychiatry",
+        "Cardiovascular diabetology"
+      ],
+      "recent_years": [
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026,
+        2026
+      ],
+      "field_terms": [
+        "genetic",
+        "pathways",
+        "disorders",
+        "scotch",
+        "isoform-level",
+        "characterization",
+        "gene",
+        "expression"
+      ],
+      "confidence": 1.0,
+      "confidence_notes": [
+        "10 recent pubs (+0.40)",
+        "10/10 in last 3yr (+0.40)",
+        "8 field terms extracted (+0.20)"
+      ],
+      "layer_used": "L1_pubmed",
+      "fetched_at": "2026-05-19T16:40:32.351545Z",
+      "error": null,
+      "url": "https://www.research.chop.edu/people/hakon-hakonarson",
+      "section": "mentors"
+    }
+  ]
+}
