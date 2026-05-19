@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-19T17:01:18.285563Z",
+  "generated_at": "2026-05-19T16:58:07.462559Z",
   "source": "pubmed_eutils_L1",
   "records": [
     {
@@ -71,7 +71,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T17:01:01.630683Z",
+      "fetched_at": "2026-05-19T16:57:51.096179Z",
       "error": null,
       "url": "https://www.research.chop.edu/people/hakon-hakonarson",
       "section": "collaborators"
@@ -145,7 +145,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T17:01:03.070099Z",
+      "fetched_at": "2026-05-19T16:57:52.543782Z",
       "error": null,
       "url": "https://www.research.chop.edu/mccormack-laboratory",
       "section": "collaborators"
@@ -219,7 +219,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T17:01:04.948395Z",
+      "fetched_at": "2026-05-19T16:57:53.856787Z",
       "error": null,
       "url": "https://www.research.chop.edu/mccormack-laboratory",
       "section": "peers"
@@ -293,7 +293,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T17:01:06.305266Z",
+      "fetched_at": "2026-05-19T16:57:55.384405Z",
       "error": null,
       "url": "https://labs.utdallas.edu/painstresslab/",
       "section": "peers"
@@ -367,7 +367,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T17:01:07.810022Z",
+      "fetched_at": "2026-05-19T16:57:56.934103Z",
       "error": null,
       "url": "https://neurology.wustl.edu/people/nico-dosenbach-md-phd/",
       "section": "peers"
@@ -441,7 +441,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T17:01:09.361144Z",
+      "fetched_at": "2026-05-19T16:57:58.524084Z",
       "error": null,
       "url": "https://goldbergneurolab.com/",
       "section": "peers"
@@ -506,7 +506,7 @@
         "L1 superseded (L1 conf=0.5)"
       ],
       "layer_used": "L2_orcid",
-      "fetched_at": "2026-05-19T17:01:13.044739Z",
+      "fetched_at": "2026-05-19T16:58:02.154327Z",
       "error": null,
       "url": "https://www.romberglab.org/",
       "section": "peers"
@@ -580,7 +580,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T17:01:13.554665Z",
+      "fetched_at": "2026-05-19T16:58:02.660552Z",
       "error": null,
       "url": "https://www.bwfund.org/about/dr-louis-j-muglia-md-phd/",
       "section": "mentors"
@@ -654,7 +654,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T17:01:15.118945Z",
+      "fetched_at": "2026-05-19T16:58:04.300403Z",
       "error": null,
       "url": "https://www.research.chop.edu/people/michael-a-levine",
       "section": "mentors"
@@ -728,7 +728,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T17:01:16.672760Z",
+      "fetched_at": "2026-05-19T16:58:05.889980Z",
       "error": null,
       "url": "https://www.research.chop.edu/people/hakon-hakonarson",
       "section": "mentors"

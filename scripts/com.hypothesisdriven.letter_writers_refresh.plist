@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  launchd job for weekly refresh of letter_writers.json.
+  Cadence: every Sunday at 03:00 (local time).
+  Re-scrapes PubMed+ORCID for every person on the site, rewires the
+  field-of-interest cards, and emits research.commit (routine-refresh +
+  confidence-regression on drop) to Pilot's bus.
+
+  Installed by Jeff (one-time):
+    cp scripts/com.hypothesisdriven.letter_writers_refresh.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$UID ~/Library/LaunchAgents/com.hypothesisdriven.letter_writers_refresh.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.hypothesisdriven.letter_writers_refresh</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/roizenj/Code/Claude Apps/Roizen Lab/scripts/letter_writers_refresh.py</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/roizenj/Code/Claude Apps/Roizen Lab</string>
+
+  <!-- Sunday (Weekday=0) at 03:00. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>0</integer>
+    <key>Hour</key><integer>3</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/roizenj/Code/Claude Apps/Roizen Lab/docs/reports/letter-writers-refresh.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/roizenj/Code/Claude Apps/Roizen Lab/docs/reports/letter-writers-refresh.stderr.log</string>
+
+  <!--
+    Same safe-canary pattern as the tenure-readiness cron: ships with
+    CROSS_CM_BUS_TRIAL_ENABLED=0 so the first Jeff-installed run dry-runs
+    visibly. Flip to "1" once the audit log shape is confirmed.
+  -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>CROSS_CM_BUS_TRIAL_ENABLED</key>
+    <string>0</string>
+    <key>CROSS_CM_BUS_ENDPOINT</key>
+    <string>https://ulysses-production.up.railway.app/api/role-balance-trial/events</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+</dict>
+</plist>
