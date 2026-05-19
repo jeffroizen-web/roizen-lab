@@ -49,8 +49,10 @@ sys.path.insert(0, 'scripts')
 from bus_emit import emit
 data = json.load(open('$JSON_FILE'))
 result = emit(
-    'site.audit.regression',
+    'research.commit',
     {
+        'outcome': 'regression',
+        'project': 'roizen-lab-site',
         'grade': data.get('findings', {}).get('grade', '?'),
         'regressions': data.get('regressions', []),
         'report_path': '$REPORT_FILE',
@@ -69,8 +71,10 @@ from bus_emit import emit
 data = json.load(open('$JSON_FILE'))
 findings = data.get('findings', {}) if isinstance(data, dict) and 'findings' in data else data
 result = emit(
-    'site.audit.heartbeat',
+    'research.commit',
     {
+        'outcome': 'heartbeat',
+        'project': 'roizen-lab-site',
         'grade': findings.get('grade', '?'),
         'dead_link_count': len(findings.get('dead_hash_hrefs', [])),
         'figure_pending_count': findings.get('figure_pending_count', 0),

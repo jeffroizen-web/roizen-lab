@@ -23,9 +23,10 @@ import os
 import subprocess
 import sys
 import time
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union
 from urllib.error import URLError, HTTPError
 from urllib.request import urlopen, Request
 
@@ -33,6 +34,31 @@ ROOT = Path(__file__).resolve().parent.parent
 AUDIT_LOG = ROOT / "decisions" / "bus_emit_log.jsonl"
 
 DEFAULT_ENDPOINT = "https://ulysses-production.up.railway.app/api/role-balance-trial/events"
+
+# Pilot's bus accepts STRING confidence values, not numeric (per Kleiber MSG-b14dd7,
+# cross-pollinated from AquaErg MSG-af3b42). Internal callers still pass a float in
+# [0, 1]; we bucket-map to the canonical strings on the wire.
+CONFIDENCE_BUCKETS = (
+    (0.90, "exact"),
+    (0.70, "high"),
+    (0.50, "medium"),
+    (0.30, "low"),
+    (0.00, "very-low"),
+)
+
+
+def confidence_to_string(value: Union[float, int, str]) -> str:
+    """Map a numeric confidence to Pilot's accepted string bucket. Strings pass through."""
+    if isinstance(value, str):
+        return value
+    try:
+        v = float(value)
+    except (TypeError, ValueError):
+        return "very-low"
+    for threshold, label in CONFIDENCE_BUCKETS:
+        if v >= threshold:
+            return label
+    return "very-low"
 
 
 def _is_enabled() -> bool:
@@ -82,15 +108,17 @@ def emit(
     if not kind or not isinstance(payload, dict):
         raise ValueError("kind required (str), payload required (dict)")
 
-    now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     subject = subject_date or now[:10]
+    # Pilot's API schema (per MSG-b14dd7): camelCase keys, string confidence, required eventId/emittedAt.
     event = {
+        "eventId": f"ace-scout-{kind}-{uuid.uuid4().hex[:12]}",
+        "emittedBy": source,
+        "emittedAt": now,
+        "subjectDate": subject,
         "kind": kind,
-        "source": source,
-        "subject_date": subject,
-        "confidence": confidence,
-        "emitted_at": now,
         "payload": payload,
+        "confidence": confidence_to_string(confidence),
     }
 
     effective_endpoint = endpoint or os.environ.get("CROSS_CM_BUS_ENDPOINT") or DEFAULT_ENDPOINT
@@ -142,11 +170,23 @@ def emit(
             path = _audit_write(audit_entry)
             return {"status": "delivered", "bus_response": response_json, "audit_path": str(path)}
     except HTTPError as e:
+        # Per Kleiber MSG-b14dd7, Pilot returns a JSON body with errors:[] on 400.
+        # Capture it so the audit log shows exactly which fields failed validation.
+        body = None
+        try:
+            body_raw = e.read().decode("utf-8", errors="replace")
+            try:
+                body = json.loads(body_raw)
+            except json.JSONDecodeError:
+                body = {"raw": body_raw}
+        except Exception:
+            pass
         audit_entry["status"] = "error"
         audit_entry["http_status"] = e.code
         audit_entry["error"] = f"HTTPError {e.code}"
+        audit_entry["bus_response"] = body
         path = _audit_write(audit_entry)
-        return {"status": "error", "bus_response": None, "audit_path": str(path)}
+        return {"status": "error", "bus_response": body, "audit_path": str(path)}
     except (URLError, TimeoutError, OSError) as e:
         audit_entry["status"] = "error"
         audit_entry["error"] = str(e)

@@ -118,14 +118,44 @@ class TestEmit(unittest.TestCase):
                 mock_urlopen.assert_called_once()
                 self.assertEqual(result["status"], "delivered")
 
-    def test_event_envelope_has_required_fields(self):
-        bus_emit.emit("test.kind", {"foo": "bar"}, dry_run=True, confidence=0.7)
+    def test_event_envelope_uses_pilot_camelcase_schema(self):
+        # Pilot's API requires camelCase keys + string confidence + eventId/emittedAt (MSG-b14dd7).
+        bus_emit.emit("test.kind", {"foo": "bar"}, dry_run=True, confidence=0.75)
         entry = json.loads(self._tmp_log.read_text().strip())
         ev = entry["event"]
-        for field in ("kind", "source", "subject_date", "confidence", "emitted_at", "payload"):
+        for field in ("eventId", "emittedBy", "emittedAt", "subjectDate", "kind", "payload", "confidence"):
             self.assertIn(field, ev)
-        self.assertEqual(ev["confidence"], 0.7)
-        self.assertEqual(ev["source"], "ace-scout")
+        self.assertEqual(ev["emittedBy"], "ace-scout")
+        self.assertEqual(ev["confidence"], "high")  # 0.75 -> "high" bucket
+        self.assertTrue(ev["eventId"].startswith("ace-scout-test.kind-"))
+        # Reject snake_case leakage:
+        for legacy in ("source", "subject_date", "emitted_at"):
+            self.assertNotIn(legacy, ev)
+
+
+class TestConfidenceBuckets(unittest.TestCase):
+    def test_high_numeric_maps_to_exact(self):
+        self.assertEqual(bus_emit.confidence_to_string(0.95), "exact")
+        self.assertEqual(bus_emit.confidence_to_string(1.0), "exact")
+
+    def test_mid_numeric_maps_to_high_or_medium(self):
+        self.assertEqual(bus_emit.confidence_to_string(0.80), "high")
+        self.assertEqual(bus_emit.confidence_to_string(0.55), "medium")
+
+    def test_low_numeric_maps_to_low(self):
+        self.assertEqual(bus_emit.confidence_to_string(0.35), "low")
+
+    def test_very_low_numeric_maps_to_very_low(self):
+        self.assertEqual(bus_emit.confidence_to_string(0.10), "very-low")
+        self.assertEqual(bus_emit.confidence_to_string(0), "very-low")
+
+    def test_string_passes_through(self):
+        self.assertEqual(bus_emit.confidence_to_string("exact"), "exact")
+        self.assertEqual(bus_emit.confidence_to_string("custom-label"), "custom-label")
+
+    def test_bad_input_defaults_to_very_low(self):
+        self.assertEqual(bus_emit.confidence_to_string(None), "very-low")
+        self.assertEqual(bus_emit.confidence_to_string([]), "very-low")
 
 
 @unittest.skipUnless(os.environ.get("NET") == "1", "set NET=1 to enable live bus test")
