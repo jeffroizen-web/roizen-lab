@@ -48,6 +48,23 @@ OUT = ROOT / "docs" / "letter_writers.json"
 
 ESEARCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 ESUMMARY = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
+ORCID_SEARCH = "https://pub.orcid.org/v3.0/expanded-search/"
+ORCID_WORKS = "https://pub.orcid.org/v3.0/{iid}/works"
+
+# Affiliation hints used by ORCID disambiguation (institution-name match → trust the iD).
+# Drawn from the site's people cards.
+KNOWN_AFFILIATIONS = (
+    "Children's Hospital of Philadelphia",
+    "University of Pennsylvania",
+    "Burroughs Wellcome",
+    "Cincinnati Children's",
+    "Washington University",
+    "Dallas",
+    "Texas",
+)
+
+L2_TRIGGER_CONFIDENCE = 0.6
+L2_TRIGGER_PMID_COUNT = 5
 
 # Common English/PubMed words to strip from title-word frequency.
 # These are too generic to count as "field of interest" signal.
@@ -81,7 +98,12 @@ class PersonProbe:
 
 
 def _http_get(url: str, timeout: int = 10) -> Optional[bytes]:
-    req = Request(url, headers={"User-Agent": "Roizen-Lab-Scrape/1.0 (ace-scout)"})
+    # Accept: application/json matters for ORCID (defaults to XML otherwise).
+    # PubMed e-utils ignores it when retmode=json is in the query string.
+    req = Request(url, headers={
+        "User-Agent": "Roizen-Lab-Scrape/1.0 (ace-scout)",
+        "Accept": "application/json",
+    })
     try:
         with urlopen(req, timeout=timeout) as r:
             return r.read()
@@ -124,10 +146,10 @@ def extract_field_terms(titles: list, max_terms: int = 8) -> list:
 
 
 def compute_confidence(probe: PersonProbe) -> tuple:
-    """Return (score 0-1, notes)."""
+    """Return (score 0-1, notes). Counts either PMIDs (L1) or titles (L2)."""
     score = 0.0
     notes = []
-    n = len(probe.recent_pmids)
+    n = max(len(probe.recent_pmids), len(probe.recent_titles))
     if n == 0:
         notes.append("no recent pubs found")
         return 0.0, notes
@@ -143,6 +165,99 @@ def compute_confidence(probe: PersonProbe) -> tuple:
         score += 0.2
         notes.append(f"{len(probe.field_terms)} field terms extracted (+0.20)")
     return round(min(score, 1.0), 2), notes
+
+
+def parse_display_name(display_name: str) -> tuple:
+    """'Neil D. Romberg, MD' -> ('Neil', 'Romberg'). For ORCID search."""
+    clean = re.sub(r",.*$", "", display_name).strip()
+    parts = [p.replace(".", "") for p in clean.split() if p.replace(".", "")]
+    if len(parts) < 2:
+        return (clean, "")
+    return (parts[0], parts[-1])
+
+
+def orcid_disambiguate(display_name: str) -> Optional[str]:
+    """
+    Find an ORCID iD by family-name + given-names, preferring matches whose
+    institution-name appears in KNOWN_AFFILIATIONS. Returns the iD or None.
+    """
+    given, family = parse_display_name(display_name)
+    if not family or not given:
+        return None
+    q = f"family-name:{family}+AND+given-names:{given}"
+    raw = _http_get(f"{ORCID_SEARCH}?q={q}&rows=10")
+    if raw is None:
+        return None
+    try:
+        results = json.loads(raw).get("expanded-result") or []
+    except json.JSONDecodeError:
+        return None
+    if not results:
+        return None
+    if len(results) == 1:
+        return results[0].get("orcid-id")
+    # Disambiguate by institution-name hit.
+    for r in results:
+        institutions = " ".join(r.get("institution-name") or [])
+        if any(hint in institutions for hint in KNOWN_AFFILIATIONS):
+            return r.get("orcid-id")
+    return None
+
+
+def orcid_fetch_works(orcid_id: str, max_results: int = 10) -> list:
+    """Return list of dicts: {title, year, venue}."""
+    raw = _http_get(ORCID_WORKS.format(iid=orcid_id))
+    if raw is None:
+        return []
+    try:
+        groups = json.loads(raw).get("group") or []
+    except json.JSONDecodeError:
+        return []
+    works = []
+    for g in groups:
+        summary = (g.get("work-summary") or [{}])[0]
+        title = ((summary.get("title") or {}).get("title") or {}).get("value") or ""
+        year_node = (summary.get("publication-date") or {}).get("year") or {}
+        year_raw = year_node.get("value")
+        try:
+            year = int(year_raw) if year_raw else None
+        except (TypeError, ValueError):
+            year = None
+        venue = (summary.get("journal-title") or {}).get("value") or ""
+        works.append({"title": title, "year": year, "venue": venue})
+    works.sort(key=lambda w: (w["year"] or 0), reverse=True)
+    return works[:max_results]
+
+
+def probe_orcid(display_name: str) -> Optional[PersonProbe]:
+    """
+    Layer 2: ORCID lookup. Returns a PersonProbe on success, None if no
+    unambiguous iD found.
+    """
+    orcid_id = orcid_disambiguate(display_name)
+    if not orcid_id:
+        return None
+    time.sleep(0.34)
+    works = orcid_fetch_works(orcid_id)
+    if not works:
+        return None
+    p = PersonProbe(
+        name=display_name,
+        pubmed_query=f"orcid:{orcid_id}",
+        layer_used="L2_orcid",
+        fetched_at=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+    )
+    p.recent_titles = [w["title"] for w in works]
+    p.recent_venues = [w["venue"] for w in works]
+    p.recent_years = [w["year"] for w in works]
+    p.recent_pmids = []  # ORCID often doesn't have PMIDs linked
+    p.field_terms = extract_field_terms(p.recent_titles)
+    p.confidence_notes.append(f"orcid_id={orcid_id}")
+    p.confidence, conf_notes = compute_confidence(p)
+    p.confidence_notes.extend(conf_notes)
+    # ORCID iD with institutional match is strong signal — bump baseline.
+    p.confidence = round(min(p.confidence + 0.1, 1.0), 2)
+    return p
 
 
 def probe_pubmed(display_name: str, max_results: int = 10) -> PersonProbe:
@@ -200,6 +315,28 @@ def probe_pubmed(display_name: str, max_results: int = 10) -> PersonProbe:
     return p
 
 
+def probe_with_fallback(display_name: str) -> PersonProbe:
+    """
+    Layer 1 PubMed first; on low-confidence or too-few results, try L2 ORCID.
+    Keep whichever yields higher confidence.
+    """
+    l1 = probe_pubmed(display_name)
+    needs_l2 = (
+        l1.confidence <= L2_TRIGGER_CONFIDENCE
+        or len(l1.recent_pmids) < L2_TRIGGER_PMID_COUNT
+    )
+    if not needs_l2:
+        return l1
+    l2 = probe_orcid(display_name)
+    if l2 is None:
+        l1.confidence_notes.append("L2 ORCID attempted, no unambiguous iD")
+        return l1
+    if l2.confidence > l1.confidence:
+        l2.confidence_notes.append(f"L1 superseded (L1 conf={l1.confidence})")
+        return l2
+    return l1
+
+
 def extract_people_from_site(html: str) -> list:
     """Pull mentor/collaborator/peer names from each section."""
     people = []
@@ -224,17 +361,17 @@ def main():
     args = ap.parse_args()
 
     if args.probe:
-        probe = probe_pubmed(args.probe)
+        probe = probe_with_fallback(args.probe)
         print(json.dumps(asdict(probe), indent=2))
         return 0
 
     if args.from_site:
         html = Path(args.site).read_text(encoding="utf-8")
         people = extract_people_from_site(html)
-        print(f"Found {len(people)} people; probing PubMed...", file=sys.stderr)
+        print(f"Found {len(people)} people; probing PubMed (L1) + ORCID fallback (L2)...", file=sys.stderr)
         records = []
         for p in people:
-            probe = probe_pubmed(p["name"])
+            probe = probe_with_fallback(p["name"])
             probe_dict = asdict(probe)
             probe_dict["url"] = p["url"]
             probe_dict["section"] = p["section"]

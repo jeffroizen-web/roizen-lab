@@ -17,11 +17,15 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from letter_writer_scrape import (  # noqa: E402
     normalize_name_for_pubmed,
+    parse_display_name,
     parse_pubdate_year,
     extract_field_terms,
     extract_people_from_site,
     compute_confidence,
     probe_pubmed,
+    probe_orcid,
+    probe_with_fallback,
+    orcid_disambiguate,
     PersonProbe,
 )
 
@@ -156,6 +160,77 @@ class TestConfidence(unittest.TestCase):
         self.assertLessEqual(score, 1.0)
 
 
+class TestParseDisplayName(unittest.TestCase):
+    def test_basic_extraction(self):
+        self.assertEqual(parse_display_name("Neil D. Romberg, MD"), ("Neil", "Romberg"))
+
+    def test_drops_degrees(self):
+        self.assertEqual(parse_display_name("Louis J. Muglia, MD, PhD"), ("Louis", "Muglia"))
+
+    def test_single_token_passes_through(self):
+        first, last = parse_display_name("Onename")
+        self.assertEqual(first, "Onename")
+        self.assertEqual(last, "")
+
+
+class TestFallbackLogic(unittest.TestCase):
+    """probe_with_fallback's L1→L2 decision logic, with both probes mocked."""
+
+    def test_strong_l1_skips_l2(self):
+        from unittest.mock import patch
+        strong_l1 = PersonProbe(
+            name="Dr Strong", pubmed_query="Strong D",
+            recent_pmids=list("0123456789"),
+            confidence=0.95, layer_used="L1_pubmed",
+        )
+        with patch("letter_writer_scrape.probe_pubmed", return_value=strong_l1) as mock_l1, \
+             patch("letter_writer_scrape.probe_orcid") as mock_l2:
+            result = probe_with_fallback("Dr Strong")
+            mock_l1.assert_called_once()
+            mock_l2.assert_not_called()
+            self.assertEqual(result.layer_used, "L1_pubmed")
+
+    def test_weak_l1_triggers_l2(self):
+        from unittest.mock import patch
+        weak_l1 = PersonProbe(
+            name="Dr Weak", pubmed_query="Weak D",
+            recent_pmids=["1", "2"],
+            confidence=0.4, layer_used="L1_pubmed",
+        )
+        strong_l2 = PersonProbe(
+            name="Dr Weak", pubmed_query="orcid:0000",
+            recent_titles=["t1", "t2", "t3"],
+            confidence=0.85, layer_used="L2_orcid",
+        )
+        with patch("letter_writer_scrape.probe_pubmed", return_value=weak_l1), \
+             patch("letter_writer_scrape.probe_orcid", return_value=strong_l2):
+            result = probe_with_fallback("Dr Weak")
+            self.assertEqual(result.layer_used, "L2_orcid")
+
+    def test_weak_l1_falls_back_when_l2_fails(self):
+        from unittest.mock import patch
+        weak_l1 = PersonProbe(
+            name="Dr Ghost", pubmed_query="Ghost D",
+            recent_pmids=["1"], confidence=0.3, layer_used="L1_pubmed",
+        )
+        with patch("letter_writer_scrape.probe_pubmed", return_value=weak_l1), \
+             patch("letter_writer_scrape.probe_orcid", return_value=None):
+            result = probe_with_fallback("Dr Ghost")
+            self.assertEqual(result.layer_used, "L1_pubmed")
+            self.assertTrue(any("L2 ORCID attempted" in n for n in result.confidence_notes))
+
+    def test_l2_with_lower_confidence_not_chosen(self):
+        from unittest.mock import patch
+        l1 = PersonProbe(name="X", pubmed_query="X X", recent_pmids=["1", "2"],
+                         confidence=0.55, layer_used="L1_pubmed")
+        l2 = PersonProbe(name="X", pubmed_query="orcid:0",
+                         recent_titles=[], confidence=0.40, layer_used="L2_orcid")
+        with patch("letter_writer_scrape.probe_pubmed", return_value=l1), \
+             patch("letter_writer_scrape.probe_orcid", return_value=l2):
+            result = probe_with_fallback("X X")
+            self.assertEqual(result.layer_used, "L1_pubmed")
+
+
 @unittest.skipUnless(os.environ.get("NET") == "1", "set NET=1 to enable PubMed network test")
 class TestPubmedNetwork(unittest.TestCase):
     def test_muglia_probe_returns_pmids(self):
@@ -164,6 +239,18 @@ class TestPubmedNetwork(unittest.TestCase):
         self.assertGreater(len(probe.recent_pmids), 0)
         self.assertGreater(probe.total_pubmed_count, 50)
         self.assertGreater(probe.confidence, 0.0)
+
+
+@unittest.skipUnless(os.environ.get("NET") == "1", "set NET=1 to enable ORCID network test")
+class TestOrcidNetwork(unittest.TestCase):
+    def test_romberg_orcid_disambiguation(self):
+        iid = orcid_disambiguate("Neil D. Romberg, MD")
+        self.assertEqual(iid, "0000-0002-1881-5318")
+
+    def test_romberg_l2_supersedes_l1(self):
+        result = probe_with_fallback("Neil D. Romberg, MD")
+        self.assertEqual(result.layer_used, "L2_orcid")
+        self.assertGreater(len(result.recent_titles), 5)
 
 
 if __name__ == "__main__":

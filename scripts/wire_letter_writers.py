@@ -68,7 +68,9 @@ def build_paragraph(record: dict) -> str:
     """Build the field-of-interest <p> for one record."""
     conf = float(record.get("confidence", 0.0))
     terms = [t for t in record.get("field_terms", []) if t]
-    n_pubs = len(record.get("recent_pmids", []))
+    # L1 (PubMed) populates recent_pmids; L2 (ORCID) populates recent_titles.
+    # Show whichever has count.
+    n_pubs = max(len(record.get("recent_pmids", [])), len(record.get("recent_titles", [])))
     if conf <= LOW_CONF_THRESHOLD:
         body = "verifying field-of-interest"
         if terms:

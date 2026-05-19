@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-19T16:40:34.977341Z",
+  "generated_at": "2026-05-19T16:58:07.462559Z",
   "source": "pubmed_eutils_L1",
   "records": [
     {
@@ -71,7 +71,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:09.909314Z",
+      "fetched_at": "2026-05-19T16:57:51.096179Z",
       "error": null,
       "url": "https://www.research.chop.edu/people/hakon-hakonarson",
       "section": "collaborators"
@@ -145,7 +145,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:12.433976Z",
+      "fetched_at": "2026-05-19T16:57:52.543782Z",
       "error": null,
       "url": "https://www.research.chop.edu/mccormack-laboratory",
       "section": "collaborators"
@@ -219,7 +219,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:15.051860Z",
+      "fetched_at": "2026-05-19T16:57:53.856787Z",
       "error": null,
       "url": "https://www.research.chop.edu/mccormack-laboratory",
       "section": "peers"
@@ -293,7 +293,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:17.665427Z",
+      "fetched_at": "2026-05-19T16:57:55.384405Z",
       "error": null,
       "url": "https://labs.utdallas.edu/painstresslab/",
       "section": "peers"
@@ -367,7 +367,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:20.291624Z",
+      "fetched_at": "2026-05-19T16:57:56.934103Z",
       "error": null,
       "url": "https://neurology.wustl.edu/people/nico-dosenbach-md-phd/",
       "section": "peers"
@@ -441,52 +441,72 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:22.923820Z",
+      "fetched_at": "2026-05-19T16:57:58.524084Z",
       "error": null,
       "url": "https://goldbergneurolab.com/",
       "section": "peers"
     },
     {
       "name": "Neil D. Romberg, MD",
-      "pubmed_query": "Romberg ND",
-      "recent_pmids": [
-        "32730233",
-        "29477728",
-        "29074947"
-      ],
-      "total_pubmed_count": 3,
+      "pubmed_query": "orcid:0000-0002-1881-5318",
+      "recent_pmids": [],
+      "total_pubmed_count": 0,
       "recent_titles": [
-        "Multisystem inflammatory syndrome in children and COVID-19 are distinct presentations of SARS-CoV-2.",
-        "Prevalence and clinical challenges among adults with primary immunodeficiency and recombination-activating gene deficiency.",
-        "Corrigendum: Germline hypomorphic CARD11 mutations in severe atopic disease."
+        "Unmanipulated bone marrow infusion without conditioning can rescue RECQL4\u2212/\u2212 severe combined immunodeficiency",
+        "Tonsillar expression quantitative trait loci verify and expand genetic contributors to childhood atopic diseases",
+        "Human genetic influences on early B cell development",
+        "IL-12 drives the differentiation of human T follicular regulatory cells",
+        "Common variable immunodeficiency, cross currents, and prevailing winds",
+        "Genetic obstacles to developing and tolerizing human B cells",
+        "Lymphocytes Utilize Somatic Mutations, Epigenetic Silencing, and the Proteasome to Escape Truncated WASP Expression",
+        "Hematopoietic Stem Cell Transplantation Successfully Treats CD40LG Duplication",
+        "Distinct stage-specific transcriptional states of B cells in human tonsillar tissue",
+        "Birds of a feather"
       ],
       "recent_venues": [
-        "The Journal of clinical investigation",
-        "The Journal of allergy and clinical immunology",
-        "Nature genetics"
+        "Journal of Human Immunity",
+        "",
+        "Journal of Human Immunity",
+        "Science Immunology",
+        "Immunological Reviews",
+        "WIREs Mechanisms of Disease",
+        "Journal of Clinical Immunology",
+        "Journal of Clinical Immunology",
+        "",
+        "Annals of Allergy, Asthma & Immunology"
       ],
       "recent_years": [
-        2020,
-        2018,
-        2017
+        2026,
+        2026,
+        2025,
+        2024,
+        2024,
+        2022,
+        2022,
+        2021,
+        2021,
+        2019
       ],
       "field_terms": [
-        "multisystem",
-        "inflammatory",
-        "syndrome",
-        "children",
-        "covid-",
-        "distinct",
-        "presentations",
-        "sars-cov-"
+        "genetic",
+        "cells",
+        "immunodeficiency",
+        "tonsillar",
+        "expression",
+        "cell",
+        "unmanipulated",
+        "bone"
       ],
-      "confidence": 0.5,
+      "confidence": 0.9,
       "confidence_notes": [
-        "3 recent pubs (+0.30)",
-        "8 field terms extracted (+0.20)"
+        "orcid_id=0000-0002-1881-5318",
+        "10 recent pubs (+0.40)",
+        "5/10 in last 3yr (+0.20)",
+        "8 field terms extracted (+0.20)",
+        "L1 superseded (L1 conf=0.5)"
       ],
-      "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:25.014372Z",
+      "layer_used": "L2_orcid",
+      "fetched_at": "2026-05-19T16:58:02.154327Z",
       "error": null,
       "url": "https://www.romberglab.org/",
       "section": "peers"
@@ -560,7 +580,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:27.603104Z",
+      "fetched_at": "2026-05-19T16:58:02.660552Z",
       "error": null,
       "url": "https://www.bwfund.org/about/dr-louis-j-muglia-md-phd/",
       "section": "mentors"
@@ -634,7 +654,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:29.751032Z",
+      "fetched_at": "2026-05-19T16:58:04.300403Z",
       "error": null,
       "url": "https://www.research.chop.edu/people/michael-a-levine",
       "section": "mentors"
@@ -708,7 +728,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-05-19T16:40:32.351545Z",
+      "fetched_at": "2026-05-19T16:58:05.889980Z",
       "error": null,
       "url": "https://www.research.chop.edu/people/hakon-hakonarson",
       "section": "mentors"
