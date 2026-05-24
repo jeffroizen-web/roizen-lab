@@ -5,10 +5,10 @@
 **Spirit: Owl** — patient, wise, sees in the dark. Tenure demands careful, unhurried credibility. When the path is unclear, the owl watches longer before moving.
 
 ## Quick Status
-- **State**: between-sessions — two overnight queues completed (7 items total). All autonomous technical work exhausted. Tests green (11/11).
-- **Blocking**: 2 Jeff-unblocks (see `docs/contact-form-status.md`): Formspree signup + ntfy topic subscribe. 8 creative decisions remain in `docs/jeff-review-2026-04-15.md` (PI funding signal now has strong default).
-- **Next**: Kleiber dispatched Claude Design research (interrupted — resume next session). Jeff to work creative queue. Layer 2 (Telegram → Kleiber) backlogged to Pilot.
-- **Last touched**: 2026-04-27 (session close after overnight work)
+- **State**: settled — 2026-05-19 shipped 12 commits/89 tests of credibility-engine infra. LibreOffice unblock landed 2026-05-20 (Jeff approved brew install). Watcher grade C (3 banned phrases + 3 figure-pendings).
+- **Blocking**: Jeff creative picks in `prototypes/design-review-2026-05-14.html` (hero verb / Q layout / Q reorder / 4 prose rewrites — last unblocks 3 banned phrases, takes grade C→B). Formspree signup + ntfy topic subscribe still pending (Layer 1 contact form). Archivist counter-sig on `docs/contracts/archivist-publications.md` (consumer parser already plugged in).
+- **Next**: WMF conversion via newly-installed `soffice --headless --convert-to png` on Q2/Q3 figure-pending subdirs → re-render figure-candidates gallery → propose to Jeff. Closes 2 of 3 figure-pendings, takes grade C→A- if any fit.
+- **Last touched**: 2026-05-20 (LibreOffice queued, stayed settled)
 
 ---
 
@@ -67,6 +67,7 @@
 - 2026-04-16 (via Kleiber): "Contact email is jeffroizen@gmail.com; text Jeff via ntfy AND send Kleiber a Telegram when someone emails through the site" → Layer 1 DONE (Formspree + ntfy); Layer 2 (Telegram to Kleiber) DEFERRED to Pilot Railway endpoint pending Jeff deploy approval.
 - 2026-04-16 (via Kleiber): "Reflect on platonic vision, tmux the answer, start 3 autonomous improvements" → reflection tmux'd; 3 improvements queued in Quick Status; paused by next instruction.
 - 2026-04-16 (via Kleiber): "/close + /compact at next natural stopping point, then resume" → DONE.
+- 2026-05-20 (via Kleiber MSG-0e9151): "LibreOffice installed; WMF conversion delegate available; resume figure-pending close" → PENDING. Path: `soffice --headless --convert-to png "extracted-figures/Q2-hepatic-enzyme"/*.wmf` then same for Q3-cyp2r1-variants; re-render `prototypes/figure-candidates-2026-05-14.html` with the new PNGs; surface to Jeff via Kleiber.
 - 2026-05-14 (via Kleiber): "Pick up overnight, product-quality, no remote push without Jeff" → IN-PROGRESS.
 
 ---
