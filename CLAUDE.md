@@ -6,8 +6,8 @@
 
 ## Quick Status
 - **State**: live on Fable 5 (flip confirmed 2026-06-10 12:20 EDT per Kleiber MSG-90c3cb; 116 passed/4 NET-skipped re-verified post-flip; prior 4.8 Wave-2 since 2026-05-28). WMF PNG-only proposal surfaced to Kleiber via tmux 20:24 EDT (was queued for AM; sent now per always-now). Both remaining grade-C blockers are Jeff-gated: 3 banned-phrase prose rewrites (all 4 staged in design-review packet) + figure-pending PNG-only decision. Queue exhausted of unblocked work. Railway-token inventory (2026-05-25): Ace Scout consumes `TRIAL_BUS_TOKEN` only via `scripts/get-fitness-cred.sh`; never references `RAILWAY_TOKEN`/`RAILWAY_TOKEN_ULYSSES`.
-- **Blocking**: (unchanged) Jeff creative picks in `prototypes/design-review-2026-05-14.html` (hero verb / Q layout / Q reorder / 4 prose rewrites). Formspree signup + ntfy topic subscribe still pending. Archivist counter-sig on `docs/contracts/archivist-publications.md`. WMF PNG-only proposal still awaiting Jeff decision.
-- **Next**: post-restart, surface WMF PNG-only proposal + figure-candidates gallery to Jeff via Kleiber at AM briefing; resume queue-march per `feedback_vision_queue_march_always.md`.
+- **Blocking**: Jeff creative picks in `prototypes/design-review-2026-05-14.html` (hero verb / Q layout / Q reorder / 4 prose rewrites). Formspree signup + ntfy topic subscribe still pending. Archivist counter-sig on `docs/contracts/archivist-publications.md`. WMF PNG-only proposal awaiting Jeff decision. **Both grade-C gates (WMF PNG-only + prose rewrites) are in Kleiber's current Jeff batch, WMF Tier-1 (MSG-78cc34, 2026-06-10) — do NOT re-surface; await batch outcome.**
+- **Next**: standing by on Kleiber's Jeff-batch outcome for the two grade-C gates; on a decision, apply picks + close figure-pending, re-run `tenure_readiness.py` for C→B. Queue-march resumes per `feedback_vision_queue_march_always.md` if new unblocked work appears.
 - **Last touched**: 2026-06-10 (Fable 5 flip reconcile + producer-readback /ccc backstop committed; orchestra-slim migration verified same day)
 
 ---
