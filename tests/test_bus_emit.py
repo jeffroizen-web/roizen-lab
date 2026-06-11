@@ -205,31 +205,69 @@ class TestEmitAndVerify(unittest.TestCase):
         r.__exit__ = lambda *a: None
         return r
 
-    def test_post_echo_verified_on_matching_kind(self):
+    def test_default_verifier_is_inbox_readback_exact_match(self):
+        body = b'{"ok": true, "outcome": "applied", "kind": "test.kind"}'
+        seen = []
+        def fake_inbox(event_id, **kw):
+            seen.append(event_id)
+            return True
+        with patch.object(bus_emit, "urlopen", return_value=self._fake_response(body)):
+            with patch.object(bus_emit, "inbox_readback", side_effect=fake_inbox):
+                result = bus_emit.emit_and_verify(
+                    "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token"
+                )
+        self.assertTrue(result["verified"])
+        self.assertEqual(result["verify_mode"], "readback-fetch")
+        # the verifier got the client-generated eventId for exact-match
+        self.assertEqual(len(seen), 1)
+        self.assertTrue(seen[0].startswith("ace-scout-test.kind-"))
+        self.assertEqual(result["event_id"], seen[0])
+
+    def test_inbox_not_found_is_verify_fail(self):
+        body = b'{"ok": true, "outcome": "applied", "kind": "test.kind"}'
+        with patch.object(bus_emit, "urlopen", return_value=self._fake_response(body)):
+            with patch.object(bus_emit, "inbox_readback", return_value=False):
+                result = bus_emit.emit_and_verify(
+                    "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token"
+                )
+        self.assertFalse(result["verified"])
+        self.assertIn("did NOT find", result["verify_detail"])
+
+    def test_inbox_unreachable_degrades_to_loud_echo_fallback(self):
         body = b'{"ok": true, "outcome": "skipped:planning-kind", "kind": "test.kind"}'
         with patch.object(bus_emit, "urlopen", return_value=self._fake_response(body)):
-            result = bus_emit.emit_and_verify(
-                "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token"
-            )
+            with patch.object(bus_emit, "inbox_readback", side_effect=RuntimeError("conn refused")):
+                result = bus_emit.emit_and_verify(
+                    "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token"
+                )
         self.assertTrue(result["verified"])
-        self.assertEqual(result["verify_mode"], "post-echo")
+        self.assertEqual(result["verify_mode"], "post-echo-fallback")
+        self.assertIn("inbox read-back unavailable", result["verify_detail"])
 
-    def test_post_echo_fails_on_kind_mismatch(self):
+    def test_echo_fallback_fails_on_kind_mismatch(self):
         body = b'{"ok": true, "outcome": "applied", "kind": "OTHER.kind"}'
         with patch.object(bus_emit, "urlopen", return_value=self._fake_response(body)):
-            result = bus_emit.emit_and_verify(
-                "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token"
-            )
+            with patch.object(bus_emit, "inbox_readback", side_effect=RuntimeError("down")):
+                result = bus_emit.emit_and_verify(
+                    "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token"
+                )
         self.assertFalse(result["verified"])
-        self.assertEqual(result["verify_mode"], "post-echo")
+        self.assertEqual(result["verify_mode"], "post-echo-fallback")
 
-    def test_post_echo_fails_on_ok_false(self):
+    def test_echo_fallback_fails_on_ok_false(self):
         body = b'{"ok": false, "errors": ["unknown kind"], "kind": "test.kind"}'
         with patch.object(bus_emit, "urlopen", return_value=self._fake_response(body)):
-            result = bus_emit.emit_and_verify(
-                "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token"
-            )
+            with patch.object(bus_emit, "inbox_readback", side_effect=RuntimeError("down")):
+                result = bus_emit.emit_and_verify(
+                    "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token"
+                )
         self.assertFalse(result["verified"])
+
+    def test_inbox_readback_parses_rows_and_matches_eventid(self):
+        rows = b'{"ok": true, "rows": [{"eventId": "ace-scout-x-abc"}, {"eventId": "tempo-y-def"}]}'
+        with patch.object(bus_emit, "urlopen", return_value=self._fake_response(rows)):
+            self.assertTrue(bus_emit.inbox_readback("ace-scout-x-abc", token="t"))
+            self.assertFalse(bus_emit.inbox_readback("ace-scout-x-MISSING", token="t"))
 
     def test_dry_run_is_skipped_not_verified(self):
         result = bus_emit.emit_and_verify("test.kind", {"foo": "bar"}, dry_run=True)
@@ -241,10 +279,11 @@ class TestEmitAndVerify(unittest.TestCase):
     def test_delivered_write_lands_in_readback_ledger(self):
         body = b'{"ok": true, "outcome": "applied", "kind": "test.kind"}'
         with patch.object(bus_emit, "urlopen", return_value=self._fake_response(body)):
-            bus_emit.emit_and_verify(
-                "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token",
-                session_id="sess-123",
-            )
+            with patch.object(bus_emit, "inbox_readback", return_value=True):
+                bus_emit.emit_and_verify(
+                    "test.kind", {"foo": "bar"}, dry_run=False, token="fake-token",
+                    session_id="sess-123",
+                )
         lines = self._tmp_ledger.read_text().strip().split("\n")
         self.assertEqual(len(lines), 1)
         entry = json.loads(lines[0])

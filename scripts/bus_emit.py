@@ -136,13 +136,13 @@ def emit(
     if dry_run:
         audit_entry["status"] = "dry-run"
         path = _audit_write(audit_entry)
-        return {"status": "dry-run", "bus_response": None, "audit_path": str(path)}
+        return {"status": "dry-run", "bus_response": None, "audit_path": str(path), "event_id": event["eventId"]}
 
     if not effective_token:
         audit_entry["status"] = "skipped"
         audit_entry["reason"] = "no token"
         path = _audit_write(audit_entry)
-        return {"status": "skipped", "bus_response": None, "audit_path": str(path)}
+        return {"status": "skipped", "bus_response": None, "audit_path": str(path), "event_id": event["eventId"]}
 
     body = json.dumps(event).encode("utf-8")
     req = Request(
@@ -168,7 +168,7 @@ def emit(
             audit_entry["latency_ms"] = int((time.monotonic() - started) * 1000)
             audit_entry["bus_response"] = response_json
             path = _audit_write(audit_entry)
-            return {"status": "delivered", "bus_response": response_json, "audit_path": str(path)}
+            return {"status": "delivered", "bus_response": response_json, "audit_path": str(path), "event_id": event["eventId"]}
     except HTTPError as e:
         # Per Kleiber MSG-b14dd7, Pilot returns a JSON body with errors:[] on 400.
         # Capture it so the audit log shows exactly which fields failed validation.
@@ -186,12 +186,12 @@ def emit(
         audit_entry["error"] = f"HTTPError {e.code}"
         audit_entry["bus_response"] = body
         path = _audit_write(audit_entry)
-        return {"status": "error", "bus_response": body, "audit_path": str(path)}
+        return {"status": "error", "bus_response": body, "audit_path": str(path), "event_id": event["eventId"]}
     except (URLError, TimeoutError, OSError) as e:
         audit_entry["status"] = "error"
         audit_entry["error"] = str(e)
         path = _audit_write(audit_entry)
-        return {"status": "error", "bus_response": None, "audit_path": str(path)}
+        return {"status": "error", "bus_response": None, "audit_path": str(path), "event_id": event["eventId"]}
 
 
 READBACK_LEDGER = Path(
@@ -209,6 +209,35 @@ def _ledger_write(entry: dict) -> None:
         pass  # ledger is observability, never blocks the emit path
 
 
+DEFAULT_INBOX_ENDPOINT = "https://ulysses-production.up.railway.app/api/role-balance-trial/inbox"
+
+
+def inbox_readback(event_id: str, *, endpoint: Optional[str] = None,
+                   token: Optional[str] = None, timeout: int = 10) -> bool:
+    """True read-back against Pilot's inbox diagnostic GET (listed in Pilot's
+    capabilities.json; Kleiber MSG-076cc1 routed it after my probe missed it).
+
+    Exact-match on eventId — emit() generates the id client-side, so no
+    window-matching is needed. True iff the event row landed in rows[].
+    Raises on transport/auth failure; emit_and_verify converts a raise into
+    a verify-fail, never a crash.
+    """
+    effective_endpoint = endpoint or os.environ.get("CROSS_CM_BUS_INBOX_ENDPOINT") or DEFAULT_INBOX_ENDPOINT
+    effective_token = token or _fetch_token()
+    if not effective_token:
+        raise RuntimeError("no token for inbox read-back")
+    req = Request(
+        effective_endpoint,
+        method="GET",
+        headers={"Authorization": f"Bearer {effective_token}",
+                 "User-Agent": "ace-scout-bus-emit/1.0"},
+    )
+    with urlopen(req, timeout=timeout) as r:
+        data = json.loads(r.read().decode("utf-8", errors="replace"))
+    rows = data.get("rows", []) if isinstance(data, dict) else []
+    return any(row.get("eventId") == event_id for row in rows)
+
+
 def emit_and_verify(
     kind: str,
     payload: dict,
@@ -219,25 +248,26 @@ def emit_and_verify(
 ) -> dict:
     """Producer-Read-Back wrapper around emit(): POST, then verify what landed.
 
-    Verification layers (strongest available — the trial bus is POST-only as of
-    2026-06-11; GET /events returns 405, no read endpoints exist):
-      A. POST-echo assertion (always): bus_response.ok is True AND
-         bus_response.kind == the kind we sent AND an outcome string is present.
-         Probed empirically 2026-06-11: the bus echoes {ok, outcome, kind} but
-         NOT eventId/payload, so echo-match on kind is the deepest assert today.
-      B. True read-back (when available): pass readback_fetch, a callable
-         (event_id) -> bool, and it is used instead. DI slot per the
-         receiver-before-writer pattern — flips to a GET the moment Pilot
-         ships one, without changing this function's shape.
+    Verification layers:
+      B (default for delivered writes): true read-back via inbox_readback —
+        GET Pilot's /inbox diagnostic and exact-match our client-generated
+        eventId. Pass readback_fetch to override the verifier (DI for tests
+        or alternate read paths).
+      A (fallback): POST-echo assertion — bus_response.ok is True AND
+        bus_response.kind matches AND an outcome string is present. Used only
+        when the inbox read-back RAISES (endpoint unreachable/auth), recorded
+        as verify_mode="post-echo-fallback" so degraded verification is loud.
+        A read-back that RETURNS False is a verify FAIL, not a fallback.
 
     Every non-dry-run attempt is appended to the producer-readback ledger so
     producer_readback_ccc_review.py surfaces it at /ccc.
 
     Returns emit()'s dict plus: verified (bool), verify_mode
-    ("post-echo" | "readback-fetch" | "skipped:<reason>"), verify_detail (str).
+    ("readback-fetch" | "post-echo-fallback" | "skipped:<reason>"),
+    verify_detail (str).
     """
     result = emit(kind, payload, **emit_kwargs)
-    event_id = None  # emit() does not return it; reconstructable from audit log
+    event_id = result.get("event_id")
 
     if result["status"] in ("dry-run", "skipped"):
         result.update(
@@ -256,26 +286,32 @@ def emit_and_verify(
         _ledger_write(_ledger_entry(kind, result, session_id))
         return result
 
-    if readback_fetch is not None:
-        try:
-            ok = bool(readback_fetch(event_id))
-            result.update(
-                verified=ok,
-                verify_mode="readback-fetch",
-                verify_detail="fetched landed state" if ok else "read-back did NOT find the write",
-            )
-        except Exception as e:  # verifier failure is a verify-fail, not a crash
-            result.update(verified=False, verify_mode="readback-fetch", verify_detail=f"verifier error: {e}")
-    else:
-        resp = result.get("bus_response") or {}
-        ok = (
-            isinstance(resp, dict)
-            and resp.get("ok") is True
-            and resp.get("kind") == kind
-            and isinstance(resp.get("outcome"), str)
+    verifier = readback_fetch if readback_fetch is not None else inbox_readback
+    try:
+        ok = bool(verifier(event_id))
+        result.update(
+            verified=ok,
+            verify_mode="readback-fetch",
+            verify_detail="eventId found in inbox" if ok else "read-back did NOT find the write",
         )
-        detail = f"echo ok={resp.get('ok')} kind-match={resp.get('kind') == kind} outcome={resp.get('outcome')!r}"
-        result.update(verified=ok, verify_mode="post-echo", verify_detail=detail)
+    except Exception as e:
+        if readback_fetch is not None:
+            # Injected verifier raised: a verify-fail, never a crash.
+            result.update(verified=False, verify_mode="readback-fetch", verify_detail=f"verifier error: {e}")
+        else:
+            # Default inbox unreachable: degrade LOUDLY to the POST-echo assert.
+            resp = result.get("bus_response") or {}
+            ok = (
+                isinstance(resp, dict)
+                and resp.get("ok") is True
+                and resp.get("kind") == kind
+                and isinstance(resp.get("outcome"), str)
+            )
+            detail = (
+                f"inbox read-back unavailable ({e}); echo ok={resp.get('ok')} "
+                f"kind-match={resp.get('kind') == kind} outcome={resp.get('outcome')!r}"
+            )
+            result.update(verified=ok, verify_mode="post-echo-fallback", verify_detail=detail)
 
     _ledger_write(_ledger_entry(kind, result, session_id))
     return result
