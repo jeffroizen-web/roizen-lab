@@ -194,6 +194,104 @@ def emit(
         return {"status": "error", "bus_response": None, "audit_path": str(path)}
 
 
+READBACK_LEDGER = Path(
+    os.environ.get("PRODUCER_READBACK_LEDGER")
+    or os.path.expanduser("~/.kleiber/logs/producer_readback_writes.jsonl")
+)
+
+
+def _ledger_write(entry: dict) -> None:
+    try:
+        READBACK_LEDGER.parent.mkdir(parents=True, exist_ok=True)
+        with READBACK_LEDGER.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(entry) + "\n")
+    except OSError:
+        pass  # ledger is observability, never blocks the emit path
+
+
+def emit_and_verify(
+    kind: str,
+    payload: dict,
+    *,
+    readback_fetch=None,
+    session_id: Optional[str] = None,
+    **emit_kwargs,
+) -> dict:
+    """Producer-Read-Back wrapper around emit(): POST, then verify what landed.
+
+    Verification layers (strongest available — the trial bus is POST-only as of
+    2026-06-11; GET /events returns 405, no read endpoints exist):
+      A. POST-echo assertion (always): bus_response.ok is True AND
+         bus_response.kind == the kind we sent AND an outcome string is present.
+         Probed empirically 2026-06-11: the bus echoes {ok, outcome, kind} but
+         NOT eventId/payload, so echo-match on kind is the deepest assert today.
+      B. True read-back (when available): pass readback_fetch, a callable
+         (event_id) -> bool, and it is used instead. DI slot per the
+         receiver-before-writer pattern — flips to a GET the moment Pilot
+         ships one, without changing this function's shape.
+
+    Every non-dry-run attempt is appended to the producer-readback ledger so
+    producer_readback_ccc_review.py surfaces it at /ccc.
+
+    Returns emit()'s dict plus: verified (bool), verify_mode
+    ("post-echo" | "readback-fetch" | "skipped:<reason>"), verify_detail (str).
+    """
+    result = emit(kind, payload, **emit_kwargs)
+    event_id = None  # emit() does not return it; reconstructable from audit log
+
+    if result["status"] in ("dry-run", "skipped"):
+        result.update(
+            verified=False,
+            verify_mode=f"skipped:{result['status']}",
+            verify_detail="no external write occurred",
+        )
+        return result
+
+    if result["status"] != "delivered":
+        result.update(
+            verified=False,
+            verify_mode="skipped:post-failed",
+            verify_detail=f"POST status={result['status']}",
+        )
+        _ledger_write(_ledger_entry(kind, result, session_id))
+        return result
+
+    if readback_fetch is not None:
+        try:
+            ok = bool(readback_fetch(event_id))
+            result.update(
+                verified=ok,
+                verify_mode="readback-fetch",
+                verify_detail="fetched landed state" if ok else "read-back did NOT find the write",
+            )
+        except Exception as e:  # verifier failure is a verify-fail, not a crash
+            result.update(verified=False, verify_mode="readback-fetch", verify_detail=f"verifier error: {e}")
+    else:
+        resp = result.get("bus_response") or {}
+        ok = (
+            isinstance(resp, dict)
+            and resp.get("ok") is True
+            and resp.get("kind") == kind
+            and isinstance(resp.get("outcome"), str)
+        )
+        detail = f"echo ok={resp.get('ok')} kind-match={resp.get('kind') == kind} outcome={resp.get('outcome')!r}"
+        result.update(verified=ok, verify_mode="post-echo", verify_detail=detail)
+
+    _ledger_write(_ledger_entry(kind, result, session_id))
+    return result
+
+
+def _ledger_entry(kind: str, result: dict, session_id: Optional[str]) -> dict:
+    return {
+        "ts": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "session_id": session_id,
+        "command": f"bus_emit.emit_and_verify(kind={kind!r})",
+        "status": result.get("status"),
+        "verified": result.get("verified"),
+        "verify_mode": result.get("verify_mode"),
+    }
+
+
 def main():
     """CLI: emit a manually-built event. Use sparingly — most emits are from scripts."""
     import argparse
