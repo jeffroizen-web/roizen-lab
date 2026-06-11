@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "cm_nick": "Ace Scout",
+  "domain": "lab-website-credibility-engine",
+  "generated_at": "2026-06-11",
+  "description": "Roizen Lab website (hypothesisdriven.org) surfaces: tenure-readiness scoring, letter-writer field scraping, publications-feed consumption, and cross-CM bus emission.",
+  "surfaces": [
+    {
+      "id": "tool-tenure-readiness",
+      "kind": "tool",
+      "description": "Scores the working site HTML against the 4-audience tenure rubric; diffs vs baseline, exit 1 on regression. Gotcha: grade gates are content-based, not deploy-based.",
+      "invocation": {
+        "command": "python3 scripts/tenure_readiness.py"
+      },
+      "inputs": {
+        "html_file": "defaults to compare-purple-gold.html (canonical working file)"
+      },
+      "outputs": {
+        "report": "stdout grade + per-check PASS/WARN/FAIL; baseline at docs/tenure_readiness_baseline.json"
+      },
+      "state_keys": [],
+      "cost_class": "free",
+      "freshness_seconds_max": 14400
+    },
+    {
+      "id": "tool-letter-writer-scrape",
+      "kind": "tool",
+      "description": "Field-of-interest scrape for tenure letter-writers: L1 PubMed e-utils with L2 ORCID fallback for name collisions. Gotcha: NET-gated tests; weekly cron refresh Sunday 03:00.",
+      "invocation": {
+        "command": "python3 scripts/letter_writer_scrape.py"
+      },
+      "inputs": {
+        "writers": "name list embedded; ORCID iD used for disambiguation on collision"
+      },
+      "outputs": {
+        "fields": "per-writer field-of-interest terms consumed by scripts/wire_letter_writers.py"
+      },
+      "state_keys": [],
+      "cost_class": "low",
+      "freshness_seconds_max": 604800
+    },
+    {
+      "id": "data-source-publications-feed",
+      "kind": "data-source",
+      "description": "Consumer-side parser for Archivist's publications feed with staleness banner. Gotcha: contract awaits Archivist counter-sig; parser is live-ready but unplugged.",
+      "invocation": {
+        "command": "python3 scripts/publications_feed.py"
+      },
+      "inputs": {
+        "feed": "Archivist publications list per contract shape"
+      },
+      "outputs": {
+        "publications": "parsed list + staleness indicator for site Publications section"
+      },
+      "state_keys": [],
+      "cost_class": "free",
+      "freshness_seconds_max": 604800
+    },
+    {
+      "id": "integration-bus-emit",
+      "kind": "integration",
+      "description": "POSTs cross-CM events to Pilot's trial bus (Bearer via TRIAL_BUS_TOKEN through get-fitness-cred.sh). Gotcha: env-gated CROSS_CM_BUS_TRIAL_ENABLED; dry-run default when off; audit-logged every path.",
+      "invocation": {
+        "command": "python3 scripts/bus_emit.py --kind <kind> --payload-json '<json>'"
+      },
+      "inputs": {
+        "kind": "event kind string (camelCase schema per Pilot)",
+        "payload_json": "JSON object payload",
+        "confidence": "float mapped to string buckets"
+      },
+      "outputs": {
+        "result": "JSON {status: delivered|dry-run|skipped|error, bus_response, audit_path}"
+      },
+      "state_keys": [],
+      "cost_class": "low",
+      "freshness_seconds_max": 0
+    },
+    {
+      "id": "tool-site-qa-gate",
+      "kind": "tool",
+      "description": "Playwright site-wide QA gate on the canonical page: console health, broken images, CLS width/height, a11y alt/landmarks, SEO/JSON-LD presence, mobile overflow at 390px.",
+      "invocation": {
+        "command": "npx playwright test tests/site-qa.spec.js"
+      },
+      "inputs": {
+        "page": "compare-purple-gold.html served via local http.server"
+      },
+      "outputs": {
+        "report": "Playwright pass/fail; 7 tests desktop+mobile"
+      },
+      "state_keys": [],
+      "cost_class": "free",
+      "freshness_seconds_max": 0
+    },
+    {
+      "id": "tool-producer-readback-ccc-review",
+      "kind": "tool",
+      "description": "Layer-4 /ccc backstop: lists session external writes from the ~/.kleiber readback ledger so each is confirmed read-back before close. Advisory, exit 0 always.",
+      "invocation": {
+        "command": "python3 scripts/producer_readback_ccc_review.py --since-hours 12"
+      },
+      "inputs": {
+        "session": "optional session id; falls back to time window"
+      },
+      "outputs": {
+        "report": "stdout list of unconfirmed external writes"
+      },
+      "state_keys": [],
+      "cost_class": "free",
+      "freshness_seconds_max": 0
+    }
+  ]
+}

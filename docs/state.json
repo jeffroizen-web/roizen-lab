@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "cm_nick": "Ace Scout",
+  "data_as_of": "2026-06-11",
+  "fetched_at": "2026-06-11",
+  "keys": {
+    "site_tenure_grade": {
+      "value": "C",
+      "data_as_of": "2026-06-10",
+      "freshness_seconds_max": 86400,
+      "source": "scripts/tenure_readiness.py",
+      "visibility": "public",
+      "description": "4-audience rubric grade of canonical working file; remaining FAIL/WARN are Jeff-gated (prose rewrites + figure-pendings)"
+    },
+    "site_deployed": {
+      "value": false,
+      "data_as_of": "2026-06-10",
+      "freshness_seconds_max": 604800,
+      "source": "docs/DEPLOY.md verified-state table",
+      "visibility": "public",
+      "description": "hypothesisdriven.org not pointed at any host; no CNAME/CI/host config; gated on Jeff hosting answer"
+    },
+    "site_canonical_file": {
+      "value": "compare-purple-gold.html",
+      "data_as_of": "2026-06-10",
+      "freshness_seconds_max": 0,
+      "source": "CLAUDE.md Key Constraints",
+      "visibility": "public",
+      "description": "Single source of content truth; production/index.html is 3.5mo stale, root index.html is dead scaffold"
+    },
+    "blockers_jeff_gated": {
+      "value": ["jeff-creative-picks", "wmf-png-only-decision", "hosting-answer"],
+      "data_as_of": "2026-06-11",
+      "freshness_seconds_max": 86400,
+      "source": "CLAUDE.md Blocking section",
+      "visibility": "public",
+      "description": "All remaining queue items; first two are in Kleiber's Jeff batch (MSG-78cc34)"
+    },
+    "tests_green": {
+      "value": "116 python passed / 4 NET-skipped + 18 playwright passed",
+      "data_as_of": "2026-06-10",
+      "freshness_seconds_max": 86400,
+      "source": "python3 -m pytest -q; npx playwright test",
+      "visibility": "public",
+      "description": "Full local suite state at last run"
+    },
+    "deadline_site_live": {
+      "value": "2026-08-31",
+      "data_as_of": "2026-06-11",
+      "freshness_seconds_max": 0,
+      "source": "CLAUDE.md Key Constraints (tenure clock)",
+      "visibility": "public",
+      "unit": "date_local",
+      "description": "Site must be live+polished by ~Aug 2026; letters solicited ~Sep 2026"
+    }
+  }
+}
