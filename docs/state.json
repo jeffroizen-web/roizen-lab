@@ -29,7 +29,11 @@
       "description": "Single source of content truth; production/index.html is 3.5mo stale, root index.html is dead scaffold"
     },
     "blockers_jeff_gated": {
-      "value": ["jeff-creative-picks", "wmf-png-only-decision", "hosting-answer"],
+      "value": [
+        "jeff-creative-picks",
+        "wmf-png-only-decision",
+        "hosting-answer"
+      ],
       "data_as_of": "2026-06-11",
       "freshness_seconds_max": 86400,
       "source": "CLAUDE.md Blocking section",
@@ -37,8 +41,8 @@
       "description": "All remaining queue items; first two are in Kleiber's Jeff batch (MSG-78cc34)"
     },
     "tests_green": {
-      "value": "116 python passed / 4 NET-skipped + 18 playwright passed",
-      "data_as_of": "2026-06-10",
+      "value": "128 python passed / 4 NET-skipped + 18 playwright passed",
+      "data_as_of": "2026-06-11",
       "freshness_seconds_max": 86400,
       "source": "python3 -m pytest -q; npx playwright test",
       "visibility": "public",
@@ -52,6 +56,17 @@
       "visibility": "public",
       "unit": "date_local",
       "description": "Site must be live+polished by ~Aug 2026; letters solicited ~Sep 2026"
+    },
+    "crons_loaded": {
+      "value": [
+        "com.hypothesisdriven.tenure_readiness",
+        "com.hypothesisdriven.letter_writers_refresh"
+      ],
+      "data_as_of": "2026-06-11",
+      "freshness_seconds_max": 604800,
+      "source": "launchctl list | grep hypothesisdriven",
+      "visibility": "public",
+      "description": "Loaded 2026-06-11 during B5 conformance sweep \u2014 plists existed on disk since 05-19 but were never installed (DIVERGED find)"
     }
   }
 }
