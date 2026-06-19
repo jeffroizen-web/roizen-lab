@@ -97,6 +97,24 @@ class TestInject(unittest.TestCase):
         # And only one foi block remains
         self.assertEqual(second.count(SENTINEL_OPEN), 1)
 
+    def test_reinject_same_record_is_byte_stable(self):
+        # Regression: cron ran daily and orphaned a "\n<indent>" run each time,
+        # accumulating blank lines in the canonical file (found 2026-06-18, 7 runs deep).
+        # Re-injecting the SAME record must be a fixed point — byte-identical, no growth.
+        html = site_card("Dr X")
+        once, _ = inject_record(html, make_record("Dr X", terms=["foo"]))
+        twice, _ = inject_record(once, make_record("Dr X", terms=["foo"]))
+        self.assertEqual(once, twice, "re-injecting identical record must be byte-stable")
+
+    def test_repeated_inject_does_not_grow_blank_lines(self):
+        html = site_card("Dr X")
+        cur = html
+        blank_counts = []
+        for _ in range(5):
+            cur, _ = inject_record(cur, make_record("Dr X", terms=["foo"]))
+            blank_counts.append(sum(1 for L in cur.splitlines() if L.strip() == ""))
+        self.assertEqual(len(set(blank_counts)), 1, f"blank lines grew across runs: {blank_counts}")
+
     def test_does_not_double_inject(self):
         html = site_card("Dr X")
         once, _ = inject_record(html, make_record("Dr X"))

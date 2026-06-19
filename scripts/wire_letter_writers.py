@@ -102,8 +102,12 @@ def escape_text(s: str) -> str:
 
 def strip_existing_foi(html: str, name: str) -> str:
     """Remove any previously-injected field-of-interest <p> for this name."""
+    # Consume the leading "\n<indent>" that inject_record prepends, so strip+inject
+    # is a true round-trip. Without this the whitespace orphans and accumulates one
+    # blank run per run (cron-compounding bug found 2026-06-18, 7 daily runs deep).
     pat = re.compile(
-        re.escape(SENTINEL_OPEN)
+        r'(?:\n[ \t]*)?'
+        + re.escape(SENTINEL_OPEN)
         + r'<p\s+class="field-of-interest[^"]*"\s+data-name="'
         + re.escape(escape_attr(name))
         + r'"[^>]*>.*?</p>'
