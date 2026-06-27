@@ -1,0 +1,185 @@
+{
+  "_meta": {
+    "purpose": "Config-for-one content data contract: the Jeff-specific, stable rendered-site content extracted from compare-purple-gold.html. Single place to review/edit site content. The canonical HTML is still authoritative for RENDER (no build step yet); tests/test_content_contract.py guards this contract against drift from the HTML.",
+    "extracted_from": "compare-purple-gold.html",
+    "extracted_on": "2026-06-27",
+    "owner": "ace-scout",
+    "excludes": "Cron-managed field-of-interest spans (wire_letter_writers.py owns docs/letter_writers.json -> the .field-of-interest <p> in peer/collaborator/mentor cards) and per-person shared-publication lists. Those are volatile and Producer-Owned; this contract captures only the stable identity/content fields so the drift guard stays green across cron runs.",
+    "hidden_sections": ["merch"],
+    "next_increment_jeff_gated": "Flip the canonical page to RENDER from this contract (generator/build step). That crosses the documented no-build-system constraint, so it is a direction call for Jeff, not autonomous."
+  },
+  "meta": {
+    "title": "Roizen Lab | Vitamin D Research | hypothesisdriven.org",
+    "description": "The Roizen Lab at UPenn and CHOP studies the non-calcium benefits of vitamin D — immune modulation, metabolic regulation, and new therapies for common diseases like sarcopenia and PCOS.",
+    "canonical": "https://hypothesisdriven.org",
+    "og_title": "Roizen Lab — hypothesisdriven.org",
+    "og_description": "Rethinking vitamin D. The Roizen Lab explores non-calcium effects of vitamin D and translates them into new therapies.",
+    "og_url": "https://hypothesisdriven.org",
+    "twitter_title": "Roizen Lab — Rethinking Vitamin D",
+    "twitter_description": "The Roizen Lab at UPenn and CHOP studies the non-calcium benefits of vitamin D and translates them into new therapies."
+  },
+  "hero": {
+    "badge": "UPenn · CHOP",
+    "heading": "Redefining Vitamin D",
+    "subtitle": "Vitamin D is one of the most recommended therapies in medicine — and one of the least understood. We are changing that.",
+    "affiliations": "University of Pennsylvania · Children's Hospital of Philadelphia",
+    "cta": "Explore Our Questions"
+  },
+  "big_questions": {
+    "section_heading": "Big Questions",
+    "section_intro": "Each project in our lab is driven by a fundamental unanswered question about vitamin D with clear clinical relevance.",
+    "questions": [
+      {
+        "id": "q1",
+        "title": "Low Vitamin D: Cause or Effect?",
+        "body": "Low vitamin D is associated with many diseases. Medicine assumed low vitamin D was causative. We used disease models and observational genetic studies to ask whether the opposite was true: does disease cause low vitamin D? In asthma, obesity, and aging, the answer was yes. Disease lowers vitamin D — not the other way around.",
+        "arc_anchor": "#arc-phenotype",
+        "figure": { "src": "extracted-figures/from-archivist/reverse-causation-bmi-vitd.png", "placeholder": false }
+      },
+      {
+        "id": "q2",
+        "title": "How Does Disease Lower Vitamin D?",
+        "body": "Sick patients almost always have low vitamin D. Why? We measured hepatic 25-hydroxylase activity across disease states. Obesity and aging directly suppress the liver enzyme that activates vitamin D. If biology varies by disease, does it also vary by person?",
+        "arc_anchor": "#arc-phenotype",
+        "figure": { "src": null, "placeholder": true }
+      },
+      {
+        "id": "q3",
+        "title": "Same Dose, Different Results",
+        "body": "Two patients take the same dose. One responds. One doesn't. Why? We studied coding SNPs in CYP2R1 — the gene for vitamin D's activating enzyme. Genetic variation shapes who benefits from supplementation and who doesn't. The person matters as much as the pill.",
+        "arc_anchor": "#arc-phenotype",
+        "figure": { "src": null, "placeholder": true }
+      },
+      {
+        "id": "q4",
+        "title": "Is the Dose the Drug?",
+        "body": "Most trials give pharmacologic doses to people who aren't deficient. That's not the same biology as correcting a deficiency. High-dose vitamin D activates pathways that replacement doses don't touch. The dose isn't just a number — it changes what the molecule does.",
+        "arc_anchor": "#arc-mechanism",
+        "figure": { "src": "extracted-figures/curated-for-website/q4-dose-response.png", "placeholder": false }
+      },
+      {
+        "id": "q5",
+        "title": "How Does High-Dose D Prevent T2 Diabetes?",
+        "body": "Large trials show high-dose vitamin D reduces diabetes risk in prediabetic patients. The effect is real. The mechanism is unknown. We're working to identify which metabolic pathways mediate the protective effect — and whether vitamin D redirects energy metabolism more broadly.",
+        "arc_anchor": "#arc-translation",
+        "figure": { "src": "extracted-figures/curated-for-website/q5-diabetes-prevention.png", "placeholder": false }
+      },
+      {
+        "id": "q6",
+        "title": "What Determines Calorie Allocation?",
+        "body": "Your body decides whether surplus calories become fat, muscle, or growth. What controls that decision? We built CYP2R1 knockout mice — animals that can't activate vitamin D. Without it, calories go to fat. With it, they go to muscle and linear growth. Vitamin D is a metabolic traffic cop.",
+        "arc_anchor": "#arc-mechanism",
+        "figure": { "src": "extracted-figures/curated-for-website/q1-causation.png", "placeholder": false }
+      },
+      {
+        "id": "q7",
+        "title": "The Missing Biomarker",
+        "body": "PTH tells us when vitamin D is adequate for bones. Nothing tells us when it's adequate for metabolism. Every clinical trial in the field is limited by this gap. We're searching for a blood marker that tracks vitamin D's non-calcium effects. Finding one would change how we dose, monitor, and study vitamin D.",
+        "arc_anchor": "#arc-translation",
+        "figure": { "src": null, "placeholder": true }
+      }
+    ]
+  },
+  "team": {
+    "section_heading": "Our Team",
+    "members": [
+      {
+        "name": "Jeffrey D. Roizen, MD, PhD",
+        "title": "Assistant Professor of Pediatrics",
+        "role": "Principal Investigator"
+      },
+      {
+        "name": "Michael Nguyen",
+        "role": "Research Associate"
+      }
+    ],
+    "join_card": {
+      "heading": "Join Our Team",
+      "body": "We currently do not have hard funding for additional personnel, but are always looking to identify curious, enthusiastic, hard-working people who want to do careful, ambitious science — the kind that moves the boundaries of knowledge, even if only by a few millimeters."
+    }
+  },
+  "collaborators": {
+    "section_heading": "Collaborators",
+    "tagline": "People who make our work better.",
+    "people": [
+      {
+        "name": "Hakon Hakonarson, MD, PhD",
+        "affiliation": "Director, Center for Applied Genomics · CHOP",
+        "link": "https://www.research.chop.edu/people/hakon-hakonarson"
+      },
+      {
+        "name": "Shana E. McCormack, MD, MTR",
+        "affiliation": "Scientific Director, Neuroendocrine Center · CHOP",
+        "link": "https://www.research.chop.edu/mccormack-laboratory"
+      }
+    ]
+  },
+  "peers": {
+    "section_heading": "Peers & Colleagues",
+    "tagline": "Scientists we talk to.",
+    "people": [
+      { "name": "Shana E. McCormack, MD, MTR", "field": "Pediatric Endocrinology", "institution": "CHOP / UPenn", "link": "https://www.research.chop.edu/mccormack-laboratory" },
+      { "name": "Benedict J. Kolber, PhD", "field": "Pain & Stress Neuroscience", "institution": "UT Dallas", "link": "https://labs.utdallas.edu/painstresslab/" },
+      { "name": "Nico U.F. Dosenbach, MD, PhD", "field": "Precision Neuroscience", "institution": "Washington University in St. Louis", "link": "https://neurology.wustl.edu/people/nico-dosenbach-md-phd/" },
+      { "name": "Ethan M. Goldberg, MD, PhD", "field": "Pediatric Neurology & Epilepsy Genetics", "institution": "CHOP / UPenn", "link": "https://goldbergneurolab.com/" },
+      { "name": "Neil D. Romberg, MD", "field": "Immunology & Immune Tolerance", "institution": "CHOP / UPenn", "link": "https://www.romberglab.org/" }
+    ]
+  },
+  "mentors": {
+    "section_heading": "Mentors",
+    "tagline": "People who trained us.",
+    "people": [
+      { "name": "Louis J. Muglia, MD, PhD", "affiliation": "President & CEO, Burroughs Wellcome Fund", "note": "Previously Cincinnati Children's / University of Cincinnati", "link": "https://www.bwfund.org/about/dr-louis-j-muglia-md-phd/" },
+      { "name": "Michael A. Levine, MD", "affiliation": "Chief Emeritus, Endocrinology & Diabetes", "institution": "Children's Hospital of Philadelphia", "link": "https://www.research.chop.edu/people/michael-a-levine" },
+      { "name": "Hakon Hakonarson, MD, PhD", "affiliation": "Director, Center for Applied Genomics", "institution": "Children's Hospital of Philadelphia", "note": "Postdoctoral mentor", "link": "https://www.research.chop.edu/people/hakon-hakonarson" }
+    ]
+  },
+  "publications": {
+    "section_heading": "Selected Papers",
+    "tagline": "Highlights from 27 publications, organized by research arc.",
+    "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD",
+    "data_source": "data/publications.json",
+    "arc_anchors": ["arc-phenotype", "arc-mechanism", "arc-translation"]
+  },
+  "news": {
+    "section_heading": "Lab News",
+    "items": [
+      { "date": "2024", "title": "New preprint: High-dose vitamin D reallocates surplus calories from fat to muscle", "body": "Our latest work shows that dietary vitamin D modulates myostatin and leptin signaling to redirect caloric surplus toward lean mass and linear growth." },
+      { "date": "2024", "title": "New preprint: Vitamin D modulates tumor engraftment through GC protein", "body": "We show that dietary vitamin D regulates GC protein (vitamin D binding protein) abundance, with implications for tumor biology." },
+      { "date": "2023", "title": "Alex Casella defends PhD and matches into Neurology at Johns Hopkins", "body": "Congratulations to Alex on completing her MD/PhD and beginning residency training at Hopkins." },
+      { "date": "2020", "title": "\"Vitamin D Therapy and the Era of Precision Medicine\" published in JCEM", "body": "Our perspective on how genetic variation in vitamin D metabolism should reshape clinical practice." }
+    ]
+  },
+  "alumni": {
+    "section_heading": "Alumni",
+    "tagline": "Former members of the Roizen Lab who have gone on to do great things.",
+    "people": [
+      { "name": "Alex Casella, MD, PhD", "current": "Neurology Resident, Johns Hopkins University (2024–2027)" },
+      { "name": "Caela Long, PhD", "current": "Neuroscience PhD, University of Pennsylvania" },
+      { "name": "Sara Pajouhanfar, MD", "current": "Genetics, Northwell Health / Cohen Children's Medical Center" },
+      { "name": "Zahra Tara, MD", "current": "Pediatrics/Genetics, SSM Health Cardinal Glennon / Saint Louis University" },
+      { "name": "Ilana Caplan", "current": "NYU Grossman School of Medicine" },
+      { "name": "Azra Din, MPH", "current": "Program Manager, Clinical Research, Penn Medicine" },
+      { "name": "Lauren O'Lear", "current": "" },
+      { "name": "Shymir Bullock", "current": "Nursing, Muhlenberg" },
+      { "name": "Allison Phillips", "current": "AMERX Health Care" }
+    ]
+  },
+  "donate": {
+    "section_heading": "Fuel This Research",
+    "body_primary": "Your donation buys reagents, mice, and people-hours. That's it.",
+    "body_secondary": "All donations are tax-deductible and processed through the Children's Hospital of Philadelphia Foundation.",
+    "cta": "Donate Through CHOP",
+    "url": "https://giving.chop.edu"
+  },
+  "contact": {
+    "section_heading": "Get in Touch",
+    "email": "jeffroizen@gmail.com"
+  },
+  "links": {
+    "chop": "https://www.chop.edu",
+    "penn_faculty": "https://www.med.upenn.edu/apps/faculty/index.php/g275/p8213493",
+    "chop_profile": "https://www.research.chop.edu/people/jeffrey-d-roizen",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD"
+  }
+}
