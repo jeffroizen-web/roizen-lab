@@ -80,6 +80,98 @@ test.describe('Site QA — desktop', () => {
   });
 });
 
+test.describe('Site QA — links & nav integrity', () => {
+  // The 8 primary-nav anchors are the spine of the page. If one stops resolving
+  // (a section id renamed, a link typo'd), navigation silently dead-ends.
+  const EXPECTED_NAV = ['#home', '#questions', '#team', '#publications', '#news', '#alumni', '#donate', '#contact'];
+
+  test('every internal anchor link resolves to an element with that id', async ({ page }) => {
+    await page.goto(BASE);
+    const dangling = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('a[href^="#"]'))
+        .map((a) => a.getAttribute('href'))
+        .filter((h) => h && h.length > 1) // skip a bare "#"
+        .filter((h, i, arr) => arr.indexOf(h) === i)
+        .filter((h) => !document.getElementById(decodeURIComponent(h.slice(1))))
+    );
+    expect(dangling, `internal anchors with no target element: ${dangling.join(', ')}`).toEqual([]);
+  });
+
+  test('primary nav contains exactly the expected anchors and every target exists', async ({ page }) => {
+    await page.goto(BASE);
+    const navAnchors = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('#primary-nav a[href^="#"]')).map((a) => a.getAttribute('href'))
+    );
+    expect(navAnchors).toEqual(EXPECTED_NAV);
+    for (const href of EXPECTED_NAV) {
+      await expect(page.locator(href), `nav target ${href} missing`).toHaveCount(1);
+    }
+  });
+
+  test('no dead "#" hrefs (donate-live / merch-hidden launch regression guard)', async ({ page }) => {
+    await page.goto(BASE);
+    // Launch content made the donate button real and removed the merch link; a
+    // regressed-to-"#" href is the signature of either being undone.
+    const dead = await page.locator('a[href="#"]').count();
+    expect(dead, `${dead} dead "#" href(s) present`).toBe(0);
+  });
+
+  test('external links are well-formed (format-only; no live fetch — sandbox-safe)', async ({ page }) => {
+    await page.goto(BASE);
+    const malformed = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('a[href]'))
+        .map((a) => a.getAttribute('href'))
+        .filter((h) => h && !h.startsWith('#'))
+        .filter((h) => !(/^https:\/\/[^/]+\.[^/]+/.test(h) || /^mailto:[^@]+@[^@]+\.[^@]+/.test(h)))
+    );
+    expect(malformed, `malformed external hrefs: ${malformed.join(', ')}`).toEqual([]);
+  });
+
+  test('donate button points at a real giving URL (content regression guard)', async ({ page }) => {
+    await page.goto(BASE);
+    const href = await page.locator('#donate a[href*="giving"]').first().getAttribute('href');
+    expect(href, 'donate link should be a live giving.chop.edu URL').toContain('giving.chop.edu');
+  });
+});
+
+test.describe('Site QA — accessibility depth', () => {
+  test('every image has a NON-EMPTY alt (credibility site: figures must describe)', async ({ page }) => {
+    await page.goto(BASE);
+    // Stricter than the CLS test (which only checks alt !== null): on a science
+    // credibility site an alt="" figure is an information hole, not decoration.
+    const emptyAlt = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('img'))
+        .filter((i) => !(i.getAttribute('alt') || '').trim())
+        .map((i) => i.getAttribute('src'))
+    );
+    expect(emptyAlt, `imgs with empty/whitespace alt: ${emptyAlt.join(', ')}`).toEqual([]);
+  });
+
+  test('skip-link target (#main-content) exists for keyboard users', async ({ page }) => {
+    await page.goto(BASE);
+    await expect(page.locator('#main-content')).toHaveCount(1);
+  });
+});
+
+test.describe('Site QA — JSON-LD validity depth', () => {
+  test('ResearchOrganization carries required schema.org fields', async ({ page }) => {
+    await page.goto(BASE);
+    const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+    expect(blocks.length, 'exactly one JSON-LD block expected').toBe(1);
+    const data = JSON.parse(blocks[0]);
+    expect(data['@context']).toBe('https://schema.org');
+    expect(data['@type']).toBe('ResearchOrganization');
+    expect(data.url).toContain('hypothesisdriven.org');
+    expect(data.description, 'description must be non-empty').toBeTruthy();
+    // parentOrganization must name both CHOP and Penn (the institution bar truth).
+    const parents = JSON.stringify(data.parentOrganization || []);
+    expect(parents).toContain('Pennsylvania');
+    expect(parents).toContain('Children');
+    expect(data.member.name).toBe('Jeffrey Roizen');
+    expect(Array.isArray(data.member.affiliation), 'member.affiliation should be an array').toBeTruthy();
+  });
+});
+
 test.describe('Site QA — mobile (390px)', () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
@@ -93,6 +185,26 @@ test.describe('Site QA — mobile (390px)', () => {
   });
 
   test('nav + hero render on mobile', async ({ page }) => {
+    await page.goto(BASE);
+    expect(await page.locator('nav').first().isVisible()).toBeTruthy();
+    expect(await page.locator('#home').isVisible()).toBeTruthy();
+  });
+});
+
+test.describe('Site QA — tablet breakpoint (768px)', () => {
+  // lab-website.md pins the mobile breakpoint at 768px — the exact edge where the
+  // desktop/mobile layout switch happens, so it's the most regression-prone width.
+  test.use({ viewport: { width: 768, height: 1024 } });
+
+  test('no horizontal overflow at the 768px breakpoint', async ({ page }) => {
+    await page.goto(BASE, { waitUntil: 'networkidle' });
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+    );
+    expect(overflow, `horizontal overflow of ${overflow}px at 768px`).toBeLessThanOrEqual(1);
+  });
+
+  test('nav + hero render at 768px', async ({ page }) => {
     await page.goto(BASE);
     expect(await page.locator('nav').first().isVisible()).toBeTruthy();
     expect(await page.locator('#home').isVisible()).toBeTruthy();
