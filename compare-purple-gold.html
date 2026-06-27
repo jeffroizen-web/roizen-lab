@@ -91,7 +91,7 @@
             --hero-overlay-start: rgba(59,31,110,0.82);
             --hero-overlay-end: rgba(90,61,138,0.65);
             --btn-bg: #C5A336;
-            --btn-text: #FFFFFF;
+            --btn-text: #3B1F6E;            /* WCAG AA: purple on gold = 5.39:1 (was #FFFFFF = 2.42:1 FAIL) */
             --btn-hover: #D4B84E;
             --heading-font: 'Merriweather', Georgia, serif;
             --body-font: 'Open Sans', -apple-system, sans-serif;
@@ -185,7 +185,7 @@
             color: var(--primary); font-size: 0.85rem; font-weight: 600;
             letter-spacing: 0.3px; transition: color 0.2s;
         }
-        .nav-links a:hover { color: var(--accent); text-decoration: none; }
+        .nav-links a:hover { color: var(--accent-dark); text-decoration: none; }  /* WCAG AA: 5.0:1 on white (was --accent gold = 2.42:1) */
         .nav-toggle { display: none; background: none; border: none; color: var(--primary); font-size: 1.5rem; cursor: pointer; }
 
         /* === Hero === */
@@ -401,7 +401,7 @@
         .donate-section h2 { color: #FFFFFF; }
         .donate-section .eyebrow { color: var(--accent-light); }
         .donate-section p { color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 24px; font-size: 1.05rem; }
-        .btn-donate { background: var(--accent); color: #FFFFFF; padding: 16px 48px; font-size: 1.05rem; border-radius: 4px; }
+        .btn-donate { background: var(--accent); color: var(--primary); padding: 16px 48px; font-size: 1.05rem; border-radius: 4px; }  /* WCAG AA: theme-dark on gold (5.39:1 light / ~9:1 dark); was #FFFFFF on gold = 2.42:1 FAIL */
         .btn-donate:hover { background: var(--accent-light); color: #FFFFFF; }
 
         /* === Contact form === */
