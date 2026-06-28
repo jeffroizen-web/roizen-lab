@@ -172,6 +172,29 @@ test.describe('Site QA — JSON-LD validity depth', () => {
   });
 });
 
+test.describe('Site QA — self-hosted fonts', () => {
+  test('no external font requests; all woff2 load without 404', async ({ page }) => {
+    const external = [];
+    const fontFailures = [];
+    page.on('request', (req) => {
+      const u = req.url();
+      if (u.includes('fonts.googleapis.com') || u.includes('fonts.gstatic.com')) external.push(u);
+    });
+    page.on('response', (resp) => {
+      if (resp.url().endsWith('.woff2') && !resp.ok()) fontFailures.push(`${resp.status()} ${resp.url()}`);
+    });
+    await page.goto(BASE, { waitUntil: 'networkidle' });
+    await page.evaluate(() => document.fonts.ready);
+    expect(external, `external Google Fonts requests (should be self-hosted): ${external.join(', ')}`).toEqual([]);
+    expect(fontFailures, `woff2 that failed to load: ${fontFailures.join(', ')}`).toEqual([]);
+    // The active purple-gold theme renders Merriweather (headings) + Open Sans (body).
+    const loaded = await page.evaluate(() =>
+      document.fonts.check('700 16px Merriweather') && document.fonts.check('400 16px "Open Sans"')
+    );
+    expect(loaded, 'active-theme fonts (Merriweather 700 / Open Sans 400) did not load').toBeTruthy();
+  });
+});
+
 test.describe('Site QA — mobile (390px)', () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
