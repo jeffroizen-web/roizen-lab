@@ -69,3 +69,13 @@ is the single source of content truth** — do not edit `production/index.html` 
 - [ ] Cross-browser + mobile QA via Playwright, zero console errors
 - [ ] Formspree signup + ntfy subscribe done (contact form Layer 1) OR migrated to host forms
 - [ ] DNS cutover (Jeff/registrar GUI) — the only true Jeff/GUI step
+
+## Post-deploy verification (fires once the site is live — NOT measurable pre-deploy)
+Web-quality PR-1/PR-2 shipped format-wiring correctness (tokens + WebP `<picture>`/`image-set`),
+but Core Web Vitals are **asserted-by-design, not measured** — no Lighthouse in the build sandbox
+(WEB-QUALITY lens flag 2, 2026-07-01). Run these against the LIVE URL:
+- [ ] `npx lighthouse <live-url> --only-categories=performance --output=json` — record LCP / CLS / INP
+- [ ] CWV budget met: **LCP < 2.5s, CLS < 0.1, INP < 200ms** (web-quality-standards rule 5)
+- [ ] **Producer-read-back on the −74% hero claim**: confirm the hero LCP request served the WebP
+      (`hero-microscopy-composite-2-vdr-c2c12.webp`, ~80K) not the jpg fallback, and that the measured
+      LCP reflects the smaller asset. If the number misses the budget, that's a real gap → re-open, not ship-and-forget.
