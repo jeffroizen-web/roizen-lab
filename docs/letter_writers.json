@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-06-14T07:00:26.616236Z",
+  "generated_at": "2026-06-28T07:00:24.339364Z",
   "source": "pubmed_eutils_L1",
   "records": [
     {
       "name": "Hakon Hakonarson, MD, PhD",
       "pubmed_query": "Hakonarson H",
       "recent_pmids": [
+        "42292351",
         "42275155",
         "42098110",
         "42093631",
@@ -14,11 +15,11 @@
         "41953516",
         "41947537",
         "41932550",
-        "41929607",
-        "41927769"
+        "41929607"
       ],
-      "total_pubmed_count": 1029,
+      "total_pubmed_count": 1030,
       "recent_titles": [
+        "Identification of IL7R as a key genetic risk locus in childhood steroid-sensitive nephrotic syndrome and IgA nephropathy.",
         "Biallelic inactivating variants in the chromatin remodeler DMAP1 cause a syndromic neurodevelopmental disorder.",
         "SCOTCH: isoform-level characterization of gene expression through long-read single-cell RNA sequencing.",
         "Targeting glutamatergic pathways: genetic insights into comorbid neurodevelopmental disorders.",
@@ -27,10 +28,10 @@
         "Redefining the role of the thiol-based agent N-acetylcysteine in human health and disease and elucidating potential advantages of its amide derivative.",
         "Convergent genetic pathways linking neuropsychiatric and ocular disorders in children.",
         "Deep learning and statistical methods identify novel asthma risk variants in Europeans.",
-        "Vascular malformations of the head and neck and a molecularly guided precision therapy framework.",
-        "Integrative GWAS identifies novel loci and genetic links between psychiatric and metabolic factors in anorexia nervosa."
+        "Vascular malformations of the head and neck and a molecularly guided precision therapy framework."
       ],
       "recent_venues": [
+        "Frontiers in immunology",
         "The Journal of clinical investigation",
         "Nature communications",
         "Brain : a journal of neurology",
@@ -39,8 +40,7 @@
         "RSC medicinal chemistry",
         "Journal of child psychology and psychiatry, and allied disciplines",
         "The Journal of allergy and clinical immunology",
-        "Frontiers in neurology",
-        "Molecular psychiatry"
+        "Frontiers in neurology"
       ],
       "recent_years": [
         2026,
@@ -56,13 +56,13 @@
       ],
       "field_terms": [
         "genetic",
+        "risk",
         "variants",
         "neurodevelopmental",
         "pathways",
         "disorders",
-        "biallelic",
-        "inactivating",
-        "chromatin"
+        "identification",
+        "locus"
       ],
       "confidence": 1.0,
       "confidence_notes": [
@@ -71,7 +71,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-06-14T07:00:05.910203Z",
+      "fetched_at": "2026-06-28T07:00:04.640559Z",
       "error": null,
       "url": "https://www.research.chop.edu/people/hakon-hakonarson",
       "section": "collaborators"
@@ -145,7 +145,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-06-14T07:00:07.765542Z",
+      "fetched_at": "2026-06-28T07:00:06.583213Z",
       "error": null,
       "url": "https://www.research.chop.edu/mccormack-laboratory",
       "section": "collaborators"
@@ -219,7 +219,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-06-14T07:00:09.629099Z",
+      "fetched_at": "2026-06-28T07:00:08.504113Z",
       "error": null,
       "url": "https://www.research.chop.edu/mccormack-laboratory",
       "section": "peers"
@@ -293,7 +293,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-06-14T07:00:11.468062Z",
+      "fetched_at": "2026-06-28T07:00:10.281055Z",
       "error": null,
       "url": "https://labs.utdallas.edu/painstresslab/",
       "section": "peers"
@@ -302,6 +302,7 @@
       "name": "Nico U.F. Dosenbach, MD, PhD",
       "pubmed_query": "Dosenbach NU",
       "recent_pmids": [
+        "42327182",
         "42275495",
         "42239220",
         "42239205",
@@ -310,11 +311,11 @@
         "41787749",
         "41648109",
         "41639440",
-        "41448140",
-        "41427390"
+        "41448140"
       ],
-      "total_pubmed_count": 111,
+      "total_pubmed_count": 112,
       "recent_titles": [
+        "Functional brain organization is stable within individuals across years.",
         "Patterns of brain-wide associations reflect socioeconomics.",
         "Functional brain network correlates of pubertal timing and depressive symptoms in preadolescence.",
         "Robust lesion network mapping reveals genuine symptom-specific networks.",
@@ -323,10 +324,10 @@
         "Beyond the Homunculus-SCAN-AMN as a Shared Action-Oriented Neural Substrate across Movement Disorders.",
         "Brain organization of a memory champion.",
         "Parkinson's disease as a somato-cognitive action network disorder.",
-        "Stimulant medications affect arousal and reward, not attention networks.",
-        "Patterns of brain-wide associations reflect socioeconomics."
+        "Stimulant medications affect arousal and reward, not attention networks."
       ],
       "recent_venues": [
+        "bioRxiv : the preprint server for biology",
         "Science (New York, N.Y.)",
         "bioRxiv : the preprint server for biology",
         "bioRxiv : the preprint server for biology",
@@ -335,8 +336,7 @@
         "Movement disorders : official journal of the Movement Disorder Society",
         "bioRxiv : the preprint server for biology",
         "Nature",
-        "Cell",
-        "bioRxiv : the preprint server for biology"
+        "Cell"
       ],
       "recent_years": [
         2026,
@@ -347,18 +347,18 @@
         2026,
         2026,
         2026,
-        2025,
+        2026,
         2025
       ],
       "field_terms": [
-        "network",
-        "patterns",
-        "brain-wide",
-        "associations",
-        "reflect",
-        "socioeconomics",
         "functional",
-        "brain"
+        "brain",
+        "network",
+        "organization",
+        "across",
+        "networks",
+        "stable",
+        "within"
       ],
       "confidence": 1.0,
       "confidence_notes": [
@@ -367,7 +367,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-06-14T07:00:13.403130Z",
+      "fetched_at": "2026-06-28T07:00:12.158529Z",
       "error": null,
       "url": "https://neurology.wustl.edu/people/nico-dosenbach-md-phd/",
       "section": "peers"
@@ -376,6 +376,7 @@
       "name": "Ethan M. Goldberg, MD, PhD",
       "pubmed_query": "Goldberg EM",
       "recent_pmids": [
+        "42347804",
         "42257687",
         "42127220",
         "41894896",
@@ -384,11 +385,11 @@
         "41803048",
         "41795712",
         "41713518",
-        "41705663",
-        "41676684"
+        "41705663"
       ],
-      "total_pubmed_count": 250,
+      "total_pubmed_count": 251,
       "recent_titles": [
+        "An epilepsy-associated KV3.1 potassium channel variant acts via dominant-positive effect.",
         "Compensatory rearrangement of parvalbumin interneuron voltage-gated sodium channel subunits in a mouse model of Dravet syndrome.",
         "In vivo adenine base editing ameliorates Dravet syndrome phenotypes in a mouse model.",
         "Relationship of Ethanol, Cannabinoids, Benzodiazepines, and Opioids to Serious Injuries from Falls in Adults Aged 55 and Older.",
@@ -397,10 +398,10 @@
         "Characteristics of Emergency Department Visits Among Midlife and Older Adults Screening Positive for Alcohol Misuse.",
         "Genetic testing for familial epilepsies: Diagnostic yield and genetic findings.",
         "A management innovation of gastric perforation from percutaneous endoscopic gastrostomy tube placement.",
-        "Impaired excitability of fast-spiking neurons in a novel mouse model of KCNC1 epileptic encephalopathy.",
-        "Developmental dysregulation of chandelier cell excitability in a mouse model of Dravet Syndrome."
+        "Impaired excitability of fast-spiking neurons in a novel mouse model of KCNC1 epileptic encephalopathy."
       ],
       "recent_venues": [
+        "The Journal of general physiology",
         "Epilepsia",
         "Science translational medicine",
         "The Journal of emergency medicine",
@@ -409,8 +410,7 @@
         "Academic emergency medicine : official journal of the Society for Academic Emergency Medicine",
         "Epilepsia",
         "Gastrointestinal endoscopy",
-        "eLife",
-        "bioRxiv : the preprint server for biology"
+        "eLife"
       ],
       "recent_years": [
         2026,
@@ -426,13 +426,13 @@
       ],
       "field_terms": [
         "mouse",
+        "older",
+        "channel",
         "dravet",
         "syndrome",
-        "older",
         "adults",
         "diagnostic",
-        "emergency",
-        "department"
+        "emergency"
       ],
       "confidence": 1.0,
       "confidence_notes": [
@@ -441,7 +441,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-06-14T07:00:15.349319Z",
+      "fetched_at": "2026-06-28T07:00:14.232157Z",
       "error": null,
       "url": "https://goldbergneurolab.com/",
       "section": "peers"
@@ -506,7 +506,7 @@
         "L1 superseded (L1 conf=0.5)"
       ],
       "layer_used": "L2_orcid",
-      "fetched_at": "2026-06-14T07:00:19.821876Z",
+      "fetched_at": "2026-06-28T07:00:18.286459Z",
       "error": null,
       "url": "https://www.romberglab.org/",
       "section": "peers"
@@ -529,7 +529,7 @@
       "total_pubmed_count": 256,
       "recent_titles": [
         "Illuminating consciousness.",
-        "Stabilizing and strengthening the U.S. physician-scientist faculty workforce in academic medicine: a proposed institutional framework.",
+        "Stabilizing and strengthening the US physician-scientist faculty workforce in academic medicine: a proposed institutional framework.",
         "Haplotype-based analysis distinguishes maternal-fetal genetic contribution to pregnancy-related outcomes.",
         "Transplacental signals involved in the programming effects of prenatal psychosocial stress on neurodevelopment.",
         "Genome-wide analyses of neonatal jaundice reveal a marked departure from adult bilirubin metabolism.",
@@ -580,7 +580,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-06-14T07:00:20.479016Z",
+      "fetched_at": "2026-06-28T07:00:18.814259Z",
       "error": null,
       "url": "https://www.bwfund.org/about/dr-louis-j-muglia-md-phd/",
       "section": "mentors"
@@ -654,7 +654,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-06-14T07:00:22.531720Z",
+      "fetched_at": "2026-06-28T07:00:20.583530Z",
       "error": null,
       "url": "https://www.research.chop.edu/people/michael-a-levine",
       "section": "mentors"
@@ -663,6 +663,7 @@
       "name": "Hakon Hakonarson, MD, PhD",
       "pubmed_query": "Hakonarson H",
       "recent_pmids": [
+        "42292351",
         "42275155",
         "42098110",
         "42093631",
@@ -671,11 +672,11 @@
         "41953516",
         "41947537",
         "41932550",
-        "41929607",
-        "41927769"
+        "41929607"
       ],
-      "total_pubmed_count": 1029,
+      "total_pubmed_count": 1030,
       "recent_titles": [
+        "Identification of IL7R as a key genetic risk locus in childhood steroid-sensitive nephrotic syndrome and IgA nephropathy.",
         "Biallelic inactivating variants in the chromatin remodeler DMAP1 cause a syndromic neurodevelopmental disorder.",
         "SCOTCH: isoform-level characterization of gene expression through long-read single-cell RNA sequencing.",
         "Targeting glutamatergic pathways: genetic insights into comorbid neurodevelopmental disorders.",
@@ -684,10 +685,10 @@
         "Redefining the role of the thiol-based agent N-acetylcysteine in human health and disease and elucidating potential advantages of its amide derivative.",
         "Convergent genetic pathways linking neuropsychiatric and ocular disorders in children.",
         "Deep learning and statistical methods identify novel asthma risk variants in Europeans.",
-        "Vascular malformations of the head and neck and a molecularly guided precision therapy framework.",
-        "Integrative GWAS identifies novel loci and genetic links between psychiatric and metabolic factors in anorexia nervosa."
+        "Vascular malformations of the head and neck and a molecularly guided precision therapy framework."
       ],
       "recent_venues": [
+        "Frontiers in immunology",
         "The Journal of clinical investigation",
         "Nature communications",
         "Brain : a journal of neurology",
@@ -696,8 +697,7 @@
         "RSC medicinal chemistry",
         "Journal of child psychology and psychiatry, and allied disciplines",
         "The Journal of allergy and clinical immunology",
-        "Frontiers in neurology",
-        "Molecular psychiatry"
+        "Frontiers in neurology"
       ],
       "recent_years": [
         2026,
@@ -713,13 +713,13 @@
       ],
       "field_terms": [
         "genetic",
+        "risk",
         "variants",
         "neurodevelopmental",
         "pathways",
         "disorders",
-        "biallelic",
-        "inactivating",
-        "chromatin"
+        "identification",
+        "locus"
       ],
       "confidence": 1.0,
       "confidence_notes": [
@@ -728,7 +728,7 @@
         "8 field terms extracted (+0.20)"
       ],
       "layer_used": "L1_pubmed",
-      "fetched_at": "2026-06-14T07:00:24.305358Z",
+      "fetched_at": "2026-06-28T07:00:22.355803Z",
       "error": null,
       "url": "https://www.research.chop.edu/people/hakon-hakonarson",
       "section": "mentors"
