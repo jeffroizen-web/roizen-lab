@@ -200,7 +200,8 @@
         /* === Hero === */
         .hero {
             min-height: 90vh; display: flex; align-items: center;
-            background: url('hero-microscopy-composite-2-vdr-c2c12.jpg') center/cover no-repeat;
+            background: url('hero-microscopy-composite-2-vdr-c2c12.jpg') center/cover no-repeat; /* fallback */
+            background: image-set(url('hero-microscopy-composite-2-vdr-c2c12.webp') type('image/webp'), url('hero-microscopy-composite-2-vdr-c2c12.jpg') type('image/jpeg')) center/cover no-repeat;
             padding:var(--space-42) var(--space-6) var(--space-20); position: relative; overflow: hidden;
         }
         .hero::before {
@@ -728,7 +729,7 @@
                         <p>Low vitamin D is associated with many diseases. Medicine assumed low vitamin D was causative. We used disease models and observational genetic studies to ask whether the opposite was true: does disease cause low vitamin D? In asthma, obesity, and aging, the answer was yes. Disease lowers vitamin D &mdash; not the other way around.</p>
                         <a href="#arc-phenotype" class="paper-link">See papers &rarr;</a>
                     </div>
-                    <div class="question-figure"><img src="extracted-figures/from-archivist/reverse-causation-bmi-vitd.png" alt="Mendelian randomization scatter: SNP effect on BMI (x-axis) vs SNP effect on 25(OH) vitamin D (y-axis). All five MR methods (IVW, MR Egger, weighted median, simple mode, weighted mode) show a negative slope — higher BMI causally lowers vitamin D. Reverse causation test from the MR VitD Asthma project." loading="lazy" width="576" height="432" style="width:100%; height:auto; border-radius:var(--radius-md);"></div>
+                    <div class="question-figure"><picture><source type="image/webp" srcset="extracted-figures/from-archivist/reverse-causation-bmi-vitd.webp"><img src="extracted-figures/from-archivist/reverse-causation-bmi-vitd.png" alt="Mendelian randomization scatter: SNP effect on BMI (x-axis) vs SNP effect on 25(OH) vitamin D (y-axis). All five MR methods (IVW, MR Egger, weighted median, simple mode, weighted mode) show a negative slope — higher BMI causally lowers vitamin D. Reverse causation test from the MR VitD Asthma project." loading="lazy" width="576" height="432" style="width:100%; height:auto; border-radius:var(--radius-md);"></picture></div>
                 </div>
                 <!-- Q2 -->
                 <div class="question-row" id="q2">
@@ -757,7 +758,7 @@
                         <p>Most trials give pharmacologic doses to people who aren't deficient. That's not the same biology as correcting a deficiency. High-dose vitamin D activates pathways that replacement doses don't touch. The dose isn't just a number &mdash; it changes what the molecule does.</p>
                         <a href="#arc-mechanism" class="paper-link">See papers &rarr;</a>
                     </div>
-                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q4-dose-response.png" alt="Normalized oxygen flux (Complex I, Complex II, Max Resp) in muscle: 25(OH)D at 40 ng/mL dramatically increases flux while 1,25(OH)D at 40 pg/mL does not — evidence that the pharmacologic form, not the 'active' metabolite, is the drug" loading="lazy" width="1200" height="477" style="width:100%; height:auto; border-radius:var(--radius-md);"></div>
+                    <div class="question-figure"><picture><source type="image/webp" srcset="extracted-figures/curated-for-website/q4-dose-response.webp"><img src="extracted-figures/curated-for-website/q4-dose-response.png" alt="Normalized oxygen flux (Complex I, Complex II, Max Resp) in muscle: 25(OH)D at 40 ng/mL dramatically increases flux while 1,25(OH)D at 40 pg/mL does not — evidence that the pharmacologic form, not the 'active' metabolite, is the drug" loading="lazy" width="1200" height="477" style="width:100%; height:auto; border-radius:var(--radius-md);"></picture></div>
                 </div>
                 <!-- Q5 -->
                 <div class="question-row" id="q5">
@@ -766,7 +767,7 @@
                         <p>Large trials show high-dose vitamin D reduces diabetes risk in prediabetic patients. The effect is real. The mechanism is unknown. We're working to identify which metabolic pathways mediate the protective effect &mdash; and whether vitamin D redirects energy metabolism more broadly.</p>
                         <a href="#arc-translation" class="paper-link">See papers &rarr;</a>
                     </div>
-                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q5-diabetes-prevention.png" alt="Kaplan-Meier cumulative incidence of type 2 diabetes over 5 years: vitamin D group vs placebo, showing reduced incidence with high-dose vitamin D" loading="lazy" width="520" height="523" style="width:100%; height:auto; border-radius:var(--radius-md);"></div>
+                    <div class="question-figure"><picture><source type="image/webp" srcset="extracted-figures/curated-for-website/q5-diabetes-prevention.webp"><img src="extracted-figures/curated-for-website/q5-diabetes-prevention.png" alt="Kaplan-Meier cumulative incidence of type 2 diabetes over 5 years: vitamin D group vs placebo, showing reduced incidence with high-dose vitamin D" loading="lazy" width="520" height="523" style="width:100%; height:auto; border-radius:var(--radius-md);"></picture></div>
                 </div>
                 <!-- Q6 -->
                 <div class="question-row" id="q6">
@@ -775,7 +776,7 @@
                         <p>Your body decides whether surplus calories become fat, muscle, or growth. What controls that decision? We built CYP2R1 knockout mice &mdash; animals that can't activate vitamin D. Without it, calories go to fat. With it, they go to muscle and linear growth. Vitamin D is a metabolic traffic cop.</p>
                         <a href="#arc-mechanism" class="paper-link">See papers &rarr;</a>
                     </div>
-                    <div class="question-figure"><img src="extracted-figures/curated-for-website/q1-causation.png" alt="Pathway diagram: high-dose vitamin D increases leptin production in fat and leptin sensitivity in the brain, redirecting calorie allocation from intake/storage toward energy expenditure" loading="lazy" width="414" height="298" style="width:100%; height:auto; border-radius:var(--radius-md);"></div>
+                    <div class="question-figure"><picture><source type="image/webp" srcset="extracted-figures/curated-for-website/q1-causation.webp"><img src="extracted-figures/curated-for-website/q1-causation.png" alt="Pathway diagram: high-dose vitamin D increases leptin production in fat and leptin sensitivity in the brain, redirecting calorie allocation from intake/storage toward energy expenditure" loading="lazy" width="414" height="298" style="width:100%; height:auto; border-radius:var(--radius-md);"></picture></div>
                 </div>
                 <!-- Q7 -->
                 <div class="question-row" id="q7">
@@ -794,10 +795,10 @@
     <!-- Life in the Lab (photo strip between Questions and Team) -->
     <section id="lab-life" class="lab-strip">
         <div class="lab-strip-grid">
-            <div class="lab-strip-item"><img src="photos/benchwork.jpg" alt="Lab bench work: sample handling in a biosafety cabinet" loading="lazy" width="290" height="193"></div>
-            <div class="lab-strip-item"><img src="photos/pipette.jpg" alt="Dr. Roizen pipetting at the bench" loading="lazy" width="250" height="375"></div>
-            <div class="lab-strip-item lab-strip-item-wide"><img src="photos/talkingWide.jpg" alt="Lab discussion over data at the bench" loading="lazy" width="1024" height="479"></div>
-            <div class="lab-strip-item"><img src="photos/dryIce.jpg" alt="Sample preparation on dry ice with face shield" loading="lazy" width="167" height="251"></div>
+            <div class="lab-strip-item"><picture><source type="image/webp" srcset="photos/benchwork.webp"><img src="photos/benchwork.jpg" alt="Lab bench work: sample handling in a biosafety cabinet" loading="lazy" width="290" height="193"></picture></div>
+            <div class="lab-strip-item"><picture><source type="image/webp" srcset="photos/pipette.webp"><img src="photos/pipette.jpg" alt="Dr. Roizen pipetting at the bench" loading="lazy" width="250" height="375"></picture></div>
+            <div class="lab-strip-item lab-strip-item-wide"><picture><source type="image/webp" srcset="photos/talkingWide.webp"><img src="photos/talkingWide.jpg" alt="Lab discussion over data at the bench" loading="lazy" width="1024" height="479"></picture></div>
+            <div class="lab-strip-item"><picture><source type="image/webp" srcset="photos/dryIce.webp"><img src="photos/dryIce.jpg" alt="Sample preparation on dry ice with face shield" loading="lazy" width="167" height="251"></picture></div>
         </div>
     </section>
 
@@ -811,7 +812,7 @@
             </div>
             <div class="team-grid">
                 <div class="team-card">
-                    <img src="photos/roizen-portrait.jpg" alt="Dr. Jeffrey Roizen, Principal Investigator, Roizen Lab at UPenn and CHOP" loading="lazy" class="team-photo" width="220" height="147">
+                    <picture><source type="image/webp" srcset="photos/roizen-portrait.webp"><img src="photos/roizen-portrait.jpg" alt="Dr. Jeffrey Roizen, Principal Investigator, Roizen Lab at UPenn and CHOP" loading="lazy" class="team-photo" width="220" height="147"></picture>
                     <h3>Jeffrey D. Roizen, MD, PhD<br>Assistant Professor of Pediatrics</h3>
                     <p class="team-role">Principal Investigator</p>
                     <p style="font-size:var(--font-size-sm); color:var(--text-light); margin-top:var(--space-2);">University of Pennsylvania<br>Children's Hospital of Philadelphia</p>
@@ -819,7 +820,7 @@
                     <p style="font-size:var(--font-size-sm); color:var(--accent-dark); font-weight:600; margin-top:var(--space-2); letter-spacing:0.3px;">NIH-funded · Division of Endocrinology &amp; Diabetes · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD" style="color:var(--accent-dark); border-bottom:1px dotted var(--accent);">27 publications</a></p>
                 </div>
                 <div class="team-card">
-                    <img src="photos/1760650722715.jpg" alt="Michael Nguyen, Research Associate in the Roizen Lab" loading="lazy" class="team-photo" width="520" height="712">
+                    <picture><source type="image/webp" srcset="photos/1760650722715.webp"><img src="photos/1760650722715.jpg" alt="Michael Nguyen, Research Associate in the Roizen Lab" loading="lazy" class="team-photo" width="520" height="712"></picture>
                     <h3>Michael Nguyen</h3>
                     <p class="team-role">Research Associate</p>
                 </div>
@@ -1065,7 +1066,7 @@
                 <p>Former members of the Roizen Lab who have gone on to do great things.</p>
             </div>
             <div style="text-align:center; margin-bottom:var(--space-12);">
-                <img src="photos/lab-group-hires.jpg" alt="Roizen Lab group photo" loading="lazy" width="1400" height="1050" style="max-width:700px; width:100%; height:auto; border-radius:var(--radius-xl); box-shadow:var(--shadow-xl);">
+                <picture><source type="image/webp" srcset="photos/lab-group-hires.webp"><img src="photos/lab-group-hires.jpg" alt="Roizen Lab group photo" loading="lazy" width="1400" height="1050" style="max-width:700px; width:100%; height:auto; border-radius:var(--radius-xl); box-shadow:var(--shadow-xl);"></picture>
             </div>
             <div class="alumni-grid">
                 <div class="alumni-card">
