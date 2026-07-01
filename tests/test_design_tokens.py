@@ -45,9 +45,27 @@ def test_scales_are_defined():
 
 
 def test_no_adhoc_font_size_in_html():
-    """Every font-size must come from a token (the gap-#1 lock)."""
+    """Every absolute (px/rem) font-size must come from a token (the gap-#1 lock)."""
     adhoc = re.findall(r"font-size:\s*([0-9.]+(?:rem|px))", HTML)
     assert not adhoc, f"ad-hoc font-size magic numbers still in HTML: {sorted(set(adhoc))}"
+
+
+def test_em_relative_font_size_only_in_print_url_append():
+    """em-relative font-size is exempt from tokenization ONLY where it is
+    intentional proportional-to-parent scaling: the @media print ::after rules
+    that append a link's URL after it (the URL must scale to whatever link it
+    trails). Any OTHER em-relative font-size is an untokenized magic number and
+    should fail — this keeps the 'no ad-hoc font-size' guard honest about the
+    one place em is allowed (WEB-QUALITY lens flag, 2026-07-01)."""
+    em_sizes = re.findall(r"font-size:\s*([0-9.]+em)\b", HTML)
+    # Exactly the two print URL-append rules (mailto ::after + http ::after).
+    assert sorted(em_sizes) == ["0.75em", "0.85em"], (
+        f"unexpected em-relative font-size(s) in HTML: {sorted(em_sizes)}; "
+        "only the two print ::after URL-append rules may use em")
+    # And they must live inside the print block's URL-append ::after context.
+    for pat in (r'a\[href\^="mailto"\]::after\s*\{[^}]*font-size:\s*0\.85em',
+                r'a\[href\^="http"\]::after\s*\{[^}]*font-size:\s*0\.75em'):
+        assert re.search(pat, HTML, re.S), f"em font-size not in its print ::after rule: {pat}"
 
 
 def test_referenced_tokens_all_resolve():

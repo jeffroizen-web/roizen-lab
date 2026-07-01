@@ -622,6 +622,11 @@
             section { padding:var(--space-5) 0 !important; }
 
             /* Ensure email is visible on paper */
+            /* NB: the em-relative font-size below is INTENTIONAL, not an
+               untokenized magic number — these ::after rules append the URL
+               after links of many sizes (nav / body / heading), so the URL
+               must scale proportionally to its own link. An absolute rem token
+               would render every appended URL the same size. Print-only. */
             #contact { display: block !important; }
             #contact .contact-info-grid { display: block !important; }
             #contact a[href^="mailto"]::after {
