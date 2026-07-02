@@ -88,11 +88,41 @@ Two long-running loops, both launchd-loaded (last exit 0). Scored on: (a) role s
 
 ## 4. UX Walkthrough (Playwright, brand-new-user)
 
-> **⏸ CHECKPOINT — PAUSED 2026-07-02 (Kleiber MSG-2c40e6 sequenced-HOLD).** Sections 1–3
-> complete above. This section (the Playwright walk of the top 2–3 user paths) is **NOT yet
-> started** — held pending Kleiber's GO (one-CM-at-a-time sequencing). Resume point: serve the
-> site locally, drive the Playwright MCP through (1) landing→hero→Big-Questions scroll, (2)
-> nav→collaborators/publications, (3) Join-Us→contact form; log every confusion point, dead end,
-> and web-quality rule 1–9 violation here. No fix inline — report only.
+Method: served `compare-purple-gold.html` locally (`python3 -m http.server`), drove Playwright MCP at desktop 1280×800 and mobile 390×844, probed the DOM directly (not just a screenshot) for every claim. Evidence: 0 console errors/warnings, all 11 network requests 200 (hero WebP `hero-microscopy-composite-2-vdr-c2c12.webp` served live on the LCP path — the −74% asset confirmed), screenshot `roizen-ux-hero-desktop-2026-07-02.png`.
 
-_(pending GO)_
+### Path 1 — Landing → hero → Big Questions (a committee member / journalist's first impression)
+- **Load & hero: clean and credible.** 1 `<h1>` ("Redefining Vitamin D"), dual institution header (CHOP · Penn), gold CTA, on-brand purple/microscopy. No console errors, no layout shift observed. First impression lands.
+- **Confusion/dead-end — 3 "Figure pending" placeholders (Q2/Q3/Q7).** The flagship "Big Questions" section shows 3 visible "Figure pending" blocks out of 7. A curious reader hits a wall on ~40% of the questions. Honest (anti-fabrication — correct not to fake data), but a **rule-8 polish gap on the front-door section a committee reads first.** Ties to 10X-5. *Jeff-gated (needs real figures).*
+- **Rule-4 opportunity, not defect**: the hero and questions are entirely static — no scroll-reveal, no motion. Passes the rule (reduced-motion honored); misses the front-door *showcase* bar (10X-4).
+
+### Path 2 — Nav → Team / Collaborators / Publications (a collaborator / reviewer credibility check)
+- **Nav integrity: PASS.** 8 section links + logo, **every href resolves to a real on-page anchor — 0 dead `href="#"`** (donate went live e086df8). Smooth.
+- **Publications ("Selected Papers") — no freshness signal.** Static list, **no `data_as_of`, no citation counts** — a reviewer can't tell if it's current or a 2026 snapshot (Data-Provenance gap). Directly the 10X-3 case. *Semi-autonomous (Archivist feed).*
+- **Minor a11y**: the logo nav link has empty text content (`href="#home"`), relying on the logo `<img alt>` for its accessible name — acceptable (the img has alt) but worth an explicit `aria-label` for robustness.
+
+### Path 3 — Join Us → Contact (a prospective trainee)
+- **Form craft: PASS.** 5 fields, **all with `<label for>`**; a honeypot field (`contact-website`) is present and correctly labeled (spam trap); designed Send button + a form-status live region in markup.
+- **Funnel gap (not a bug)**: submission is Layer-1 (Formspree + ntfy) with no live confirmation state exercised in-sandbox; the triage + auto-confirmation step is 10X-7.
+
+### Cross-cutting web-quality rule scan (rendered surface, both breakpoints)
+| Rule | Verdict on the walk | Evidence |
+|---|---|---|
+| 1 Tokens / 2 Type / 3 Layout | PASS (no NEW issue) | PR-1 tokenization holding; 1 h1, 10 clean `<h2>` sections, no ad-hoc drift surfaced. |
+| 4 Motion | PASS + opportunity | reduced-motion honored; no showcase motion (10X-4). |
+| 5 Performance | PASS-wiring | hero WebP served on LCP path, 0 console errors; **CWV still deploy-time-only** (no Lighthouse — DEPLOY.md §Post-deploy). |
+| **6 Responsive / touch targets** | **VIOLATION (the one concrete finding)** | 390px: no h-overflow ✓, nav collapses to a working hamburger (aria-expanded flips true, all 9 links reveal) ✓ — **BUT the hamburger is 21×29px and every open menu link is 19px tall, all < the 44px minimum.** The PRIMARY mobile navigation is sub-target; this audience reads on phones. Hero CTA 48px ✓ / Donate 51px ✓ / Send 40px (marginal). |
+| 7 A11y | PASS | 15/15 non-empty alt, all form labels, aria-expanded toggle correct, skip-link + landmarks (per assessment). Flag: focus-visible not universal (self-assessment #5). |
+| 8 Polish | PASS-WITH-FLAG | favicon/meta/OG present, 0 dead links; flags = 3 "Figure pending", focus-visible coverage. |
+| 9 Content | PASS | Jeff's voice, no lorem. |
+
+**Walk verdict: no broken flows, no dead ends except the 3 pending figures. One concrete rule violation — rule-6 mobile tap-target sizing (nav 19–29px).** Everything else is either known-and-tracked (showcase motion, pending figures, living publications) or passing.
+
+---
+
+## Consolidated top findings (across all 4 sections)
+
+1. **[§4 · ship-blocker-class] Mobile nav tap targets 19–29px (< 44px).** The hamburger (21×29) and all 8 open-menu links (19px) violate web-quality rule 6 on the surface most of this audience uses. Small, high-value fix (nav-link vertical padding + a ≥44px toggle hit-area). *Autonomous, one gated PR.*
+2. **[§2/§3 · correctness] Both cron loops mis-signal outcome via exit code** — a *detected* confidence-regression / readiness-regression returns exit 1 (read by launchd as a job failure), and `tenure_readiness` daily reports accumulate unbounded in git. Fix exit semantics + rotate reports. *Autonomous.*
+3. **[§1 · strategy] The 10X ceiling is not craft, it's reach + product-shape**: the site reaches zero users until **hosting** (10X-1, Jeff-gated); the biggest product leap is **render-from-config → a reusable lab-site generator** (10X-2, has a real market); the biggest engagement leap is the **WebGL molecular hero + scroll-reveal** (10X-4, held for Jeff/Rams). Craft is already near-bar; the step-changes are these three.
+
+*All findings REPORT-ONLY. Any that becomes a build routes through the normal gate (Kleiber's WEB-QUALITY lens + pytest/site-qa).*
