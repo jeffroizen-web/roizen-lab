@@ -212,6 +212,35 @@ test.describe('Site QA — mobile (390px)', () => {
     expect(await page.locator('nav').first().isVisible()).toBeTruthy();
     expect(await page.locator('#home').isVisible()).toBeTruthy();
   });
+
+  test('mobile nav interactive targets are >= 44px in both dimensions (web-quality rule 6 / WCAG 2.5.5)', async ({ page }) => {
+    const MIN = 44;
+    await page.goto(BASE, { waitUntil: 'networkidle' });
+
+    // The hamburger toggle itself must be a >=44px hit area.
+    const toggle = page.locator('.nav-toggle');
+    const tb = await toggle.boundingBox();
+    expect(tb, 'hamburger toggle has no bounding box').not.toBeNull();
+    expect(Math.round(tb.width), `hamburger width ${tb.width}px < ${MIN}`).toBeGreaterThanOrEqual(MIN);
+    expect(Math.round(tb.height), `hamburger height ${tb.height}px < ${MIN}`).toBeGreaterThanOrEqual(MIN);
+
+    // Open the menu, then every visible nav link must be a >=44px tap row.
+    await toggle.click();
+    await expect(page.locator('.nav-links.active')).toBeVisible();
+    const links = page.locator('.nav-links a');
+    const n = await links.count();
+    const undersized = [];
+    for (let i = 0; i < n; i++) {
+      const a = links.nth(i);
+      if (!(await a.isVisible())) continue;
+      const b = await a.boundingBox();
+      if (!b) continue;
+      if (Math.round(b.width) < MIN || Math.round(b.height) < MIN) {
+        undersized.push(`"${(await a.innerText()).trim() || a}" ${Math.round(b.width)}x${Math.round(b.height)}`);
+      }
+    }
+    expect(undersized, `nav links below ${MIN}px: ${undersized.join(', ')}`).toEqual([]);
+  });
 });
 
 test.describe('Site QA — tablet breakpoint (768px)', () => {

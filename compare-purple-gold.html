@@ -502,13 +502,27 @@
             .navbar { top: 32px; }
             .nav-container { height: 60px; }
             .nav-logo img { height: 45px; }
-            .nav-toggle { display: block; }
+            /* Hamburger: >=44px hit area (web-quality rule 6 / WCAG 2.5.5).
+               Negative right margin keeps the glyph optically flush at the edge
+               while the tap area grows inward. */
+            .nav-toggle {
+                display: flex; align-items: center; justify-content: center;
+                min-width: var(--tap-target-min); min-height: var(--tap-target-min);
+                margin-right: calc(-1 * var(--space-2));
+            }
             .nav-links {
                 display: none; flex-direction: column; position: absolute;
                 top: 60px; left: 0; right: 0; background: #FFFFFF;
                 padding:var(--space-4) var(--space-6); gap:var(--space-4); box-shadow: var(--shadow-md);
             }
-            .nav-links a { color: var(--primary); }
+            /* Mobile menu links: full-width >=44px tap rows (rule 6). gap on the
+               parent already spaces them; min-height guarantees the target size
+               regardless of font. */
+            .nav-links a {
+                color: var(--primary);
+                display: flex; align-items: center; width: 100%;
+                min-height: var(--tap-target-min);
+            }
             .nav-links.active { display: flex; }
             html { scroll-padding-top:var(--space-25); }
             .hero { padding:var(--space-32) var(--space-6) 60px; min-height: 80vh; }

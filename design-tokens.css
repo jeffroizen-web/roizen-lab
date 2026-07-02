@@ -76,4 +76,8 @@
   --duration-base: 0.2s;
   --duration-slow: 0.4s;
   --ease-standard: ease;
+
+  /* — Accessibility — minimum interactive hit area (WCAG 2.5.5 / web-quality
+       rule 6). A touch target must be >= this in both dimensions. — */
+  --tap-target-min: 44px;
 }
