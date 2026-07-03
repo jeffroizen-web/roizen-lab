@@ -104,13 +104,19 @@ def main():
 
     summary = {
         "refreshed_at": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+        # Drift is a FINDING carried here + in the emitted regression event, NOT in
+        # the exit code (R2 / exit-code-outcome-mismatch, 2026-07-03). A successful
+        # regression-detect is a successful run — launchd reads nonzero as a crash.
+        "outcome": "drift-detected" if regressions else "clean",
         "people_count": len(new_map),
         "regressions": regressions,
         "routine_emit": routine_emit.get("status"),
         "regression_emit": regression_emit.get("status") if regression_emit else None,
     }
     print(json.dumps(summary, indent=2))
-    return 0 if not regressions else 1
+    # Exit 0 on a successful run whether or not drift was found. nonzero is reserved
+    # for genuine execution failure (scrape/IO/parse), handled by the early returns above.
+    return 0
 
 
 if __name__ == "__main__":

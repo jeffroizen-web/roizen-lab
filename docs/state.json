@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "cm_nick": "Ace Scout",
-  "data_as_of": "2026-06-11",
-  "fetched_at": "2026-06-11",
+  "data_as_of": "2026-07-03",
+  "fetched_at": "2026-07-03",
   "keys": {
     "site_tenure_grade": {
-      "value": "C",
-      "data_as_of": "2026-06-10",
+      "value": "B",
+      "data_as_of": "2026-07-03",
       "freshness_seconds_max": 86400,
       "source": "scripts/tenure_readiness.py",
       "visibility": "public",
-      "description": "4-audience rubric grade of canonical working file; remaining FAIL/WARN are Jeff-gated (prose rewrites + figure-pendings)"
+      "description": "4-audience rubric grade of canonical working file; lifted C->B by the WCAG/prose/tap-target/token uplifts. Baseline re-set to B 2026-07-03 (R3). Remaining WARN are Jeff-gated (3 figure-pendings q2/q3/q7)"
     },
     "site_deployed": {
       "value": false,
@@ -41,12 +41,20 @@
       "description": "All remaining queue items; first two are in Kleiber's Jeff batch (MSG-78cc34)"
     },
     "tests_green": {
-      "value": "128 python passed / 4 NET-skipped + 18 playwright passed",
-      "data_as_of": "2026-06-11",
+      "value": "159 python passed / 4 skipped + 30 playwright passed (19 site-qa + 11 contact-form)",
+      "data_as_of": "2026-07-03",
       "freshness_seconds_max": 86400,
       "source": "python3 -m pytest -q; npx playwright test",
       "visibility": "public",
-      "description": "Full local suite state at last run"
+      "description": "Full local suite state at last run (2026-07-03: +6 loop-exit-code tests, R2)"
+    },
+    "publications_feed": {
+      "value": "live-but-unwired",
+      "data_as_of": "2026-07-03",
+      "freshness_seconds_max": 604800,
+      "source": "~/orchestra-data/archivist/publications.json + scripts/publications_feed.py",
+      "visibility": "public",
+      "description": "Archivist feed IS live (29 pubs, data_as_of 2026-06-29, weekly cron); consumer publications_feed.py built+tested but NOT wired into the served HTML (still hand-typed '27 publications'). Blocked only on the DRAFT contract counter-sig (R1) — a cross-CM handshake, not a build"
     },
     "deadline_site_live": {
       "value": "2026-08-31",

@@ -1,9 +1,5 @@
 {
-  "banned_phrases_found": [
-    "fortunate to work with",
-    "stand on the shoulders",
-    "advances our understanding"
-  ],
+  "banned_phrases_found": [],
   "dead_hash_hrefs": [],
   "figure_pending_count": 3,
   "figure_pending_ids": [
@@ -11,7 +7,7 @@
     "q3",
     "q7"
   ],
-  "grade": "C",
+  "grade": "B",
   "has_main_landmark": true,
   "has_pi_funding_signal": true,
   "has_skip_link": true,

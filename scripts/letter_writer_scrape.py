@@ -15,8 +15,8 @@ The Roizen Lab "credibility engine" needs this for two reasons:
 
 Layers (per Redundant Solutions rule, orchestra.md):
 - L1: PubMed e-utils esearch + esummary (auth-free, working)
-- L2: ORCID public API (auth-free, stubbed — use when PubMed name
-      disambiguation has >1 strong match)
+- L2: ORCID public API (auth-free, WIRED — orcid_disambiguate/probe_orcid;
+      fires when PubMed name disambiguation has >1 strong match or few PMIDs)
 - L3: WebFetch institutional bio page (brittle, often 403 from CLI;
       stubbed — Jeff can run in a real browser if L1+L2 fail)
 

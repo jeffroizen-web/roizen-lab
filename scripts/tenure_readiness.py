@@ -181,42 +181,71 @@ def human_report(f: Findings, regressions: list) -> str:
     return "\n".join(lines)
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--json", action="store_true", help="machine-readable JSON output")
-    ap.add_argument("--baseline", action="store_true", help="write current state as new baseline")
-    ap.add_argument("--file", default=str(SITE), help="HTML file to scan")
-    args = ap.parse_args()
+def _run(args) -> int:
+    """The watcher body. Returns a process exit code.
 
+    Exit-code contract (fixed 2026-07-03, R2 / exit-code-outcome-mismatch class):
+      0 = the watcher RAN SUCCESSFULLY. Whether it found drift is a FINDING, not a
+          failure — it is carried in the JSON `outcome` field ("clean" /
+          "drift-detected" / "no-baseline") and the cron's bus event, NEVER in the
+          exit code. launchd reads nonzero as a crash, so a successful drift-detect
+          must exit 0.
+      nonzero = genuine execution failure (unreadable HTML, parse error) — raised
+          as an exception and mapped to 1 by main().
+    """
+    baseline = Path(args.baseline_file)
     html = Path(args.file).read_text(encoding="utf-8")
     findings = scan(html)
     findings_dict = asdict(findings)
     findings_dict["grade"] = findings.grade()
 
     if args.baseline:
-        BASELINE.parent.mkdir(parents=True, exist_ok=True)
-        BASELINE.write_text(json.dumps(findings_dict, indent=2, sort_keys=True))
-        print(f"Baseline written: {BASELINE}")
+        baseline.parent.mkdir(parents=True, exist_ok=True)
+        baseline.write_text(json.dumps(findings_dict, indent=2, sort_keys=True))
+        print(f"Baseline written: {baseline}")
         return 0
 
-    regressions = []
-    if BASELINE.exists():
-        old = json.loads(BASELINE.read_text())
-        regressions = diff(old, findings_dict)
-    else:
+    if not baseline.exists():
+        # A missing baseline is a setup state, not a crash — exit 0, flag it loudly
+        # in the outcome so a monitor can see "can't evaluate yet" without launchd
+        # reading a restart-worthy failure. Resolved by running with --baseline.
         if args.json:
-            print(json.dumps({"warning": "no baseline yet", "findings": findings_dict}, indent=2))
+            print(json.dumps(
+                {"outcome": "no-baseline", "findings": findings_dict, "regressions": []},
+                indent=2))
         else:
             print(human_report(findings, []))
             print("\n(no baseline — run with --baseline to set current state)")
-        return 2
+        return 0
 
+    old = json.loads(baseline.read_text())
+    regressions = diff(old, findings_dict)
+    outcome = "drift-detected" if regressions else "clean"
     if args.json:
-        print(json.dumps({"findings": findings_dict, "regressions": regressions}, indent=2))
+        print(json.dumps(
+            {"outcome": outcome, "findings": findings_dict, "regressions": regressions},
+            indent=2))
     else:
         print(human_report(findings, regressions))
+    return 0
 
-    return 1 if regressions else 0
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--json", action="store_true", help="machine-readable JSON output")
+    ap.add_argument("--baseline", action="store_true",
+                    help="write current state as new baseline (the 'acknowledge this "
+                         "drift' step — advances the known-good launch state)")
+    ap.add_argument("--file", default=str(SITE), help="HTML file to scan")
+    ap.add_argument("--baseline-file", default=str(BASELINE),
+                    help="baseline JSON path (default: docs/tenure_readiness_baseline.json)")
+    args = ap.parse_args()
+
+    try:
+        return _run(args)
+    except Exception as exc:  # genuine execution failure only → nonzero
+        print(f"tenure_readiness: execution failure: {exc}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":

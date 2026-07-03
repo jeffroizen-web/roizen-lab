@@ -23,3 +23,9 @@ decisions/bus_emit_log.jsonl
 
 # Playwright artifacts
 test-results/
+
+# Dated tenure-readiness reports are ephemeral cron output (R4, 2026-07-03):
+# rotated on disk (keep 14) + a tracked rolling -latest. Do not accumulate
+# near-identical dated pairs in git.
+docs/reports/tenure-readiness-20*.json
+docs/reports/tenure-readiness-20*.md
