@@ -102,6 +102,16 @@ To be written by Archivist:
 2. `research_arc` classifier covers all current publications (no nulls in the canonical sample).
 3. Manuscripts in preparation are NOT in the published feed.
 
+## Consumer verification (2026-07-03, Ace Scout — Source-First check before counter-sig)
+
+The live feed at `~/orchestra-data/archivist/publications.json` was read and checked against this contract:
+
+- **Envelope** — `{data_as_of, fetched_from, publications[]}` ✓ matches §Transport.
+- **Fields** — all required fields present on all 29 records (pmid, title, authors, venue, year, publication_date, doi, pubmed_url, research_arc, first_author, senior_author) ✓; `open_access` (preferred) is NOT populated → the OA badge won't render (acceptable).
+- **`research_arc`** — values ∈ {phenotype, mechanism, other}, **0 nulls** ✓ (no `translation` papers yet; enum still valid).
+- **Freshness** — `data_as_of: 2026-06-29T13:00:06Z` (ISO-8601 Z) ✓.
+- **⚠ ONE OPEN ITEM (needs Archivist's call at counter-sig):** `fetched_from` is **`ncbi_eutils:("Roizen JD"[Author] OR "Roizen J"[Author]) AND humans[mh]`** — an author-name eutils query, **NOT the My-Bibliography-50863673** this draft's §Transport example assumed. An author-name query risks same-name false-positives and name-variant false-negatives vs Jeff's curated My Bibliography (authoritative). **Archivist confirms the eutils author-query is the intended source, OR switches to My Bibliography 50863673.** (Shape is unaffected either way; only the completeness/accuracy of *which* papers.)
+
 ## Action items (route via Kleiber)
 
 1. **Send this contract to Archivist** for counter-signature.
