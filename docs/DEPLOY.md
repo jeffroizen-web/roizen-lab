@@ -52,6 +52,45 @@ is mechanical and orchestra-doable.
 already root-relative → least reconciliation, least rework, no third-party account. One
 canonical `index.html`, kills the 3-file drift permanently.
 
+## As-deployed (2026-07-03 soft-launch) — lean `gh-pages` artifact
+
+Path A **root-on-main did NOT work**: the 543M source tree (293M unused
+`extracted-figures/` + 27M logo iterations) silently HANGS the Pages build (25+ min,
+never completes; the tiny `/docs` builds finished fine). Fix (Kleiber ruling): serve a
+**lean derived artifact from a dedicated `gh-pages` branch** (Pages legacy serves root or
+`/docs` only — no arbitrary subfolder). Live at **https://jeffroizen-web.github.io/roizen-lab/**.
+See memory [[reference-github-pages-lean-deploy]].
+
+**Manual redeploy (on demand):**
+```
+python3 scripts/sync_publish.py --check         # rebuild publish/ (byte-copy canonical + referenced assets)
+python3 -m pytest tests/test_publish_sync.py -q # assert publish/index.html == canonical, heavy tree excluded
+TMP=$(mktemp -d); cp -R publish/. "$TMP"/; cd "$TMP"
+git init -q -b gh-pages && git add -A && git commit -qm "deploy: $(shasum -a256 index.html|cut -c1-16)"
+git push -f https://github.com/jeffroizen-web/roizen-lab.git gh-pages
+```
+Then read back on a NEW-BUILD-UNIQUE marker (never counts), cache-busted.
+
+### Auto-redeploy (`scripts/deploy_publish.sh`, built 2026-07-03 — DISARMED, Kleiber-gated)
+
+Wraps the manual recipe with mechanical Tier-2 guards so a cron can keep the live snapshot
+fresh when it re-wires the canonical (weekly letter-writers refresh; weekly pubs refresh):
+kill-switch (`ROIZEN_AUTO_DEPLOY=1`, default OFF) → change-detect (canonical sha256 vs
+last-deployed) → gate (`sync_publish --check` + hash-match test) → force-push → byte-exact
+read-back (retries for CDN lag; finding rides the log, not the exit code — R2). Every path
+writes an outcome row to `docs/reports/deploy-publish.jsonl`.
+
+**Source-of-truth:** deploys the WORKING-TREE canonical (incl. the live cron field-of-interest
+diff) — `gh-pages` is a derived serving artifact ≠ source, so the cron does NOT auto-commit the
+foi and the clean-attribution model is unchanged.
+
+**ARMING (Jeff/Kleiber-gated — NOT done at build time):**
+1. Point the `com.hypothesisdriven.letter_writers_refresh` plist `ProgramArguments` at
+   `/bin/bash scripts/letter_writers_refresh_cron.sh` (instead of the bare refresh .py).
+2. Add `ROIZEN_AUTO_DEPLOY=1` to the plist `EnvironmentVariables`.
+Until BOTH land, the cron runs the bare refresh (no deploy) and the script is inert.
+Safe dry-run any time: `ROIZEN_DEPLOY_DRY_RUN=1 bash scripts/deploy_publish.sh`.
+
 ## Single-source-of-truth fix (do regardless of path)
 
 The three near-duplicate HTML files are the root drift risk. After path selection, collapse

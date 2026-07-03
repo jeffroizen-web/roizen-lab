@@ -32,3 +32,7 @@ docs/reports/tenure-readiness-20*.md
 
 # Derived Pages publish artifact (built by scripts/sync_publish.py, deployed to gh-pages)
 publish/
+
+# Auto-redeploy runtime state (deploy_publish.sh): last-deployed hash + outcome log
+docs/reports/.deploy_last_hash
+docs/reports/deploy-publish.jsonl
