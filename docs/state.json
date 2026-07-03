@@ -13,12 +13,12 @@
       "description": "4-audience rubric grade of canonical working file; lifted C->B by the WCAG/prose/tap-target/token uplifts. Baseline re-set to B 2026-07-03 (R3). Remaining WARN are Jeff-gated (3 figure-pendings q2/q3/q7)"
     },
     "site_deployed": {
-      "value": false,
-      "data_as_of": "2026-06-10",
+      "value": "soft-launch-live",
+      "data_as_of": "2026-07-03",
       "freshness_seconds_max": 604800,
-      "source": "docs/DEPLOY.md verified-state table",
+      "source": "https://jeffroizen-web.github.io/roizen-lab/ (read-back verified)",
       "visibility": "public",
-      "description": "hypothesisdriven.org not pointed at any host; no CNAME/CI/host config; gated on Jeff hosting answer"
+      "description": "SOFT-LAUNCH LIVE 2026-07-03 (Jeff GO) at jeffroizen-web.github.io/roizen-lab. Served from the gh-pages branch (lean 2.4M publish artifact via scripts/sync_publish.py; the 543M source root choked the Pages build). NO custom domain — hypothesisdriven.org still unpointed (deliberate soft-launch scope). Read-back: byte-identical canonical, 20-pub feed live, badge --primary AA-fix live, hero WebP is LCP element @468ms, CLS 0, 0 console errors."
     },
     "site_canonical_file": {
       "value": "compare-purple-gold.html",
