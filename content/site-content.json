@@ -136,7 +136,7 @@
   },
   "publications": {
     "section_heading": "Selected Papers",
-    "tagline": "Highlights from 27 publications, organized by research arc.",
+    "tagline": "Selected highlights, organized by research arc. The complete, auto-updated list appears below.",
     "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD",
     "data_source": "data/publications.json",
     "arc_anchors": ["arc-phenotype", "arc-mechanism", "arc-translation"]

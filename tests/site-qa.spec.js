@@ -172,6 +172,21 @@ test.describe('Site QA — JSON-LD validity depth', () => {
   });
 });
 
+test.describe('Site QA — publications feed (Inc-1 / R1)', () => {
+  test('publications section renders the live feed block with a data_as_of stamp', async ({ page }) => {
+    await page.goto(BASE, { waitUntil: 'networkidle' });
+    const feed = page.locator('#publications .pub-feed');
+    await expect(feed, 'feed-rendered publications block must be present').toBeVisible();
+    // Data Provenance: a visible count + ISO data_as_of stamp on the rendered surface.
+    await expect(feed.locator('.pub-feed-meta')).toContainText(/publications, verified \d{4}-\d{2}-\d{2}/);
+    // The living list has real, linked publications baked into the served markup (SEO).
+    const links = feed.locator('.publication-list li a');
+    expect(await links.count(), 'feed should render at least 10 publication links').toBeGreaterThanOrEqual(10);
+    // No stale hand-typed count survives anywhere on the page.
+    await expect(page.locator('body')).not.toContainText('27 publications');
+  });
+});
+
 test.describe('Site QA — self-hosted fonts', () => {
   test('no external font requests; all woff2 load without 404', async ({ page }) => {
     const external = [];
