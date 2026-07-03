@@ -29,3 +29,6 @@ test-results/
 # near-identical dated pairs in git.
 docs/reports/tenure-readiness-20*.json
 docs/reports/tenure-readiness-20*.md
+
+# Derived Pages publish artifact (built by scripts/sync_publish.py, deployed to gh-pages)
+publish/
