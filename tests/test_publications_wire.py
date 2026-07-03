@@ -103,6 +103,32 @@ def test_missing_feed_falls_back_and_keeps_showcase(tmp_path):
     assert wp.SENTINEL_OPEN in out
 
 
+def _contrast(fg, bg):
+    def lum(rgb):
+        def f(c):
+            c /= 255
+            return c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+        r, g, b = rgb
+        return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+    a, b = sorted((lum(fg), lum(bg)), reverse=True)
+    return (a + 0.05) / (b + 0.05)
+
+
+def test_badge_contrast_meets_wcag_aa_on_gold_tint():
+    """Author badge is normal-size text → needs AA 4.5:1. --accent-dark was 4.43
+    (FAIL) on the gold tint; --primary is 11.59 (WEB-QUALITY gate, 2026-07-03).
+    Guard the generator AND the served HTML use the AA-passing token."""
+    import re
+    for src, name in ((wp.STYLE_BLOCK, "generator"), (LIVE_HTML, "served HTML")):
+        rule = re.search(r"\.pub-feed \.pub-badge \{[^}]*\}", src)
+        assert rule, f"pub-badge rule not found in {name}"
+        assert "var(--primary)" in rule.group(0), f"badge not --primary in {name}"
+        assert "var(--accent-dark)" not in rule.group(0), f"badge still --accent-dark in {name}"
+    # Computed: --primary (#3B1F6E) on rgba(197,163,54,0.15)-over-white must clear AA.
+    tint = tuple(0.15 * c + 0.85 * 255 for c in (197, 163, 54))
+    assert _contrast((0x3B, 0x1F, 0x6E), tint) >= 4.5
+
+
 def test_styles_inject_into_real_style_tag_not_a_comment(tmp_path):
     """Regression guard (2026-07-03): the style regex must target a REAL <style>
     element, not a '<style' substring inside an HTML comment (which buries the CSS

@@ -34,6 +34,7 @@ SITE = ROOT / "compare-purple-gold.html"
 SENTINEL_OPEN = "<!--publications-feed:start-->"
 SENTINEL_CLOSE = "<!--publications-feed:end-->"
 STYLE_SENTINEL = "/* publications-feed-styles */"
+STYLE_SENTINEL_END = "/* publications-feed-styles:end */"
 
 # Styles for the feed-rendered block. Tokens only (web-quality rule 1); mirrors
 # the site's existing scale so the living list sits cleanly under the showcase.
@@ -63,10 +64,11 @@ STYLE_BLOCK = """
 .pub-feed .publication-list a { color: var(--primary); font-weight: 600; }
 .pub-feed .pub-badge {
     display: inline-block; font-size: var(--font-size-xs); text-transform: uppercase;
-    letter-spacing: 0.5px; color: var(--accent-dark); background: rgba(197,163,54,0.15);
+    letter-spacing: 0.5px; color: var(--primary); background: rgba(197,163,54,0.15);
     padding: 0 var(--space-2); border-radius: var(--radius-pill); margin-left: var(--space-1);
 }
-"""
+"""  # noqa: E501 — badge text is --primary (11.59:1 on the gold tint); --accent-dark
+# was 4.43:1, UNDER WCAG-AA 4.5 for normal-size text (WEB-QUALITY gate, 2026-07-03).
 
 PUBMED_URL = "https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD"
 
@@ -114,13 +116,24 @@ def _find_real_style_open(html: str):
 
 
 def ensure_style_block(html: str) -> str:
-    if STYLE_SENTINEL in html:
-        return html
+    """(Re)inject the feed styles so the SCRIPT is the authoritative source.
+
+    Strip any existing start..end block (AND its leading newline, so re-runs are
+    byte-stable — the whitespace-accumulation class) and re-inject the current
+    STYLE_BLOCK. This lets a style change here (e.g. the badge AA fix) propagate
+    on the next wire, instead of being frozen at first-injection.
+    """
+    import re
+    html = re.sub(
+        r"\n?" + re.escape(STYLE_SENTINEL) + r".*?" + re.escape(STYLE_SENTINEL_END),
+        "", html, flags=re.DOTALL,
+    )
     m = _find_real_style_open(html)
     if not m:
         return html
     at = m.end()
-    return html[:at] + "\n" + STYLE_SENTINEL + STYLE_BLOCK + html[at:]
+    payload = "\n" + STYLE_SENTINEL + STYLE_BLOCK + STYLE_SENTINEL_END
+    return html[:at] + payload + html[at:]
 
 
 _INJECT_INDENT = "\n            "
