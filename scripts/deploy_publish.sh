@@ -80,7 +80,46 @@ if [ "${ROIZEN_AUTO_DEPLOY:-0}" != "1" ]; then
     exit 0
 fi
 
-CANON_HASH="$(canonical_hash)"
+# ---- 1b. DIRTY-TREE GUARD (Kleiber MSG-5346f8 flag) -----------------------
+# Never publish a MID-EDIT tree: if the cron fires while a session is editing
+# the canonical, a half-written page must NOT go live. Note: the canonical
+# ALWAYS carries the cron field-of-interest diff (uncommitted by design), so a
+# literal `git status --porcelain` on it would ALWAYS skip and break the deploy.
+# So the guard implements the INTENT correctly on two orthogonal surfaces:
+#   (a) referenced ASSETS are never cron-modified -> any dirty asset = a session
+#       mid-edit -> skip;
+#   (b) the canonical gets a STABILITY check -> its hash must hold over a short
+#       window (the static foi passes; an actively-writing editor does not).
+# Test seam: ROIZEN_DEPLOY_ASSUME_DIRTY=1 forces the skip branch.
+if [ "${ROIZEN_DEPLOY_ASSUME_DIRTY:-0}" = "1" ]; then
+    log_outcome dirty-tree "test seam: forced dirty-tree (no deploy)"
+    exit 0
+fi
+DIRTY_ASSETS="$(python3 - <<'PY'
+import subprocess, sys
+sys.path.insert(0, "scripts")
+import sync_publish as sp
+assets = sp.referenced_assets(sp.CANONICAL.read_text(encoding="utf-8"))
+if not assets:
+    sys.exit(0)
+out = subprocess.run(["git", "status", "--porcelain", "--", *assets],
+                     capture_output=True, text=True).stdout.strip()
+sys.stdout.write(out)
+PY
+)"
+if [ -n "$DIRTY_ASSETS" ]; then
+    log_outcome dirty-tree "referenced asset(s) uncommitted/mid-edit: skipping deploy"
+    exit 0
+fi
+STAB_SLEEP="${ROIZEN_DEPLOY_STABILITY_SLEEP:-2}"
+H1="$(canonical_hash)"
+sleep "$STAB_SLEEP"
+H2="$(canonical_hash)"
+if [ "$H1" != "$H2" ]; then
+    log_outcome dirty-tree "canonical changed during stability window: active writer, skipping deploy"
+    exit 0
+fi
+CANON_HASH="$H2"
 
 # ---- 3. CHANGE-DETECT (before the expensive gate) -------------------------
 LAST_HASH="$(cat "$STATE_FILE" 2>/dev/null || echo '')"

@@ -27,6 +27,7 @@ def _run(env_extra, tmp_path):
     env.update({
         "ROIZEN_DEPLOY_STATE": str(tmp_path / "last_hash"),
         "ROIZEN_DEPLOY_LOG": str(tmp_path / "deploy.jsonl"),
+        "ROIZEN_DEPLOY_STABILITY_SLEEP": "0",  # keep the dirty-tree stability check instant
     })
     env.update(env_extra)
     proc = subprocess.run(
@@ -77,6 +78,19 @@ def test_change_detect_fires_when_hash_differs(tmp_path):
         {"ROIZEN_AUTO_DEPLOY": "1", "ROIZEN_DEPLOY_DRY_RUN": "1"}, tmp_path)
     assert proc.returncode == 0, proc.stderr
     assert rows[-1]["outcome"] == "deployed-dry-run"
+
+
+def test_dirty_tree_guard_skips_deploy(tmp_path):
+    """Kleiber flag: a mid-edit tree must NOT publish. The forced-dirty seam
+    exits at outcome=dirty-tree, before change-detect/gate/push."""
+    (tmp_path / "last_hash").write_text("deadbeef" * 8)  # would otherwise deploy
+    proc, rows = _run(
+        {"ROIZEN_AUTO_DEPLOY": "1", "ROIZEN_DEPLOY_DRY_RUN": "1",
+         "ROIZEN_DEPLOY_ASSUME_DIRTY": "1"}, tmp_path)
+    assert proc.returncode == 0, proc.stderr
+    assert rows[-1]["outcome"] == "dirty-tree"
+    # dirty-tree bails BEFORE the deploy path, so no new hash is recorded.
+    assert (tmp_path / "last_hash").read_text().strip() == "deadbeef" * 8
 
 
 def test_every_path_writes_an_observable_outcome(tmp_path):
