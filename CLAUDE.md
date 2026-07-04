@@ -62,6 +62,8 @@
 > Track Jeff's explicit instructions. Record within 1 minute. Never silently drop.
 > Note: The section heading follows the markdown format extracted by the session-start hook. No hook modification is required.
 
+- 2026-07-03 (Kleiber FYI MSG-5d159f, org-arch R3, no action now): my standing team = **web-surface** (Ace Scout × Pilot/Tempo, **Rams = design gate**). Change: intra-arc iterations blessed by the team specialist (Rams for design craft) WITHOUT a Kleiber re-run; **Kleiber keeps the final merge gate**; voice-to-Jeff unchanged (my domain = my voice); Producer-Owns unchanged. Charters: `docs/teams/` in the Kleiber repo — READ at next contact; **roles apply from my next team arc** (e.g. PR-3 WebGL, once Jeff/Rams give direction, would route Rams's design blessing intra-arc + Kleiber's merge gate). Not yet active this session.
+
 - 2026-04-16 (via Kleiber): "ALWAYS tmux responses back to Kleiber for inter-CM communication" → IN-PROGRESS (used for all recent responses).
 - 2026-04-16 (via Kleiber): "OVERNIGHT AUTONOMOUS MODE. Do NOT push to remote without Jeff." → IN-PROGRESS (working local-only; working file is `compare-purple-gold.html`).
 - 2026-04-16 (via Kleiber): "Contact email is jeffroizen@gmail.com; text Jeff via ntfy AND send Kleiber a Telegram when someone emails through the site" → Layer 1 DONE (Formspree + ntfy); Layer 2 (Telegram to Kleiber) DEFERRED to Pilot Railway endpoint pending Jeff deploy approval.
