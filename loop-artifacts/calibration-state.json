@@ -1,0 +1,5 @@
+{"rubric_hash":"e583b86643a2fb27","threshold":8.0,
+ "reliability":{"replicates":[8.2,8.1,8.2],"sigma_raw":0.05774,"sigma_used":0.2,"m":3,"sufficient_m":true},
+ "iterations":[{"iter":1,"judge":"J1","score":8.2,"cal":{"calibrated_pass":false,"status":"CONTINUE","reason":"STRADDLE: LCB 8.00 < 8.00","lcb":8.0,"ucb":8.4,"band":0.2}}],
+ "iter1_commits":["fff072e","4d6e2e2"],"baseline_lcp_ms":879,"iter1_lcp_ms":101,
+ "notes":["all 3 replicates independently caught the builder figure-pending CSS overclaim (verified by Kleiber grep: 12 HTML uses, 0 rules)","iter-1 screenshots hero-only; B-2/B-3/B-4 scored on structural proxy","iter-2 launched 2026-07-05 ~08:0x ET with convergent gap list"]}
