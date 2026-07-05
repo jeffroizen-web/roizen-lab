@@ -265,7 +265,7 @@
         .btn {
             display: inline-block; padding:var(--space-3) var(--space-9); background: var(--btn-bg); color: var(--btn-text);
             font-weight: 700; font-size: var(--font-size-sm); border-radius: var(--radius-sm); letter-spacing: var(--tracking-normal);
-            transition: all var(--duration-base);
+            transition: background-color var(--duration-base), transform var(--duration-base), box-shadow var(--duration-base), color var(--duration-base);
         }
         .btn:hover { background: var(--btn-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; color: var(--btn-text); }
 
@@ -435,7 +435,7 @@
 
         /* === News === */
         .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:var(--space-7); max-width: 900px; margin:0 auto; }
-        .news-card { padding:var(--space-7); transition: all var(--duration-base); }
+        .news-card { padding:var(--space-7); transition: box-shadow var(--duration-base), transform var(--duration-base); }
         .news-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
         .news-date { font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent-dark); margin-bottom:var(--space-2); }
         .news-card h3 { font-size: var(--font-size-md); color: var(--primary); margin-bottom:var(--space-2); line-height: var(--line-height-normal); }
@@ -451,7 +451,7 @@
 
         /* === Gear === */
         .merch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap:var(--space-6); }
-        .merch-card { overflow: hidden; transition: all var(--duration-base); cursor: pointer; }
+        .merch-card { overflow: hidden; transition: box-shadow var(--duration-base), transform var(--duration-base); cursor: pointer; }
         .merch-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
         .merch-image-placeholder {
             width: 100%; aspect-ratio: 4 / 3;
