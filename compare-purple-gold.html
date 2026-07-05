@@ -59,7 +59,7 @@
 .pub-feed { margin-top: var(--space-10); border-top: 1px solid var(--accent); padding-top: var(--space-6); }
 .pub-feed-meta {
     font-size: var(--font-size-sm); color: var(--text-muted); font-weight: 600;
-    letter-spacing: 0.3px; margin-bottom: var(--space-4);
+    letter-spacing: var(--tracking-tight); margin-bottom: var(--space-4);
 }
 .pub-feed-meta a { color: var(--accent-dark); border-bottom: 1px dotted var(--accent); }
 .pub-feed .freshness-banner {
@@ -74,13 +74,13 @@
 }
 .pub-feed .publication-list { list-style: none; padding: 0; margin: 0; }
 .pub-feed .publication-list li {
-    font-size: var(--font-size-base); line-height: 1.6; color: var(--text);
+    font-size: var(--font-size-base); line-height: var(--line-height-relaxed); color: var(--text);
     padding: var(--space-2) 0; border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 .pub-feed .publication-list a { color: var(--primary); font-weight: 600; }
 .pub-feed .pub-badge {
     display: inline-block; font-size: var(--font-size-xs); text-transform: uppercase;
-    letter-spacing: 0.5px; color: var(--primary); background: rgba(197,163,54,0.15);
+    letter-spacing: var(--tracking-normal); color: var(--primary); background: rgba(197,163,54,0.15);
     padding: 0 var(--space-2); border-radius: var(--radius-pill); margin-left: var(--space-1);
 }
 /* publications-feed-styles:end */
@@ -97,10 +97,10 @@
     color: var(--accent-dark);
     font-size: var(--font-size-sm);
     font-weight: 600;
-    letter-spacing: 0.2px;
+    letter-spacing: var(--tracking-tight);
     margin-top:var(--space-2);
     margin-bottom:var(--space-1);
-    line-height: 1.4;
+    line-height: var(--line-height-snug);
 }
 .field-of-interest.low-conf {
     color: var(--text-muted);
@@ -111,7 +111,7 @@
     color: var(--primary);
     text-transform: uppercase;
     font-size: var(--font-size-xs);
-    letter-spacing: 1px;
+    letter-spacing: var(--tracking-wide);
     margin-right:var(--space-1);
 }
 
@@ -178,7 +178,7 @@
         }
 
         html { scroll-behavior: smooth; scroll-padding-top:var(--space-30); }
-        body { font-family: var(--body-font); color: var(--text); line-height: 1.7; background: var(--white); }
+        body { font-family: var(--body-font); color: var(--text); line-height: var(--line-height-relaxed); background: var(--white); }
         h1, h2 { font-family: var(--heading-font); }
         h3 { font-family: var(--body-font); }
         a { color: var(--accent-dark); text-decoration: none; }
@@ -211,7 +211,7 @@
         /* === Nav (below institution bar) === */
         .navbar {
             position: fixed; top: 40px; width: 100%; z-index: 1000;
-            background: #FFFFFF;
+            background: var(--white);
             box-shadow: var(--shadow-sm);
         }
         .nav-container {
@@ -223,7 +223,7 @@
         .nav-links { display: flex; list-style: none; gap:var(--space-6); }
         .nav-links a {
             color: var(--primary); font-size: var(--font-size-sm); font-weight: 600;
-            letter-spacing: 0.3px; transition: color var(--duration-base);
+            letter-spacing: var(--tracking-tight); transition: color var(--duration-base);
         }
         .nav-links a:hover { color: var(--accent-dark); text-decoration: none; }  /* WCAG AA: 5.0:1 on white (was --accent gold = 2.42:1) */
         .nav-toggle { display: none; background: none; border: none; color: var(--primary); font-size: var(--font-size-xl); cursor: pointer; }
@@ -247,16 +247,16 @@
         .hero-badge {
             display: inline-block; padding:var(--space-2) var(--space-5);
             background: rgba(255,255,255,0.15); color: var(--accent);
-            font-size: var(--font-size-sm); font-weight: 600; letter-spacing: 2px;
+            font-size: var(--font-size-sm); font-weight: 600; letter-spacing: var(--tracking-wide);
             text-transform: uppercase; border-radius: var(--radius-pill); margin-bottom:var(--space-6);
         }
         .hero h1 {
-            font-size: var(--font-size-5xl); font-weight: 700; line-height: 1.2;
-            color: #FAFAF8; margin-bottom:var(--space-6);
+            font-size: var(--font-size-5xl); font-weight: 700; line-height: var(--line-height-tight);
+            color: var(--off-white); margin-bottom:var(--space-6);
         }
         .hero h1 em { font-style: italic; color: var(--accent); }
         .hero-subtitle {
-            font-size: var(--font-size-md); font-weight: 300; line-height: 1.8;
+            font-size: var(--font-size-md); font-weight: 300; line-height: var(--line-height-relaxed);
             color: rgba(250,250,248,0.9); margin-bottom:var(--space-4);
             max-width: 680px; margin-left:auto; margin-right:auto;
         }
@@ -264,7 +264,7 @@
         .hero-affiliations { font-size: var(--font-size-sm); color: rgba(250,250,248,0.65); margin-bottom:var(--space-9); }
         .btn {
             display: inline-block; padding:var(--space-3) var(--space-9); background: var(--btn-bg); color: var(--btn-text);
-            font-weight: 700; font-size: var(--font-size-sm); border-radius: var(--radius-sm); letter-spacing: 0.5px;
+            font-weight: 700; font-size: var(--font-size-sm); border-radius: var(--radius-sm); letter-spacing: var(--tracking-normal);
             transition: all var(--duration-base);
         }
         .btn:hover { background: var(--btn-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; color: var(--btn-text); }
@@ -277,7 +277,7 @@
         .section-header p { max-width: 650px; margin:0 auto; font-size: var(--font-size-md); color: var(--text-light); }
         .eyebrow {
             font-family: var(--body-font); font-size: var(--font-size-xs); font-weight: 700;
-            text-transform: uppercase; letter-spacing: 3px; color: var(--accent-dark); margin-bottom:var(--space-3);
+            text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent-dark); margin-bottom:var(--space-3);
         }
         .gold-line { width: 60px; height: 3px; background: var(--accent); margin:0 auto var(--space-5); border-radius: var(--radius-xs); }
 
@@ -291,14 +291,14 @@
         .question-text { }
         .question-text h3 {
             font-size: var(--font-size-lg); font-weight: 700; color: var(--primary);
-            margin-bottom:var(--space-4); line-height: 1.3;
+            margin-bottom:var(--space-4); line-height: var(--line-height-snug);
         }
         .question-text p {
-            font-size: var(--font-size-base); color: var(--text-light); line-height: 1.8;
+            font-size: var(--font-size-base); color: var(--text-light); line-height: var(--line-height-relaxed);
         }
         .question-text .paper-link {
             display: inline-block; margin-top:var(--space-3); font-size: var(--font-size-sm);
-            font-weight: 700; color: var(--accent-dark); letter-spacing: 0.3px;
+            font-weight: 700; color: var(--accent-dark); letter-spacing: var(--tracking-tight);
             border-bottom: 1px solid var(--accent-dark);
         }
         .question-text .paper-link:hover { color: var(--primary); border-color: var(--primary); }
@@ -345,7 +345,7 @@
             border: 2px dashed var(--accent);
         }
         .figure-placeholder-text {
-            color: var(--primary); font-weight: 600; letter-spacing: 0.4px;
+            color: var(--primary); font-weight: 600; letter-spacing: var(--tracking-tight);
             text-transform: uppercase; font-size: var(--font-size-sm); font-style: normal;
         }
         @media (max-width: 768px) {
@@ -359,15 +359,15 @@
         .pub-arc { margin-bottom:var(--space-10); }
         .pub-arc:last-child { margin-bottom:0; }
         .pub-arc-header { display: flex; align-items: center; gap:var(--space-3); margin-bottom:var(--space-5); padding-bottom:var(--space-2); border-bottom: 2px solid var(--accent); }
-        .pub-arc-number { font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-dark); }
+        .pub-arc-number { font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent-dark); }
         .pub-arc-title { font-family: var(--heading-font); font-size: var(--font-size-md); color: var(--primary); }
         .pub-arc-questions { font-size: var(--font-size-sm); color: var(--text-muted); margin-left:auto; white-space: nowrap; }
         .pub-arc-questions a { color: var(--primary); text-decoration: none; border-bottom: 1px dotted var(--accent); }
         .pub-arc-questions a:hover { color: var(--accent-dark); }
         .pub-item { padding:var(--space-6) 0; border-bottom: 1px solid var(--warm-gray); }
         .pub-item:last-child { border-bottom: none; }
-        .pub-year { font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-dark); margin-bottom:var(--space-2); }
-        .pub-title { font-family: var(--heading-font); font-size: var(--font-size-base); color: var(--text); margin-bottom:var(--space-2); line-height: 1.5; }
+        .pub-year { font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent-dark); margin-bottom:var(--space-2); }
+        .pub-title { font-family: var(--heading-font); font-size: var(--font-size-base); color: var(--text); margin-bottom:var(--space-2); line-height: var(--line-height-normal); }
         .pub-meta { font-size: var(--font-size-sm); color: var(--text-muted); }
         .pub-q-tag { display: inline-block; font-size: var(--font-size-xs); font-weight: 600; color: var(--primary); background: rgba(59,31,110,0.08); padding:var(--space-1) var(--space-2); border-radius: var(--radius-sm); margin-left:var(--space-2); vertical-align: middle; }
         @media (max-width: 768px) {
@@ -379,13 +379,13 @@
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:var(--space-10); justify-items: center; }
         .team-card { text-align: center; max-width: 300px; }
         .team-photo {
-            width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+            width: 180px; height: 180px; border-radius: var(--radius-pill); object-fit: cover;
             margin-bottom:var(--space-5); box-shadow: var(--shadow-lg);
         }
         [data-theme="purple-gold"] .team-photo { border: 4px solid var(--accent); }
         [data-theme="warm-slate"] .team-photo { border-radius: var(--radius-2xl); }
         .team-photo-placeholder {
-            width: 180px; height: 180px; border-radius: 50%; margin:0 auto var(--space-5);
+            width: 180px; height: 180px; border-radius: var(--radius-pill); margin:0 auto var(--space-5);
             background: var(--warm-gray); color: var(--text-muted); display: flex;
             align-items: center; justify-content: center; font-size: var(--font-size-3xl); font-weight: 300;
             border: 2px dashed rgba(0,0,0,0.12);
@@ -394,6 +394,30 @@
         .team-card h3 { font-size: var(--font-size-md); color: var(--primary); margin-bottom:var(--space-1); }
         .team-role { font-weight: 700; color: var(--accent-dark); font-size: var(--font-size-sm); }
 
+
+        /* === Person cards (Collaborators / Peers / Mentors) — shared component === */
+        .person-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+            gap: var(--space-7); max-width: 900px; margin: 0 auto;
+        }
+        .person-grid-collab {
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+            max-width: 900px;
+        }
+        .person-card { text-align: center; }
+        .person-name {
+            font-size: var(--font-size-md); font-weight: 600; color: var(--primary);
+            margin-bottom: var(--space-1);
+        }
+        .person-role {
+            color: var(--accent-dark); font-size: var(--font-size-sm); font-weight: 600;
+            margin-bottom: var(--space-2);
+        }
+        .person-affiliation { color: var(--text-light); font-size: var(--font-size-sm); }
+        .person-name a {
+            color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--accent);
+        }
+        .person-name a:hover { color: var(--accent-dark); }
         /* === News === */
         .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:var(--space-7); max-width: 900px; margin:0 auto; }
         .news-card {
@@ -401,9 +425,9 @@
             border-radius: var(--radius-lg); padding:var(--space-7); transition: all var(--duration-base);
         }
         .news-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-        .news-date { font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-dark); margin-bottom:var(--space-2); }
-        .news-card h3 { font-size: var(--font-size-md); color: var(--primary); margin-bottom:var(--space-2); line-height: 1.5; }
-        .news-card p { font-size: var(--font-size-sm); color: var(--text-light); line-height: 1.65; }
+        .news-date { font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent-dark); margin-bottom:var(--space-2); }
+        .news-card h3 { font-size: var(--font-size-md); color: var(--primary); margin-bottom:var(--space-2); line-height: var(--line-height-normal); }
+        .news-card p { font-size: var(--font-size-sm); color: var(--text-light); line-height: var(--line-height-relaxed); }
 
         /* === Alumni === */
         .alumni-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:var(--space-5); max-width: 900px; margin:0 auto; }
@@ -437,13 +461,13 @@
         }
         .donate-section::before {
             content: ''; position: absolute; top: -40%; right: -15%; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(200,150,62,0.12), transparent 70%); border-radius: 50%;
+            background: radial-gradient(circle, rgba(200,150,62,0.12), transparent 70%); border-radius: var(--radius-pill);
         }
-        .donate-section h2 { color: #FFFFFF; }
+        .donate-section h2 { color: var(--white); }
         .donate-section .eyebrow { color: var(--accent-light); }
         .donate-section p { color: rgba(255,255,255,0.85); max-width: 600px; margin:0 auto var(--space-6); font-size: var(--font-size-md); }
-        .btn-donate { background: var(--accent); color: var(--primary); padding:var(--space-4) var(--space-12); font-size: var(--font-size-md); border-radius: var(--radius-sm); }  /* WCAG AA: theme-dark on gold (5.39:1 light / ~9:1 dark); was #FFFFFF on gold = 2.42:1 FAIL */
-        .btn-donate:hover { background: var(--accent-light); color: #FFFFFF; }
+        .btn-donate { background: var(--accent); color: var(--primary); padding:var(--space-4) var(--space-12); font-size: var(--font-size-md); border-radius: var(--radius-sm); }  /* WCAG AA: theme-dark on gold (5.39:1 light / ~9:1 dark); was white on gold = 2.42:1 FAIL */
+        .btn-donate:hover { background: var(--accent-light); color: var(--white); }
 
         /* === Contact form === */
         .contact-grid {
@@ -454,9 +478,9 @@
         .contact-info .contact-block:last-child { margin-bottom:0; }
         .contact-info h3 {
             font-size: var(--font-size-sm); font-weight: 700; text-transform: uppercase;
-            letter-spacing: 1.2px; color: var(--primary); margin-bottom:var(--space-2);
+            letter-spacing: var(--tracking-wide); color: var(--primary); margin-bottom:var(--space-2);
         }
-        .contact-info p { color: var(--text-light); font-size: var(--font-size-base); line-height: 1.7; }
+        .contact-info p { color: var(--text-light); font-size: var(--font-size-base); line-height: var(--line-height-relaxed); }
         .contact-info a { color: var(--accent-dark); font-weight: 600; border-bottom: 1px solid var(--accent-dark); }
         .contact-info a:hover { color: var(--primary); border-color: var(--primary); }
         .contact-info a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
@@ -469,13 +493,13 @@
         .form-field { display: flex; flex-direction: column; }
         .form-field label {
             font-size: var(--font-size-sm); font-weight: 700; color: var(--primary);
-            margin-bottom:var(--space-2); letter-spacing: 0.3px;
+            margin-bottom:var(--space-2); letter-spacing: var(--tracking-tight);
         }
         .form-field input,
         .form-field textarea {
             font-family: inherit; font-size: var(--font-size-base); color: var(--text);
-            padding:var(--space-2) var(--space-3); border: 1px solid #c9c4ba; border-radius: var(--radius-md);
-            background: var(--white); line-height: 1.5;
+            padding:var(--space-2) var(--space-3); border: 1px solid var(--border-neutral); border-radius: var(--radius-md);
+            background: var(--white); line-height: var(--line-height-normal);
             transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
         }
         .form-field textarea { resize: vertical; min-height: 110px; }
@@ -486,7 +510,7 @@
         }
         /* Red invalid borders only appear AFTER the user tries to submit (JS toggles .was-submitted). */
         .contact-form.was-submitted .form-field input:invalid,
-        .contact-form.was-submitted .form-field textarea:invalid { border-color: #b03a3a; }
+        .contact-form.was-submitted .form-field textarea:invalid { border-color: var(--color-error); }
         .honeypot {
             position: absolute; left: -9999px; width: 1px; height: 1px;
             overflow: hidden;
@@ -500,8 +524,8 @@
             font-size: var(--font-size-sm); margin-top:var(--space-1); min-height: 1.4em;
             color: var(--text-light);
         }
-        .form-status.success { color: #2a6b2a; font-weight: 600; }
-        .form-status.error { color: #b03a3a; font-weight: 600; }
+        .form-status.success { color: var(--color-success); font-weight: 600; }
+        .form-status.error { color: var(--color-error); font-weight: 600; }
         @media (max-width: 768px) {
             .contact-grid { grid-template-columns: 1fr; gap:var(--space-8); }
             .contact-form { padding:var(--space-5); }
@@ -543,7 +567,7 @@
             }
             .nav-links {
                 display: none; flex-direction: column; position: absolute;
-                top: 60px; left: 0; right: 0; background: #FFFFFF;
+                top: 60px; left: 0; right: 0; background: var(--white);
                 padding:var(--space-4) var(--space-6); gap:var(--space-4); box-shadow: var(--shadow-md);
             }
             /* Mobile menu links: full-width >=44px tap rows (rule 6). gap on the
@@ -556,15 +580,16 @@
             }
             .nav-links.active { display: flex; }
             html { scroll-padding-top:var(--space-25); }
-            .hero { padding:var(--space-32) var(--space-6) 60px; min-height: 80vh; }
+            .hero { padding:var(--space-32) var(--space-6) var(--space-15); min-height: 80vh; }
             .hero h1 { font-size: var(--font-size-3xl); }
             .hero-subtitle { font-size: var(--font-size-base); }
             .hero-subtitle br { display: none; }
             .hero-affiliations { font-size: var(--font-size-sm); margin-bottom:var(--space-7); }
             .section { padding:var(--space-18) 0; }
             .section-header h2 { font-size: var(--font-size-3xl); }
-            .questions-grid { grid-template-columns: 1fr; }
+            .questions-list { grid-template-columns: 1fr; }
             .news-grid { grid-template-columns: 1fr; }
+            .alumni-grid { grid-template-columns: 1fr; }
             .merch-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
@@ -581,9 +606,9 @@
             .nav-links { top: 54px; padding:var(--space-3) var(--space-4); }
             html { scroll-padding-top:var(--space-22); }
             .hero { padding:var(--space-28) var(--space-4) var(--space-12); min-height: 75vh; }
-            .hero-badge { font-size: var(--font-size-xs); padding:var(--space-2) var(--space-3); letter-spacing: 1.5px; margin-bottom:var(--space-4); }
+            .hero-badge { font-size: var(--font-size-xs); padding:var(--space-2) var(--space-3); letter-spacing: var(--tracking-wide); margin-bottom:var(--space-4); }
             .hero h1 { font-size: var(--font-size-2xl); margin-bottom:var(--space-4); }
-            .hero-subtitle { font-size: var(--font-size-sm); line-height: 1.7; }
+            .hero-subtitle { font-size: var(--font-size-sm); line-height: var(--line-height-relaxed); }
             .hero-affiliations { font-size: var(--font-size-sm); margin-bottom:var(--space-6); }
             .btn { padding:var(--space-3) var(--space-7); font-size: var(--font-size-sm); }
             .container { padding:0 var(--space-4); }
@@ -597,7 +622,9 @@
             .team-photo, .team-photo-placeholder { width: 140px; height: 140px; }
             .news-grid { grid-template-columns: 1fr; }
             .alumni-grid { grid-template-columns: 1fr; }
+            .alumni-grid { grid-template-columns: 1fr; }
             .merch-grid { grid-template-columns: 1fr; gap:var(--space-4); }
+            .team-grid { grid-template-columns: 1fr; }
             .donate-section .section-header h2 { font-size: var(--font-size-2xl); }
             .donate-section p { font-size: var(--font-size-base); }
             .btn-donate { padding:var(--space-3) var(--space-9); font-size: var(--font-size-base); }
@@ -606,7 +633,7 @@
         /* === Skip link (WCAG 2.4.1) === */
         .skip-link {
             position: absolute; top: -100px; left: 8px; z-index: 9999;
-            padding:var(--space-2) 18px; background: var(--primary); color: #fff;
+            padding:var(--space-2) var(--space-5); background: var(--primary); color: var(--white);
             font-weight: 700; text-decoration: none; border-radius: 0 0 6px 6px;
             transform: translateY(-100%); transition: transform var(--duration-fast) ease-out;
         }
@@ -614,6 +641,29 @@
             top: 0; transform: translateY(0); outline: 3px solid var(--accent);
         }
 
+
+        /* === Universal :focus-visible (WCAG 2.4.11; web-quality rule 7 EXCELLENT) === */
+        /* Single consistent focus ring: 2px solid primary + offset + shadow for all interactive els */
+        a:focus-visible,
+        .nav-links a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        .skip-link:focus-visible,
+        .btn:focus-visible,
+        .btn-donate:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+            box-shadow: 0 0 0 4px rgba(59,31,110,0.12);
+        }
+        /* Skip-link visible position on focus (override with transform approach) */
+        .skip-link:focus-visible {
+            top: 0;
+            transform: translateY(0);
+            outline: 3px solid var(--accent);
+            outline-offset: 0;
+            box-shadow: none;
+        }
         /* === Reduced motion (WCAG 2.3.3) === */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -623,6 +673,12 @@
                 scroll-behavior: auto !important;
             }
             html { scroll-behavior: auto; }
+        }
+
+        /* === Mobile-first grid single-column (<=375px, all auto-fit grids) === */
+        @media (max-width: 375px) {
+            .person-grid, .person-grid-collab,
+            .news-grid, .alumni-grid, .team-grid, .merch-grid { grid-template-columns: 1fr; }
         }
 
         /* === Very small phone (<=360px) === */
@@ -789,7 +845,13 @@
                         <a href="#arc-phenotype" class="paper-link">See papers &rarr;</a>
                     </div>
                     <!-- FIGURE PENDING: Jeff to provide hepatic 25-hydroxylase activity figure for Q2. Prior placeholder file "q2-hepatic-enzyme.png" actually contains a leptin scatterplot, not enzyme activity. See docs/figure-audit.md. -->
-                    <div class="question-figure question-figure-placeholder"><span class="figure-placeholder-text">Figure pending</span></div>
+                    <div class="question-figure question-figure-placeholder"><div class="figure-pending-frame">
+                    <div class="figure-pending-icon">&#9647;</div>
+                    <div>
+                        <p class="figure-pending-label">Figure pending</p>
+                        <p class="figure-pending-note">Data visualization in preparation</p>
+                    </div>
+                </div></div>
                 </div>
                 <!-- Q3 -->
                 <div class="question-row" id="q3">
@@ -799,7 +861,13 @@
                         <a href="#arc-phenotype" class="paper-link">See papers &rarr;</a>
                     </div>
                     <!-- FIGURE PENDING: Jeff to provide CYP2R1 SNP / individual variation figure for Q3. Prior placeholder file "q3-cyp2r1-variants.png" actually shows a conventional-vs-local-generation schematic, not variant data. See docs/figure-audit.md. -->
-                    <div class="question-figure question-figure-placeholder"><span class="figure-placeholder-text">Figure pending</span></div>
+                    <div class="question-figure question-figure-placeholder"><div class="figure-pending-frame">
+                    <div class="figure-pending-icon">&#9647;</div>
+                    <div>
+                        <p class="figure-pending-label">Figure pending</p>
+                        <p class="figure-pending-note">Data visualization in preparation</p>
+                    </div>
+                </div></div>
                 </div>
                 <!-- Q4 -->
                 <div class="question-row" id="q4">
@@ -836,7 +904,13 @@
                         <a href="#arc-translation" class="paper-link">See papers &rarr;</a>
                     </div>
                     <!-- FIGURE PENDING: Jeff to provide biomarker figure for Q7. Prior placeholder file "q7-biomarker.png" actually shows multi-cell OxPhos data (mechanism) — belongs to Q4 content, not a biomarker concept. See docs/figure-audit.md. -->
-                    <div class="question-figure question-figure-placeholder"><span class="figure-placeholder-text">Figure pending</span></div>
+                    <div class="question-figure question-figure-placeholder"><div class="figure-pending-frame">
+                    <div class="figure-pending-icon">&#9647;</div>
+                    <div>
+                        <p class="figure-pending-label">Figure pending</p>
+                        <p class="figure-pending-note">Data visualization in preparation</p>
+                    </div>
+                </div></div>
                 </div>
             </div>
         </div>
@@ -892,10 +966,10 @@
                 <h2>Collaborators</h2>
                 <p>People who make our work better.</p>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:var(--space-10); max-width:900px; margin:0 auto;">
+            <div class="person-grid person-grid-collab">
                 <div>
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; color:var(--primary); margin-bottom:var(--space-1); text-align:center;"><a href="https://www.research.chop.edu/people/hakon-hakonarson" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Hakon Hakonarson, MD, PhD</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2); text-align:center;">Director, Center for Applied Genomics &middot; CHOP</p>
+                    <h3 class="person-name"><a href="https://www.research.chop.edu/people/hakon-hakonarson" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Hakon Hakonarson, MD, PhD</a></h3>
+                    <p class="person-role" style="text-align:center;">Director, Center for Applied Genomics &middot; CHOP</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Hakon Hakonarson, MD, PhD" data-conf="1.0"><span class="foi-label">Recent focus</span>genetic, risk, variants, neurodevelopmental <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
                     <ul style="list-style:none; padding:0; margin:var(--space-3) 0 0; font-size:var(--font-size-sm); color:var(--text-light); line-height:1.8;">
                         <li>CYP3A4 mutation causes vitamin D-dependent rickets type 3 &middot; <em>J Clin Invest</em> 2018</li>
@@ -906,8 +980,8 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; color:var(--primary); margin-bottom:var(--space-1); text-align:center;"><a href="https://www.research.chop.edu/mccormack-laboratory" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Shana E. McCormack, MD, MTR</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2); text-align:center;">Scientific Director, Neuroendocrine Center &middot; CHOP</p>
+                    <h3 class="person-name"><a href="https://www.research.chop.edu/mccormack-laboratory" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Shana E. McCormack, MD, MTR</a></h3>
+                    <p class="person-role" style="text-align:center;">Scientific Director, Neuroendocrine Center &middot; CHOP</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Shana E. McCormack, MD, MTR" data-conf="1.0"><span class="foi-label">Recent focus</span>childhood, bone, density, fractures <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
                     <ul style="list-style:none; padding:0; margin:var(--space-3) 0 0; font-size:var(--font-size-sm); color:var(--text-light); line-height:1.8;">
                         <li>Pilot RCT of intranasal oxytocin for hypothalamic obesity &middot; <em>J Endocr Soc</em> 2023</li>
@@ -927,36 +1001,36 @@
                 <h2>Peers &amp; Colleagues</h2>
                 <p>Scientists we talk to.</p>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:var(--space-7); max-width:900px; margin:0 auto;">
-                <div style="text-align:center;">
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; margin-bottom:var(--space-1);"><a href="https://www.research.chop.edu/mccormack-laboratory" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Shana E. McCormack, MD, MTR</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2);">Pediatric Endocrinology</p>
+            <div class="person-grid">
+                <div class="person-card">
+                    <h3 class="person-name"><a href="https://www.research.chop.edu/mccormack-laboratory" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Shana E. McCormack, MD, MTR</a></h3>
+                    <p class="person-role">Pediatric Endocrinology</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Shana E. McCormack, MD, MTR" data-conf="1.0"><span class="foi-label">Recent focus</span>childhood, bone, density, fractures <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
-                    <p style="color:var(--text-light); font-size:var(--font-size-sm);">CHOP / UPenn</p>
+                    <p class="person-affiliation">CHOP / UPenn</p>
                 </div>
-                <div style="text-align:center;">
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; margin-bottom:var(--space-1);"><a href="https://labs.utdallas.edu/painstresslab/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Benedict J. Kolber, PhD</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2);">Pain &amp; Stress Neuroscience</p>
+                <div class="person-card">
+                    <h3 class="person-name"><a href="https://labs.utdallas.edu/painstresslab/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Benedict J. Kolber, PhD</a></h3>
+                    <p class="person-role">Pain &amp; Stress Neuroscience</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Benedict J. Kolber, PhD" data-conf="1.0"><span class="foi-label">Recent focus</span>pain, amygdala, calcitonin, gene-related <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
-                    <p style="color:var(--text-light); font-size:var(--font-size-sm);">UT Dallas</p>
+                    <p class="person-affiliation">UT Dallas</p>
                 </div>
-                <div style="text-align:center;">
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; margin-bottom:var(--space-1);"><a href="https://neurology.wustl.edu/people/nico-dosenbach-md-phd/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Nico U.F. Dosenbach, MD, PhD</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2);">Precision Neuroscience</p>
+                <div class="person-card">
+                    <h3 class="person-name"><a href="https://neurology.wustl.edu/people/nico-dosenbach-md-phd/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Nico U.F. Dosenbach, MD, PhD</a></h3>
+                    <p class="person-role">Precision Neuroscience</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Nico U.F. Dosenbach, MD, PhD" data-conf="1.0"><span class="foi-label">Recent focus</span>functional, brain, network, organization <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
-                    <p style="color:var(--text-light); font-size:var(--font-size-sm);">Washington University in St. Louis</p>
+                    <p class="person-affiliation">Washington University in St. Louis</p>
                 </div>
-                <div style="text-align:center;">
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; margin-bottom:var(--space-1);"><a href="https://goldbergneurolab.com/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Ethan M. Goldberg, MD, PhD</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2);">Pediatric Neurology &amp; Epilepsy Genetics</p>
+                <div class="person-card">
+                    <h3 class="person-name"><a href="https://goldbergneurolab.com/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Ethan M. Goldberg, MD, PhD</a></h3>
+                    <p class="person-role">Pediatric Neurology &amp; Epilepsy Genetics</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Ethan M. Goldberg, MD, PhD" data-conf="1.0"><span class="foi-label">Recent focus</span>mouse, older, channel, dravet <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
-                    <p style="color:var(--text-light); font-size:var(--font-size-sm);">CHOP / UPenn</p>
+                    <p class="person-affiliation">CHOP / UPenn</p>
                 </div>
-                <div style="text-align:center;">
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; margin-bottom:var(--space-1);"><a href="https://www.romberglab.org/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Neil D. Romberg, MD</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2);">Immunology &amp; Immune Tolerance</p>
+                <div class="person-card">
+                    <h3 class="person-name"><a href="https://www.romberglab.org/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Neil D. Romberg, MD</a></h3>
+                    <p class="person-role">Immunology &amp; Immune Tolerance</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Neil D. Romberg, MD" data-conf="0.9"><span class="foi-label">Recent focus</span>genetic, cells, immunodeficiency, tonsillar <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
-                    <p style="color:var(--text-light); font-size:var(--font-size-sm);">CHOP / UPenn</p>
+                    <p class="person-affiliation">CHOP / UPenn</p>
                 </div>
             </div>
         </div>
@@ -971,24 +1045,24 @@
                 <h2>Mentors</h2>
                 <p>People who trained us.</p>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:var(--space-7); max-width:850px; margin:0 auto;">
-                <div style="text-align:center;">
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; margin-bottom:var(--space-1);"><a href="https://www.bwfund.org/about/dr-louis-j-muglia-md-phd/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Louis J. Muglia, MD, PhD</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2);">President &amp; CEO, Burroughs Wellcome Fund</p>
+            <div class="person-grid">
+                <div class="person-card">
+                    <h3 class="person-name"><a href="https://www.bwfund.org/about/dr-louis-j-muglia-md-phd/" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Louis J. Muglia, MD, PhD</a></h3>
+                    <p class="person-role">President &amp; CEO, Burroughs Wellcome Fund</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Louis J. Muglia, MD, PhD" data-conf="1.0"><span class="foi-label">Recent focus</span>prenatal, gestational, duration, preterm <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
-                    <p style="color:var(--text-light); font-size:var(--font-size-sm);">Previously Cincinnati Children's / University of Cincinnati</p>
+                    <p class="person-affiliation">Previously Cincinnati Children's / University of Cincinnati</p>
                 </div>
-                <div style="text-align:center;">
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; margin-bottom:var(--space-1);"><a href="https://www.research.chop.edu/people/michael-a-levine" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Michael A. Levine, MD</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2);">Chief Emeritus, Endocrinology &amp; Diabetes</p>
+                <div class="person-card">
+                    <h3 class="person-name"><a href="https://www.research.chop.edu/people/michael-a-levine" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Michael A. Levine, MD</a></h3>
+                    <p class="person-role">Chief Emeritus, Endocrinology &amp; Diabetes</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Michael A. Levine, MD" data-conf="1.0"><span class="foi-label">Recent focus</span>therapy, hypoparathyroidism, pain, base <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
-                    <p style="color:var(--text-light); font-size:var(--font-size-sm);">Children's Hospital of Philadelphia</p>
+                    <p class="person-affiliation">Children's Hospital of Philadelphia</p>
                 </div>
-                <div style="text-align:center;">
-                    <h3 style="font-size:var(--font-size-md); font-weight:600; margin-bottom:var(--space-1);"><a href="https://www.research.chop.edu/people/hakon-hakonarson" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Hakon Hakonarson, MD, PhD</a></h3>
-                    <p style="color:var(--accent-dark); font-size:var(--font-size-sm); font-weight:600; margin-bottom:var(--space-2);">Director, Center for Applied Genomics</p>
+                <div class="person-card">
+                    <h3 class="person-name"><a href="https://www.research.chop.edu/people/hakon-hakonarson" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Hakon Hakonarson, MD, PhD</a></h3>
+                    <p class="person-role">Director, Center for Applied Genomics</p>
                     <!--field-of-interest:start--><p class="field-of-interest" data-name="Hakon Hakonarson, MD, PhD" data-conf="1.0"><span class="foi-label">Recent focus</span>genetic, risk, variants, neurodevelopmental <span style="color:var(--text-muted); font-weight:500;">· 10 recent pubs</span></p><!--field-of-interest:end-->
-                    <p style="color:var(--text-light); font-size:var(--font-size-sm);">Children's Hospital of Philadelphia</p>
+                    <p class="person-affiliation">Children's Hospital of Philadelphia</p>
                     <p style="color:var(--text-light); font-size:var(--font-size-sm); font-style:italic; margin-top:var(--space-1);">Postdoctoral mentor</p>
                 </div>
             </div>

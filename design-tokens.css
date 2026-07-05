@@ -55,6 +55,25 @@
   --space-32: 8rem;     /* 128px */
   --space-42: 10.5rem;  /* 168px — hero top pad */
 
+  /* — Line-height scale (~4 steps; collapses 9 ad-hoc values) — */
+  --line-height-tight:   1.2;   /* hero display, large headings */
+  --line-height-snug:    1.3;   /* section h3, question titles */
+  --line-height-normal:  1.5;   /* cards, form inputs, compact UI */
+  --line-height-relaxed: 1.7;   /* body text, paragraphs, long-form (absorbs 1.6/1.65/1.7/1.8) */
+
+  /* — Letter-spacing / tracking scale (~3 steps; collapses 10 ad-hoc values) — */
+  --tracking-tight:  0.3px;   /* nav links, labels, fine copy (absorbs 0.2/0.3/0.4px) */
+  --tracking-normal: 0.5px;   /* buttons, badges, UI chrome */
+  --tracking-wide:   2px;     /* eyebrows, all-caps display (absorbs 1/1.2/1.5/2/3px) */
+
+  /* — Semantic UI colors (theme-independent; for error/success/neutral-border states) — */
+  --color-error:          #b03a3a;   /* form validation error / invalid border */
+  --color-success:        #2a6b2a;   /* form submission success */
+  --border-neutral:       #c9c4ba;   /* neutral gray field border */
+
+  /* — Extra spacing steps required for the craft-uplift — */
+  --space-15: 3.75rem;  /* 60px — mobile hero bottom pad */
+
   /* — Border radius — */
   --radius-xs:   2px;
   --radius-sm:   4px;

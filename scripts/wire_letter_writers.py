@@ -42,10 +42,10 @@ STYLE_BLOCK = """
     color: var(--accent-dark);
     font-size: var(--font-size-sm);
     font-weight: 600;
-    letter-spacing: 0.2px;
-    margin-top: var(--space-2);
-    margin-bottom: var(--space-1);
-    line-height: 1.4;
+    letter-spacing: var(--tracking-tight);
+    margin-top:var(--space-2);
+    margin-bottom:var(--space-1);
+    line-height: var(--line-height-snug);
 }
 .field-of-interest.low-conf {
     color: var(--text-muted);
@@ -56,8 +56,8 @@ STYLE_BLOCK = """
     color: var(--primary);
     text-transform: uppercase;
     font-size: var(--font-size-xs);
-    letter-spacing: 1px;
-    margin-right: var(--space-1);
+    letter-spacing: var(--tracking-wide);
+    margin-right:var(--space-1);
 }
 """
 
