@@ -385,7 +385,7 @@
 
         /* === Team === */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:var(--space-10); justify-items: center; }
-        .team-card { text-align: center; max-width: 300px; }
+        .team-card { text-align: center; max-width: 300px; } /* plain roster — intentionally NOT .card (see card-base note); Rams F2 */
         .team-photo {
             width: 180px; height: 180px; border-radius: var(--radius-pill); object-fit: cover;
             margin-bottom:var(--space-5); box-shadow: var(--shadow-lg);
@@ -412,7 +412,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
             max-width: 900px;
         }
-        .person-card { text-align: center; }
+        .person-card { text-align: center; } /* plain roster — intentionally NOT .card (see card-base note); Rams F2 */
         .person-name {
             font-size: var(--font-size-md); font-weight: 600; color: var(--primary);
             margin-bottom: var(--space-1);
@@ -427,7 +427,14 @@
             color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--accent);
         }
         .person-name a:hover { color: var(--accent-dark); }
-        /* === Shared card base (B-3/R-3) === */
+        /* === Shared card base (B-3/R-3) — news / alumni / gear cards ONLY.
+           DELIBERATELY not used by .person-card or .team-card: the people
+           sections are a plain centered roster (faces + names ARE the content;
+           box chrome reads corporate and adds weight on a front-door people
+           list). Items (news/gear) benefit from boundaries; people do not — the
+           treatments differ because the CONTENT differs. Intentional since
+           B-3/R-3; do NOT "consolidate" person/team into .card (Rams F2 design
+           call, 2026-07-05 MSG-903949). === */
         .card {
             background: var(--white);
             border: 1px solid rgba(0,0,0,0.06);
