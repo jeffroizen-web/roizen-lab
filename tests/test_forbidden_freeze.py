@@ -37,9 +37,11 @@ FORBIDDEN_PATHS = [
     "scripts/deploy_publish.sh",
     "scripts/letter_writers_refresh_cron.sh",
     "scripts/sync_publish.py",
-    # wire_letter_writers.py is forbidden EXCEPT for the CO-4 STYLE_BLOCK mirror;
-    # test_style_block_mirror.py guards the CO-4 constraint separately.
-    "scripts/wire_letter_writers.py",
+    # wire_letter_writers.py: NOT in the full byte-freeze list — CO-4 permits
+    # STYLE_BLOCK mirror edits; test_wire_letter_writers_diff_confined_to_style_block
+    # below enforces that any diff is CONFINED to the STYLE_BLOCK region, and
+    # test_style_block_mirror.py guards mirror consistency (D-2 fix, gate
+    # amendment 2026-07-05 per delta CO-4 authority).
     "publish",                              # generated artifacts
     "docs/reports/.deploy_last_hash",
     "docs/reports/deploy-publish.jsonl",
@@ -232,3 +234,25 @@ class TestEdgeCases:
         )
         spans = _extract_sentinel_spans(sample)
         assert len(spans) == 2
+
+
+def test_wire_letter_writers_diff_confined_to_style_block():
+    """CO-4 carve-out: wire_letter_writers.py may differ from base ONLY inside
+    the STYLE_BLOCK assignment region. Compare base vs current with the
+    STYLE_BLOCK region STRIPPED from each - the remainders must be identical."""
+    import subprocess
+
+    def strip_style_block(src: str) -> str:
+        start = src.index("STYLE_BLOCK")
+        first_q = src.index('"""', start)
+        end = src.index('"""', first_q + 3) + 3
+        return src[:start] + src[end:]
+
+    base = subprocess.run(
+        ["git", "show", f"{BASE_COMMIT}:scripts/wire_letter_writers.py"],
+        capture_output=True, text=True, cwd=ROOT,
+    ).stdout
+    current = (ROOT / "scripts" / "wire_letter_writers.py").read_text()
+    assert strip_style_block(base) == strip_style_block(current), (
+        "wire_letter_writers.py changed OUTSIDE the STYLE_BLOCK region"
+    )

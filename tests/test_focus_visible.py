@@ -178,10 +178,24 @@ class TestEdgeCases:
         """The current tree has exactly 2 :focus-visible rules; extraction must
         find them (regression guard on the parsing logic itself)."""
         selectors = _extract_focus_visible_selectors(style_block)
-        assert len(selectors) == BASELINE_FOCUS_VISIBLE_COUNT, (
-            f"Expected {BASELINE_FOCUS_VISIBLE_COUNT} :focus-visible rules on base "
-            f"tree, found {len(selectors)}: {selectors}"
+        # Extraction-regression guard: the two selectors present at base
+        # (3e10217) must always be found; the LIVE count grows under AC-3,
+        # so assert superset-of-base, never an exact live count (D-1 fix,
+        # gate amendment 2026-07-05 per delta authority).
+        base_selectors = {".paper-link", ".contact-info"}
+        # boundary-aware match: the base class must appear as a whole compound
+        # anywhere in some selector (substring matching passed a renamed
+        # .paper-link-bitten and final-compound matching missed ancestor
+        # position .contact-info a - both bite-caught 2026-07-05)
+        joined = " || ".join(selectors)
+        missing = {
+            b for b in base_selectors
+            if not re.search(re.escape(b) + r"(?![\w-])", joined)
+        }
+        assert not missing, (
+            f"Extraction lost base selectors {missing}; extracted={selectors}"
         )
+        assert len(selectors) >= BASELINE_FOCUS_VISIBLE_COUNT
 
     def test_focus_visible_selector_extraction_is_accurate(self, style_block: str):
         """The extracted selectors should contain the known base-tree entries
