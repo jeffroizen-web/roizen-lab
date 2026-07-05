@@ -1,0 +1,25 @@
+{
+ "mergeable": true,
+ "final_status": "PASS",
+ "reasons": [
+  "OK status: final=PASS is mergeable",
+  "OK sigma: M=3 >= 3 fresh replicates",
+  "OK rubric: hash e583b86643a2fb27 constant across 2 iters",
+  "OK confirmatory: pass not borderline \u2014 no confirmatory required"
+ ],
+ "rubric_hash": "e583b86643a2fb27",
+ "rubric_hash_stable": true,
+ "sigma_used": 0.2,
+ "m_replicates": 3,
+ "sufficient_m": true,
+ "borderline": false,
+ "confirmatory_ok": null,
+ "score_trace": [
+  8.2,
+  9.0
+ ],
+ "statuses": [
+  "CONTINUE",
+  "PASS"
+ ]
+}
