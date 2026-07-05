@@ -86,7 +86,7 @@ def build_paragraph(record: dict) -> str:
         f'{SENTINEL_OPEN}<p class="field-of-interest" '
         f'data-name="{escape_attr(record["name"])}" data-conf="{conf}">'
         f'<span class="foi-label">Recent focus</span>{escape_text(shown)} '
-        f'<span style="color:var(--text-muted); font-weight:500;">'
+        f'<span class="person-pubcount">'
         f'· {n_pubs} recent pubs</span>'
         f"</p>{SENTINEL_CLOSE}"
     )

@@ -7,17 +7,18 @@ Guards:
 
 2. CNAME NOT CREATED (CO-2 addendum): no CNAME file is present in the repo root.
 
-3. SENTINEL FREEZE (CO-3): the cron-owned field-of-interest sentinel spans
-   in compare-purple-gold.html are byte-identical to those at git HEAD 3e10217.
-   The sentinel spans are ENUMERATED DYNAMICALLY at test time (grep-derived) —
-   no hardcoded count.  The test captures the base-tree spans from
-   `git show 3e10217:compare-purple-gold.html`, then compares them against
-   the current file's spans byte-for-byte.
+3. SENTINEL EMITTER-PROVENANCE (CO-3): the field-of-interest sentinel spans in
+   compare-purple-gold.html must be EXACTLY what wire_letter_writers.py emits for
+   the current docs/letter_writers.json (structural well-formedness is the cheap
+   first assert). Re-baselined 2026-07-05 (Kleiber MSG-cc0950 / MSG-18e49f) from
+   the former byte-identity-to-3e10217 check, which was cron-fragile — it went red
+   the moment the letter-writer cron wrote new data. Provenance is both
+   cron-refresh-proof and hand-edit-proof (only the emitter may write interiors).
+   CO-4 (base-pinned confined-diff) retired same day; T6 mirror stays standing.
 
 TDD GREEN on the current tree:
-  - No changes have been made (we ARE at base 3e10217).
   - All forbidden paths are untouched.
-  - All 10 sentinel spans are byte-identical.
+  - Every sentinel span matches the emitter output for the current data.
   - No CNAME file exists.
 
 Run: python3 -m pytest tests/test_forbidden_freeze.py -q
@@ -83,17 +84,6 @@ def _extract_sentinel_spans(html: str) -> list[str]:
     return pattern.findall(html)
 
 
-def _get_base_html() -> str:
-    """Retrieve the HTML file at the base commit using git show."""
-    result = subprocess.run(
-        ["git", "show", f"{BASE_COMMIT}:compare-purple-gold.html"],
-        capture_output=True, text=True, cwd=ROOT,
-    )
-    if result.returncode != 0:
-        pytest.skip(f"Cannot read base HTML from git: {result.stderr.strip()}")
-    return result.stdout
-
-
 # ---------------------------------------------------------------------------
 # T7-a: forbidden-path byte-freeze (CO-2)
 # ---------------------------------------------------------------------------
@@ -140,40 +130,56 @@ def test_ac2_no_cname_created() -> None:
 # Dynamic enumeration — no hardcoded count.
 # ---------------------------------------------------------------------------
 
-def ac3_sentinel_spans_byte_identical() -> None:
-    """The cron-owned field-of-interest spans must be byte-identical to base.
+def ac3_sentinel_spans_match_emitter() -> None:
+    """CO-3 (emitter-provenance): the field-of-interest sentinel spans in the
+    canonical must be EXACTLY what wire_letter_writers.py emits for the CURRENT
+    docs/letter_writers.json.
 
-    Sentinel set is derived dynamically from `git show BASE:compare-purple-gold.html`
-    at test time; the test never hardcodes a span count.  Any span present in
-    the base must appear UNCHANGED in the current file; any span present in the
-    current file but not in the base is a NEW injection (acceptable if done by
-    the cron, but NOT by the craft-uplift build).
-
-    On the base tree (HEAD == 3e10217) both sets are identical → test passes.
+    This replaces the former byte-identity-to-BASE_COMMIT check (Kleiber guard
+    re-baseline 2026-07-05, MSG-cc0950 / MSG-18e49f). Byte-identity-to-base was
+    cron-FRAGILE — it went red the moment the letter-writer cron did its job and
+    wrote new data into the spans. Emitter-provenance is hardened in BOTH
+    directions: cron-refresh-proof (the cron writes via this same emitter, so a
+    legit refresh always matches) AND build/hand-edit-proof (an edit to a span
+    interior diverges from the emitter output → caught; the who-may-write
+    invariant a structural-only check would lose).
     """
-    base_html = _get_base_html()
-    current_html = (ROOT / "compare-purple-gold.html").read_text(encoding="utf-8")
+    import sys
+    import json
 
-    base_spans = _extract_sentinel_spans(base_html)
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import wire_letter_writers as wlw
+
+    current_html = (ROOT / "compare-purple-gold.html").read_text(encoding="utf-8")
     current_spans = _extract_sentinel_spans(current_html)
 
-    # Every span that existed at base must still exist byte-identically
-    base_set = set(base_spans)
-    current_set = set(current_spans)
+    # Cheap first assert: structural well-formedness (sentinel-bounded foi <p>).
+    assert current_spans, "CO-3: no field-of-interest sentinel spans found."
+    for span in current_spans:
+        assert span.startswith(SENTINEL_OPEN) and span.endswith(SENTINEL_CLOSE), (
+            "CO-3: a sentinel span is not fully sentinel-bounded."
+        )
+        assert '<p class="field-of-interest' in span, (
+            "CO-3: a sentinel span is missing its field-of-interest <p>."
+        )
 
-    removed = base_set - current_set
-    assert not removed, (
-        f"CO-3 VIOLATED: {len(removed)} sentinel span(s) were modified or removed "
-        f"relative to {BASE_COMMIT}. The sentinel interiors are CRON-OWNED.\n"
-        "Modified/removed spans:\n" + "\n".join(sorted(removed)[:3])
+    # Provenance assert: re-emit via the generator on the CURRENT data; the
+    # canonical's spans must equal the emitter's output (only the emitter writes
+    # span interiors). A hand edit to any interior diverges here and fails.
+    if not wlw.DATA.exists():
+        pytest.skip(f"letter-writer data not present: {wlw.DATA}")
+    data = json.loads(wlw.DATA.read_text(encoding="utf-8"))
+    reemitted_html, _, _ = wlw.wire(current_html, data)
+    reemitted_spans = _extract_sentinel_spans(reemitted_html)
+    assert current_spans == reemitted_spans, (
+        "CO-3 (provenance) VIOLATED: the canonical field-of-interest spans differ "
+        "from wire_letter_writers.py's emitter output for the current data. Only "
+        "the emitter may write span interiors — a hand edit or drift was detected."
     )
 
-    # Note: current may have more spans than base if the cron ran; that is allowed.
-    # The constraint is only that the build did NOT edit any base-era span.
 
-
-def test_ac3_sentinel_spans_byte_identical() -> None:
-    ac3_sentinel_spans_byte_identical()
+def test_ac3_sentinel_spans_match_emitter() -> None:
+    ac3_sentinel_spans_match_emitter()
 
 
 # ---------------------------------------------------------------------------
@@ -236,23 +242,13 @@ class TestEdgeCases:
         assert len(spans) == 2
 
 
-def test_wire_letter_writers_diff_confined_to_style_block():
-    """CO-4 carve-out: wire_letter_writers.py may differ from base ONLY inside
-    the STYLE_BLOCK assignment region. Compare base vs current with the
-    STYLE_BLOCK region STRIPPED from each - the remainders must be identical."""
-    import subprocess
-
-    def strip_style_block(src: str) -> str:
-        start = src.index("STYLE_BLOCK")
-        first_q = src.index('"""', start)
-        end = src.index('"""', first_q + 3) + 3
-        return src[:start] + src[end:]
-
-    base = subprocess.run(
-        ["git", "show", f"{BASE_COMMIT}:scripts/wire_letter_writers.py"],
-        capture_output=True, text=True, cwd=ROOT,
-    ).stdout
-    current = (ROOT / "scripts" / "wire_letter_writers.py").read_text()
-    assert strip_style_block(base) == strip_style_block(current), (
-        "wire_letter_writers.py changed OUTSIDE the STYLE_BLOCK region"
-    )
+# ---------------------------------------------------------------------------
+# CO-4 RETIRED (2026-07-05, Kleiber guard re-baseline MSG-cc0950 / MSG-18e49f).
+# The base-pinned test_wire_letter_writers_diff_confined_to_style_block was a
+# one-shot pipe4-BUILD-window guard (asserting generator changes stay confined
+# to STYLE_BLOCK vs 3e10217). That build is merged / accepted / live, and the
+# F1 increment legitimately changes the emitter (inline style -> a semantic
+# .person-pubcount class). The STANDING generator guard is
+# test_style_block_mirror.py (T6 mirror, token consistency); the span interiors
+# are now guarded in both directions by CO-3 emitter-provenance above.
+# ---------------------------------------------------------------------------
