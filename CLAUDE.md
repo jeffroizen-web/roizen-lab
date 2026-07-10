@@ -82,6 +82,9 @@
 
 ---
 
+### Instruction Register (active)
+- **2026-07-09 (Jeff verbatim via Kleiber MSG-17608d): "add the hallmark skill to ace scout... to improve the visuals of their website and the ux."** (1) commit the HALLMARK skill → **DONE** (324def0, force-add — `.claude/` is blanket-gitignored here). (2) **PENDING — run HALLMARK AUDIT mode on the live lab site** as the next web-quality pass; bring findings to Jeff's web-quality gate (via Kleiber, usual flow). (3) reconcile: web-quality-standards 9 rules + Rams design tokens stay CANONICAL — Hallmark is the structure/anti-slop layer UNDER them, not a token replacement; flag any conflict to Rams.
+
 ## Key Constraints
 - **Tenure clock**: End of 2026. Letters solicited ~Sep 2026. Site must be live and polished by Aug 2026. Every decision should pass through the lens of "does this help Jeff's tenure case?"
 - **No build system**: Plain HTML/CSS/JS. Edit files directly, preview in browser. Working file: `compare-purple-gold.html`. Production scaffold in `production/`.
