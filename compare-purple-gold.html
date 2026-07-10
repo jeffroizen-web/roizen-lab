@@ -242,7 +242,7 @@
         }
         .hero-inner {
             max-width: 1100px; margin:0 auto; width: 100%;
-            text-align: center; position: relative; z-index: 1;
+            text-align: left; position: relative; z-index: 1;
         }
         .hero-badge {
             display: inline-block; padding:var(--space-2) var(--space-5);
@@ -258,7 +258,7 @@
         .hero-subtitle {
             font-size: var(--font-size-md); font-weight: 300; line-height: var(--line-height-relaxed);
             color: rgba(250,250,248,0.9); margin-bottom:var(--space-4);
-            max-width: 680px; margin-left:auto; margin-right:auto;
+            max-width: 680px; margin-left:0; margin-right:0;
         }
         .hero-subtitle .pop { color: var(--accent); font-weight: 600; }
         .hero-affiliations { font-size: var(--font-size-sm); color: rgba(250,250,248,0.65); margin-bottom:var(--space-9); }
@@ -272,15 +272,16 @@
         /* === Sections === */
         .section { padding:var(--space-25) 0; }
         .section-alt { background: var(--off-white); }
-        .section-header { text-align: center; margin-bottom:var(--space-16); }
+        .section-header { text-align: left; margin-bottom:var(--space-16); }
         .section-header h2 { font-size: var(--font-size-4xl); color: var(--primary); margin-bottom:var(--space-4); }
-        .section-header p { max-width: 650px; margin:0 auto; font-size: var(--font-size-md); color: var(--text-light); }
+        .section-header p { max-width: 650px; margin:0; font-size: var(--font-size-md); color: var(--text-light); }
         .section-header p a { border-bottom: 1px solid var(--accent); }  /* axe link-in-text-block: non-color distinction */
+        .donate-section .section-header { text-align: center; } /* the one deliberate centered "moment" exception — Rams #3 (2026-07-09) */
         .eyebrow {
             font-family: var(--body-font); font-size: var(--font-size-xs); font-weight: 700;
             text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent-dark); margin-bottom:var(--space-3);
         }
-        .gold-line { width: 60px; height: 3px; background: var(--accent); margin:0 auto var(--space-5); border-radius: var(--radius-xs); }
+        .gold-line { width: 60px; height: 3px; background: var(--accent); margin:0 0 var(--space-5); border-radius: var(--radius-xs); }
 
         /* === Big Questions === */
         .questions-list { display: flex; flex-direction: column; gap:var(--space-16); }
@@ -944,8 +945,6 @@
     <section id="team" class="section">
         <div class="container">
             <div class="section-header">
-                <p class="eyebrow">People</p>
-                <div class="gold-line"></div>
                 <h2>Our Team</h2>
             </div>
             <div class="team-grid">
@@ -975,7 +974,6 @@
     <section id="collaborators" class="section section-alt">
         <div class="container">
             <div class="section-header">
-                <p class="eyebrow">Network</p>
                 <div class="gold-line"></div>
                 <h2>Collaborators</h2>
                 <p>People who make our work better.</p>
@@ -1010,7 +1008,6 @@
     <section id="peers" class="section">
         <div class="container">
             <div class="section-header">
-                <p class="eyebrow">Community</p>
                 <div class="gold-line"></div>
                 <h2>Peers &amp; Colleagues</h2>
                 <p>Scientists we talk to.</p>
@@ -1054,7 +1051,6 @@
     <section id="mentors" class="section section-alt">
         <div class="container">
             <div class="section-header">
-                <p class="eyebrow">Lineage</p>
                 <div class="gold-line"></div>
                 <h2>Mentors</h2>
                 <p>People who trained us.</p>
@@ -1087,7 +1083,6 @@
     <section id="publications" class="section">
         <div class="container">
             <div class="section-header">
-                <p class="eyebrow">Publications</p>
                 <div class="gold-line"></div>
                 <h2>Selected Papers</h2>
                 <p>Selected highlights, organized by research arc. The complete, auto-updated list appears below. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Roizen+JD">Full record on PubMed</a></p>
@@ -1195,8 +1190,6 @@
     <section id="news" class="section">
         <div class="container">
             <div class="section-header">
-                <p class="eyebrow">News</p>
-                <div class="gold-line"></div>
                 <h2>Lab News</h2>
             </div>
             <div class="news-grid">
@@ -1228,7 +1221,6 @@
     <section id="alumni" class="section section-alt">
         <div class="container">
             <div class="section-header">
-                <p class="eyebrow">Alumni</p>
                 <div class="gold-line"></div>
                 <h2>Alumni</h2>
                 <p>Former members of the Roizen Lab who have gone on to do great things.</p>
@@ -1308,7 +1300,6 @@
     <section id="donate" class="section donate-section">
         <div class="container" style="position:relative; z-index:1;">
             <div class="section-header">
-                <p class="eyebrow">Support</p>
                 <h2>Fuel This Research</h2>
             </div>
             <p>Your donation buys reagents, mice, and people-hours. That's it.</p>
@@ -1321,8 +1312,6 @@
     <section id="contact" class="section">
         <div class="container">
             <div class="section-header">
-                <p class="eyebrow">Contact</p>
-                <div class="gold-line"></div>
                 <h2>Get in Touch</h2>
             </div>
             <div class="contact-grid">
