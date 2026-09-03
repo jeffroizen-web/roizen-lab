@@ -36,9 +36,44 @@ def _seal() -> None:
     except Exception:
         pass
     # Explicit fallback (security-standards rule 1: "else set the redirect env explicitly").
-    tmp = Path(tempfile.mkdtemp(prefix="roizen-lab-test-seal-"))
+    tmp = _tmp_dir()
     os.environ["KLEIBER_FAILURE_LEDGER"] = str(tmp / "failure_ledger.jsonl")
     os.environ["NOTIFY_JEFF_DISABLE"] = "1"
+    # The canonical registry also seals this; the fallback must too, because
+    # scripts/bus_emit.py writes it on every non-dry-run emit (seal-sweep 9/03).
+    os.environ["PRODUCER_READBACK_LEDGER"] = str(tmp / "producer_readback_writes.jsonl")
+
+
+_TMP: Path | None = None
+
+
+def _tmp_dir() -> Path:
+    global _TMP
+    if _TMP is None:
+        _TMP = Path(tempfile.mkdtemp(prefix="roizen-lab-test-seal-"))
+    return _TMP
+
+
+# Repo-specific sinks NOT in the fleet SEAL_REGISTRY (seal-sweep 2026-09-03,
+# Kleiber MSG-4f32b9). Empirically proven: a bare `bash scripts/deploy_publish.sh`
+# under pytest with no floor appended a row to the LIVE outcome log
+# docs/reports/deploy-publish.jsonl. Every env here is read at call time by
+# its writer (tests/test_seal_writers_honor.py probes each one).
+REPO_SEAL_FLOOR = {
+    "ROIZEN_AUTO_DEPLOY": "0",        # kill-switch forced OFF: no test can arm a real push
+    "ROIZEN_DEPLOY_DRY_RUN": "1",     # belt-and-braces: even an armed path never pushes
+    "ROIZEN_DEPLOY_STATE": "deploy_last_hash",
+    "ROIZEN_DEPLOY_LOG": "deploy-publish.jsonl",
+    "ACE_BUS_AUDIT_LOG": "bus_emit_log.jsonl",
+}
+_FLAG_ENVS = {"ROIZEN_AUTO_DEPLOY", "ROIZEN_DEPLOY_DRY_RUN"}
+
+
+def _seal_repo_floor() -> None:
+    tmp = _tmp_dir()
+    for name, value in REPO_SEAL_FLOOR.items():
+        os.environ[name] = value if name in _FLAG_ENVS else str(tmp / value)
 
 
 _seal()
+_seal_repo_floor()

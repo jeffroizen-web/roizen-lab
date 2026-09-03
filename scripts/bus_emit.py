@@ -31,7 +31,30 @@ from urllib.error import URLError, HTTPError
 from urllib.request import urlopen, Request
 
 ROOT = Path(__file__).resolve().parent.parent
-AUDIT_LOG = ROOT / "decisions" / "bus_emit_log.jsonl"
+
+# Writer path resolution (seal-sweep 2026-09-03, Kleiber MSG-4f32b9): every
+# sink is resolved at CALL time, precedence patch-point > seal env > default.
+# The module attributes below are the test PATCH-POINTS (None = not patched);
+# reading the env at import time would make a conftest seal silently inert for
+# any process that imports this module before the seal runs.
+AUDIT_LOG: Optional[Path] = None          # patch-point; env ACE_BUS_AUDIT_LOG
+READBACK_LEDGER: Optional[Path] = None    # patch-point; env PRODUCER_READBACK_LEDGER
+_DEFAULT_AUDIT_LOG = ROOT / "decisions" / "bus_emit_log.jsonl"
+_DEFAULT_READBACK_LEDGER = Path("~/.kleiber/logs/producer_readback_writes.jsonl")
+
+
+def _audit_log_path() -> Path:
+    if AUDIT_LOG is not None:
+        return Path(AUDIT_LOG)
+    env = os.environ.get("ACE_BUS_AUDIT_LOG")
+    return Path(env) if env else _DEFAULT_AUDIT_LOG
+
+
+def _readback_ledger_path() -> Path:
+    if READBACK_LEDGER is not None:
+        return Path(READBACK_LEDGER)
+    env = os.environ.get("PRODUCER_READBACK_LEDGER")
+    return Path(env) if env else _DEFAULT_READBACK_LEDGER.expanduser()
 
 DEFAULT_ENDPOINT = "https://ulysses-production.up.railway.app/api/role-balance-trial/events"
 
@@ -86,10 +109,11 @@ def _fetch_token() -> Optional[str]:
 
 
 def _audit_write(entry: dict) -> Path:
-    AUDIT_LOG.parent.mkdir(parents=True, exist_ok=True)
-    with AUDIT_LOG.open("a", encoding="utf-8") as f:
+    path = _audit_log_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(entry) + "\n")
-    return AUDIT_LOG
+    return path
 
 
 def emit(
@@ -194,16 +218,11 @@ def emit(
         return {"status": "error", "bus_response": None, "audit_path": str(path), "event_id": event["eventId"]}
 
 
-READBACK_LEDGER = Path(
-    os.environ.get("PRODUCER_READBACK_LEDGER")
-    or os.path.expanduser("~/.kleiber/logs/producer_readback_writes.jsonl")
-)
-
-
 def _ledger_write(entry: dict) -> None:
     try:
-        READBACK_LEDGER.parent.mkdir(parents=True, exist_ok=True)
-        with READBACK_LEDGER.open("a", encoding="utf-8") as f:
+        path = _readback_ledger_path()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as f:
             f.write(json.dumps(entry) + "\n")
     except OSError:
         pass  # ledger is observability, never blocks the emit path
