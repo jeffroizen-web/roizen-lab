@@ -79,6 +79,7 @@
 - **Contact Layer 2** (Telegram to Kleiber on form submit) — DEFERRED, needs Pilot Railway endpoint + Jeff deploy approval. Layer 1 (Formspree + ntfy) DONE.
 
 ### Recently closed (detail in session_archive.md)
+- 2026-09-07 **CLAUDE.md house caps** (Kleiber census MSG-2c4ce2 + ruling MSG-f76a07): trimmed 41,509→16,532 B (closed entries archived VERBATIM), then wired the mandated **BLOCKING** check into the suite — `tests/test_claude_md_caps.py`, both caps named separately, prefix-matched heading with unmatched = FINDING, two-sided bite. **Never convert this to a push hook** (no-push posture = wrong surface). 257 pytest + 4 skipped. Commits f3adad3 + 1901ec8, reported MSG-0b1936.
 - 2026-09-03 **seal sweep** (Kleiber MSG-4f32b9): bus_emit ENV-AT-IMPORT + deploy_publish no-floor found empirically + fixed; 7 guards; **GATE 249 pytest + 4 skipped**. Kleiber GATED ACCEPT MSG-9d3737, leg closed both sides. Commit 638b3cc LOCAL, rides the next authorised push.
 - 2026-07-09 **HALLMARK** (Jeff MSG-17608d, ruled "All"): #1 hero italic→roman LIVE (32c8de5→e66f5ba); #2/#3 left-editorial-axis built+staged (20119fa) → preview-published per Jeff's NOT-public ruling.
 - 2026-07-05 **craft uplift /pipe4** merged 8bf1f4d + LIVE; **Rams flags F1/F2/F3 closed, F4 withdrawn**.
