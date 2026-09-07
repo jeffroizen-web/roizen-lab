@@ -128,3 +128,7 @@
 
 [pre-trim L23 — reworded in place when marked MOOT; original wording verbatim]
 - **Color variants needed**: Create versions with (a) letters same color as car-DNA mark, and (b) letters in a different/contrasting color. Jeff to pick.
+
+[superseded 2026-09-07 — register row replaced IN PLACE when archive_verify reached final form;
+ kept verbatim because it is the only record of ec8d1c0, the first-form commit]
+- 2026-09-07 **trim-loss class** (`archive-pointer-is-a-claim-not-evidence`, Kleiber MSG-bb7ded→MSG-2f9db4): my f3adad3 trim lost 9 pre-trim lines — 16 archived blocks all verified by phrase, but 2 MIXED register rows (live part kept, dead part dropped) + the superseded Quick Status were in NEITHER file. Recovered verbatim (dea3f8d). **BEFORE ANY FUTURE TRIM run `python3 scripts/archive_verify.py <sha-before>` and require EMPTY** (ec8d1c0; exit 1 on loss; bite-proven against the real 3e27645→f3adad3 defect). A phrase-grep audits only what you MOVED and is blind to what you COMPRESSED.
