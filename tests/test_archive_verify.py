@@ -1,9 +1,10 @@
-"""Guards for scripts/archive_verify.py — the trim complement check.
+"""Guards for scripts/archive_verify.py — the trim-loss checker, FINAL FORM.
 
-Two-sided: it must FIRE on a real loss and must NOT fire on an in-place
-rewrite. The second half is as load-bearing as the first — Ledger's naive form
-produced seven false hits, all in-place rewrites, and a check that cries wolf
-gets waved off, which is worse than not having one.
+Each test names the clause it protects and the receipt that clause was bought
+with (Kleiber MSG-b5bbdd). The suite is two-sided throughout: the checker must
+FIRE on real loss and must NOT fire on in-place rewrites, present-on-disk paths,
+or content that legitimately lives in committed docs. A check that cries wolf
+gets waved off, which is worse than no check.
 """
 from __future__ import annotations
 
@@ -13,68 +14,120 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-from archive_verify import find_losses, main, MIN_SUBSTANTIVE  # noqa: E402
+import archive_verify as av  # noqa: E402
 
-BEFORE = "\n".join([
-    "## Quick Status",
-    "- a closed row with a distinctive sha d607729 and a print-font flag 8f85b87",
-    "- a MIXED row: PR-3 WebGL still waits on Jeff, and PR-1 landed at 8678346",
-    "- a row that will be reworded in place, keeping its meaning intact",
-    "- short",
-])
+SCRIPT = ROOT / "scripts" / "archive_verify.py"
 
 
-def test_fires_on_a_compressed_away_line():
-    """The MIXED-row trap: live part kept, dead part dropped, archived nowhere."""
-    live = "## Quick Status\n- PR-3 WebGL still waits on Jeff\n"
-    archive = "- a closed row with a distinctive sha d607729 and a print-font flag 8f85b87\n"
-    losses = find_losses(BEFORE, live, archive)
-    assert len(losses) == 2, losses
-    nums = [n for n, _ in losses]
-    assert 3 in nums, "the compressed-away MIXED row must be flagged"
+# ---- clause 3: fact-token extraction survives paraphrase --------------------
+
+def test_extracts_shas_msgids_paths_urls_and_env_vars():
+    text = ("merged 8bf1f4d per MSG-caf615, see scripts/deploy_publish.sh and "
+            "https://example.org/x with ROIZEN_AUTO_DEPLOY=1")
+    tok = av.extract_tokens(text)
+    assert "8bf1f4d" in tok["sha"]
+    assert "MSG-caf615" in tok["msg-id"]
+    assert "scripts/deploy_publish.sh" in tok["path"]
+    assert any(u.startswith("https://example.org") for u in tok["url"])
+    assert "ROIZEN_AUTO_DEPLOY" in tok["env-var"]
 
 
-def test_silent_when_every_removed_line_is_archived():
-    live = "## Quick Status\n- rewritten headline\n"
-    archive = BEFORE  # everything moved verbatim
-    assert find_losses(BEFORE, live, archive) == []
+def test_prose_emphasis_is_not_mistaken_for_an_env_var():
+    """ALL_CAPS prose (PASS_WITH_FLAG) must not be reported as a lost env var."""
+    assert "PASS_WITH_FLAG" not in av.extract_tokens("a PASS_WITH_FLAG verdict")["env-var"]
 
 
-def test_does_not_flag_a_line_still_present_live():
-    """In-place survival is not a loss."""
-    live = BEFORE
-    assert find_losses(BEFORE, live, "") == []
+# ---- clause 2: corpus is live ∪ archive ∪ committed docs --------------------
+
+def test_locate_reports_which_surface_held_the_content():
+    corpus = {"CLAUDE.md": "alpha", "session_archive.md": "beta",
+              "docs/DEPLOY.md": "gamma"}
+    assert av.locate("beta", corpus) == "session_archive.md"
+    assert av.locate("gamma", corpus) == "docs/DEPLOY.md"
+    assert av.locate("delta", corpus) is None
 
 
-def test_short_structural_lines_are_ignored():
-    """'short' (< MIN_SUBSTANTIVE) must never be reported as lost."""
-    losses = find_losses(BEFORE, "", "")
-    assert all(len(l.strip()) >= MIN_SUBSTANTIVE for _, l in losses)
-    assert "short" not in [l.strip() for _, l in losses]
+def test_corpus_includes_committed_docs_not_just_the_two_files():
+    corpus = av.build_corpus("HEAD")
+    assert "CLAUDE.md" in corpus and "session_archive.md" in corpus
+    assert any(k.startswith("docs/") for k in corpus), \
+        "clause 2: content legitimately lives in docs/ and must not read as lost"
 
 
-def test_exit_code_is_nonzero_on_loss_and_zero_when_clean(tmp_path, monkeypatch, capsys):
-    """The script must BLOCK by exit code, not merely print."""
-    import archive_verify as av
-    monkeypatch.setattr(av, "_git_show", lambda ref, path: BEFORE)
-    monkeypatch.setattr(av, "LIVE", tmp_path / "CLAUDE.md")
-    monkeypatch.setattr(av, "ARCHIVE", tmp_path / "session_archive.md")
+# ---- clause 1: versions, not endpoints -------------------------------------
 
-    (tmp_path / "CLAUDE.md").write_text("nothing here", encoding="utf-8")
-    (tmp_path / "session_archive.md").write_text("", encoding="utf-8")
-    assert av.main(["dummysha"]) == 1
-    assert "NOT EMPTY" in capsys.readouterr().out
-
-    (tmp_path / "session_archive.md").write_text(BEFORE, encoding="utf-8")
-    assert av.main(["dummysha"]) == 0
-    assert "EMPTY" in capsys.readouterr().out
-
-
-def test_real_repo_trim_verifies_clean():
-    """The live receipt: today's trim (3e27645 -> working tree) loses nothing."""
-    proc = subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "archive_verify.py"), "3e27645"],
-        cwd=str(ROOT), capture_output=True, text=True, timeout=60,
+def test_walks_every_version_in_the_window_not_just_the_endpoints():
+    versions = av.versions_in_window("3e27645", "HEAD")
+    assert versions[0] == "3e27645"
+    assert len(versions) >= 3, (
+        "clause 1: a line created AND replaced inside the window is in neither "
+        "endpoint, so endpoint-only comparison never examines it"
     )
-    assert proc.returncode == 0, proc.stdout + proc.stderr
-    assert "EMPTY" in proc.stdout
+
+
+# ---- clause 5: long bullets narrowed to readable fragments ------------------
+
+def test_long_bullet_is_narrowed_to_clause_fragments():
+    line = ("- a very long register row about the gate; it also mentions the "
+            "deploy path — and then continues at considerable length about "
+            "several other operational matters entirely")
+    frags = av.clause_fragments(line)
+    assert 1 <= len(frags) <= 3
+    assert all(len(f) < len(line) for f in frags)
+
+
+# ---- clause 4 (both edges) + the live receipt -------------------------------
+
+def test_existing_file_path_is_not_reported_lost_when_no_longer_cited():
+    """A file does not contain its own path. Kleiber's token pass flagged six
+    records that were all present on disk and merely uncited."""
+    assert (ROOT / "scripts/deploy_publish.sh").exists()
+    proc = _run("3e27645")
+    assert "scripts/deploy_publish.sh" not in proc.stdout.split("FACT-TOKENS")[-1]
+
+
+def _run(base: str, head: str | None = None):
+    cmd = [sys.executable, str(SCRIPT), base]
+    if head:
+        cmd += ["--head", head]
+    return subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=120)
+
+
+def test_current_tree_is_clean_on_both_passes():
+    proc = _run("3e27645")
+    assert proc.returncode == 0, proc.stdout
+    assert "LINE COMPLEMENT: EMPTY" in proc.stdout
+    assert "FACT-TOKENS: EMPTY" in proc.stdout
+
+
+def test_bite_against_the_real_historical_loss():
+    """Not a fixture: run over 3e27645 -> f3adad3 (the trim, before the dea3f8d
+    recovery) and the checker must reproduce the real 9-line loss."""
+    proc = _run("3e27645", "f3adad3")
+    assert proc.returncode == 1, "checker must BLOCK on the known historical loss"
+    assert "LINE COMPLEMENT: NOT EMPTY" in proc.stdout
+
+
+# ---- clause 6 + 7: honesty about limits, and the inverse direction ----------
+
+def test_output_states_what_the_tool_cannot_decide():
+    proc = _run("3e27645")
+    assert "CLAUSE 6" in proc.stdout and "IN" in proc.stdout
+    assert "does NOT certify" in proc.stdout, \
+        "an EMPTY result must not read as certifying that a paraphrase kept the substance"
+
+
+def test_inverse_pass_reports_rule_shaped_archived_blocks():
+    proc = _run("3e27645")
+    assert "INVERSE (clause 7)" in proc.stdout
+    assert "HUMAN CALL" in proc.stdout or "archived blocks carrying RULE" in proc.stdout
+
+
+def test_recovered_rule_is_now_stated_live_and_enforced():
+    """The clause-7 finding from this repo's own run: the /pipe4 merge-condition
+    (process evidence out of the source root) had been swept into the archive
+    and was in no live surface. It must now be BOTH stated and enforced."""
+    live = (ROOT / "CLAUDE.md").read_text(encoding="utf-8")
+    gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+    assert "loop-artifacts" in live, "rule must be stated where a fresh session reads"
+    assert "loop-artifacts/" in gitignore, "and enforced where something runs"

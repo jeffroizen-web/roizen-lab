@@ -36,3 +36,10 @@ publish/
 # Auto-redeploy runtime state (deploy_publish.sh): last-deployed hash + outcome log
 docs/reports/.deploy_last_hash
 docs/reports/deploy-publish.jsonl
+
+# Process evidence, never product (producer merge-condition, /pipe4 2026-07-05;
+# restated live 2026-09-07 after archive_verify clause-7 found the rule had been
+# swept into session_archive.md and was functionally gone). Heavy artifact dumps
+# in the source root are what choked the Pages build — keep them on the branch.
+loop-artifacts/
+loop-output-*.md
