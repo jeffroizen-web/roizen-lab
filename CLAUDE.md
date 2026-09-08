@@ -12,6 +12,7 @@
 - **Local commits awaiting Jeff's authorised push**: 3 (seal-sweep fix + 2 IR/docs). Standing gate = no remote push without Jeff.
 - **WAITING-ON (all Jeff/Kleiber-gated, nothing autonomous open)**: (1) redesign **production flip** — separate Jeff-GO; (2) **custom domain** DNS — Jeff action; (3) **PR-3 WebGL** — Jeff/Rams design direction; (4) **auto-redeploy ARM** — plist repoint + `ROIZEN_AUTO_DEPLOY=1`. Deferred: contact Layer 2 (Telegram), CHOP fund URL, optional per-item caption veto.
 - **Token/credential inventory**: consumes `TRIAL_BUS_TOKEN` only, via `scripts/get-fitness-cred.sh`.
+- **PENDING OUTBOUND to Kleiber (2026-09-08)**: 2 quiet `kind=info` notes undelivered — his box holds a real unsubmitted draft ("Best") and the pre-send guard correctly backed off rather than clobber it. Bodies at `scratchpad/trim/{rule,push}.txt`: (a) the `.claude` symlink-backing observation, (b) the answer that the unpushed stack is a BLOCKED GATE (Jeff's Tier-2 reservation), not batching. Retry at next contact; do NOT escalate the kind for non-urgent content.
 
 ---
 
