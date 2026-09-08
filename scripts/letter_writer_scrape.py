@@ -180,6 +180,22 @@ def orcid_disambiguate(display_name: str) -> Optional[str]:
     """
     Find an ORCID iD by family-name + given-names, preferring matches whose
     institution-name appears in KNOWN_AFFILIATIONS. Returns the iD or None.
+
+    Contract (take the singleton; disambiguate on evidence already in the
+    response; REFUSE when you cannot decide). Returning None is a correct
+    outcome, not a failure: a wrong iD does not raise, it silently returns a
+    DIFFERENT REAL PERSON whose publications then land in a tenure letter-writer
+    record. The refusal only survives because the caller treats None as
+    first-class — probe_orcid drops the field and the pipeline continues — so
+    keep it cheap to refuse or the branch will be "fixed" back to results[0].
+
+    DO NOT CACHE OR MEMOIZE THIS FUNCTION (Edge fedb6aa6 via Kleiber MSG-23c4a7).
+    Its verdict is CONTEXT-DEPENDENT: correctness comes from KNOWN_AFFILIATIONS,
+    not from the query alone. A cached answer that is right for this caller would
+    be served to a caller who does not share that context, reintroducing exactly
+    the wrong-entity join the disambiguation exists to prevent. Only a
+    context-FREE resolution — one whose correctness depends on nothing but the
+    query — is safe to cache. Guarded by test_orcid_disambiguate_is_not_cached.
     """
     given, family = parse_display_name(display_name)
     if not family or not given:

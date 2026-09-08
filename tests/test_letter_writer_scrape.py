@@ -255,3 +255,33 @@ class TestOrcidNetwork(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestOrcidResolutionIsNotCacheable(unittest.TestCase):
+    """Edge fedb6aa6 via Kleiber MSG-23c4a7: an answer is only cacheable if the
+    thing that made it correct depends on NOTHING BUT THE QUERY.
+
+    orcid_disambiguate fails that test — its correctness comes from
+    KNOWN_AFFILIATIONS, which is caller context, not query. Memoizing it would
+    serve a context-dependent verdict to a caller that does not share the
+    context, reintroducing the wrong-entity join the function exists to prevent.
+    This guard bites the moment someone wraps it in @lru_cache or @cache.
+    """
+
+    def test_orcid_disambiguate_is_not_cached(self):
+        import letter_writer_scrape as lws
+        fn = lws.orcid_disambiguate
+        self.assertFalse(hasattr(fn, "cache_info"),
+                         "orcid_disambiguate is memoized — its verdict is "
+                         "context-dependent (KNOWN_AFFILIATIONS) and must not be cached")
+        self.assertFalse(hasattr(fn, "cache_clear"), "orcid_disambiguate is memoized")
+        self.assertFalse(hasattr(fn, "__wrapped__"),
+                         "orcid_disambiguate is wrapped — verify the wrapper is not a cache")
+
+    def test_refusal_contract_is_documented_where_the_next_reader_looks(self):
+        """The refusal is load-bearing and gets deleted when it looks pointless,
+        so the reason has to live on the function, not only in a message."""
+        import letter_writer_scrape as lws
+        doc = lws.orcid_disambiguate.__doc__ or ""
+        self.assertIn("DO NOT CACHE", doc)
+        self.assertIn("REFUSE", doc)
