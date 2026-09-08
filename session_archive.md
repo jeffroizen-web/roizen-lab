@@ -132,3 +132,8 @@
 [superseded 2026-09-07 — register row replaced IN PLACE when archive_verify reached final form;
  kept verbatim because it is the only record of ec8d1c0, the first-form commit]
 - 2026-09-07 **trim-loss class** (`archive-pointer-is-a-claim-not-evidence`, Kleiber MSG-bb7ded→MSG-2f9db4): my f3adad3 trim lost 9 pre-trim lines — 16 archived blocks all verified by phrase, but 2 MIXED register rows (live part kept, dead part dropped) + the superseded Quick Status were in NEITHER file. Recovered verbatim (dea3f8d). **BEFORE ANY FUTURE TRIM run `python3 scripts/archive_verify.py <sha-before>` and require EMPTY** (ec8d1c0; exit 1 on loss; bite-proven against the real 3e27645→f3adad3 defect). A phrase-grep audits only what you MOVED and is blind to what you COMPRESSED.
+
+[superseded 2026-09-08 — Quick Status rows replaced IN PLACE (pending-outbound resolved; unpushed count 3→15).
+ Kept verbatim: the checker flagged these on the very next run, the same in-place-replace loss it exists to catch]
+- **Local commits awaiting Jeff's authorised push**: 3 (seal-sweep fix + 2 IR/docs). Standing gate = no remote push without Jeff.
+- **PENDING OUTBOUND to Kleiber (2026-09-08)**: 2 quiet `kind=info` notes undelivered — his box holds a real unsubmitted draft ("Best") and the pre-send guard correctly backed off rather than clobber it. Bodies at `scratchpad/trim/{rule,push}.txt`: (a) the `.claude` symlink-backing observation, (b) the answer that the unpushed stack is a BLOCKED GATE (Jeff's Tier-2 reservation), not batching. Retry at next contact; do NOT escalate the kind for non-urgent content.
