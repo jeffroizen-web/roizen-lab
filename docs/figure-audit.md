@@ -123,9 +123,11 @@ needs the normal Jeff/design route, and is recorded here so the next reader does
 
 ## The "~400px discrepancy" — RECONCILED 2026-09-08, not open
 
-Recorded here because Kleiber ruled it be fenced as an unreconciled disagreement
-(MSG-5570c2) on the state as of his read. It had already been resolved two
-messages earlier, and the resolution matters more than the fence.
+Kleiber initially ruled this be fenced as an unreconciled disagreement
+(MSG-5570c2), then **WITHDREW that ruling in full (MSG-b8b612)** after checking the
+arithmetic himself: no discrepancy, hypothesis disproved rather than unconfirmed,
+fence bought nothing. Both Rams and I had declined it independently, from opposite
+subjects, on the same grounds. Kept here as the durable record of the resolution.
 
 **It was never a discrepancy.** Ace Scout measured `#questions`; Rams measured
 `DIV.questions-list`. Both correct, different subjects:
@@ -164,3 +166,20 @@ reason: a section-height baseline is meaningless without both of its other two
 parts. Any height quoted for comparison must carry its **subject** (the selector)
 and its **moment** (settled, post-images). A bare number is unfalsifiable between
 two readers; a number without a settle-state is unstable against itself.
+
+### Postscript: the 3px that proved the point
+
+Kleiber flagged a 3px residual at 768 while checking the reconciliation — Rams's
+3265 against my 3268. It was not residual error. Rams's figure was a **pre-settle**
+read and mine was **post-settle**: the moment parameter demonstrating itself inside
+an attempt to check the moment parameter. The decomposition is exact at both widths
+once subject and moment are both fixed:
+
+    1280   2920 - 2460 = 460 = 100+100 padding + 196 header + 64 gap
+     768   3661 - 3268 = 393 =  72+72  padding + 185 header + 64 gap
+
+**Why "two ways of computing one concept are a free continuous test" did not apply
+as first invoked:** that law requires the two ways to compute the *same* concept.
+Confirming the subject is a precondition for invoking it, not a detail. It did
+apply tonight, to a different pair — the settled-vs-cold read — and that one lives
+in an assertion that runs every invocation rather than in this document.
