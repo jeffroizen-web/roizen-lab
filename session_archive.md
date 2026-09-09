@@ -152,3 +152,7 @@
 - **Current stint (2026-09-07)**: CLAUDE.md trimmed under the 40KB house cap (Kleiber census MSG-2c4ce2). Prior stint 2026-09-03: Kleiber Tier-0 seal sweep DONE + gated-accepted (638b3cc, MSG-9d3737).
 - **GATE (current)**: **249 pytest + 4 skipped + 38 Playwright** (19 site-qa + 11 contact-form + 8). Suite lives in `tests/`; specs `site-qa.spec.js` + `contact-form.spec.js`.
 - **Remote backup: CURRENT** — `origin/main` at 137d756, ahead 0 (pushed 2026-09-08 under Kleiber's scope ruling). Six-day no-off-disk-copy exposure CLOSED.
+
+[superseded 2026-09-08 — tmux Standing row amended IN PLACE to carry the KLEIBER_INBOX_SPLIT gate requirement
+ (MSG-7c2cf2). Prior wording kept verbatim: it is the form that made --kind look sufficient]
+- **tmux all inter-CM responses back to Kleiber** (2026-04-16). Quiet kinds `ack|info|coordination` → `--kind` quiet inbox; `actionable|escalation|stopcheck` → his box.
