@@ -162,3 +162,15 @@
  sufficient; kept verbatim because it is the form that was actively harmful and a future reader should be able
  to see what the wrong guidance looked like]
 - **tmux all inter-CM responses back to Kleiber** (2026-04-16). Quiet kinds `ack|info|coordination` → quiet inbox ledger; `actionable|escalation|stopcheck` → his box. **`--kind` ALONE IS NOT ENOUGH — you MUST also set `KLEIBER_INBOX_SPLIT=1`** (found 2026-09-08, MSG-7c2cf2): `_maybe_route_quiet` returns None on its first line when `gate_on()` is False, BEFORE allowlist or kind are consulted, and that gate reads `KLEIBER_INBOX_SPLIT` which defaults OFF and is unset in this environment. Without it every quiet-kind send silently downgrades to his box, where it collides with his long turns and is LOST (53% fleet-wide loss on 09-08). **Send quiet as:** `KLEIBER_INBOX_SPLIT=1 python3 tmux_send.py ... --kind info` and confirm `status=quiet-ledgered`, not `delivered`. `delivered` on a quiet kind means it went to the box and the gate was off.
+
+[superseded 2026-09-08 — WAITING-ON rows stamped with routing receipts / UNROUTED status per orchestra.md
+ Instruction Tracking (Kleiber MSG-e760df). Prior receiptless wording kept verbatim]
+- **Figures**: All 7 extracted from PPT, wired in. **Jeff flagged figure-to-question matching may be wrong — needs review.**
+- **PR-3 WebGL showcase** (hero molecular motif + scroll-reveal + figure animation) — `WAITING-ON: Jeff/Rams design direction`. Kleiber holding; bespoke visual identity = taste call. Full gap list `docs/reviews/web-quality-self-assessment-2026-07-01.md`.
+- **#2/#3 redesign PRODUCTION FLIP** — `WAITING-ON: separate Jeff-GO`. Preview is LIVE + unlinked at `https://jeffroizen-web.github.io/roizen-lab/preview/redesign/` (c4e9ef7, fast-forward, production byte-identical `a667e7d1`); Rams tier-3 read-back runs vs the PREVIEW. On GO: redeploy canonical to gh-pages root per `docs/DEPLOY.md`.
+- **Auto-redeploy ARM** — `WAITING-ON: Jeff/Kleiber`. Built + gate-PASSED + DISARMED (`scripts/deploy_publish.sh`, fe63089). ARM = plist repoint to `scripts/letter_writers_refresh_cron.sh` + `ROIZEN_AUTO_DEPLOY=1` (recipe in `docs/DEPLOY.md`). Auto-force-push to a public branch on a schedule = a standing external action, hence Jeff-gated. Kleiber batches this with DNS + PR-3.
+- **Custom domain** hypothesisdriven.org → GH-Pages — Jeff DNS action (CNAME on gh-pages + 4 A-records / www CNAME).
+
+[superseded 2026-09-08 — Quick Status WAITING-ON summary rewritten after the receipt audit; sha row refreshed]
+- **Remote backup: CURRENT** — `origin/main` at 04c4e56, ahead 0 (pushed 2026-09-08 under Kleiber's scope ruling). Six-day no-off-disk-copy exposure CLOSED.
+- **WAITING-ON (all Jeff/Kleiber-gated, nothing autonomous open)**: (1) redesign **production flip** — separate Jeff-GO; (2) **custom domain** DNS — Jeff action; (3) **PR-3 WebGL** — Jeff/Rams design direction; (4) **auto-redeploy ARM** — plist repoint + `ROIZEN_AUTO_DEPLOY=1`. Deferred: contact Layer 2 (Telegram), CHOP fund URL, optional per-item caption veto.
