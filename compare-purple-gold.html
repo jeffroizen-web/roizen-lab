@@ -290,6 +290,25 @@
         }
         .question-row:nth-child(even) { direction: rtl; }
         .question-row:nth-child(even) > * { direction: ltr; }
+        /* Rows whose figure does not exist yet run as a single text column on the
+           left editorial axis (Rams craft ruling 2026-09-08, 6cbbc79).
+           SELECTOR IS DOUBLED (.question-row.question-row--no-figure) ON PURPOSE.
+           `.question-row:nth-child(even)` above is (0,2,0) — a class PLUS a
+           pseudo-class — so a single-class `.question-row--no-figure` (0,1,0) LOSES
+           on specificity no matter where it sits, and Q2 (an even row) kept
+           direction:rtl: its heading rendered at 599px against the right edge with
+           empty space beside it, while odd rows Q3/Q7 sat correctly at 114px.
+           Measured 2026-09-08, not reasoned. Doubling the class makes it (0,2,0),
+           which ties, so source order decides — hence it must ALSO stay AFTER the
+           two rules above. Do not simplify to one class.
+           Consistency fix: the print stylesheet already hid the placeholder, so
+           screen now agrees with print. (Wording deliberately avoids the literal
+           at-media-print string: tests/test_print_stylesheet.py and
+           tests/test_token_lint.py locate that block with css.find on it, so a
+           comment containing it earlier in the file hijacks the anchor and they
+           parse this comment as the print block — 9 tests went red on exactly
+           that, 2026-09-08.) */
+        .question-row.question-row--no-figure { grid-template-columns: minmax(0, 62ch); direction: ltr; }
         .question-text { }
         .question-text h3 {
             font-size: var(--font-size-lg); font-weight: 700; color: var(--primary);
@@ -360,6 +379,12 @@
         @media (max-width: 768px) {
             .question-row { grid-template-columns: 1fr; gap:var(--space-6); }
             .question-row:nth-child(even) { direction: ltr; }
+            /* The desktop no-figure rule is (0,2,0) — doubling its class to beat
+               .question-row:nth-child(even) also made it beat the (0,1,0) rule above,
+               so the 62ch cap leaked into mobile (measured: 567px columns at 768 where
+               the other rows use the full 720px). Reset it explicitly at the same
+               specificity rather than relying on the cascade to make it inert. */
+            .question-row.question-row--no-figure { grid-template-columns: 1fr; }
             .question-figure { min-height: 200px; }
         }
 
@@ -853,36 +878,22 @@
                     <div class="question-figure"><picture><source type="image/webp" srcset="extracted-figures/from-archivist/reverse-causation-bmi-vitd.webp"><img src="extracted-figures/from-archivist/reverse-causation-bmi-vitd.png" alt="Mendelian randomization scatter: SNP effect on BMI (x-axis) vs SNP effect on 25(OH) vitamin D (y-axis). All five MR methods (IVW, MR Egger, weighted median, simple mode, weighted mode) show a negative slope — higher BMI causally lowers vitamin D. Reverse causation test from the MR VitD Asthma project." loading="lazy" width="576" height="432"></picture></div>
                 </div>
                 <!-- Q2 -->
-                <div class="question-row" id="q2">
+                <div class="question-row question-row--no-figure" id="q2">
                     <div class="question-text">
                         <h3>How Does Disease Lower Vitamin D?</h3>
                         <p>Sick patients almost always have low vitamin D. Why? We measured hepatic 25-hydroxylase activity across disease states. Obesity and aging directly suppress the liver enzyme that activates vitamin D. If biology varies by disease, does it also vary by person?</p>
                         <a href="#arc-phenotype" class="paper-link">See papers &rarr;</a>
                     </div>
                     <!-- FIGURE PENDING: Jeff to provide hepatic 25-hydroxylase activity figure for Q2. Prior placeholder file "q2-hepatic-enzyme.png" actually contains a leptin scatterplot, not enzyme activity. See docs/figure-audit.md. -->
-                    <div class="question-figure question-figure-placeholder"><div class="figure-pending-frame">
-                    <div class="figure-pending-icon">&#9647;</div>
-                    <div>
-                        <p class="figure-pending-label">Figure pending</p>
-                        <p class="figure-pending-note">Data visualization in preparation</p>
-                    </div>
-                </div></div>
                 </div>
                 <!-- Q3 -->
-                <div class="question-row" id="q3">
+                <div class="question-row question-row--no-figure" id="q3">
                     <div class="question-text">
                         <h3>Same Dose, Different Results</h3>
                         <p>Two patients take the same dose. One responds. One doesn't. Why? We studied coding SNPs in CYP2R1 &mdash; the gene for vitamin D's activating enzyme. Genetic variation shapes who benefits from supplementation and who doesn't. The person matters as much as the pill.</p>
                         <a href="#arc-phenotype" class="paper-link">See papers &rarr;</a>
                     </div>
                     <!-- FIGURE PENDING: Jeff to provide CYP2R1 SNP / individual variation figure for Q3. Prior placeholder file "q3-cyp2r1-variants.png" actually shows a conventional-vs-local-generation schematic, not variant data. See docs/figure-audit.md. -->
-                    <div class="question-figure question-figure-placeholder"><div class="figure-pending-frame">
-                    <div class="figure-pending-icon">&#9647;</div>
-                    <div>
-                        <p class="figure-pending-label">Figure pending</p>
-                        <p class="figure-pending-note">Data visualization in preparation</p>
-                    </div>
-                </div></div>
                 </div>
                 <!-- Q4 -->
                 <div class="question-row" id="q4">
@@ -921,20 +932,13 @@
                     <div class="question-figure"><picture><source type="image/webp" srcset="extracted-figures/curated-for-website/q1-causation.webp"><img src="extracted-figures/curated-for-website/q1-causation.png" alt="Pathway diagram: high-dose vitamin D increases leptin production in fat and leptin sensitivity in the brain, redirecting calorie allocation from intake/storage toward energy expenditure" loading="lazy" width="414" height="298"></picture></div>
                 </div>
                 <!-- Q7 -->
-                <div class="question-row" id="q7">
+                <div class="question-row question-row--no-figure" id="q7">
                     <div class="question-text">
                         <h3>The Missing Biomarker</h3>
                         <p>PTH tells us when vitamin D is adequate for bones. Nothing tells us when it's adequate for metabolism. Every clinical trial in the field is limited by this gap. We're searching for a blood marker that tracks vitamin D's non-calcium effects. Finding one would change how we dose, monitor, and study vitamin D.</p>
                         <a href="#arc-translation" class="paper-link">See papers &rarr;</a>
                     </div>
                     <!-- FIGURE PENDING: Jeff to provide biomarker figure for Q7. Prior placeholder file "q7-biomarker.png" actually shows multi-cell OxPhos data (mechanism) — belongs to Q4 content, not a biomarker concept. See docs/figure-audit.md. -->
-                    <div class="question-figure question-figure-placeholder"><div class="figure-pending-frame">
-                    <div class="figure-pending-icon">&#9647;</div>
-                    <div>
-                        <p class="figure-pending-label">Figure pending</p>
-                        <p class="figure-pending-note">Data visualization in preparation</p>
-                    </div>
-                </div></div>
                 </div>
             </div>
         </div>
