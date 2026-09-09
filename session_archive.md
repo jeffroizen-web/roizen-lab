@@ -156,3 +156,9 @@
 [superseded 2026-09-08 — tmux Standing row amended IN PLACE to carry the KLEIBER_INBOX_SPLIT gate requirement
  (MSG-7c2cf2). Prior wording kept verbatim: it is the form that made --kind look sufficient]
 - **tmux all inter-CM responses back to Kleiber** (2026-04-16). Quiet kinds `ack|info|coordination` → `--kind` quiet inbox; `actionable|escalation|stopcheck` → his box.
+
+[superseded 2026-09-08 (second amendment, hours after the first) — tmux Standing row corrected after Kleiber
+ RETRACTED his --kind broadcast (MSG-8aaa68). The wording below is the version that prescribed --kind as
+ sufficient; kept verbatim because it is the form that was actively harmful and a future reader should be able
+ to see what the wrong guidance looked like]
+- **tmux all inter-CM responses back to Kleiber** (2026-04-16). Quiet kinds `ack|info|coordination` → quiet inbox ledger; `actionable|escalation|stopcheck` → his box. **`--kind` ALONE IS NOT ENOUGH — you MUST also set `KLEIBER_INBOX_SPLIT=1`** (found 2026-09-08, MSG-7c2cf2): `_maybe_route_quiet` returns None on its first line when `gate_on()` is False, BEFORE allowlist or kind are consulted, and that gate reads `KLEIBER_INBOX_SPLIT` which defaults OFF and is unset in this environment. Without it every quiet-kind send silently downgrades to his box, where it collides with his long turns and is LOST (53% fleet-wide loss on 09-08). **Send quiet as:** `KLEIBER_INBOX_SPLIT=1 python3 tmux_send.py ... --kind info` and confirm `status=quiet-ledgered`, not `delivered`. `delivered` on a quiet kind means it went to the box and the gate was off.
