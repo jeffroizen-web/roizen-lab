@@ -189,3 +189,6 @@
 
 [superseded 2026-09-08 — gate row 46->47 Playwright after the settled-geometry guard]
 - **GATE (current)**: **271 pytest + 4 skipped + 46 Playwright** (20 site-qa + 11 contact-form + 7 mobile-overflow + 8 no-figure-rows). **`ROIZEN_QA_TARGET=<url>` runs the whole suite against any SERVED surface** (preview/production), not just localhost. Suite in `tests/`; specs `site-qa.spec.js` + `contact-form.spec.js`. **Before any CLAUDE.md trim: `python3 scripts/archive_verify.py <sha-before>` must be EMPTY on both passes.**
+
+[superseded 2026-09-08 (SECOND correction in one evening) — the tmux row's KLEIBER_INBOX_SPLIT recipe, replaced once Edge found append_quiet bypasses tmux_send entirely. Kept verbatim: both prior forms were confidently wrong and a reader should see the progression]
+- **tmux all inter-CM responses back to Kleiber** (2026-04-16). Quiet kinds `ack|info|coordination` → quiet inbox ledger; `actionable|escalation|stopcheck` → his box. **SENDING RECIPE (corrected 2026-09-08 after Kleiber retracted his own broadcast, MSG-8aaa68 — verified at source myself):**
