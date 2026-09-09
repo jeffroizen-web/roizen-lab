@@ -186,3 +186,6 @@
 [superseded 2026-09-08 — Quick Status rows refreshed after the preview build: stint, gate 38->46 Playwright, waiting-on batch]
 - **Current stint (2026-09-08)**: fleet-hygiene — house-cap gate wired BLOCKING, trim-loss class found+fixed (`scripts/archive_verify.py`), last unbacked CM-local rule tracked, ORCID cache invariant recorded, **push gate scope RULED and 16 commits pushed**. Prior: 09-07 CLAUDE.md trim; 09-03 Tier-0 seal sweep (638b3cc).
 - **GATE (current)**: **271 pytest + 4 skipped + 38 Playwright** (19 site-qa + 11 contact-form + 8). Suite in `tests/`; specs `site-qa.spec.js` + `contact-form.spec.js`. **Before any CLAUDE.md trim: `python3 scripts/archive_verify.py <sha-before>` must be EMPTY on both passes.**
+
+[superseded 2026-09-08 — gate row 46->47 Playwright after the settled-geometry guard]
+- **GATE (current)**: **271 pytest + 4 skipped + 46 Playwright** (20 site-qa + 11 contact-form + 7 mobile-overflow + 8 no-figure-rows). **`ROIZEN_QA_TARGET=<url>` runs the whole suite against any SERVED surface** (preview/production), not just localhost. Suite in `tests/`; specs `site-qa.spec.js` + `contact-form.spec.js`. **Before any CLAUDE.md trim: `python3 scripts/archive_verify.py <sha-before>` must be EMPTY on both passes.**
