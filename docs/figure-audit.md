@@ -118,3 +118,49 @@ audit's removals held; nothing has drifted back.
 canonical or a file rename — **not done in this pass** because `compare-purple-gold.html` is a
 site-content file and therefore outside the source-only push scope ruled in MSG-fffd2b. It
 needs the normal Jeff/design route, and is recorded here so the next reader does not "correct" it.
+
+---
+
+## The "~400px discrepancy" — RECONCILED 2026-09-08, not open
+
+Recorded here because Kleiber ruled it be fenced as an unreconciled disagreement
+(MSG-5570c2) on the state as of his read. It had already been resolved two
+messages earlier, and the resolution matters more than the fence.
+
+**It was never a discrepancy.** Ace Scout measured `#questions`; Rams measured
+`DIV.questions-list`. Both correct, different subjects:
+
+| width | `#questions` | `.questions-list` | difference | accounted for by |
+|-------|--------------|-------------------|-----------|------------------|
+| 1280  | 2920 | 2460 | 460 | padding 100+100, header 196, gap 64 |
+| 768   | 3661 | 3268 | 393 | padding 72+72, header 185, gap 64 |
+
+The difference is not constant only because the padding and header both shrink at
+the breakpoint — which is exactly why it resembled timing noise and was not.
+Rams reproduced the decomposition digit for digit and **explicitly retracted the
+font/lazy-image settling hypothesis**: settled values are deterministic, measured
+identical across three consecutive loads (re-confirmed on live preview bytes
+2026-09-08: 2920 / 2460 / header 196, three runs, zero variance).
+
+**So the hypothesis must NOT be recorded as the explanation.** It was tested and
+disproven. Writing "probably settling" into the record would enshrine the exact
+failure Rams named: an explanation that sounds sufficient and stops the search.
+
+**Neither instrument is systematically wrong**, so the premise for freezing both
+numbers does not hold. What IS true, and is the real finding, is narrower:
+
+> A cold read at `waitUntil: 'networkidle'` measured `.questions-list` at **2198px**
+> against a settled 2459 — a 261px error, and a third value matching neither party.
+> The canonical carries 11 `loading="lazy"` images and 15 spec call sites read at
+> networkidle, so this was reachable by any geometry assertion in the suite.
+
+That one is fenced properly: `settleImages()` in `tests/target.js`, plus a guard in
+`tests/no-figure-rows.spec.js` asserting two consecutive settled reads agree and
+that the two elements differ by header-plus-padding. A mid-construction read now
+goes red instead of quietly producing a plausible number.
+
+**Baseline rule going forward** — adopting Kleiber's caution for the accurate
+reason: a section-height baseline is meaningless without both of its other two
+parts. Any height quoted for comparison must carry its **subject** (the selector)
+and its **moment** (settled, post-images). A bare number is unfalsifiable between
+two readers; a number without a settle-state is unstable against itself.
