@@ -48,4 +48,33 @@ function stopServer(proc) {
   if (proc) proc.kill();
 }
 
-module.exports = { resolveTarget, startServer, stopServer };
+
+// Wait until every <img> that will affect layout has actually resolved.
+//
+// WHY (Rams, 2026-09-08): `waitUntil: 'networkidle'` is NOT enough on this page.
+// The canonical carries 11 loading="lazy" images, and on a cold load Rams
+// measured .questions-list at 2198px at networkidle against a settled 2459px —
+// a 261px error, and a THIRD number matching neither of two people already
+// disagreeing. Settled values are deterministic across runs; the variance comes
+// entirely from reading too early. Any assertion about geometry must wait for
+// this, or it is measuring a page mid-construction and will flake or, worse,
+// pass against the wrong layout.
+//
+// Pairs with the other half of the discipline: quote the SELECTOR with the
+// number. Either alone still lets two correct measurements read as a conflict.
+async function settleImages(page, timeout = 5000) {
+  // Force lazy images into view so they actually begin loading, then wait.
+  await page.evaluate(() => {
+    for (const img of document.querySelectorAll('img[loading="lazy"]')) {
+      img.loading = 'eager';
+      if (!img.complete && img.src) { const s = img.src; img.src = ''; img.src = s; }
+    }
+  });
+  await page.waitForFunction(
+    () => [...document.images].every((i) => i.complete && (i.naturalWidth > 0 || i.src === '')),
+    null,
+    { timeout }
+  ).catch(() => { /* never block a run on one broken asset — geometry tests assert their own facts */ });
+}
+
+module.exports = { resolveTarget, startServer, stopServer, settleImages };

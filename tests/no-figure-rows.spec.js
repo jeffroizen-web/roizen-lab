@@ -25,7 +25,7 @@
 // measurement rather than an argument. Keep them measurements.
 
 const { test, expect } = require('@playwright/test');
-const { resolveTarget, startServer, stopServer } = require('./target');
+const { resolveTarget, startServer, stopServer, settleImages } = require('./target');
 
 const { base: BASE, remote: REMOTE } = resolveTarget(8401);
 const NO_FIG = ['q2', 'q3', 'q7'];
@@ -38,6 +38,7 @@ test.afterAll(() => stopServer(globalThis.__nfServer));
 async function probe(page, width) {
   await page.setViewportSize({ width, height: 900 });
   await page.goto(BASE, { waitUntil: 'networkidle' });
+  await settleImages(page);   // networkidle alone reads a mid-construction layout — see target.js
   return page.evaluate((ids) => {
     const row = (id) => document.getElementById(id);
     return {
@@ -106,3 +107,33 @@ for (const w of [320, 768, 1280]) {
     expect(r.hScroll).toBe(false);
   });
 }
+
+// Encodes Rams's 2026-09-08 finding directly: once the section's images have
+// settled, geometry is DETERMINISTIC across loads. A cold read at networkidle
+// gave .questions-list = 2198px against a settled 2459px — a 261px error and a
+// third number matching neither of two people already disagreeing. If this ever
+// goes red, something is measuring a page mid-construction again.
+test('settled geometry is deterministic across loads (not read mid-construction)', async ({ page }) => {
+  const read = async () => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(BASE, { waitUntil: 'networkidle' });
+    await settleImages(page);
+    return page.evaluate(() => {
+      const list = document.querySelector('.questions-list');
+      const sec = document.querySelector('#questions');
+      return {
+        // Quote the SELECTOR with the number — a bare height is unfalsifiable
+        // between two readers, which is exactly how a 400px "disagreement"
+        // between Ace Scout and Rams turned out to be two correct measurements.
+        questionsList: Math.round(list.getBoundingClientRect().height),
+        questionsSection: Math.round(sec.getBoundingClientRect().height),
+      };
+    });
+  };
+  const a = await read();
+  const b = await read();
+  expect(b.questionsList).toBe(a.questionsList);
+  expect(b.questionsSection).toBe(a.questionsSection);
+  // and the two are genuinely different elements, ~header+padding apart
+  expect(a.questionsSection).toBeGreaterThan(a.questionsList);
+});
