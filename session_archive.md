@@ -174,3 +174,6 @@
 [superseded 2026-09-08 — Quick Status WAITING-ON summary rewritten after the receipt audit; sha row refreshed]
 - **Remote backup: CURRENT** — `origin/main` at 04c4e56, ahead 0 (pushed 2026-09-08 under Kleiber's scope ruling). Six-day no-off-disk-copy exposure CLOSED.
 - **WAITING-ON (all Jeff/Kleiber-gated, nothing autonomous open)**: (1) redesign **production flip** — separate Jeff-GO; (2) **custom domain** DNS — Jeff action; (3) **PR-3 WebGL** — Jeff/Rams design direction; (4) **auto-redeploy ARM** — plist repoint + `ROIZEN_AUTO_DEPLOY=1`. Deferred: contact Layer 2 (Telegram), CHOP fund URL, optional per-item caption veto.
+
+[superseded 2026-09-08 — Figures row corrected: it had claimed 'All 7 wired in' for ~6 months while only 4 are wired and 3 show a visible placeholder]
+- **Figures**: All 7 extracted from PPT, wired in **and LIVE on the public site**. **Jeff flagged figure-to-question matching may be wrong — needs review.** `WAITING-ON: Jeff` **[UNROUTED — flagged ~2026-03-16, no send record on any channel in ~6 months; handed to Kleiber for the digest batch 2026-09-08]**. **This is a CONTENT-CORRECTNESS issue on a tenure-facing page**, not a preference call: a wrong figure under a question misrepresents the science to a letter-writer. Highest-value item in this queue.

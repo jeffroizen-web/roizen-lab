@@ -72,3 +72,49 @@ The curated-for-website directory was organized by **intended Q#**, not by **act
 
 1. Should I kick a request to Archivist for the MR figure and to the CYP2R1 extraction source? (Needs Jeff's OK before cross-project ping.)
 2. Jeff still owes a confirmation on the timed-out "Microscopy composites" and "Contact email" decisions (expired Mar 7 / Mar 10 respectively) — unrelated to figure audit but surfacing here since Jeff is reviewing the Big Questions section anyway.
+
+---
+
+## RE-VERIFICATION 2026-09-08 (Kleiber MSG-22681d — bound the ask before routing it)
+
+Kleiber rejected "review 7 pairings" as an unbounded ask to put in front of Jeff five days
+before a race, and asked me to produce the shortlist that makes the decision cheap. I
+re-verified every live pairing **against the actual pixels**, not the filename and not the alt
+text — that disagreement is the whole defect class here.
+
+| # | Question | Figure now live | Verified against pixels | Verdict |
+|---|----------|-----------------|-------------------------|---------|
+| Q1 | Low Vitamin D: Cause or Effect? | `from-archivist/reverse-causation-bmi-vitd.png` | MR scatter titled "BMI --> 25(OH) Vitamin D (Reverse Causation Test)", 5 MR estimators | **CORRECT** — a reverse-causation test is precisely "cause or effect" |
+| Q2 | How Does Disease Lower Vitamin D? | *(none — "Figure pending")* | n/a | **ABSENT, not wrong** |
+| Q3 | Same Dose, Different Results | *(none — "Figure pending")* | n/a | **ABSENT, not wrong** |
+| Q4 | Is the Dose the Drug? | `q4-dose-response.png` | Normalized O2 flux; 25(OH)D 40 ng/mL raises Complex I/II/Max Resp, 1,25(OH)D 40 pg/mL does not | **CORRECT** — the precursor at dose works, the "active" metabolite at physiologic level does not |
+| Q5 | How Does High-Dose D Prevent T2 Diabetes? | `q5-diabetes-prevention.png` | Kaplan-Meier cumulative T2DM incidence, Vitamin D vs Placebo, 5 yr | **CORRECT topic** — see nuance below |
+| Q6 | What Determines Calorie Allocation? | `q1-causation.png` | Pathway: high-dose D -> +leptin production (fat) -> +leptin sensitivity (brain) -> calorie allocation | **CORRECT** despite the misleading `q1-` filename |
+| Q7 | The Missing Biomarker | *(none — "Figure pending")* | n/a | **ABSENT, not wrong** |
+
+**HEADLINE: ZERO clear mismatches.** No wrong figure is live under any question. The April
+audit's removals held; nothing has drifted back.
+
+### The three things worth Jeff's attention, in priority order
+
+1. **Three "Figure pending" placeholders are VISIBLE to visitors** on the live Big Questions
+   section — rendered as a box with "FIGURE PENDING / Data visualization in preparation"
+   (Q2, Q3, Q7). Honest, and deliberately not a fake figure, but it reads as unfinished on
+   the showcase surface **in the month tenure letters are solicited**. This is a NEW finding
+   from this pass, separate from the pairing question.
+2. **The real open ask is bounded and is not a review**: Jeff to PROVIDE three figures that
+   do not exist anywhere in the 30 curated extractions — (Q2) hepatic 25-hydroxylase activity
+   across disease states, (Q3) CYP2R1 variant effect / genotype-stratified response,
+   (Q7) a biomarker concept figure. Everything else is done.
+3. **Q5 framing nuance, NEEDS-JEFF, low severity**: the question asks *how* high-dose D
+   prevents T2DM (mechanism) while the figure shows the trial outcome, and the two curves
+   separate only modestly. Defensible — it is the real published result — but it is his call
+   whether the strongest available figure sits under that heading.
+
+### Maintenance landmine (deliberately NOT fixed here)
+
+`q1-causation.png` is the correct Q6 figure but its filename advertises Q1. A future session
+"fixing" the apparent mismatch would break a correct pairing. The fix is a comment in the
+canonical or a file rename — **not done in this pass** because `compare-purple-gold.html` is a
+site-content file and therefore outside the source-only push scope ruled in MSG-fffd2b. It
+needs the normal Jeff/design route, and is recorded here so the next reader does not "correct" it.
