@@ -1,80 +1,108 @@
 {
   "schema_version": 1,
   "cm_nick": "Ace Scout",
-  "data_as_of": "2026-07-03",
-  "fetched_at": "2026-07-03",
+  "data_as_of": "2026-09-09",
+  "fetched_at": "2026-09-09",
   "keys": {
     "site_tenure_grade": {
-      "value": "B",
-      "data_as_of": "2026-07-03",
-      "freshness_seconds_max": 86400,
-      "source": "scripts/tenure_readiness.py",
+      "value": "A",
+      "data_as_of": "2026-09-09",
+      "freshness_seconds_max": 604800,
+      "source": "python3 scripts/tenure_readiness.py (re-run 2026-09-09: 'Overall grade: A')",
       "visibility": "public",
-      "description": "4-audience rubric grade of canonical working file; lifted C->B by the WCAG/prose/tap-target/token uplifts. Baseline re-set to B 2026-07-03 (R3). Remaining WARN are Jeff-gated (3 figure-pendings q2/q3/q7)"
+      "description": "RE-VERIFIED AT SOURCE, not restamped: published value was 'B' since 2026-07-03 and the rubric now returns A. The stale row understated the site."
     },
     "site_deployed": {
-      "value": "soft-launch-live",
-      "data_as_of": "2026-07-03",
+      "value": "live-plus-unlinked-preview",
+      "data_as_of": "2026-09-09",
       "freshness_seconds_max": 604800,
-      "source": "https://jeffroizen-web.github.io/roizen-lab/ (read-back verified)",
+      "source": "HTTP probe of both surfaces 2026-09-09 (prod 200, preview 200)",
       "visibility": "public",
-      "description": "SOFT-LAUNCH LIVE 2026-07-03 (Jeff GO) at jeffroizen-web.github.io/roizen-lab. Served from the gh-pages branch (lean 2.4M publish artifact via scripts/sync_publish.py; the 543M source root choked the Pages build). NO custom domain — hypothesisdriven.org still unpointed (deliberate soft-launch scope). Read-back: byte-identical canonical, 20-pub feed live, badge --primary AA-fix live, hero WebP is LCP element @468ms, CLS 0, 0 console errors."
+      "description": "PRODUCTION live at https://jeffroizen-web.github.io/roizen-lab/ from gh-pages, root sha256 a667e7d1 unchanged since 2026-07-09. SECOND SURFACE, previously unpublished: an unlinked preview at /preview/redesign/ carrying the majors #2/#3 redesign AND the figure-pending removal, awaiting one Jeff GO to flip. NO custom domain; hypothesisdriven.org still unpointed."
     },
     "site_canonical_file": {
       "value": "compare-purple-gold.html",
-      "data_as_of": "2026-06-10",
-      "freshness_seconds_max": 0,
-      "source": "CLAUDE.md Key Constraints",
+      "data_as_of": "2026-09-09",
+      "freshness_seconds_max": 31536000,
+      "source": "CLAUDE.md Key Constraints + tests/test_publish_sync.py",
       "visibility": "public",
-      "description": "Single source of content truth; production/index.html is 3.5mo stale, root index.html is dead scaffold"
+      "description": "Single source of content truth; publish/ is the derived lean artifact built by scripts/sync_publish.py. NOTE freshness_seconds_max was 0 here, which the consumer reads as 'stale after 0 seconds' — the opposite of the 'never expires' I intended. Now 1y."
     },
     "blockers_jeff_gated": {
       "value": [
-        "jeff-creative-picks",
-        "wmf-png-only-decision",
-        "hosting-answer"
+        "production-flip-redesign-plus-figure-pending",
+        "three-missing-big-questions-figures",
+        "hypothesisdriven-org-dns-cutover",
+        "q5-figure-mechanism-vs-outcome"
       ],
-      "data_as_of": "2026-06-11",
+      "data_as_of": "2026-09-09",
       "freshness_seconds_max": 86400,
-      "source": "CLAUDE.md Blocking section",
+      "source": "CLAUDE.md Decision Queue, dated (added:) rows verified against kleiber_briefing._scan_decision_aging",
       "visibility": "public",
-      "description": "All remaining queue items; first two are in Kleiber's Jeff batch (MSG-78cc34)"
+      "description": "DEFECT-CLASS-1 FIX (live entities missing from a published list): the previous value listed jeff-creative-picks, wmf-png-only-decision and hosting-answer — ALL THREE resolved or moot (hosting answered by the 07-03 soft-launch; WMF moot, figures are PNG; creative-picks superseded), while all four REAL asks were absent. Anything reading this to learn what Jeff owes got a wholly wrong answer. All four now carry parseable (added:) stamps and surface in Jeff's briefing from 2026-09-16, after Kleiber's 9/14 batch."
     },
     "tests_green": {
-      "value": "159 python passed / 4 skipped + 30 playwright passed (19 site-qa + 11 contact-form)",
-      "data_as_of": "2026-07-03",
+      "value": "277 pytest passed / 4 skipped + 47 playwright passed (20 site-qa + 11 contact-form + 7 mobile-overflow + 9 no-figure-rows)",
+      "data_as_of": "2026-09-09",
       "freshness_seconds_max": 86400,
-      "source": "python3 -m pytest -q; npx playwright test",
+      "source": "python3 -m pytest -q; npx playwright test (both run 2026-09-09)",
       "visibility": "public",
-      "description": "Full local suite state at last run (2026-07-03: +6 loop-exit-code tests, R2)"
+      "description": "Published value was 159 pytest / 30 playwright. The suite also now runs against any SERVED surface via ROIZEN_QA_TARGET, not only localhost."
     },
     "publications_feed": {
-      "value": "live-but-unwired",
-      "data_as_of": "2026-07-03",
+      "value": "wired-and-live",
+      "data_as_of": "2026-09-09",
       "freshness_seconds_max": 604800,
-      "source": "~/orchestra-data/archivist/publications.json + scripts/publications_feed.py",
+      "source": "scripts/wire_publications.py + 5 feed references in the canonical (verified 2026-09-09)",
       "visibility": "public",
-      "description": "Archivist feed IS live (29 pubs, data_as_of 2026-06-29, weekly cron); consumer publications_feed.py built+tested but NOT wired into the served HTML (still hand-typed '27 publications'). Blocked only on the DRAFT contract counter-sig (R1) — a cross-CM handshake, not a build"
+      "description": "PUBLISHED VALUE WAS FALSE, not merely stale: it read 'live-but-unwired' for 68 days after the feed was wired on 2026-07-03 (c9d9503). Archivist's fail-closed allowlist feed renders into #publications below the curated showcase."
     },
     "deadline_site_live": {
       "value": "2026-08-31",
-      "data_as_of": "2026-06-11",
-      "freshness_seconds_max": 0,
+      "data_as_of": "2026-09-09",
+      "freshness_seconds_max": 31536000,
       "source": "CLAUDE.md Key Constraints (tenure clock)",
       "visibility": "public",
       "unit": "date_local",
-      "description": "Site must be live+polished by ~Aug 2026; letters solicited ~Sep 2026"
+      "description": "DEADLINE HAS PASSED AND WAS MET: site live since 2026-07-03. Letters solicited ~Sep 2026 — i.e. NOW, which is why the four open Jeff asks are time-sensitive."
     },
     "crons_loaded": {
       "value": [
         "com.hypothesisdriven.tenure_readiness",
         "com.hypothesisdriven.letter_writers_refresh"
       ],
-      "data_as_of": "2026-06-11",
+      "data_as_of": "2026-09-09",
       "freshness_seconds_max": 604800,
-      "source": "launchctl list | grep hypothesisdriven",
+      "source": "launchctl list | grep hypothesisdriven (re-verified 2026-09-09, both present)",
       "visibility": "public",
-      "description": "Loaded 2026-06-11 during B5 conformance sweep \u2014 plists existed on disk since 05-19 but were never installed (DIVERGED find)"
+      "description": "Both loaded and firing. The letter-writers cron rewrites field-of-interest spans in the canonical every run, so this repo's working tree is PERPETUALLY DIRTY by design — any push here must check the working tree separately from the commit range."
+    },
+    "env_gates": {
+      "value": {
+        "ROIZEN_AUTO_DEPLOY": "0 (DISARMED, default OFF)",
+        "ROIZEN_DEPLOY_DRY_RUN": "stubs the push for tests",
+        "ROIZEN_QA_TARGET": "unset (targets localhost); set to a URL to run the Playwright suite against a served surface",
+        "ACE_BUS_AUDIT_LOG": "unset (repo default path)"
+      },
+      "data_as_of": "2026-09-09",
+      "freshness_seconds_max": 31536000,
+      "source": "grep of scripts/ and tests/ 2026-09-09; scripts/deploy_publish.sh; tests/target.js",
+      "visibility": "public",
+      "description": "DEFECT-CLASS-2 FIX (a capability shipped and never published). ROIZEN_AUTO_DEPLOY is a LIVE KILL-SWITCH on an auto-force-push to a PUBLIC branch and has been DISARMED and unpublished since 2026-07-03 — no other CM could learn the rail exists or that arming it is Jeff-gated. ROIZEN_QA_TARGET shipped 2026-09-08."
+    },
+    "tooling_shipped": {
+      "value": [
+        "scripts/deploy_publish.sh (gated auto-redeploy, DISARMED)",
+        "scripts/archive_verify.py (CLAUDE.md trim-loss checker)",
+        "tests/test_claude_md_caps.py (BLOCKING house-cap gate)",
+        "tests/test_decision_queue_nudge.py (insurance that Jeff asks stay visible to Kleiber's aging scanner)",
+        "tests/target.js (ROIZEN_QA_TARGET + settleImages)"
+      ],
+      "data_as_of": "2026-09-09",
+      "freshness_seconds_max": 31536000,
+      "source": "git log since 2026-07-04 over scripts/ and tests/",
+      "visibility": "public",
+      "description": "Second half of the defect-class-2 sweep: capabilities built after the previous stamp and never published. archive_verify.py is reusable by any CM trimming a CLAUDE.md — run it BEFORE the trim commit and require EMPTY on both passes."
     }
   }
 }
