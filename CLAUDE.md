@@ -53,6 +53,22 @@
 - **Implementation**: Contact form Layer 1 built (Formspree email + ntfy `roizen-lab-contact` phone push). 2-minute Jeff unblock in `docs/contact-form-status.md`.
 - **Layer 2 (Telegram to Kleiber)**: backlogged — needs Pilot Railway endpoint + Jeff deploy approval.
 
+### Jeff-blocking asks — self-surfacing (added-stamps parse for `kleiber_briefing._scan_decision_aging`)
+
+> Format is NOT cosmetic: the scanner requires the line to **start with `- [`** AND carry a literal
+> `(added: YYYY-MM-DD)` with the closing paren IMMEDIATELY after the date. Both conditions verified
+> against the consumer's own regex, not assumed. A Jeff-blocking ask lives HERE, never in the
+> Instruction Register — the register is my own work queue and is invisible to the only automatic
+> Jeff-facing nudge in the system, which is how a perfectly-stamped WAITING-ON stayed silent 173 days.
+> The `added:` date is when the item entered THIS queue; the true origin is stated in the text so
+> nothing is hidden by the stamp. Kleiber carries the 9/14 batch; these exist so an item self-surfaces
+> if that batch is ever dropped.
+
+- [ ] **Production flip — redesign (majors #2/#3) + figure-pending removal, as ONE GO** (added: 2026-09-09) — first routed to Jeff 2026-07-10 via Kleiber MSG-5d8c58, no answer since. Both changes are built and LIVE on the unlinked preview; production is byte-untouched at `a667e7d1`. On GO: redeploy canonical to the gh-pages root per `docs/DEPLOY.md`.
+- [ ] **Three Big-Questions figures that exist nowhere in the 30 curated extractions** (added: 2026-09-09) — Jeff first flagged figure/question pairing 2026-03-16; the PAIRINGS were audited 04-15 and re-verified against pixels 09-08 with ZERO mismatches, so what remains is only: provide (a) hepatic 25-hydroxylase activity across disease states [Q2], (b) CYP2R1 variant effect or genotype-stratified response [Q3], (c) a biomarker concept figure [Q7]. Until then those three rows run as text on the preview.
+- [ ] **hypothesisdriven.org DNS cutover** (added: 2026-09-09) — open since 2026-07-03, UNROUTED until the 09-08 audit. Login-class, only Jeff can act: CNAME on `gh-pages` plus the 4 A-records / www CNAME.
+- [ ] **Q5 figure: mechanism vs outcome** (added: 2026-09-09) — the heading asks HOW high-dose D prevents T2DM; the figure shows the trial OUTCOME and the curves separate only modestly. It is the real published result and defensible. Marked NEEDS-JEFF rather than guessed.
+
 ### Deferred (no deadline)
 - [ ] **CHOP Foundation donation URL** — NOT a blocker and NOT a placeholder: donate has pointed at the real, tax-deductible `https://giving.chop.edu` since 2026-06-19 (e086df8). Open item is only the optional upgrade to a lab-DESIGNATED fund URL from the CHOP dev office. No deadline.
 - [ ] **Merch strategy** — Placeholder section, no real store. Lowest priority. No deadline.
