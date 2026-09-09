@@ -5,20 +5,18 @@
 //
 // Run: npx playwright test tests/site-qa.spec.js
 const { test, expect } = require('@playwright/test');
-const { spawn } = require('child_process');
+const { resolveTarget, startServer, stopServer } = require('./target');
 
-const BASE = 'http://localhost:8767/compare-purple-gold.html';
+// ROIZEN_QA_TARGET=<url> points this suite at a served surface (e.g. the
+// preview) instead of the local working copy. Unset = unchanged behaviour.
+const { base: BASE, remote: REMOTE } = resolveTarget(8767);
 
 test.beforeAll(async () => {
-  globalThis.__qaServer = spawn('python3', ['-m', 'http.server', '8767'], {
-    cwd: __dirname + '/..',
-    stdio: 'ignore',
-  });
-  await new Promise((r) => setTimeout(r, 800));
+  globalThis.__qaServer = await startServer(8767, REMOTE, 800);
 });
 
 test.afterAll(() => {
-  if (globalThis.__qaServer) globalThis.__qaServer.kill();
+  stopServer(globalThis.__qaServer);
 });
 
 test.describe('Site QA — desktop', () => {

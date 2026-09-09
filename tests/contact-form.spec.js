@@ -5,23 +5,19 @@
 // These tests start a local HTTP server automatically.
 
 const { test, expect } = require('@playwright/test');
-const { spawn } = require('child_process');
 
-const BASE = 'http://localhost:8766/compare-purple-gold.html';
+const { resolveTarget, startServer, stopServer } = require('./target');
+// ROIZEN_QA_TARGET=<url> overrides; unset = unchanged local behaviour.
+const { base: BASE, remote: REMOTE } = resolveTarget(8766);
 
 test.describe('Contact Form', () => {
 
   test.beforeAll(async () => {
-    // Start local server (port 8766 to avoid conflicts)
-    globalThis.__server = spawn('python3', ['-m', 'http.server', '8766'], {
-      cwd: __dirname + '/..',
-      stdio: 'ignore'
-    });
-    await new Promise(r => setTimeout(r, 1000));
+    globalThis.__server = await startServer(8766, REMOTE, 1000);
   });
 
   test.afterAll(async () => {
-    if (globalThis.__server) globalThis.__server.kill();
+    stopServer(globalThis.__server);
   });
 
   test('has all required form fields with labels', async ({ page }) => {

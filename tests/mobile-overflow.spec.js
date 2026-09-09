@@ -18,28 +18,22 @@
 //
 // Run: npx playwright test tests/mobile-overflow.spec.js
 const { test, expect } = require('@playwright/test');
-const { spawn } = require('child_process');
+const { resolveTarget, startServer, stopServer } = require('./target');
 
 const PORT = 8375; // Distinct from site-qa.spec.js (8767) to allow parallel runs
-const BASE = `http://localhost:${PORT}/compare-purple-gold.html`;
+// ROIZEN_QA_TARGET=<url> overrides; unset = unchanged local behaviour.
+const { base: BASE, remote: REMOTE } = resolveTarget(PORT);
 
 // ---------------------------------------------------------------------------
 // Server lifecycle
 // ---------------------------------------------------------------------------
 
 test.beforeAll(async () => {
-  globalThis.__overflowServer = spawn('python3', ['-m', 'http.server', String(PORT)], {
-    cwd: __dirname + '/..',
-    stdio: 'ignore',
-  });
-  // Allow the HTTP server to start
-  await new Promise((r) => setTimeout(r, 900));
+  globalThis.__overflowServer = await startServer(PORT, REMOTE, 900);
 });
 
 test.afterAll(() => {
-  if (globalThis.__overflowServer) {
-    globalThis.__overflowServer.kill();
-  }
+  stopServer(globalThis.__overflowServer);
 });
 
 // ---------------------------------------------------------------------------
