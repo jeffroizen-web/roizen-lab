@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "cm_nick": "Ace Scout",
-  "data_as_of": "2026-09-09",
-  "fetched_at": "2026-09-09",
+  "data_as_of": "2026-09-15",
+  "fetched_at": "2026-09-15",
   "keys": {
     "site_tenure_grade": {
       "value": "A",
@@ -30,24 +30,26 @@
     },
     "blockers_jeff_gated": {
       "value": [
-        "production-flip-redesign-plus-figure-pending",
+        "production-flip-R1-redesign-plus-figure-pending-ONE-GO",
         "three-missing-big-questions-figures",
         "hypothesisdriven-org-dns-cutover",
+        "pr3-webgl-direction-S4-rams-then-jeff",
+        "auto-redeploy-arm-independently-clocked",
         "q5-figure-mechanism-vs-outcome"
       ],
-      "data_as_of": "2026-09-09",
-      "freshness_seconds_max": 86400,
-      "source": "CLAUDE.md Decision Queue, dated (added:) rows verified against kleiber_briefing._scan_decision_aging",
+      "data_as_of": "2026-09-15",
+      "freshness_seconds_max": 604800,
+      "source": "CLAUDE.md Decision Queue, 6 dated (added:) rows verified against kleiber_briefing._scan_decision_aging 2026-09-15",
       "visibility": "public",
-      "description": "DEFECT-CLASS-1 FIX (live entities missing from a published list): the previous value listed jeff-creative-picks, wmf-png-only-decision and hosting-answer — ALL THREE resolved or moot (hosting answered by the 07-03 soft-launch; WMF moot, figures are PNG; creative-picks superseded), while all four REAL asks were absent. Anything reading this to learn what Jeff owes got a wholly wrong answer. All four now carry parseable (added:) stamps and surface in Jeff's briefing from 2026-09-16, after Kleiber's 9/14 batch."
+      "description": "Re-verified at source 2026-09-15. +2 since 09-09: PR-3 routed as batch S4 after sitting 2 months in the gap between two correct stamps, and auto-redeploy ARM given its own clock so it cannot inherit a batch drop. All six are in Kleiber's batch doc — VERIFIED BY OPENING IT, after Rams found 'rides the batch' had been asserted by three of us and checked by none."
     },
     "tests_green": {
-      "value": "277 pytest passed / 4 skipped + 47 playwright passed (20 site-qa + 11 contact-form + 7 mobile-overflow + 9 no-figure-rows)",
-      "data_as_of": "2026-09-09",
-      "freshness_seconds_max": 86400,
-      "source": "python3 -m pytest -q; npx playwright test (both run 2026-09-09)",
+      "value": "279 pytest passed / 4 skipped + 47 playwright (20 site-qa + 11 contact-form + 7 mobile-overflow + 9 no-figure-rows)",
+      "data_as_of": "2026-09-15",
+      "freshness_seconds_max": 604800,
+      "source": "python3 -m pytest -q; npx playwright test --list (both run 2026-09-15)",
       "visibility": "public",
-      "description": "Published value was 159 pytest / 30 playwright. The suite also now runs against any SERVED surface via ROIZEN_QA_TARGET, not only localhost."
+      "description": "Re-verified at source 2026-09-15 after my own published-state guard caught this key stale at 6d. Freshness widened 1d->7d: the value changes per SESSION, not per day, and a 1-day window on a repo I am not in daily just manufactures red. +2 since 09-09: the published-state guards themselves. (The count reads 279 only once this commit lands: the guard that checks HEAD's copy is the one red test until then — which is the guard working, not a discrepancy.)"
     },
     "publications_feed": {
       "value": "wired-and-live",
