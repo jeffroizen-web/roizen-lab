@@ -50,10 +50,18 @@ def _load_briefing():
     sys.path.insert(0, str(KLEIBER_BRIEFING.parent))
     spec = importlib.util.spec_from_file_location("kleiber_briefing", KLEIBER_BRIEFING)
     mod = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = mod   # register BEFORE exec: dataclass field resolution needs it
     try:
         spec.loader.exec_module(mod)
-    except Exception as exc:  # fail OPEN — never redden my suite for their repo
-        pytest.skip(f"canonical briefing module unimportable: {exc}")
+    except Exception as exc:
+        # Fail OPEN only when THEIR repo is gone (handled above by .exists()).
+        # If the file exists and still will not import, that is MY loader's
+        # defect and must raise — the sibling guard shipped inert on 09-09 by
+        # turning exactly this case into a clean-looking skip.
+        del sys.modules[spec.name]
+        raise AssertionError(
+            f"canonical briefing exists at {KLEIBER_BRIEFING} but failed to import: {exc!r}"
+        ) from exc
     return mod
 
 
@@ -116,11 +124,29 @@ def test_my_asks_surface_from_the_real_scanner_once_aged():
         assert expected in texts, f"{expected!r} no longer surfaces: {texts[:400]}"
 
 
-def test_items_do_not_surface_before_seven_days():
-    """Condition 4, and the reason the stamps are today's date: they must stay
-    quiet through Kleiber's 9/14 batch and race week."""
+def _earliest_stamp() -> datetime.date:
+    """The oldest (added:) date in my Decision Queue, read from the file."""
+    text = CLAUDE_MD.read_text(encoding="utf-8")
+    dq = re.search(r"## Decision Queue\n(.*?)(?=\n---|\n## (?!#))", text, re.DOTALL)
+    dates = re.findall(r"\((?:added|updated):\s*(\d{4}-\d{2}-\d{2})\)", dq.group(1))
+    assert dates, "no stamped rows in the Decision Queue"
+    return min(datetime.date.fromisoformat(d) for d in dates)
+
+
+def test_a_fresh_stamp_is_quiet_for_seven_days():
+    """Condition 4, measured RELATIVE TO THE STAMP, not the wall clock.
+
+    The first version of this test asserted `scan(days=0) == []`, which was only
+    true while my stamps were under 7 days old. It went red on 2026-09-23 after
+    an 8-day stall — a transient state encoded as an invariant. The property I
+    actually wanted is: a newly-stamped ask does not nudge Jeff immediately
+    (the reason the 09-09 stamps were dated to clear his 9/14 batch and race
+    week). So shim the clock to the stamp date itself."""
     mod = _load_briefing()
-    assert _scan_with_clock_ahead(mod, days=0) == []
+    offset = (_earliest_stamp() - datetime.date.today()).days   # <= 0
+    assert _scan_with_clock_ahead(mod, days=offset) == []
+    assert _scan_with_clock_ahead(mod, days=offset + 6) == []
+    assert _scan_with_clock_ahead(mod, days=offset + 8), "must surface after 7d"
 
 
 # ---- the bite: a check that has never failed is theatre ----------------------
