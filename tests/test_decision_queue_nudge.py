@@ -85,14 +85,28 @@ class _ClockAhead:
         return _D
 
 
+def _clock_owner(mod):
+    """The module whose `datetime.date.today()` the scanner actually calls.
+
+    Kleiber split kleiber_briefing.py on 2026-10-23 (21684377): the facade's
+    `_scan_decision_aging` now delegates to `briefing_scanners.scan_decision_aging`,
+    which imports its own `datetime`. Shimming the facade's clock was therefore
+    INERT and this file went red with 'days': 66 under a shim that claimed to
+    hold the clock at the stamp date (testing-standards fold 44: behaviour lives
+    in the call graph, not the mechanism you read). Patch the owner, not the
+    facade; fall back to the facade for a pre-split module."""
+    return getattr(mod, "_scanners", mod)
+
+
 def _scan_with_clock_ahead(mod, days=30):
-    original = mod.datetime
-    mod.datetime = _ClockAhead(original, days)
+    owner = _clock_owner(mod)
+    original = owner.datetime
+    owner.datetime = _ClockAhead(original, days)
     try:
         return [i for i in mod._scan_decision_aging()
                 if i.get("project") == MY_PROJECT_KEY]
     finally:
-        mod.datetime = original
+        owner.datetime = original
 
 
 # ---- the container: a stamp in an unregistered file nudges forever-never -----
