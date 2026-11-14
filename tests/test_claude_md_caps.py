@@ -45,7 +45,7 @@ import pytest
 ROOT = Path(__file__).resolve().parent.parent
 CLAUDE_MD = ROOT / "CLAUDE.md"
 
-TOTAL_CAP = 40_960
+TOTAL_CAP = 40_000   # ruled as the INTEGER 40000 (orchestra.md Context Hygiene, 2026-09-08); was 40_960 until Kleiber MSG-2b4290
 QUICK_STATUS_CAP = 5_120
 QUICK_STATUS_PREFIX = "## Quick Status"
 
@@ -204,3 +204,27 @@ def test_section_boundary_is_not_swallowed_by_a_rejoin(tmp_path):
     # and the measured size must agree with the text we just read back
     _, size = measure_section(CLAUDE_MD, QUICK_STATUS_PREFIX)
     assert size == len(section.encode("utf-8"))
+
+
+# ---- the discriminating band: the ONLY bytes where 40_000 and 40_960 disagree ----
+
+def _file_of_exact_size(tmp_path: Path, n: int) -> Path:
+    variant = tmp_path / "CLAUDE.md"
+    variant.write_bytes(b"x" * n)
+    assert measure_total(variant) == n
+    return variant
+
+
+@pytest.mark.parametrize("n", [40_001, 40_480, 40_960])
+def test_band_between_ruled_and_kib_cap_is_a_breach(tmp_path, n):
+    """Kleiber MSG-2b4290: the gate read 40_960 for ~2 months against a ruled
+    40000. The padding bites above add ~41 KB and breach under EITHER constant,
+    so they could not see it. A file in (40000, 40960] is the only input that
+    separates the two rules; it must breach."""
+    assert measure_total(_file_of_exact_size(tmp_path, n)) > TOTAL_CAP
+
+
+def test_exactly_the_ruled_cap_is_legal(tmp_path):
+    """The other side of the boundary: the cap is inclusive."""
+    assert measure_total(_file_of_exact_size(tmp_path, 40_000)) <= TOTAL_CAP
+

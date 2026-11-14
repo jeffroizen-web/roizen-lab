@@ -44,7 +44,7 @@
       "description": "Re-verified at source 2026-09-15. +2 since 09-09: PR-3 routed as batch S4 after sitting 2 months in the gap between two correct stamps, and auto-redeploy ARM given its own clock so it cannot inherit a batch drop. All six are in Kleiber's batch doc \u2014 VERIFIED BY OPENING IT, after Rams found 'rides the batch' had been asserted by three of us and checked by none. Re-confirmed 2026-09-23: 6 stamped rows, all now >7d and surfacing in Jeff's briefing by design; batch went 09-15. Re-confirmed 2026-11-14 by opening the batch doc (no commits since 09-15) and the jeff-questions ledger: all six still OPEN, ~60d since send, nudge-eligible."
     },
     "tests_green": {
-      "value": "279 pytest passed / 4 skipped + 47 playwright (20 site-qa + 11 contact-form + 7 mobile-overflow + 9 no-figure-rows)",
+      "value": "283 pytest passed / 4 skipped + 47 playwright (20 site-qa + 11 contact-form + 7 mobile-overflow + 9 no-figure-rows)",
       "data_as_of": "2026-11-14",
       "freshness_seconds_max": 604800,
       "source": "python3 -m pytest -q; npx playwright test --list (both run 2026-11-14)",
