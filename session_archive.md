@@ -227,3 +227,8 @@
 ## Archived from CLAUDE.md 2026-11-14 (later: canary superseded by /model switch)
 
 - **CANARY — model pin**: `claude-opus-5-5` in settings.local.json (fleet moved 2026-09-15 per Jeff). **This resumed session still serves `claude-fable-5-1` on CLI 2.1.322** (transcript probe 2026-11-14) — the known fable-5-1-vs-opus-5-5 mismatch (`--resume` restores the stored model, MSG-0e7069); EXPECTED, clears on a FRESH launch, reported to Kleiber on the quiet ledger. Verify the serving layer at session start with the transcript probe, never the system-prompt line; any mismatch OTHER than fable-5-1-vs-opus-5-5 is real drift and goes to Kleiber loudly.
+
+## Archived from CLAUDE.md 2026-11-14 (later: gate + backup rows rewritten in place, recovered by archive_verify)
+
+- **GATE (current)**: **279 pytest + 4 skipped + 47 Playwright** (20 site-qa + 11 contact-form + 7 mobile-overflow + 9 no-figure-rows). **`ROIZEN_QA_TARGET=<url>` runs the whole suite against any SERVED surface** (preview/production), not just localhost. Suite in `tests/`; specs `site-qa.spec.js` + `contact-form.spec.js`. **Before any CLAUDE.md trim: `python3 scripts/archive_verify.py <sha-before>` must be EMPTY on both passes.**
+- **Remote backup: CURRENT** — `origin/main` at 3287a1d (pushed 2026-11-14 under the source-only/main-only scope; gh-pages read e088e23c before and after). Push-gate scope ruled 2026-09-08 (see Standing); no-off-disk-copy exposure CLOSED.
